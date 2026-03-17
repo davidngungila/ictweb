@@ -1,0 +1,306 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Events Management — FeedTan Admin Dashboard')
+
+@section('content')
+    <div class="min-h-screen bg-slate-50 flex">
+        <!-- Mobile Menu Button -->
+        <button id="sidebarToggle" class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-lg">
+            <i class="ph ph-list text-xl"></i>
+        </button>
+
+        <!-- Fixed Sidebar -->
+        <aside id="sidebar" class="w-64 bg-slate-800 min-h-screen fixed left-0 top-0 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="p-6 border-b border-slate-700">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <h1 class="text-xl font-bold text-white">Admin Dashboard</h1>
+                        <span class="px-2 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full">FeedTan</span>
+                    </div>
+                    <button id="closeSidebar" class="lg:hidden text-slate-400 hover:text-white">
+                        <i class="ph ph-x text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <nav class="p-4 h-[calc(100vh-88px)] overflow-y-auto">
+                <ul class="space-y-2">
+                    <li><a href="/admin" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-house text-xl"></i><span>Dashboard</span></a></li>
+                    <li><a href="/admin/members" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-users text-xl"></i><span>Members</span></a></li>
+                    <li><a href="/admin/loans" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-briefcase text-xl"></i><span>Loans</span></a></li>
+                    <li><a href="/admin/savings" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-piggy-bank text-xl"></i><span>Savings</span></a></li>
+                    <li><a href="/admin/events" class="flex items-center gap-3 px-4 py-3 bg-slate-700 text-white rounded-lg"><i class="ph ph-calendar text-xl"></i><span>Events</span></a></li>
+                    <li><a href="/admin/articles" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-article text-xl"></i><span>Articles</span></a></li>
+                    <li><a href="/admin/documents" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-file-text text-xl"></i><span>Documents</span></a></li>
+                    <li><a href="/admin/reports" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-chart-bar text-xl"></i><span>Reports</span></a></li>
+                    <li><a href="/admin/settings" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-gear text-xl"></i><span>Settings</span></a></li>
+                </ul>
+                
+                <div class="mt-8 pt-8 border-t border-slate-700">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">System</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/admin/database" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-database text-xl"></i><span>Database</span></a></li>
+                        <li><a href="/admin/backups" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-backup text-xl"></i><span>Backups</span></a></li>
+                        <li><a href="/admin/security" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-shield-check text-xl"></i><span>Security</span></a></li>
+                        <li><a href="/admin/notifications" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-bell text-xl"></i><span>Notifications</span></a></li>
+                        <li><a href="/admin/audit" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-700 rounded-lg transition-colors"><i class="ph ph-clock-counter-clockwise text-xl"></i><span>Audit Logs</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Overlay for mobile -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden hidden"></div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 lg:ml-64">
+            <!-- Fixed Header -->
+            <header class="bg-slate-900 border-b border-slate-800 fixed top-0 left-0 right-0 z-30 lg:left-64">
+                <div class="max-w-full px-4 sm:px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <button id="mobileSidebarToggle" class="lg:hidden text-slate-400 hover:text-white">
+                                <i class="ph ph-list text-xl"></i>
+                            </button>
+                            <h2 class="text-lg sm:text-xl font-semibold text-white">Events Management</h2>
+                        </div>
+                        <div class="flex items-center gap-2 sm:gap-4">
+                            <button class="text-slate-400 hover:text-white transition-colors">
+                                <i class="ph ph-bell text-xl"></i>
+                            </button>
+                            <div class="hidden sm:flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center">
+                                    <span class="text-white text-sm font-bold">AD</span>
+                                </div>
+                                <span class="text-white text-sm">Admin User</span>
+                            </div>
+                            <a href="/admin/login" class="text-slate-400 hover:text-white transition-colors">
+                                <i class="ph ph-sign-out text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Scrollable Main Content -->
+            <main class="pt-16 sm:pt-20 p-4 sm:p-6">
+                <!-- Events Stats Overview -->
+                <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-6 sm:mb-8">
+                    <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-slate-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-100 flex items-center justify-center">
+                                <i class="ph ph-calendar text-amber-600 text-lg sm:text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-amber-600">+3</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">{{ $stats['upcomingEvents'] ?? 12 }}</h3>
+                        <p class="text-sm text-slate-500 mt-1">Upcoming Events</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-slate-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                                <i class="ph ph-users text-emerald-600 text-lg sm:text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-600">+25%</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">{{ $stats['totalAttendees'] ?? 456 }}</h3>
+                        <p class="text-sm text-slate-500 mt-1">Total Attendees</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-slate-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                                <i class="ph ph-check-circle text-blue-600 text-lg sm:text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-blue-600">28</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">{{ $stats['pastEvents'] ?? 28 }}</h3>
+                        <p class="text-sm text-slate-500 mt-1">Past Events</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-slate-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                                <i class="ph ph-star text-purple-600 text-lg sm:text-xl"></i>
+                            </div>
+                            <span class="text-xs font-bold text-purple-600">4.8</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900">{{ $stats['avgRating'] ?? 4.8 }}</h3>
+                        <p class="text-sm text-slate-500 mt-1">Avg Rating</p>
+                    </div>
+                </div>
+
+                <!-- Events Management Tools -->
+                <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-slate-200 mb-6">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                        <h3 class="text-lg font-bold text-slate-900">Event Management</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="showNewEventModal()" class="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors text-sm">
+                                <i class="ph ph-plus mr-2"></i>Create New Event
+                            </button>
+                            <button class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm">
+                                <i class="ph ph-calendar-plus mr-2"></i>Schedule Event
+                            </button>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
+                                <i class="ph ph-download mr-2"></i>Export Calendar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search and Filters -->
+                    <form method="GET" action="/admin/events">
+                        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
+                            <div class="relative">
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search events..." class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <i class="ph ph-search absolute left-3 top-3 text-slate-400"></i>
+                            </div>
+                            <select name="status" class="px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="">All Status</option>
+                                <option value="upcoming" {{ request('status') == 'upcoming' ? 'selected' : '' }}>Upcoming</option>
+                                <option value="ongoing" {{ request('status') == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
+                                <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Completed</option>
+                                <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                            </select>
+                            <select name="type" class="px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="">All Types</option>
+                                <option value="workshop" {{ request('type') == 'workshop' ? 'selected' : '' }}>Workshop</option>
+                                <option value="seminar" {{ request('type') == 'seminar' ? 'selected' : '' }}>Seminar</option>
+                                <option value="training" {{ request('type') == 'training' ? 'selected' : '' }}>Training</option>
+                                <option value="networking" {{ request('type') == 'networking' ? 'selected' : '' }}>Networking</option>
+                            </select>
+                            <button type="submit" class="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors text-sm">
+                                <i class="ph ph-funnel mr-2"></i>Filter
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    @forelse ($events ?? [] as $event)
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="h-48 bg-gradient-to-br 
+                            @if($event->type == 'workshop') from-amber-400 to-orange-500
+                            @elseif($event->type == 'seminar') from-blue-400 to-indigo-500
+                            @elseif($event->type == 'training') from-purple-400 to-pink-500
+                            @else from-emerald-400 to-teal-500 @endif
+                            flex items-center justify-center">
+                            <i class="ph 
+                                @if($event->type == 'workshop') ph-chalkboard
+                                @elseif($event->type == 'seminar') ph-presentation
+                                @elseif($event->type == 'training') ph-graduation-cap
+                                @else ph-coffee @endif
+                                text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="px-2 py-1 
+                                    @if($event->type == 'workshop') bg-amber-100 text-amber-800
+                                    @elseif($event->type == 'seminar') bg-blue-100 text-blue-800
+                                    @elseif($event->type == 'training') bg-purple-100 text-purple-800
+                                    @else bg-emerald-100 text-emerald-800 @endif
+                                    text-xs font-semibold rounded-full">{{ ucfirst($event->type) }}</span>
+                                <span class="text-xs text-slate-500">{{ $event->start_date ? $event->start_date->format('M d, Y') : 'TBD' }}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">{{ $event->title }}</h3>
+                            <p class="text-sm text-slate-600 mb-4">{{ Str::limit($event->description, 100) }}</p>
+                            <div class="flex items-center justify-between text-sm text-slate-500 mb-4">
+                                <span><i class="ph ph-map-pin mr-1"></i>{{ $event->is_online ? 'Online' : $event->location }}</span>
+                                <span><i class="ph ph-clock mr-1"></i>{{ $event->start_date ? $event->start_date->format('g:i A') : 'TBD' }}</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex -space-x-2">
+                                    @if($event->attendees && $event->attendees->count() > 0)
+                                        @foreach($event->attendees->take(4) as $attendee)
+                                            <div class="w-6 h-6 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center">
+                                                <span class="text-xs font-bold text-emerald-700">{{ strtoupper(substr($attendee->member->name ?? 'A', 0, 1)) }}</span>
+                                            </div>
+                                        @endforeach
+                                        @if($event->attendees->count() > 4)
+                                            <div class="w-6 h-6 rounded-full bg-amber-100 border-2 border-white flex items-center justify-center">
+                                                <span class="text-xs font-bold text-amber-700">+{{ $event->attendees->count() - 4 }}</span>
+                                            </div>
+                                        @endif
+                                    @else
+                                        <div class="w-6 h-6 rounded-full bg-slate-100 border-2 border-white"></div>
+                                    @endif
+                                </div>
+                                <span class="text-sm font-medium text-emerald-600">{{ $event->attendees ? $event->attendees->count() : 0 }} registered</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="viewEvent({{ $event->id }})" class="flex-1 px-3 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors text-sm">View Details</button>
+                                <button onclick="editEvent({{ $event->id }})" class="px-3 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-span-full text-center py-12">
+                        <i class="ph ph-calendar-x text-4xl text-slate-400 mb-2"></i>
+                        <p class="text-slate-500">No events found</p>
+                    </div>
+                    @endforelse
+                </div>
+
+                <!-- Pagination -->
+                @if($events && $events->hasPages())
+                <div class="mt-8">
+                    {{ $events->links('pagination::tailwind') }}
+                </div>
+                @endif
+            </main>
+
+            <!-- Footer -->
+            <footer class="bg-slate-800 border-t border-slate-700 py-4 sm:py-6">
+                <div class="px-4 sm:px-6">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
+                        <p class="text-slate-400 text-xs sm:text-sm">© 2024 FeedTan Community Microfinance Group. All rights reserved.</p>
+                        <p class="text-slate-500 text-xs">Admin Portal v1.0</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebarFunc() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        sidebarToggle.addEventListener('click', openSidebar);
+        mobileSidebarToggle.addEventListener('click', openSidebar);
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        sidebarOverlay.addEventListener('click', closeSidebarFunc);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+                closeSidebarFunc();
+            }
+        });
+
+        // Event Functions
+        function showNewEventModal() {
+            console.log('Show new event modal');
+        }
+
+        function viewEvent(id) {
+            console.log('View event:', id);
+        }
+
+        function editEvent(id) {
+            console.log('Edit event:', id);
+        }
+    </script>
+@endsection

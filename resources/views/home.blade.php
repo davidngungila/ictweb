@@ -8,16 +8,16 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide relative flex items-center">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=2200&q=80" alt="Savings" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2200&q=80" alt="Agriculture" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/35 to-transparent"></div>
                     </div>
                     <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
                         <div class="max-w-2xl translate-y-10 opacity-0 transition-all duration-1000 slide-content">
-                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">FeedTan Microfinance</span>
-                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Grow your business with <span class="text-emerald-400">clear, fair funding</span></h1>
-                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Fast micro-loans, savings plans, and community support for entrepreneurs in Moshi and beyond.</p>
+                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Agricultural Finance</span>
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Empowering <span class="text-emerald-400">farmers & agribusiness</span></h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Seasonal loans for seeds, equipment, and livestock. Flexible repayment aligned with harvest cycles.</p>
                             <div class="flex flex-col sm:flex-row items-center gap-4">
-                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Apply now</a>
+                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Apply for farm loan</a>
                                 <a href="{{ url('/products') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Explore products</a>
                             </div>
                         </div>
@@ -26,17 +26,17 @@
 
                 <div class="swiper-slide relative flex items-center">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1556761175-129418cb2dfe?auto=format&fit=crop&w=2200&q=80" alt="Business" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=2200&q=80" alt="Retail Shop" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/35 to-transparent"></div>
                     </div>
                     <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
                         <div class="max-w-2xl translate-y-10 opacity-0 transition-all duration-1000 slide-content">
-                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Fast Decisions</span>
-                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Micro-loans for <span class="text-emerald-400">inventory & working capital</span></h1>
-                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Transparent fees, flexible repayment schedules, and reminders to help you stay on track.</p>
+                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Retail Solutions</span>
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Stock your shop with <span class="text-emerald-400">quick capital</span></h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Inventory financing for small retailers. Fast approval and repayment terms that match your sales cycle.</p>
                             <div class="flex flex-col sm:flex-row items-center gap-4">
                                 <a href="{{ url('/pricing') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">View pricing</a>
-                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Request a callback</a>
+                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Request callback</a>
                             </div>
                         </div>
                     </div>
@@ -44,17 +44,53 @@
 
                 <div class="swiper-slide relative flex items-center">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=2200&q=80" alt="Mobile" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2200&q=80" alt="Women Entrepreneur" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/35 to-transparent"></div>
                     </div>
                     <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
                         <div class="max-w-2xl translate-y-10 opacity-0 transition-all duration-1000 slide-content">
-                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Secure & Simple</span>
-                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Save smarter. <span class="text-emerald-400">Build stability.</span></h1>
-                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Goal-based savings plans and support that protects your privacy and strengthens your household.</p>
+                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Women in Business</span>
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Supporting <span class="text-emerald-400">women entrepreneurs</span></h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Special programs and lower rates for women-owned businesses. Training and mentorship included.</p>
                             <div class="flex flex-col sm:flex-row items-center gap-4">
-                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Open an account</a>
-                                <a href="{{ url('/about') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Learn about FeedTan</a>
+                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Join women's program</a>
+                                <a href="{{ url('/about') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Learn more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide relative flex items-center">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=2200&q=80" alt="Education" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/35 to-transparent"></div>
+                    </div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+                        <div class="max-w-2xl translate-y-10 opacity-0 transition-all duration-1000 slide-content">
+                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Education Finance</span>
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Invest in <span class="text-emerald-400">education & skills</span></h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">School fees, vocational training, and professional development loans. Build your future with flexible terms.</p>
+                            <div class="flex flex-col sm:flex-row items-center gap-4">
+                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Apply for education loan</a>
+                                <a href="{{ url('/products') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">See all products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide relative flex items-center">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=2200&q=80" alt="Community Savings" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/35 to-transparent"></div>
+                    </div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+                        <div class="max-w-2xl translate-y-10 opacity-0 transition-all duration-1000 slide-content">
+                            <span class="inline-block px-4 py-1.5 bg-emerald-600/20 text-emerald-300 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-600/30">Community Savings</span>
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-8 leading-[1.05]">Save together, <span class="text-emerald-400">grow together</span></h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">Group savings plans with better returns. Regular contributions and community support for financial security.</p>
+                            <div class="flex flex-col sm:flex-row items-center gap-4">
+                                <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Start saving group</a>
+                                <a href="{{ url('/about') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">About our impact</a>
                             </div>
                         </div>
                     </div>
@@ -107,6 +143,79 @@
             });
         });
     </script>
+
+    <!-- Upcoming Events Section -->
+    <section class="py-20 bg-amber-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-xs font-bold tracking-widest uppercase text-amber-700">Events</div>
+                <h2 class="mt-6 text-4xl font-serif text-slate-900 font-bold">Upcoming Events</h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Join our workshops, seminars, and networking opportunities to grow your skills and connect with the community.</p>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div class="group rounded-2xl border border-amber-200 bg-white p-6 hover:shadow-lg transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-amber-100 flex flex-col items-center justify-center flex-shrink-0 group-hover:bg-amber-200 transition-colors">
+                            <span class="text-xs font-bold text-amber-600">MAR</span>
+                            <span class="text-lg font-black text-amber-700">25</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Business Planning Workshop</h3>
+                            <p class="text-sm text-slate-500 mb-2">9:00 AM - 12:00 PM • Training Center</p>
+                            <p class="text-sm text-slate-600">Learn effective business planning strategies</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-sm font-bold text-amber-600">Free for members</span>
+                        <a href="{{ url('/events') }}" class="text-sm text-amber-600 font-bold hover:text-amber-700 transition-colors">Register →</a>
+                    </div>
+                </div>
+
+                <div class="group rounded-2xl border border-amber-200 bg-white p-6 hover:shadow-lg transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-yellow-100 flex flex-col items-center justify-center flex-shrink-0 group-hover:bg-yellow-200 transition-colors">
+                            <span class="text-xs font-bold text-yellow-600">MAR</span>
+                            <span class="text-lg font-black text-yellow-700">28</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Financial Literacy Seminar</h3>
+                            <p class="text-sm text-slate-500 mb-2">2:00 PM - 4:00 PM • Online</p>
+                            <p class="text-sm text-slate-600">Master budgeting and investment basics</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-sm font-bold text-yellow-600">Free event</span>
+                        <a href="{{ url('/events') }}" class="text-sm text-yellow-600 font-bold hover:text-yellow-700 transition-colors">Register →</a>
+                    </div>
+                </div>
+
+                <div class="group rounded-2xl border border-amber-200 bg-white p-6 hover:shadow-lg transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-orange-100 flex flex-col items-center justify-center flex-shrink-0 group-hover:bg-orange-200 transition-colors">
+                            <span class="text-xs font-bold text-orange-600">APR</span>
+                            <span class="text-lg font-black text-orange-700">02</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">Networking Breakfast</h3>
+                            <p class="text-sm text-slate-500 mb-2">8:00 AM - 10:00 AM • Headquarters</p>
+                            <p class="text-sm text-slate-600">Connect with fellow entrepreneurs</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-sm font-bold text-orange-600">10,000 TZS</span>
+                        <a href="{{ url('/events') }}" class="text-sm text-orange-600 font-bold hover:text-orange-700 transition-colors">Register →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="{{ url('/events') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 shadow-xl shadow-amber-600/30 transition-all">
+                    View all events <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <section class="relative z-20 -mt-10 max-w-5xl mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 bg-white rounded-2xl shadow-2xl p-8 border border-slate-100 divide-x divide-slate-100">

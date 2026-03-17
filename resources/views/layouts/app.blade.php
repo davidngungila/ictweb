@@ -79,12 +79,8 @@
     <body class="min-h-screen bg-white text-slate-900 antialiased font-medium" x-data="{ mobileMenuOpen: false }">
         <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
             <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-                <a href="{{ url('/') }}" class="flex items-center gap-3 group/logo">
-                    <img src="{{ asset('logo.png') }}" alt="FeedTan Logo" class="h-14 w-14 rounded-2xl object-contain bg-white p-2 transition-transform group-hover/logo:scale-105">
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-black tracking-tighter text-slate-900 leading-none">FeedTan</span>
-                        <span class="text-xs font-bold text-slate-500 leading-none mt-1">Empowering Communities Through Finance</span>
-                    </div>
+                <a href="{{ url('/') }}" class="flex items-center group/logo">
+                    <img src="{{ asset('logo.png') }}" alt="FeedTan Logo" class="h-20 w-20 rounded-3xl object-contain bg-white p-3 transition-transform group-hover/logo:scale-110 shadow-xl shadow-emerald-600/20">
                 </a>
 
                 <div class="hidden lg:flex items-center gap-10">
@@ -92,52 +88,111 @@
 
                     <div class="relative group py-8">
                         <a href="{{ url('/products') }}" class="nav-link font-bold hover:text-emerald-600 transition-colors flex items-center gap-1">
-                            Products <i class="ph ph-caret-down text-xs transition-transform group-hover:rotate-180"></i>
+                            Services <i class="ph ph-caret-down text-xs transition-transform group-hover:rotate-180"></i>
                         </a>
-                        <div class="mega-menu absolute top-full left-0 w-[600px] bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-8 z-50">
-                            <div class="grid grid-cols-2 gap-8">
+                        <div class="mega-menu absolute top-full left-0 w-[700px] bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-8 z-50">
+                            <div class="grid grid-cols-3 gap-6">
                                 <div>
-                                    <h4 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-6">Microfinance</h4>
-                                    <div class="space-y-4">
-                                        <a href="{{ url('/products') }}#loans" class="flex items-center gap-4 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
-                                            <div class="w-12 h-12 rounded-xl overflow-hidden">
+                                    <h4 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-6">Financial Services</h4>
+                                    <div class="space-y-3">
+                                        <a href="{{ url('/products') }}#loans" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
                                                 <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Micro-loans">
                                             </div>
                                             <div>
-                                                <p class="font-bold text-slate-900 group-hover/item:text-emerald-700">Micro-loans</p>
-                                                <p class="text-xs text-slate-500">Working capital & emergencies</p>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Micro-loans</div>
+                                                <div class="text-xs text-slate-500">Quick funding</div>
                                             </div>
                                         </a>
-                                        <a href="{{ url('/products') }}#savings" class="flex items-center gap-4 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
-                                            <div class="w-12 h-12 rounded-xl overflow-hidden">
-                                                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Savings">
+                                        <a href="{{ url('/savings') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Savings">
                                             </div>
                                             <div>
-                                                <p class="font-bold text-slate-900 group-hover/item:text-emerald-700">Savings</p>
-                                                <p class="text-xs text-slate-500">Goal-based & scheduled withdrawals</p>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Savings</div>
+                                                <div class="text-xs text-slate-500">Secure accounts</div>
+                                            </div>
+                                        </a>
+                                        <a href="{{ url('/investment') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Investment">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Investments</div>
+                                                <div class="text-xs text-slate-500">Grow wealth</div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
                                 <div>
-                                    <h4 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-6">Get started</h4>
-                                    <div class="space-y-4">
-                                        <a href="{{ url('/pricing') }}" class="flex items-center gap-3 text-slate-700 hover:text-emerald-600 font-bold group/sub transition-colors">
-                                            <i class="ph ph-receipt text-xl opacity-50 group-hover/sub:opacity-100"></i> Pricing & Fees
+                                    <h4 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-6">Community Services</h4>
+                                    <div class="space-y-3">
+                                        <a href="{{ url('/social-welfare') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Social Welfare">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Welfare Fund</div>
+                                                <div class="text-xs text-slate-500">Community support</div>
+                                            </div>
                                         </a>
-                                        <a href="{{ url('/contact') }}" class="flex items-center gap-3 text-slate-700 hover:text-emerald-600 font-bold group/sub transition-colors">
-                                            <i class="ph ph-phone-call text-xl opacity-50 group-hover/sub:opacity-100"></i> Talk to an advisor
+                                        <a href="{{ url('/training') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Training">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Training</div>
+                                                <div class="text-xs text-slate-500">Skills development</div>
+                                            </div>
                                         </a>
-                                        <a href="{{ url('/contact') }}" class="flex items-center gap-3 text-emerald-600 hover:text-emerald-700 font-bold group/sub transition-colors">
-                                            <i class="ph-bold ph-calendar-plus text-xl"></i> Request a callback
-                                        </a>
-                                    </div>
-                                    <div class="mt-8 pt-6 border-t border-slate-50">
-                                        <a href="{{ url('/products') }}" class="text-sm font-black text-emerald-600 flex items-center gap-2 hover:gap-3 transition-all">
-                                            Explore All Products <i class="ph ph-arrow-right"></i>
+                                        <a href="{{ url('/events') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Events">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Events</div>
+                                                <div class="text-xs text-slate-500">Workshops & seminars</div>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
+                                <div>
+                                    <h4 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-6">Resources</h4>
+                                    <div class="space-y-3">
+                                        <a href="{{ url('/articles') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Articles">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Articles</div>
+                                                <div class="text-xs text-slate-500">Insights & tips</div>
+                                            </div>
+                                        </a>
+                                        <a href="{{ url('/documents') }}" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Documents">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Documents</div>
+                                                <div class="text-xs text-slate-500">Forms & guides</div>
+                                            </div>
+                                        </a>
+                                        <a href="{{ url('/products') }}#groups" class="flex items-center gap-3 group/item p-3 rounded-2xl hover:bg-emerald-50 transition-all">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="Groups">
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 group-hover/item:text-emerald-600 text-sm">Group Lending</div>
+                                                <div class="text-xs text-slate-500">Community finance</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-slate-50">
+                                <a href="{{ url('/products') }}" class="text-sm font-black text-emerald-600 flex items-center gap-2 hover:gap-3 transition-all">
+                                    Explore All Services <i class="ph ph-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -148,7 +203,6 @@
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <a href="{{ url('/contact') }}" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-slate-700 bg-white border border-slate-200 px-5 py-2.5 rounded-full hover:bg-slate-50 transition-all">Login</a>
                     <a href="{{ url('/contact') }}" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-white bg-emerald-600 px-6 py-2.5 rounded-full hover:bg-emerald-700 shadow-lg shadow-emerald-600/20 transition-all">Apply Now</a>
 
                     <button @click="mobileMenuOpen = true" class="lg:hidden w-12 h-12 bg-slate-50 text-slate-900 rounded-2xl flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all" type="button">
@@ -187,12 +241,18 @@
 
                         <div x-data="{ open: false }">
                             <button @click="open = !open" class="flex items-center justify-between w-full text-2xl font-serif font-black text-slate-900" type="button">
-                                Products <i class="ph ph-caret-down text-lg transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                                Services <i class="ph ph-caret-down text-lg transition-transform" :class="open ? 'rotate-180' : ''"></i>
                             </button>
                             <div x-show="open" x-transition class="pl-4 mt-4 space-y-4">
                                 <a href="{{ url('/products') }}#loans" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Micro-loans</a>
-                                <a href="{{ url('/products') }}#savings" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Savings</a>
-                                <a href="{{ url('/products') }}#business" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Business tools</a>
+                                <a href="{{ url('/savings') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Savings & Deposits</a>
+                                <a href="{{ url('/investment') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Investment Fund</a>
+                                <a href="{{ url('/social-welfare') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Social Welfare Fund</a>
+                                <a href="{{ url('/training') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Training & Mentorship</a>
+                                <a href="{{ url('/events') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Upcoming Events</a>
+                                <a href="{{ url('/articles') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Articles & Resources</a>
+                                <a href="{{ url('/documents') }}" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Documents & Forms</a>
+                                <a href="{{ url('/products') }}#groups" class="block text-sm font-bold text-slate-500 hover:text-emerald-600">Group Lending</a>
                             </div>
                         </div>
 
@@ -216,15 +276,14 @@
             @yield('content')
         </main>
 
-        <footer class="bg-slate-900 text-white pt-20 pb-10">
+        <footer class="relative bg-slate-900 text-white pt-20 pb-10">
+            <!-- Dark green border lines -->
+            <div class="absolute top-4 left-0 w-full h-px bg-emerald-900"></div>
+            <div class="absolute top-6 left-0 w-full h-px bg-emerald-900"></div>
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
                 <div class="col-span-1 md:col-span-1 lg:col-span-1">
-                    <a href="{{ url('/') }}" class="flex items-center gap-3 mb-6">
-                        <img src="{{ asset('logo.png') }}" alt="FeedTan Logo" class="h-10 w-10 rounded-xl object-contain bg-white p-1.5">
-                        <div class="flex flex-col">
-                            <span class="text-lg font-black tracking-tighter text-white leading-none">FeedTan</span>
-                            <span class="text-xs font-bold text-slate-400 leading-none mt-1">Empowering Communities Through Finance</span>
-                        </div>
+                    <a href="{{ url('/') }}" class="flex items-center justify-center mb-6">
+                        <img src="{{ asset('logo.png') }}" alt="FeedTan Logo" class="h-24 w-24 rounded-3xl object-contain bg-white p-4 shadow-2xl shadow-emerald-600/20">
                     </a>
                     <p class="text-slate-400 leading-relaxed text-sm mb-6">
                         Microfinance built for entrepreneurs and communities. Transparent pricing, flexible repayment, and support beyond the loan.
@@ -232,7 +291,7 @@
                     <div class="flex items-center gap-4">
                         <span class="text-xs font-bold text-emerald-400">Member Since 2020</span>
                         <span class="text-xs text-slate-500">|</span>
-                        <span class="text-xs font-bold text-emerald-400">Licensed</span>
+                        <span class="text-xs font-bold text-emerald-400">Services</span>
                         <span class="text-xs text-slate-500">|</span>
                         <span class="text-xs font-bold text-emerald-400">10,000+ Clients</span>
                     </div>

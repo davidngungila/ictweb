@@ -11,69 +11,154 @@
         </div>
 
         <div class="relative max-w-7xl mx-auto px-6 py-20 lg:py-24 text-center">
-            <div class="max-w-3xl mx-auto" x-data="{ billing: 'weekly' }">
+            <div class="max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 rounded-full border border-lime-400/30 bg-lime-400/10 px-4 py-2 text-xs font-bold tracking-widest uppercase text-lime-200">Pricing</div>
                 <h1 class="mt-6 text-4xl md:text-6xl font-serif text-white font-bold leading-[1.05]">Transparent costs. No hidden surprises.</h1>
-                <p class="mt-6 text-lg text-slate-200 leading-relaxed">Microfinance should be clear and fair. Your final pricing depends on risk checks, location, and repayment schedule. Below are example tiers to illustrate how we structure fees.</p>
+                <p class="mt-6 text-lg text-slate-200 leading-relaxed">Microfinance should be clear and fair. Your final pricing depends on risk checks, location, and repayment schedule. Use our interactive calculator below to get personalized estimates.</p>
 
                 <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Get a quote</a>
-                    <a href="{{ url('/products') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Explore products</a>
+                    <a href="#calculator" class="w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 shadow-xl shadow-emerald-600/30 transition-all text-center">Use calculator</a>
+                    <a href="{{ url('/contact') }}" class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all text-center backdrop-blur-md">Get a quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif text-slate-900 mb-6 font-bold">Microfinance Challenges We Solve</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Common issues in microfinance and how FeedTan addresses them with transparency and fairness.</p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="group rounded-[2rem] border border-slate-200 bg-slate-50 p-8 hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-red-100 flex items-center justify-center mb-6 group-hover:bg-red-200 transition-colors">
+                        <i class="ph-bold ph-warning text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Hidden Fees</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Many lenders hide processing fees, insurance costs, and penalties in fine print.</p>
+                    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4">
+                        <p class="text-sm font-bold text-emerald-900 mb-1">Our Solution:</p>
+                        <p class="text-sm text-emerald-700">Complete fee breakdown before approval. No hidden charges ever.</p>
+                    </div>
                 </div>
 
-                <div class="mt-12 inline-flex rounded-full border border-white/10 bg-white/5 p-1">
-                    <button type="button" class="px-6 py-2.5 rounded-full text-sm font-black transition-all" :class="billing === 'weekly' ? 'bg-lime-400 text-slate-950' : 'text-white/80 hover:text-white'" @click="billing = 'weekly'">Weekly</button>
-                    <button type="button" class="px-6 py-2.5 rounded-full text-sm font-black transition-all" :class="billing === 'monthly' ? 'bg-lime-400 text-slate-950' : 'text-white/80 hover:text-white'" @click="billing = 'monthly'">Monthly</button>
+                <div class="group rounded-[2rem] border border-slate-200 bg-slate-50 p-8 hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-100 flex items-center justify-center mb-6 group-hover:bg-orange-200 transition-colors">
+                        <i class="ph-bold ph-chart-line text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">High Interest Rates</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Excessive interest rates make loans unaffordable and trap borrowers in debt cycles.</p>
+                    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4">
+                        <p class="text-sm font-bold text-emerald-900 mb-1">Our Solution:</p>
+                        <p class="text-sm text-emerald-700">Competitive rates starting at 1.6% with clear terms and no compound interest.</p>
+                    </div>
                 </div>
 
-                <div class="mt-4 text-xs text-slate-300">Toggle is for example display only.</div>
-
-                <div class="mt-16 grid gap-8 md:grid-cols-3 text-left">
-                    <div class="rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md p-10">
-                        <div class="text-sm font-bold text-white">Starter</div>
-                        <div class="mt-2 text-sm text-slate-300">For first-time borrowers</div>
-                        <div class="mt-6 text-5xl font-black text-white" x-text="billing === 'weekly' ? '3%' : '2.5%'">3%</div>
-                        <div class="mt-2 text-sm text-slate-300" x-text="billing === 'weekly' ? 'per term (example)' : 'per term (example)'">per term (example)</div>
-                        <div class="mt-6 grid gap-2 text-sm text-slate-200">
-                            <div class="rounded-2xl bg-slate-950/30 border border-white/10 px-5 py-4">Smaller limits to build trust</div>
-                            <div class="rounded-2xl bg-slate-950/30 border border-white/10 px-5 py-4">Shorter terms available</div>
-                            <div class="rounded-2xl bg-slate-950/30 border border-white/10 px-5 py-4">Repayment reminders</div>
-                        </div>
-                        <a href="{{ url('/contact') }}" class="mt-8 inline-flex w-full justify-center rounded-2xl bg-white text-slate-950 px-6 py-4 text-sm font-black hover:bg-lime-400 transition-colors">Apply</a>
+                <div class="group rounded-[2rem] border border-slate-200 bg-slate-50 p-8 hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center mb-6 group-hover:bg-purple-200 transition-colors">
+                        <i class="ph-bold ph-clock-countdown text-2xl text-purple-600"></i>
                     </div>
-
-                    <div class="rounded-[2.5rem] border border-lime-400/30 bg-gradient-to-b from-lime-400/15 to-white/5 backdrop-blur-md p-10">
-                        <div class="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs font-black text-slate-950">Most popular</div>
-                        <div class="mt-5 text-sm font-bold text-white">Growth</div>
-                        <div class="mt-2 text-sm text-slate-200">For returning customers</div>
-                        <div class="mt-6 text-5xl font-black text-white" x-text="billing === 'weekly' ? '2%' : '1.6%'">2%</div>
-                        <div class="mt-2 text-sm text-slate-200">per term (example)</div>
-                        <div class="mt-6 grid gap-2 text-sm text-slate-200">
-                            <div class="rounded-2xl bg-slate-950/25 border border-white/10 px-5 py-4">Higher limits based on history</div>
-                            <div class="rounded-2xl bg-slate-950/25 border border-white/10 px-5 py-4">Flexible schedules</div>
-                            <div class="rounded-2xl bg-slate-950/25 border border-white/10 px-5 py-4">Education modules included</div>
-                        </div>
-                        <a href="{{ url('/contact') }}" class="mt-8 inline-flex w-full justify-center rounded-2xl bg-emerald-600 text-white px-6 py-4 text-sm font-black hover:bg-emerald-700 transition-colors">Apply</a>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Slow Disbursement</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Lengthy approval processes delay access to funds when urgently needed.</p>
+                    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4">
+                        <p class="text-sm font-bold text-emerald-900 mb-1">Our Solution:</p>
+                        <p class="text-sm text-emerald-700">24-hour approval and same-day disbursement for qualified applicants.</p>
                     </div>
+                </div>
 
-                    <div class="rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md p-10">
-                        <div class="text-sm font-bold text-white">Business</div>
-                        <div class="mt-2 text-sm text-slate-300">For enterprises & groups</div>
-                        <div class="mt-6 text-5xl font-black text-white">Custom</div>
-                        <div class="mt-2 text-sm text-slate-300">Quote-based</div>
-                        <div class="mt-6 grid gap-2 text-sm text-slate-200">
-                            <div class="rounded-2xl bg-slate-950/30 border border-white/10 px-5 py-4">Larger disbursements</div>
-                            <div class="rounded-2xl bg-slate-950/30 border border-white/10 px-5 py-4">Dedicated account manager</div>
-                            <div class="rounded-2xl bg-slate-950/30 border border-white/10 px-5 py-4">Business training & reporting</div>
-                        </div>
-                        <a href="{{ url('/contact') }}" class="mt-8 inline-flex w-full justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-sm font-black text-white hover:bg-white/10 transition-colors">Talk to sales</a>
+                <div class="group rounded-[2rem] border border-slate-200 bg-slate-50 p-8 hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
+                        <i class="ph-bold ph-calendar-x text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Inflexible Repayment</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Rigid payment schedules don't match seasonal income or business cycles.</p>
+                    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4">
+                        <p class="text-sm font-bold text-emerald-900 mb-1">Our Solution:</p>
+                        <p class="text-sm text-emerald-700">Weekly/monthly options with grace periods and flexible rescheduling.</p>
+                    </div>
+                </div>
+
+                <div class="group rounded-[2rem] border border-slate-200 bg-slate-50 p-8 hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center mb-6 group-hover:bg-yellow-200 transition-colors">
+                        <i class="ph-bold ph-shield-warning text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">No Collateral Required</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Traditional banks require collateral that most micro-entrepreneurs don't have.</p>
+                    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4">
+                        <p class="text-sm font-bold text-emerald-900 mb-1">Our Solution:</p>
+                        <p class="text-sm text-emerald-700">Group lending, character-based assessment, and progressive loan limits.</p>
+                    </div>
+                </div>
+
+                <div class="group rounded-[2rem] border border-slate-200 bg-slate-50 p-8 hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-100 flex items-center justify-center mb-6 group-hover:bg-teal-200 transition-colors">
+                        <i class="ph-bold ph-graduation-cap text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Financial Literacy Gap</h3>
+                    <p class="text-slate-600 mb-4 leading-relaxed">Many borrowers lack basic financial management skills and business training.</p>
+                    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4">
+                        <p class="text-sm font-bold text-emerald-900 mb-1">Our Solution:</p>
+                        <p class="text-sm text-emerald-700">Free financial literacy workshops, business mentoring, and savings guidance.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-slate-50">
+    <section class="py-20 bg-lime-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid gap-12 lg:grid-cols-2 items-center">
+                <div>
+                    <h2 class="text-4xl font-serif text-slate-900 mb-6 font-bold">Why Choose FeedTan?</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-bold ph-check text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2">Community-Based Approach</h3>
+                                <p class="text-slate-600">We understand local challenges and build long-term relationships with our members.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-bold ph-check text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2">Transparent Operations</h3>
+                                <p class="text-slate-600">All terms, fees, and conditions are clearly explained before you commit.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-bold ph-check text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2">Support Beyond Loans</h3>
+                                <p class="text-slate-600">Business training, savings programs, and network opportunities for growth.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-bold ph-check text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2">Proven Track Record</h3>
+                                <p class="text-slate-600">15+ years serving Moshi community with 10,000+ successful loan recipients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Community Meeting" class="w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-serif text-slate-900 mb-6 font-bold">Interactive Pricing Calculator</h2>

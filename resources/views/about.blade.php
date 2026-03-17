@@ -164,11 +164,80 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="lg:col-span-5">
-                    <div class="rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&w=1400&q=80" alt="Community" class="w-full h-[420px] object-cover">
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif text-slate-900 mb-6 font-bold">Management Team</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Experienced professionals committed to community development and responsible microfinance.</p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="CEO" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
                     </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">David M. Kimaro</h3>
+                    <p class="text-sm font-bold text-sky-600 mb-3">Chief Executive Officer</p>
+                    <p class="text-sm text-slate-600 leading-relaxed">15+ years in microfinance with focus on rural development and women's empowerment.</p>
+                    <div class="flex justify-center gap-3 mt-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="LinkedIn"><i class="ph ph-linkedin-logo text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="Email"><i class="ph ph-envelope text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=400&q=80" alt="CFO" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Grace L. Massawe</h3>
+                    <p class="text-sm font-bold text-sky-600 mb-3">Chief Financial Officer</p>
+                    <p class="text-sm text-slate-600 leading-relaxed">Expert in financial management and risk assessment with banking sector background.</p>
+                    <div class="flex justify-center gap-3 mt-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="LinkedIn"><i class="ph ph-linkedin-logo text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="Email"><i class="ph ph-envelope text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="COO" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">James P. Mlay</h3>
+                    <p class="text-sm font-bold text-sky-600 mb-3">Chief Operations Officer</p>
+                    <p class="text-sm text-slate-600 leading-relaxed">Operations specialist ensuring smooth service delivery and customer satisfaction.</p>
+                    <div class="flex justify-center gap-3 mt-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="LinkedIn"><i class="ph ph-linkedin-logo text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="Email"><i class="ph ph-envelope text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Head of Compliance" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Sarah K. Moshi</h3>
+                    <p class="text-sm font-bold text-sky-600 mb-3">Head of Compliance</p>
+                    <p class="text-sm text-slate-600 leading-relaxed">Ensuring regulatory compliance and ethical lending practices across all operations.</p>
+                    <div class="flex justify-center gap-3 mt-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="LinkedIn"><i class="ph ph-linkedin-logo text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors" aria-label="Email"><i class="ph ph-envelope text-sm"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center">
+                <div class="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-12 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-serif font-bold text-slate-900 mb-4">Join Our Team</h3>
+                    <p class="text-slate-600 mb-8 leading-relaxed">We're always looking for passionate individuals who want to make a difference in their community.</p>
+                    <a href="{{ url('/contact') }}" class="inline-flex px-8 py-4 bg-sky-600 text-white font-bold rounded-full hover:bg-sky-700 transition-colors">View opportunities</a>
                 </div>
             </div>
         </div>
