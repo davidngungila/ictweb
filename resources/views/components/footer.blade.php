@@ -2,7 +2,7 @@
     <!-- Main Footer Content -->
     <div class="py-16">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="footer-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="footer-company" data-aos="fade-up">
                     <div class="flex items-center gap-3 mb-6">

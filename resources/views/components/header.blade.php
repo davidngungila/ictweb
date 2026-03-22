@@ -1,4 +1,4 @@
-<header class="advanced-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<header class="advanced-header fixed top-0 left-0 right-0 z-50 bg-white shadow-lg transition-all duration-300">
     <!-- Top Bar -->
     <div class="top-bar bg-blue-900 text-white py-2 text-sm">
         <div class="container mx-auto px-6">
@@ -32,7 +32,7 @@
     </div>
     
     <!-- Main Navigation -->
-    <nav class="main-nav bg-white shadow-lg transition-all duration-300">
+    <nav class="main-nav bg-white transition-all duration-300">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo Section -->
@@ -41,33 +41,33 @@
                         <i class="fas fa-rocket text-xl"></i>
                     </div>
                     <div class="logo-text">
-                        <h1 class="text-2xl font-bold text-blue-900 font-heading">JezDan</h1>
+                        <h1 class="text-2xl font-bold text-blue-900 font-heading m-0">JezDan</h1>
                         <span class="text-sm text-blue-600 font-medium">Technology</span>
                     </div>
                 </div>
                 
                 <!-- Desktop Navigation Menu -->
                 <div class="nav-menu hidden lg:block">
-                    <ul class="nav-links flex items-center gap-8">
+                    <ul class="nav-links flex items-center gap-6 m-0 p-0 list-none">
                         <li>
-                            <a href="{{ route('home') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('home') ? 'text-blue-600' : '' }}">
+                            <a href="{{ route('home') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50 {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50' : '' }}">
                                 <i class="fas fa-home"></i> 
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('about') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('about') ? 'text-blue-600' : '' }}">
+                            <a href="{{ route('about') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50 {{ request()->routeIs('about') ? 'text-blue-600 bg-blue-50' : '' }}">
                                 <i class="fas fa-info-circle"></i> 
                                 About
                             </a>
                         </li>
                         <li class="dropdown relative group">
-                            <a href="{{ route('services') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('services') ? 'text-blue-600' : '' }}">
+                            <a href="{{ route('services') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50 {{ request()->routeIs('services') ? 'text-blue-600 bg-blue-50' : '' }}">
                                 <i class="fas fa-cogs"></i> 
                                 Services 
                                 <i class="fas fa-chevron-down text-xs ml-1"></i>
                             </a>
-                            <ul class="dropdown-menu absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                            <ul class="dropdown-menu absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
                                 <li class="border-b border-gray-100">
                                     <a href="{{ route('services') }}#software-development" class="flex items-center gap-3 px-6 py-4 hover:bg-blue-50 transition-colors">
                                         <i class="fas fa-code text-blue-600"></i>
@@ -107,13 +107,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('portfolio') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('portfolio') ? 'text-blue-600' : '' }}">
+                            <a href="{{ route('portfolio') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50 {{ request()->routeIs('portfolio') ? 'text-blue-600 bg-blue-50' : '' }}">
                                 <i class="fas fa-briefcase"></i> 
                                 Portfolio
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('contact') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors {{ request()->routeIs('contact') ? 'text-blue-600' : '' }}">
+                            <a href="{{ route('contact') }}" class="nav-link flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-blue-50 {{ request()->routeIs('contact') ? 'text-blue-600 bg-blue-50' : '' }}">
                                 <i class="fas fa-envelope"></i> 
                                 Contact
                             </a>
@@ -129,7 +129,7 @@
                     </a>
                     
                     <!-- Mobile Menu Toggle -->
-                    <div class="mobile-menu-toggle lg:hidden flex flex-col gap-1.5 cursor-pointer">
+                    <div class="mobile-menu-toggle lg:hidden flex flex-col gap-1.5 cursor-pointer" onclick="toggleMobileMenu()">
                         <span class="w-6 h-0.5 bg-gray-700 transition-all duration-300"></span>
                         <span class="w-6 h-0.5 bg-gray-700 transition-all duration-300"></span>
                         <span class="w-6 h-0.5 bg-gray-700 transition-all duration-300"></span>
@@ -138,7 +138,7 @@
             </div>
             
             <!-- Mobile Navigation Menu -->
-            <div class="mobile-menu lg:hidden hidden">
+            <div class="mobile-menu lg:hidden hidden" id="mobileMenu">
                 <ul class="nav-links py-4 space-y-2">
                     <li>
                         <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors {{ request()->routeIs('home') ? 'bg-blue-50 text-blue-600' : '' }}">
