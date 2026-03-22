@@ -1,0 +1,346 @@
+@import 'tailwindcss';
+
+/* Global Font Styles */
+body {
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Typography Classes */
+@layer components {
+    /* Playfair Display for headings */
+    .font-display {
+        font-family: 'Playfair Display', serif;
+    }
+    
+    .font-heading {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+    }
+    
+    .font-heading-black {
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+    }
+    
+    /* Manrope for body text */
+    .font-body {
+        font-family: 'Manrope', sans-serif;
+    }
+    
+    .font-light {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 300;
+    }
+    
+    .font-normal {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
+    }
+    
+    .font-medium {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 500;
+    }
+    
+    .font-semibold {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 600;
+    }
+    
+    .font-bold {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+    }
+    
+    .font-extrabold {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 800;
+    }
+
+    /* Top Bar */
+    .top-bar {
+        @apply bg-gray-900 text-white py-2 text-sm;
+    }
+    
+    .top-bar-content {
+        @apply flex justify-between items-center;
+    }
+    
+    .contact-info {
+        @apply flex gap-6;
+    }
+    
+    .contact-info span {
+        @apply flex items-center gap-2;
+    }
+    
+    .social-links {
+        @apply flex gap-3;
+    }
+    
+    .social-links a {
+        @apply w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-blue-600 transition-colors duration-300;
+    }
+    
+    /* Main Navigation */
+    .advanced-header {
+        @apply fixed top-0 left-0 right-0 z-50 bg-white shadow-lg;
+    }
+    
+    .main-nav {
+        @apply py-4 bg-white;
+    }
+    
+    .nav-content {
+        @apply flex justify-between items-center;
+    }
+    
+    .logo-section {
+        @apply flex items-center gap-3;
+    }
+    
+    .logo-icon {
+        @apply w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white text-xl;
+    }
+    
+    .logo-text h1 {
+        @apply text-2xl text-blue-900 m-0;
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+    }
+    
+    .logo-text span {
+        @apply text-sm font-medium text-blue-600;
+    }
+    
+    .nav-menu {
+        @apply hidden lg:block;
+    }
+    
+    .nav-links {
+        @apply flex items-center gap-1 m-0 p-0 list-none;
+    }
+    
+    .nav-link {
+        @apply px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-300 flex items-center gap-2 rounded-lg hover:bg-blue-50;
+    }
+    
+    .nav-link.active {
+        @apply text-blue-600 bg-blue-50;
+    }
+    
+    .dropdown {
+        @apply relative;
+    }
+    
+    .dropdown-toggle {
+        @apply flex items-center gap-1;
+    }
+    
+    .dropdown-menu {
+        @apply absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible transition-all duration-300 transform -translate-y-2;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        @apply opacity-100 visible transform translate-y-0;
+    }
+    
+    .dropdown-menu li {
+        @apply border-b border-gray-100 last:border-b-0;
+    }
+    
+    .dropdown-menu a {
+        @apply px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300 flex items-center gap-3;
+    }
+    
+    .nav-actions {
+        @apply flex items-center gap-4;
+    }
+    
+    .btn-quote {
+        @apply bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-900 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2;
+    }
+    
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+        @apply fixed inset-0 z-50 opacity-0 invisible transition-all duration-300;
+    }
+    
+    .mobile-menu-overlay.active {
+        @apply opacity-100 visible;
+    }
+    
+    .mobile-menu-backdrop {
+        @apply absolute inset-0 bg-black/50;
+    }
+    
+    .mobile-menu-content {
+        @apply absolute right-0 top-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300;
+    }
+    
+    .mobile-menu-overlay.active .mobile-menu-content {
+        @apply transform translate-x-0;
+    }
+    
+    .mobile-menu-header {
+        @apply flex justify-between items-center p-6 border-b border-gray-200;
+    }
+    
+    .mobile-menu-close {
+        @apply w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors duration-300;
+    }
+    
+    .mobile-nav-links {
+        @apply list-none p-0 m-0;
+    }
+    
+    .mobile-nav-link {
+        @apply flex items-center gap-3 px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300 no-underline;
+    }
+    
+    .mobile-menu-footer {
+        @apply p-6 border-t border-gray-200;
+    }
+    
+    /* Mobile Menu Animation */
+    .mobile-menu-toggle {
+        @apply lg:hidden flex flex-col gap-1 cursor-pointer;
+    }
+    
+    .mobile-menu-toggle span {
+        @apply w-6 h-0.5 bg-gray-700 transition-all duration-300;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        @apply rotate-45 translate-y-2;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        @apply opacity-0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        @apply -rotate-45 -translate-y-2;
+    }
+    
+    /* Swiper Hero Slider Styles */
+    .swiper {
+        @apply relative overflow-hidden;
+    }
+    
+    .swiper-slide {
+        @apply relative flex items-center;
+    }
+    
+    .slide-content {
+        @apply transition-all duration-1000;
+    }
+    
+    .swiper-pagination-bullet {
+        @apply w-3 h-3 bg-white/50 rounded-full transition-all duration-300 hover:bg-white/75;
+    }
+    
+    .swiper-pagination-bullet-active {
+        @apply w-8 bg-white;
+    }
+    
+    .section {
+        @apply py-16;
+    }
+    
+    .section-gray {
+        @apply bg-gray-50;
+    }
+    
+    .footer {
+        @apply bg-blue-900 text-white py-12;
+    }
+    
+    .footer-content {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8;
+    }
+    
+    .footer-section h3 {
+        @apply mb-4 text-xl font-bold;
+        font-family: 'Playfair Display', serif;
+    }
+    
+    .footer-section ul {
+        @apply list-none p-0;
+    }
+    
+    .footer-section a {
+        @apply text-blue-300 no-underline leading-8 transition-colors duration-300 hover:text-white;
+    }
+    
+    .footer-bottom {
+        @apply border-t border-blue-800 pt-8 text-center;
+    }
+    
+    .container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+    
+    .text-blue {
+        @apply text-blue-900;
+    }
+    
+    .grid {
+        @apply grid gap-8;
+    }
+    
+    .grid-2 {
+        @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+    }
+    
+    .grid-3 {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+    }
+    
+    .grid-4 {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+    }
+}
+
+/* Custom utilities for missing classes */
+@layer utilities {
+    .grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    
+    .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    
+    /* Ensure grid display is working */
+    .grid {
+        display: grid;
+    }
+    
+    /* Service card specific styles */
+    .service-card {
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+    }
+    
+    .service-tab {
+        transition: all 0.3s ease;
+    }
+    
+    /* Service card animation for filtering */
+    .service-card {
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+}
