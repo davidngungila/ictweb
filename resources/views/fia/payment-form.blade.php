@@ -5,250 +5,520 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Verification - {{ $member['name'] }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=MonteCarlo&display=swap" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        :root {
+            --primary-green: #10b981;
+            --dark-green: #059669;
+            --light-green: #d1fae5;
+            --accent-green: #34d399;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            min-height: 100vh;
+        }
+        
+        .font-charon {
+            font-family: 'Iosevka Charon', monospace;
+        }
+        
+        .font-manrope {
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        .font-monte {
+            font-family: 'MonteCarlo', cursive;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        
+        .input-focus:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .payment-option {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option:hover {
+            transform: translateX(4px);
+        }
+        
+        .payment-option.selected {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            border-color: var(--primary-green);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.05;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .amount-display {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <div class="min-h-screen py-8">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
-            <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-                <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+<body>
+    <div class="min-h-screen relative">
+        <!-- Floating Background Shapes -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        
+        <div class="relative z-10 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Header Section -->
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full mb-4 shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.586-4L12 3l4 4m0 0l-4 4m4-4H7"></path>
+                        </svg>
+                    </div>
+                    <h1 class="font-manrope text-3xl sm:text-4xl font-bold gradient-text mb-4">
                         FIA Payment Verification Form
-                    </h3>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                    </h1>
+                    <p class="font-lato text-lg text-gray-600">
                         Please verify and submit your payment details
                     </p>
                 </div>
-                <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
-                    <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                        <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-gray-500">Member ID</dt>
-                            <dd class="mt-1 text-sm text-gray-900 font-semibold">{{ $memberId }}</dd>
-                        </div>
-                        <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-gray-500">Member Name</dt>
-                            <dd class="mt-1 text-sm text-gray-900 font-semibold">{{ $member['name'] }}</dd>
-                        </div>
-                        <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-gray-500">Member Type</dt>
-                            <dd class="mt-1 text-sm text-gray-900">{{ $member['type'] }}</dd>
-                        </div>
-                        <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-gray-500">Email</dt>
-                            <dd class="mt-1 text-sm text-gray-900">{{ $member['email'] }}</dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
 
-            @if(session('success'))
-                <div class="bg-green-50 border border-green-200 rounded-md p-4 mb-6">
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                @if(session('success'))
+                    <div class="glass-effect rounded-xl p-4 mb-6 border-l-4 border-green-500 card-shadow">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-green-800 font-medium">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <!-- Member Information Card -->
+                <div class="glass-effect rounded-xl p-6 sm:p-8 mb-8 card-shadow">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
                         </div>
-                        <div class="ml-3">
-                            <p class="text-sm text-green-800">{{ session('success') }}</p>
+                        <h2 class="font-manrope text-xl font-semibold text-gray-900">Member Information</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Member ID</p>
+                                <p class="font-charon font-semibold text-gray-900">{{ $memberId }}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            @endif
-
-            <!-- Payment Form -->
-            <form action="{{ route('fia.submit') }}" method="POST" class="space-y-6">
-                @csrf
-                <input type="hidden" name="member_id" value="{{ $memberId }}">
-                <input type="hidden" name="member_name" value="{{ $member['name'] }}">
-                <input type="hidden" name="member_type" value="{{ $member['type'] }}">
-
-                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Payment Details</h3>
-                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Your payment information is displayed below</p>
-                    </div>
-                    <div class="border-t border-gray-200">
-                        <div class="px-4 py-5 sm:p-6">
-                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
-                                <div class="sm:col-span-1">
-                                    <label for="member_email" class="block text-sm font-medium text-gray-700">
-                                        Email Address <span class="text-red-500">*</span>
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="email" id="member_email" name="member_email" required
-                                               class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                               placeholder="Enter your email address" value="{{ old('member_email') }}">
-                                        <p class="mt-1 text-xs text-gray-500">Please enter your own email address</p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label class="block text-sm font-medium text-gray-700">
-                                        Gawio la FIA (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            {{ number_format($paymentRecord ? $paymentRecord->gawio_la_fia : 0, 2) }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label class="block text-sm font-medium text-gray-700">
-                                        FIA iliyokomaa (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            {{ number_format($paymentRecord ? $paymentRecord->fia_iliyokomaa : 0, 2) }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label class="block text-sm font-medium text-gray-700">
-                                        Jumla (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            {{ number_format($paymentRecord ? $paymentRecord->jumla : 0, 2) }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label class="block text-sm font-medium text-gray-700">
-                                        Malipo ya vipande yailiyokuwa Yamepelea (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            {{ number_format($paymentRecord ? $paymentRecord->malipo_vya_vipande : 0, 2) }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label class="block text-sm font-medium text-gray-700">
-                                        LOAN
-                                    </label>
-                                    <div class="mt-1">
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            {{ $paymentRecord ? $paymentRecord->loan : 0 }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label class="block text-sm font-medium text-gray-700">
-                                        Kiasi baki (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            {{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-2">
-                                    <h4 class="text-lg font-medium text-gray-900 mb-4">Payment Method for Balance (Kiasi Baki: {{ number_format($paymentRecord->kiasi_baki ?? 0, 2) }} TZS)</h4>
-                                    <p class="text-sm text-gray-600 mb-4">Select how you would like to handle your remaining balance:</p>
-                                    
-                                    <div class="space-y-3">
-                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 @if(old('payment_method') == 'akiba') bg-blue-50 border-blue-500 @endif">
-                                            <input type="radio" name="payment_method" value="akiba" class="mr-3" @if(old('payment_method') == 'akiba') checked @endif required>
-                                            <div>
-                                                <span class="font-medium">Naweka Akiba</span>
-                                                <p class="text-sm text-gray-500">Keep as savings</p>
-                                            </div>
-                                        </label>
-                                        
-                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 @if(old('payment_method') == 'impe') bg-purple-50 border-purple-500 @endif">
-                                            <input type="radio" name="payment_method" value="impe" class="mr-3" @if(old('payment_method') == 'impe') checked @endif required>
-                                            <div>
-                                                <span class="font-medium">Nawekeza tena IMPE</span>
-                                                <p class="text-sm text-gray-500">Reinvest in IMPE</p>
-                                            </div>
-                                        </label>
-                                        
-                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 @if(old('payment_method') == 'cash_mobile') bg-green-50 border-green-500 @endif">
-                                            <input type="radio" name="payment_method" value="cash_mobile" class="mr-3" @if(old('payment_method') == 'cash_mobile') checked @endif required>
-                                            <div>
-                                                <span class="font-medium">CASH - Kwa Simu (Halopes/Mix By Yas)</span>
-                                                <p class="text-sm text-gray-500">Receive via mobile money</p>
-                                            </div>
-                                        </label>
-                                        
-                                        <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 @if(old('payment_method') == 'cash_bank') bg-yellow-50 border-yellow-500 @endif">
-                                            <input type="radio" name="payment_method" value="cash_bank" class="mr-3" @if(old('payment_method') == 'cash_bank') checked @endif required>
-                                            <div>
-                                                <span class="font-medium">CASH - Bank</span>
-                                                <p class="text-sm text-gray-500">Receive via bank transfer</p>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1" id="impe_years_div" style="display: none;">
-                                    <label for="impe_years" class="block text-sm font-medium text-gray-700">
-                                        IMPE Miaka
-                                    </label>
-                                    <div class="mt-1">
-                                        <select id="impe_years" name="impe_years"
-                                                class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                                            <option value="">Select years</option>
-                                            <option value="4">Miaka 4</option>
-                                            <option value="6">Miaka 6</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1" id="mobile_details_div" style="display: none;">
-                                    <label for="mobile_number" class="block text-sm font-medium text-gray-700">
-                                        Namba ya Simu
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="tel" id="mobile_number" name="mobile_number"
-                                               class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                               placeholder="Enter mobile number" value="{{ old('mobile_number') }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1" id="mobile_name_div" style="display: none;">
-                                    <label for="mobile_account_name" class="block text-sm font-medium text-gray-700">
-                                        Jina la Namba ya Simu
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="text" id="mobile_account_name" name="mobile_account_name"
-                                               class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                               placeholder="Enter account name" value="{{ old('mobile_account_name') }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-2">
-                                    <label for="notes" class="block text-sm font-medium text-gray-700">
-                                        Additional Notes
-                                    </label>
-                                    <div class="mt-1">
-                                        <textarea id="notes" name="notes" rows="3"
-                                                  class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                                  placeholder="Any additional information or notes">{{ old('notes', $confirmation->notes ?? '') }}</textarea>
-                                    </div>
-                                </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Member Name</p>
+                                <p class="font-semibold text-gray-900">{{ $member['name'] }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Member Type</p>
+                                <p class="font-semibold text-gray-900">{{ $member['type'] }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Email</p>
+                                <p class="font-semibold text-gray-900">{{ $member['email'] }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex justify-end">
-                    <a href="{{ route('fia.member.verify') }}" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                        Cancel
-                    </a>
-                    <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                        Submit Payment Verification
-                    </button>
-                </div>
-            </form>
+                <!-- Payment Form -->
+                <form action="{{ route('fia.submit') }}" method="POST" class="space-y-8">
+                    @csrf
+                    <input type="hidden" name="member_id" value="{{ $memberId }}">
+                    <input type="hidden" name="member_name" value="{{ $member['name'] }}">
+                    <input type="hidden" name="member_type" value="{{ $member['type'] }}">
+
+                    <!-- Payment Details Card -->
+                    <div class="glass-effect rounded-xl overflow-hidden card-shadow">
+                        <div class="px-6 sm:px-8 py-6 border-b border-gray-200">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="font-manrope text-xl font-semibold text-gray-900">Payment Details</h2>
+                                    <p class="font-lato text-sm text-gray-600">Your payment information is displayed below</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 sm:p-8 space-y-6">
+                            <!-- Email Input -->
+                            <div>
+                                <label for="member_email" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
+                                    Email Address <span class="text-red-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <input type="email" id="member_email" name="member_email" required
+                                           class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
+                                           placeholder="Enter your email address" value="{{ old('member_email') }}">
+                                </div>
+                                <p class="mt-2 text-sm text-gray-500">Please enter your own email address</p>
+                            </div>
+
+                            <!-- Payment Amounts Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="amount-display rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-600">Gawio la FIA</p>
+                                            <p class="text-2xl font-bold text-gray-900 font-charon">
+                                                {{ number_format($paymentRecord ? $paymentRecord->gawio_la_fia : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-gray-500">TZS</p>
+                                        </div>
+                                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-indigo-600 font-bold">G</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="amount-display rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-600">FIA iliyokomaa</p>
+                                            <p class="text-2xl font-bold text-gray-900 font-charon">
+                                                {{ number_format($paymentRecord ? $paymentRecord->fia_iliyokomaa : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-gray-500">TZS</p>
+                                        </div>
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-purple-600 font-bold">F</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="amount-display rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-600">Jumla</p>
+                                            <p class="text-2xl font-bold text-gray-900 font-charon">
+                                                {{ number_format($paymentRecord ? $paymentRecord->jumla : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-gray-500">TZS</p>
+                                        </div>
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-blue-600 font-bold">J</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="amount-display rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-600">Malipo ya vipande</p>
+                                            <p class="text-2xl font-bold text-gray-900 font-charon">
+                                                {{ number_format($paymentRecord ? $paymentRecord->malipo_vya_vipande : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-gray-500">TZS</p>
+                                        </div>
+                                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-yellow-600 font-bold">M</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="amount-display rounded-xl p-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-600">LOAN</p>
+                                            <p class="text-2xl font-bold text-gray-900 font-charon">
+                                                {{ $paymentRecord ? $paymentRecord->loan : 0 }}
+                                            </p>
+                                            <p class="text-xs text-gray-500">Amount</p>
+                                        </div>
+                                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-red-600 font-bold">L</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="amount-display rounded-xl p-4 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-semibold text-green-700">Kiasi baki</p>
+                                            <p class="text-2xl font-bold text-green-800 font-charon">
+                                                {{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-green-600">TZS</p>
+                                        </div>
+                                        <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                                            <span class="text-white font-bold">K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment Method Selection -->
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-manrope text-lg font-semibold text-gray-900">
+                                            Payment Method for Balance
+                                        </h3>
+                                        <p class="font-lato text-sm text-gray-600">
+                                            Kiasi Baki: {{ number_format($paymentRecord->kiasi_baki ?? 0, 2) }} TZS
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'akiba') selected border-green-500 bg-green-50 @endif">
+                                        <input type="radio" name="payment_method" value="akiba" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'akiba') checked @endif required>
+                                        <div class="flex items-center flex-1">
+                                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">Naweka Akiba</p>
+                                                <p class="text-sm text-gray-500">Keep as savings</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'impe') selected border-green-500 bg-green-50 @endif">
+                                        <input type="radio" name="payment_method" value="impe" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'impe') checked @endif required>
+                                        <div class="flex items-center flex-1">
+                                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">Nawekeza tena IMPE</p>
+                                                <p class="text-sm text-gray-500">Reinvest in IMPE</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'cash_mobile') selected border-green-500 bg-green-50 @endif">
+                                        <input type="radio" name="payment_method" value="cash_mobile" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'cash_mobile') checked @endif required>
+                                        <div class="flex items-center flex-1">
+                                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">CASH - Kwa Simu</p>
+                                                <p class="text-sm text-gray-500">Receive via mobile money (Halopes/Mix By Yas)</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'cash_bank') selected border-green-500 bg-green-50 @endif">
+                                        <input type="radio" name="payment_method" value="cash_bank" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'cash_bank') checked @endif required>
+                                        <div class="flex items-center flex-1">
+                                            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                                                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-gray-900">CASH - Bank</p>
+                                                <p class="text-sm text-gray-500">Receive via bank transfer</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Conditional Fields -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div id="impe_years_div" style="display: none;">
+                                    <label for="impe_years" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
+                                        IMPE Miaka
+                                    </label>
+                                    <select id="impe_years" name="impe_years"
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none">
+                                        <option value="">Select years</option>
+                                        <option value="4">Miaka 4</option>
+                                        <option value="6">Miaka 6</option>
+                                    </select>
+                                </div>
+
+                                <div id="mobile_details_div" style="display: none;">
+                                    <label for="mobile_number" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
+                                        Namba ya Simu
+                                    </label>
+                                    <input type="tel" id="mobile_number" name="mobile_number"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
+                                           placeholder="Enter mobile number" value="{{ old('mobile_number') }}">
+                                </div>
+
+                                <div id="mobile_name_div" style="display: none;">
+                                    <label for="mobile_account_name" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
+                                        Jina la Namba ya Simu
+                                    </label>
+                                    <input type="text" id="mobile_account_name" name="mobile_account_name"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
+                                           placeholder="Enter account name" value="{{ old('mobile_account_name') }}">
+                                </div>
+
+                                <div class="md:col-span-2">
+                                    <label for="notes" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
+                                        Additional Notes
+                                    </label>
+                                    <textarea id="notes" name="notes" rows="3"
+                                              class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
+                                              placeholder="Any additional information or notes">{{ old('notes', $confirmation->notes ?? '') }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="{{ route('fia.member.verify') }}" 
+                           class="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition duration-200 text-center">
+                            Cancel
+                        </a>
+                        <button type="submit" 
+                                class="btn-primary text-white px-8 py-3 rounded-xl font-semibold flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z"></path>
+                            </svg>
+                            <span>Submit Payment Verification</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
