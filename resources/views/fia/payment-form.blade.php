@@ -388,110 +388,221 @@
                                     </div>
                                     <div>
                                         <h3 class="font-manrope text-lg font-semibold text-gray-900">
-                                            Payment Method for Balance
+                                            Payment Methods & Amounts
                                         </h3>
                                         <p class="font-lato text-sm text-gray-600">
-                                            Kiasi Baki: {{ number_format($paymentRecord->kiasi_baki ?? 0, 2) }} TZS
+                                            Select multiple payment methods and specify amounts for each
                                         </p>
                                     </div>
                                 </div>
+
+                                <!-- Amount Summary -->
+                                <div class="glass-effect rounded-xl p-4 border-l-4 border-green-500">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-semibold text-green-700">Total Amount to Pay</p>
+                                            <p class="text-2xl font-bold text-green-800 font-charon" id="total_amount_display">
+                                                {{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-green-600">TZS</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-semibold text-gray-700">Allocated Amount</p>
+                                            <p class="text-2xl font-bold text-gray-900 font-charon" id="allocated_amount_display">0.00</p>
+                                            <p class="text-xs text-gray-500">TZS</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm font-semibold text-gray-700">Remaining</p>
+                                            <p class="text-2xl font-bold font-charon" id="remaining_amount_display">
+                                                {{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}
+                                            </p>
+                                            <p class="text-xs text-gray-500" id="remaining_status">TZS</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div id="progress_bar" class="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1" id="progress_text">0% allocated</p>
+                                    </div>
+                                </div>
                                 
-                                <div class="space-y-3">
-                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'akiba') selected border-green-500 bg-green-50 @endif">
-                                        <input type="radio" name="payment_method" value="akiba" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'akiba') checked @endif required>
-                                        <div class="flex items-center flex-1">
-                                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <p class="font-semibold text-gray-900">Naweka Akiba</p>
-                                                <p class="text-sm text-gray-500">Keep as savings</p>
+                                <!-- Payment Methods with Amounts -->
+                                <div class="space-y-3" id="payment_methods_container">
+                                    <!-- Akiba -->
+                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
+                                        <div class="flex items-start">
+                                            <input type="checkbox" name="payment_methods[]" value="akiba" 
+                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
+                                                   data-method="akiba"
+                                                   onchange="togglePaymentMethod('akiba')">
+                                            <div class="ml-4 flex-1">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-gray-900">Naweka Akiba</p>
+                                                        <p class="text-sm text-gray-500">Keep as savings</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 payment-amount-field" id="akiba_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Amount (TZS)</label>
+                                                    <div class="relative">
+                                                        <input type="number" name="payment_amounts[akiba]" 
+                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="0.00" step="0.01" min="0"
+                                                               data-method="akiba"
+                                                               oninput="updateAllocation()">
+                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </label>
+                                    </div>
                                     
-                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'impe') selected border-green-500 bg-green-50 @endif">
-                                        <input type="radio" name="payment_method" value="impe" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'impe') checked @endif required>
-                                        <div class="flex items-center flex-1">
-                                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <p class="font-semibold text-gray-900">Nawekeza tena IMPE</p>
-                                                <p class="text-sm text-gray-500">Reinvest in IMPE</p>
+                                    <!-- IMPE -->
+                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
+                                        <div class="flex items-start">
+                                            <input type="checkbox" name="payment_methods[]" value="impe" 
+                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
+                                                   data-method="impe"
+                                                   onchange="togglePaymentMethod('impe')">
+                                            <div class="ml-4 flex-1">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-gray-900">Nawekeza tena IMPE</p>
+                                                        <p class="text-sm text-gray-500">Reinvest in IMPE</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 payment-amount-field" id="impe_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Amount (TZS)</label>
+                                                    <div class="relative">
+                                                        <input type="number" name="payment_amounts[impe]" 
+                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="0.00" step="0.01" min="0"
+                                                               data-method="impe"
+                                                               oninput="updateAllocation()">
+                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        <label class="block text-sm font-medium text-gray-700 mb-1">IMPE Miaka</label>
+                                                        <select name="impe_years" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                                            <option value="">Select years</option>
+                                                            <option value="4">Miaka 4</option>
+                                                            <option value="6">Miaka 6</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </label>
+                                    </div>
                                     
-                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'cash_mobile') selected border-green-500 bg-green-50 @endif">
-                                        <input type="radio" name="payment_method" value="cash_mobile" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'cash_mobile') checked @endif required>
-                                        <div class="flex items-center flex-1">
-                                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <p class="font-semibold text-gray-900">CASH - Kwa Simu</p>
-                                                <p class="text-sm text-gray-500">Receive via mobile money (Halopes/Mix By Yas)</p>
+                                    <!-- Mobile Money -->
+                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
+                                        <div class="flex items-start">
+                                            <input type="checkbox" name="payment_methods[]" value="cash_mobile" 
+                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
+                                                   data-method="cash_mobile"
+                                                   onchange="togglePaymentMethod('cash_mobile')">
+                                            <div class="ml-4 flex-1">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-gray-900">CASH - Kwa Simu</p>
+                                                        <p class="text-sm text-gray-500">Receive via mobile money (Halopes/Mix By Yas)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 payment-amount-field" id="cash_mobile_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Amount (TZS)</label>
+                                                    <div class="relative">
+                                                        <input type="number" name="payment_amounts[cash_mobile]" 
+                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="0.00" step="0.01" min="0"
+                                                               data-method="cash_mobile"
+                                                               oninput="updateAllocation()">
+                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
+                                                    </div>
+                                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                                                        <div>
+                                                            <label class="block text-sm font-medium text-gray-700 mb-1">Namba ya Simu</label>
+                                                            <input type="tel" name="mobile_number" 
+                                                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                                   placeholder="Enter mobile number">
+                                                        </div>
+                                                        <div>
+                                                            <label class="block text-sm font-medium text-gray-700 mb-1">Jina la Namba</label>
+                                                            <input type="text" name="mobile_account_name" 
+                                                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                                   placeholder="Enter account name">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </label>
+                                    </div>
                                     
-                                    <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-green-300 @if(old('payment_method') == 'cash_bank') selected border-green-500 bg-green-50 @endif">
-                                        <input type="radio" name="payment_method" value="cash_bank" class="mr-4 w-5 h-5 text-green-600" @if(old('payment_method') == 'cash_bank') checked @endif required>
-                                        <div class="flex items-center flex-1">
-                                            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
-                                                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <p class="font-semibold text-gray-900">CASH - Bank</p>
-                                                <p class="text-sm text-gray-500">Receive via bank transfer</p>
+                                    <!-- Bank Transfer -->
+                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
+                                        <div class="flex items-start">
+                                            <input type="checkbox" name="payment_methods[]" value="cash_bank" 
+                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
+                                                   data-method="cash_bank"
+                                                   onchange="togglePaymentMethod('cash_bank')">
+                                            <div class="ml-4 flex-1">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-gray-900">CASH - Bank</p>
+                                                        <p class="text-sm text-gray-500">Receive via bank transfer</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 payment-amount-field" id="cash_bank_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Amount (TZS)</label>
+                                                    <div class="relative">
+                                                        <input type="number" name="payment_amounts[cash_bank]" 
+                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="0.00" step="0.01" min="0"
+                                                               data-method="cash_bank"
+                                                               oninput="updateAllocation()">
+                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        <label class="block text-sm font-medium text-gray-700 mb-1">Jina la Benki</label>
+                                                        <input type="text" name="bank_name" 
+                                                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="Enter bank name">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </label>
+                                    </div>
+                                </div>
+
+                                <!-- Validation Message -->
+                                <div id="validation_message" class="hidden p-4 rounded-lg">
+                                    <p class="text-sm font-medium"></p>
                                 </div>
                             </div>
 
-                            <!-- Conditional Fields -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div id="impe_years_div" style="display: none;">
-                                    <label for="impe_years" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
-                                        IMPE Miaka
-                                    </label>
-                                    <select id="impe_years" name="impe_years"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none">
-                                        <option value="">Select years</option>
-                                        <option value="4">Miaka 4</option>
-                                        <option value="6">Miaka 6</option>
-                                    </select>
-                                </div>
-
-                                <div id="mobile_details_div" style="display: none;">
-                                    <label for="mobile_number" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
-                                        Namba ya Simu
-                                    </label>
-                                    <input type="tel" id="mobile_number" name="mobile_number"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
-                                           placeholder="Enter mobile number" value="{{ old('mobile_number') }}">
-                                </div>
-
-                                <div id="mobile_name_div" style="display: none;">
-                                    <label for="mobile_account_name" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
-                                        Jina la Namba ya Simu
-                                    </label>
-                                    <input type="text" id="mobile_account_name" name="mobile_account_name"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
-                                           placeholder="Enter account name" value="{{ old('mobile_account_name') }}">
-                                </div>
-
-                                <div class="md:col-span-2">
+                            <!-- Additional Notes -->
+                            <div class="space-y-4">
+                                <div>
                                     <label for="notes" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
                                         Additional Notes
                                     </label>
@@ -578,36 +689,148 @@
 </div>
 
 <script>
-        // Handle payment method selection
-        document.querySelectorAll('input[name="payment_method"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const method = this.value;
+        // Multi-Payment Method System
+        const totalAmount = parseFloat('{{ $paymentRecord ? $paymentRecord->kiasi_baki : 0 }}');
+        
+        function togglePaymentMethod(method) {
+            const checkbox = document.querySelector(`[data-method="${method}"]`);
+            const amountField = document.getElementById(`${method}_amount_field`);
+            const card = checkbox.closest('.payment-method-card');
+            
+            if (checkbox.checked) {
+                amountField.style.display = 'block';
+                card.classList.add('border-green-500', 'bg-green-50');
+                card.classList.remove('border-gray-200');
                 
-                // Hide all conditional fields
-                document.getElementById('impe_years_div').style.display = 'none';
-                document.getElementById('mobile_details_div').style.display = 'none';
-                document.getElementById('mobile_name_div').style.display = 'none';
+                // Auto-focus amount field
+                const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
+                if (amountInput) {
+                    amountInput.focus();
+                }
+            } else {
+                amountField.style.display = 'none';
+                card.classList.remove('border-green-500', 'bg-green-50');
+                card.classList.add('border-gray-200');
                 
-                // Show relevant fields based on selection
-                switch(method) {
-                    case 'impe':
-                        document.getElementById('impe_years_div').style.display = 'block';
-                        break;
-                    case 'cash_mobile':
-                        document.getElementById('mobile_details_div').style.display = 'block';
-                        document.getElementById('mobile_name_div').style.display = 'block';
-                        break;
-                    case 'cash_bank':
-                        // Bank payment - no additional fields needed since bank data is already available
-                        break;
-                    // 'akiba' doesn't need additional fields
+                // Clear amount field
+                const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
+                if (amountInput) {
+                    amountInput.value = '';
+                }
+            }
+            
+            updateAllocation();
+        }
+        
+        function updateAllocation() {
+            let allocatedAmount = 0;
+            const paymentMethods = ['akiba', 'impe', 'cash_mobile', 'cash_bank'];
+            
+            paymentMethods.forEach(method => {
+                const checkbox = document.querySelector(`[data-method="${method}"]`);
+                const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
+                
+                if (checkbox.checked && amountInput && amountInput.value) {
+                    allocatedAmount += parseFloat(amountInput.value) || 0;
                 }
             });
-        });
-
-        // Handle form submission with loading splash
+            
+            const remainingAmount = totalAmount - allocatedAmount;
+            const percentage = Math.min((allocatedAmount / totalAmount) * 100, 100);
+            
+            // Update displays
+            document.getElementById('allocated_amount_display').textContent = formatCurrency(allocatedAmount);
+            document.getElementById('remaining_amount_display').textContent = formatCurrency(Math.abs(remainingAmount));
+            
+            // Update progress bar
+            document.getElementById('progress_bar').style.width = percentage + '%';
+            document.getElementById('progress_text').textContent = Math.round(percentage) + '% allocated';
+            
+            // Update validation message
+            const validationMessage = document.getElementById('validation_message');
+            const remainingStatus = document.getElementById('remaining_status');
+            const remainingDisplay = document.getElementById('remaining_amount_display');
+            
+            if (remainingAmount < 0) {
+                // Over-allocated
+                validationMessage.classList.remove('hidden', 'bg-green-100', 'bg-yellow-100', 'text-green-700', 'text-yellow-700');
+                validationMessage.classList.add('bg-red-100', 'text-red-700');
+                validationMessage.querySelector('p').textContent = '⚠️ Over-allocated by ' + formatCurrency(Math.abs(remainingAmount)) + '. Please adjust amounts.';
+                remainingStatus.classList.add('text-red-600');
+                remainingStatus.classList.remove('text-gray-500', 'text-green-600');
+                remainingDisplay.classList.add('text-red-600', 'font-bold');
+                remainingDisplay.classList.remove('text-gray-900', 'text-green-800');
+            } else if (remainingAmount === 0) {
+                // Perfect allocation
+                validationMessage.classList.remove('hidden', 'bg-red-100', 'bg-yellow-100', 'text-red-700', 'text-yellow-700');
+                validationMessage.classList.add('bg-green-100', 'text-green-700');
+                validationMessage.querySelector('p').textContent = '✅ Perfect! Amount fully allocated.';
+                remainingStatus.classList.add('text-green-600');
+                remainingStatus.classList.remove('text-gray-500', 'text-red-600');
+                remainingDisplay.classList.add('text-green-800');
+                remainingDisplay.classList.remove('text-gray-900', 'text-red-600');
+            } else if (allocatedAmount > 0) {
+                // Partial allocation
+                validationMessage.classList.remove('hidden', 'bg-red-100', 'bg-green-100', 'text-red-700', 'text-green-700');
+                validationMessage.classList.add('bg-yellow-100', 'text-yellow-700');
+                validationMessage.querySelector('p').textContent = '⚠️ ' + formatCurrency(remainingAmount) + ' remaining to be allocated.';
+                remainingStatus.classList.add('text-gray-500');
+                remainingStatus.classList.remove('text-green-600', 'text-red-600');
+                remainingDisplay.classList.add('text-gray-900');
+                remainingDisplay.classList.remove('text-green-800', 'text-red-600');
+            } else {
+                // No allocation
+                validationMessage.classList.add('hidden');
+                remainingStatus.classList.add('text-gray-500');
+                remainingStatus.classList.remove('text-green-600', 'text-red-600');
+                remainingDisplay.classList.add('text-gray-900');
+                remainingDisplay.classList.remove('text-green-800', 'text-red-600');
+            }
+        }
+        
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+        
+        // Handle form submission with validation
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Validate payment methods and amounts
+            const paymentMethods = document.querySelectorAll('input[name="payment_methods[]"]:checked');
+            let allocatedAmount = 0;
+            let hasValidAmounts = true;
+            
+            if (paymentMethods.length === 0) {
+                alert('Please select at least one payment method.');
+                return;
+            }
+            
+            paymentMethods.forEach(checkbox => {
+                const method = checkbox.value;
+                const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
+                const amount = parseFloat(amountInput?.value) || 0;
+                
+                if (amount <= 0) {
+                    hasValidAmounts = false;
+                } else {
+                    allocatedAmount += amount;
+                }
+            });
+            
+            if (!hasValidAmounts) {
+                alert('Please enter valid amounts greater than 0 for all selected payment methods.');
+                return;
+            }
+            
+            if (Math.abs(allocatedAmount - totalAmount) > 0.01) {
+                if (!confirm(`The allocated amount (${formatCurrency(allocatedAmount)}) does not match the required amount (${formatCurrency(totalAmount)}). Do you want to continue?`)) {
+                    return;
+                }
+            }
             
             // Show loading splash
             document.getElementById('loadingSplash').classList.remove('hidden');
@@ -707,6 +930,11 @@
         function newSubmission() {
             window.location.href = '/fia/verify';
         }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAllocation();
+        });
     </script>
 </body>
 </html>
