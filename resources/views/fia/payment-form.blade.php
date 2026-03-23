@@ -131,69 +131,68 @@
                         <div class="px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
                                 <div class="sm:col-span-1">
-                                    <label for="gawio_la_fia" class="block text-sm font-medium text-gray-700">
+                                    <label class="block text-sm font-medium text-gray-700">
                                         Gawio la FIA (TZS)
                                     </label>
                                     <div class="mt-1">
-                                        <input type="number" id="gawio_la_fia" name="gawio_la_fia" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->gawio_la_fia : 0, 2) }}">
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            {{ number_format($paymentRecord ? $paymentRecord->gawio_la_fia : 0, 2) }}
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-1">
-                                    <label for="fia_iliyokomaa" class="block text-sm font-medium text-gray-700">
+                                    <label class="block text-sm font-medium text-gray-700">
                                         FIA iliyokomaa (TZS)
                                     </label>
                                     <div class="mt-1">
-                                        <input type="number" id="fia_iliyokomaa" name="fia_iliyokomaa" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->fia_iliyokomaa : 0, 2) }}">
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            {{ number_format($paymentRecord ? $paymentRecord->fia_iliyokomaa : 0, 2) }}
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-1">
-                                    <label for="jumla" class="block text-sm font-medium text-gray-700">
+                                    <label class="block text-sm font-medium text-gray-700">
                                         Jumla (TZS)
                                     </label>
                                     <div class="mt-1">
-                                        <input type="number" id="jumla" name="jumla" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->jumla : 0, 2) }}">
-                                        <p class="mt-1 text-xs text-gray-500">Auto-calculated: Gawio + FIA Koma</p>
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            {{ number_format($paymentRecord ? $paymentRecord->jumla : 0, 2) }}
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-1">
-                                    <label for="malipo_vya_vipande" class="block text-sm font-medium text-gray-700">
+                                    <label class="block text-sm font-medium text-gray-700">
                                         Malipo ya vipande yailiyokuwa Yamepelea (TZS)
                                     </label>
                                     <div class="mt-1">
-                                        <input type="number" id="malipo_vya_vipande" name="malipo_vya_vipande" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->malipo_vya_vipande : 0, 2) }}">
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            {{ number_format($paymentRecord ? $paymentRecord->malipo_vya_vipande : 0, 2) }}
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-1">
-                                    <label for="loan" class="block text-sm font-medium text-gray-700">
+                                    <label class="block text-sm font-medium text-gray-700">
                                         LOAN
                                     </label>
                                     <div class="mt-1">
-                                        <input type="text" id="loan" name="loan" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ $paymentRecord ? $paymentRecord->loan : 0 }}">
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            {{ $paymentRecord ? $paymentRecord->loan : 0 }}
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-1">
-                                    <label for="kiasi_baki" class="block text-sm font-medium text-gray-700">
+                                    <label class="block text-sm font-medium text-gray-700">
                                         Kiasi baki (TZS)
                                     </label>
                                     <div class="mt-1">
-                                        <input type="number" id="kiasi_baki" name="kiasi_baki" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}">
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            {{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}
+                                        </p>
                                     </div>
                                 </div>
 
