@@ -124,88 +124,11 @@
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-5 sm:px-6">
                         <h3 class="text-lg leading-6 font-medium text-gray-900">Payment Details</h3>
-                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Enter your payment information below</p>
+                        <p class="mt-1 max-w-2xl text-sm text-gray-500">Select your payment method for balance payment</p>
                     </div>
                     <div class="border-t border-gray-200">
                         <div class="px-4 py-5 sm:p-6">
-                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
-                                <div class="sm:col-span-1">
-                                    <label for="amount_to_pay" class="block text-sm font-medium text-gray-700">
-                                        Total Amount to Pay (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="amount_to_pay" name="amount_to_pay" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->jumla : $confirmation->amount_to_pay, 2) }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label for="gawio_la_fia" class="block text-sm font-medium text-gray-700">
-                                        Gawio la FIA (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="gawio_la_fia" name="gawio_la_fia" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->gawio_la_fia : 0, 2) }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label for="fia_iliyokomaa" class="block text-sm font-medium text-gray-700">
-                                        FIA Ilivyo Koma (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="fia_iliyokomaa" name="fia_iliyokomaa" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->fia_iliyokomaa : 0, 2) }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label for="jumla" class="block text-sm font-medium text-gray-700">
-                                        Jumla (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="jumla" name="jumla" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->jumla : $confirmation->amount_to_pay, 2) }}">
-                                        <p class="mt-1 text-xs text-gray-500">Auto-calculated: Gawio + FIA Koma</p>
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label for="malipo_vya_vipande" class="block text-sm font-medium text-gray-700">
-                                        Malipo ya VIP (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="malipo_vya_vipande" name="malipo_vya_vipande" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->malipo_vya_vipande : 0, 2) }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label for="loan" class="block text-sm font-medium text-gray-700">
-                                        Loan Reference
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="text" id="loan" name="loan" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ $paymentRecord ? $paymentRecord->loan : 0 }}">
-                                    </div>
-                                </div>
-
-                                <div class="sm:col-span-1">
-                                    <label for="kiasi_baki" class="block text-sm font-medium text-gray-700">
-                                        Kiasi Baki (TZS)
-                                    </label>
-                                    <div class="mt-1">
-                                        <input type="number" id="kiasi_baki" name="kiasi_baki" step="0.01" readonly
-                                               class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}">
-                                    </div>
-                                </div>
+                            <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-1">
 
                                 <div class="sm:col-span-2">
                                     <h4 class="text-lg font-medium text-gray-900 mb-4">Payment Method for Balance (Kiasi Baki: {{ number_format($paymentRecord->kiasi_baki ?? 0, 2) }} TZS)</h4>
