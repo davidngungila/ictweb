@@ -429,13 +429,13 @@
                                 
                                 <!-- Payment Methods with Amounts -->
                                 <div class="space-y-3" id="payment_methods_container">
-                                    <!-- Akiba -->
+                                    <!-- NAWEKA AKIBA -->
                                     <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
                                         <div class="flex items-start">
-                                            <input type="checkbox" name="payment_methods[]" value="akiba" 
+                                            <input type="checkbox" name="payment_methods[]" value="akiba_regular" 
                                                    class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
-                                                   data-method="akiba"
-                                                   onchange="togglePaymentMethod('akiba')">
+                                                   data-method="akiba_regular"
+                                                   onchange="togglePaymentMethod('akiba_regular')">
                                             <div class="ml-4 flex-1">
                                                 <div class="flex items-center">
                                                     <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -444,17 +444,85 @@
                                                         </svg>
                                                     </div>
                                                     <div>
-                                                        <p class="font-semibold text-gray-900">Naweka Akiba</p>
-                                                        <p class="text-sm text-gray-500">Keep as savings</p>
+                                                        <p class="font-semibold text-gray-900">NAWEKA AKIBA</p>
+                                                        <p class="text-sm text-gray-500">Unaweza kutoa pesa wakati wowote</p>
                                                     </div>
                                                 </div>
-                                                <div class="mt-3 payment-amount-field" id="akiba_amount_field" style="display: none;">
-                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Amount (TZS)</label>
+                                                <div class="mt-3 payment-amount-field" id="akiba_regular_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Kiasi (TZS)</label>
                                                     <div class="relative">
-                                                        <input type="number" name="payment_amounts[akiba]" 
+                                                        <input type="number" name="payment_amounts[akiba_regular]" 
                                                                class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                                                placeholder="0.00" step="0.01" min="0"
-                                                               data-method="akiba"
+                                                               data-method="akiba_regular"
+                                                               oninput="updateAllocation()">
+                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- NAWEKEZA FIA Miaka 4 -->
+                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
+                                        <div class="flex items-start">
+                                            <input type="checkbox" name="payment_methods[]" value="akiba_4_years" 
+                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
+                                                   data-method="akiba_4_years"
+                                                   onchange="togglePaymentMethod('akiba_4_years')">
+                                            <div class="ml-4 flex-1">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-gray-900">NAWEKEZA FIA Miaka 4</p>
+                                                        <p class="text-sm text-gray-500">Riba ya juu, kwa miaka 4</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 payment-amount-field" id="akiba_4_years_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Kiasi (TZS)</label>
+                                                    <div class="relative">
+                                                        <input type="number" name="payment_amounts[akiba_4_years]" 
+                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="0.00" step="0.01" min="0"
+                                                               data-method="akiba_4_years"
+                                                               oninput="updateAllocation()">
+                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- NAWEKEZA FIA Miaka 6 -->
+                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
+                                        <div class="flex items-start">
+                                            <input type="checkbox" name="payment_methods[]" value="akiba_6_years" 
+                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
+                                                   data-method="akiba_6_years"
+                                                   onchange="togglePaymentMethod('akiba_6_years')">
+                                            <div class="ml-4 flex-1">
+                                                <div class="flex items-center">
+                                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-gray-900">NAWEKEZA FIA Miaka 6</p>
+                                                        <p class="text-sm text-gray-500">Riba ya juu zaidi, kwa miaka 6</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 payment-amount-field" id="akiba_6_years_amount_field" style="display: none;">
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Kiasi (TZS)</label>
+                                                    <div class="relative">
+                                                        <input type="number" name="payment_amounts[akiba_6_years]" 
+                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                                               placeholder="0.00" step="0.01" min="0"
+                                                               data-method="akiba_6_years"
                                                                oninput="updateAllocation()">
                                                         <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
                                                     </div>
@@ -557,11 +625,11 @@
                             <div class="space-y-4">
                                 <div>
                                     <label for="notes" class="block text-sm font-manrope font-semibold text-gray-700 mb-2">
-                                        Additional Notes
+                                        Maelezo Mengine
                                     </label>
                                     <textarea id="notes" name="notes" rows="3"
                                               class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus outline-none"
-                                              placeholder="Any additional information or notes">{{ old('notes', $confirmation->notes ?? '') }}</textarea>
+                                              placeholder="Andika maelezo yako hapa..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -834,9 +902,34 @@
             const form = document.querySelector('form');
             const formData = new FormData(form);
             
+            // Remove payment_amounts for unchecked payment methods
+            const checkedPaymentMethods = Array.from(document.querySelectorAll('input[name="payment_methods[]"]:checked')).map(cb => cb.value);
+            
+            // Filter out payment_amounts for unchecked methods
+            const filteredFormData = new FormData();
+            for (let [key, value] of formData.entries()) {
+                if (key.startsWith('payment_amounts[')) {
+                    // Extract the method name from "payment_amounts[method]"
+                    const method = key.match(/payment_amounts\[(.+)\]/)?.[1];
+                    if (method && checkedPaymentMethods.includes(method)) {
+                        // Ensure the value is a number or empty string (not null/undefined)
+                        filteredFormData.append(key, value || '0');
+                    }
+                } else {
+                    filteredFormData.append(key, value);
+                }
+            }
+            
+            // Log form data for debugging
+            console.log('Form data being submitted:');
+            console.log('Checked payment methods:', checkedPaymentMethods);
+            for (let [key, value] of filteredFormData.entries()) {
+                console.log(key + ':', value);
+            }
+            
             fetch(form.action, {
                 method: 'POST',
-                body: formData,
+                body: filteredFormData,
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                     'Accept': 'application/json',
@@ -845,6 +938,19 @@
             })
             .then(response => {
                 console.log('Response status:', response.status);
+                if (response.status === 422) {
+                    // Handle validation errors
+                    return response.json().then(data => {
+                        console.log('Validation errors:', data);
+                        let errorMessage = 'Validation errors:\n';
+                        if (data.errors) {
+                            for (let field in data.errors) {
+                                errorMessage += `${field}: ${data.errors[field].join(', ')}\n`;
+                            }
+                        }
+                        throw new Error(errorMessage);
+                    });
+                }
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

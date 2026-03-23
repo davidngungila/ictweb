@@ -92,13 +92,55 @@ class FiaPaymentController extends Controller
             'member_name' => 'required|string',
             'member_type' => 'required|string',
             'member_email' => 'required|email',
-            'payment_method' => 'required|in:akiba,cash_mobile,cash_bank',
+            'payment_methods' => 'required|array|min:1',
+            'payment_methods.*' => 'required|in:akiba_regular,akiba_4_years,akiba_6_years,cash_mobile,cash_bank',
+            'payment_amounts' => 'sometimes|array',
+            'payment_amounts.*' => 'sometimes|numeric|min:0',
             'mobile_number' => 'nullable|string',
             'mobile_account_name' => 'nullable|string',
             'notes' => 'nullable|string'
         ]);
 
         try {
+            // Process payment methods and amounts
+            $paymentMethods = $request->payment_methods;
+            $paymentAmounts = $request->payment_amounts ?? [];
+            
+            // Create a summary of payment methods for storage
+            $paymentMethodSummary = [];
+            $totalAllocated = 0;
+            
+            foreach ($paymentMethods as $method) {
+                $amount = isset($paymentAmounts[$method]) ? (float)$paymentAmounts[$method] : 0;
+                if ($amount > 0) {
+                    // Convert payment method codes to readable names
+                    $methodDisplayName = match($method) {
+                        'akiba_regular' => 'NAWEKA AKIBA',
+                        'akiba_4_years' => 'NAWEKEZA FIA Miaka 4',
+                        'akiba_6_years' => 'NAWEKEZA FIA Miaka 6',
+                        'cash_mobile' => 'CASH - Kwa Simu',
+                        'cash_bank' => 'CASH - Benki',
+                        default => $method
+                    };
+                    
+                    $paymentMethodSummary[] = "{$methodDisplayName}: {$amount}";
+                    $totalAllocated += $amount;
+                }
+            }
+            
+            // Store the primary payment method (first one selected)
+            $primaryPaymentMethod = $paymentMethods[0] ?? null;
+            
+            // Build clean notes with only essential payment details
+            $notes = trim($request->notes);
+            if (!empty($paymentMethodSummary)) {
+                if (!empty($notes)) {
+                    $notes .= "\n\n";
+                }
+                $notes .= "Njia za Malipo: " . implode(', ', $paymentMethodSummary);
+                $notes .= "\nJumla: {$totalAllocated} TZS";
+            }
+            
             // Create or update payment confirmation
             $confirmation = FiaPaymentConfirmation::updateOrCreate(
                 ['member_id' => $request->member_id],
@@ -106,11 +148,11 @@ class FiaPaymentController extends Controller
                     'member_name' => $request->member_name,
                     'member_type' => $request->member_type,
                     'member_email' => $request->member_email,
-                    'payment_method' => $request->payment_method,
+                    'payment_method' => $primaryPaymentMethod,
                     'mobile_number' => $request->mobile_number,
                     'mobile_account_name' => $request->mobile_account_name,
                     'status' => 'verified', // Changed from 'pending' to 'verified'
-                    'notes' => $request->notes
+                    'notes' => $notes
                 ]
             );
 
@@ -150,6 +192,27 @@ class FiaPaymentController extends Controller
 
             return redirect()->route('fia.confirmation', $confirmation->id)
                 ->with('success', 'Your payment verification has been submitted successfully!');
+                
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Handle validation exceptions specifically
+            \Log::error('Validation error:', [
+                'errors' => $e->errors(),
+                'input' => $request->all()
+            ]);
+
+            $isAjax = $request->ajax() || $request->expectsJson() || $request->header('X-Requested-With') === 'XMLHttpRequest';
+            
+            if ($isAjax) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Validation failed',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+
+            return back()
+                ->withErrors($e->errors())
+                ->withInput();
                 
         } catch (\Exception $e) {
             \Log::error('Payment submission error:', [
