@@ -372,12 +372,4 @@ class FiaPaymentController extends Controller
 
         return new StreamedResponse($callback, 200, $headers);
     }
-
-    // Admin logout
-    public function adminLogout()
-    {
-        session()->forget('fia_admin_authenticated');
-        return redirect()->route('fia.admin.passcode')
-            ->with('success', 'You have been logged out successfully.');
-    }
 }
