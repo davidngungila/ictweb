@@ -39,7 +39,20 @@ class FiaPaymentController extends Controller
         ];
 
         // Get existing payment record if any
-        $paymentRecord = $confirmation->paymentRecord;
+        $paymentRecord = FiaPaymentRecord::where('member_id', $memberId)->first();
+        
+        // If no payment record exists, create one with default values
+        if (!$paymentRecord) {
+            $paymentRecord = new FiaPaymentRecord();
+            $paymentRecord->member_id = $memberId;
+            $paymentRecord->gawio_la_fia = 0;
+            $paymentRecord->fia_iliyokomaa = 0;
+            $paymentRecord->jumla = 0;
+            $paymentRecord->malipo_vya_vipande = 0;
+            $paymentRecord->loan = 0;
+            $paymentRecord->kiasi_baki = 0;
+            $paymentRecord->status = 'pending';
+        }
 
         return view('fia.payment-form', compact('memberId', 'member', 'paymentRecord', 'confirmation'));
     }

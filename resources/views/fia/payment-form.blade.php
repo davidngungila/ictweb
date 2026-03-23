@@ -79,7 +79,7 @@
                                     <div class="mt-1">
                                         <input type="number" id="amount_to_pay" name="amount_to_pay" step="0.01" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord->jumla ?? $confirmation->amount_to_pay ?? 0, 2) }}">
+                                               value="{{ number_format($paymentRecord ? $paymentRecord->jumla : $confirmation->amount_to_pay, 2) }}">
                                     </div>
                                 </div>
 
@@ -90,7 +90,7 @@
                                     <div class="mt-1">
                                         <input type="number" id="gawio_la_fia" name="gawio_la_fia" step="0.01" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord->gawio_la_fia ?? 0, 2) }}">
+                                               value="{{ number_format($paymentRecord ? $paymentRecord->gawio_la_fia : 0, 2) }}">
                                     </div>
                                 </div>
 
@@ -101,7 +101,7 @@
                                     <div class="mt-1">
                                         <input type="number" id="fia_iliyokomaa" name="fia_iliyokomaa" step="0.01" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord->fia_iliyokomaa ?? 0, 2) }}">
+                                               value="{{ number_format($paymentRecord ? $paymentRecord->fia_iliyokomaa : 0, 2) }}">
                                     </div>
                                 </div>
 
@@ -112,7 +112,7 @@
                                     <div class="mt-1">
                                         <input type="number" id="jumla" name="jumla" step="0.01" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord->jumla ?? $confirmation->amount_to_pay ?? 0, 2) }}">
+                                               value="{{ number_format($paymentRecord ? $paymentRecord->jumla : $confirmation->amount_to_pay, 2) }}">
                                         <p class="mt-1 text-xs text-gray-500">Auto-calculated: Gawio + FIA Koma</p>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                     <div class="mt-1">
                                         <input type="number" id="malipo_vya_vipande" name="malipo_vya_vipande" step="0.01" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord->malipo_vya_vipande ?? 0, 2) }}">
+                                               value="{{ number_format($paymentRecord ? $paymentRecord->malipo_vya_vipande : 0, 2) }}">
                                     </div>
                                 </div>
 
@@ -135,7 +135,7 @@
                                     <div class="mt-1">
                                         <input type="text" id="loan" name="loan" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ $paymentRecord->loan ?? 0 }}">
+                                               value="{{ $paymentRecord ? $paymentRecord->loan : 0 }}">
                                     </div>
                                 </div>
 
@@ -146,7 +146,7 @@
                                     <div class="mt-1">
                                         <input type="number" id="kiasi_baki" name="kiasi_baki" step="0.01" readonly
                                                class="shadow-sm bg-gray-100 block w-full sm:text-sm border-gray-300 rounded-md cursor-not-allowed"
-                                               value="{{ number_format($paymentRecord->kiasi_baki ?? 0, 2) }}">
+                                               value="{{ number_format($paymentRecord ? $paymentRecord->kiasi_baki : 0, 2) }}">
                                     </div>
                                 </div>
 
