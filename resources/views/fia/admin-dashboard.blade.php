@@ -447,8 +447,8 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         <div class="flex space-x-2">
-                                            <a href="{{ route('fia.edit.payment', $confirmation->id) }}" class="text-green-600 hover:text-green-900 font-medium">Edit</a>
-                                            <form action="{{ route('fia.update.status', $confirmation->id) }}" method="POST" class="inline">
+                                            <a href="{{ route('fia.admin.edit', $confirmation->id) }}" class="text-green-600 hover:text-green-900 font-medium">Edit</a>
+                                            <form action="{{ route('fia.admin.status', $confirmation->id) }}" method="POST" class="inline">
                                                 @csrf
                                                 @if($confirmation->status == 'pending')
                                                     <button type="submit" name="status" value="verified" class="text-blue-600 hover:text-blue-900 font-medium">Verify</button>
