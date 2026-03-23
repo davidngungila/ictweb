@@ -52,13 +52,13 @@ class FiaPaymentController extends Controller
             'member_name' => 'required|string',
             'member_type' => 'required|string',
             'member_email' => 'nullable|email',
-            'amount_to_pay' => 'required|numeric|min:0',
-            'gawio_la_fia' => 'required|numeric|min:0',
-            'fia_iliyokomaa' => 'required|numeric|min:0',
-            'jumla' => 'required|numeric|min:0',
+            'amount_to_pay' => 'nullable|numeric|min:0',
+            'gawio_la_fia' => 'nullable|numeric|min:0',
+            'fia_iliyokomaa' => 'nullable|numeric|min:0',
+            'jumla' => 'nullable|numeric|min:0',
             'malipo_vya_vipande' => 'nullable|numeric|min:0',
             'loan' => 'nullable|string',
-            'kiasi_baki' => 'required|numeric|min:0',
+            'kiasi_baki' => 'nullable|numeric|min:0',
             'payment_method' => 'required|in:akiba,impe,cash_mobile,cash_bank',
             'impe_years' => 'required_if:payment_method,impe|in:4,6',
             'mobile_number' => 'required_if:payment_method,cash_mobile|string',
@@ -67,6 +67,9 @@ class FiaPaymentController extends Controller
             'notes' => 'nullable|string'
         ]);
 
+        // Get existing payment record if any
+        $existingPaymentRecord = FiaPaymentRecord::where('member_id', $request->member_id)->first();
+
         // Create or update confirmation
         $confirmation = FiaPaymentConfirmation::updateOrCreate(
             ['member_id' => $request->member_id],
@@ -74,7 +77,7 @@ class FiaPaymentController extends Controller
                 'member_name' => $request->member_name,
                 'member_type' => $request->member_type,
                 'member_email' => $request->member_email,
-                'amount_to_pay' => $request->amount_to_pay,
+                'amount_to_pay' => $existingPaymentRecord ? $existingPaymentRecord->jumla : 0,
                 'payment_method' => $request->payment_method,
                 'impe_years' => $request->impe_years,
                 'mobile_number' => $request->mobile_number,
@@ -85,16 +88,16 @@ class FiaPaymentController extends Controller
             ]
         );
 
-        // Create or update payment record
+        // Create or update payment record (use existing data)
         $paymentRecord = FiaPaymentRecord::updateOrCreate(
             ['member_id' => $request->member_id],
             [
-                'gawio_la_fia' => $request->gawio_la_fia,
-                'fia_iliyokomaa' => $request->fia_iliyokomaa,
-                'jumla' => $request->jumla,
-                'malipo_vya_vipande' => $request->malipo_vya_vipande,
-                'loan' => $request->loan,
-                'kiasi_baki' => $request->kiasi_baki,
+                'gawio_la_fia' => $existingPaymentRecord ? $existingPaymentRecord->gawio_la_fia : 0,
+                'fia_iliyokomaa' => $existingPaymentRecord ? $existingPaymentRecord->fia_iliyokomaa : 0,
+                'jumla' => $existingPaymentRecord ? $existingPaymentRecord->jumla : 0,
+                'malipo_vya_vipande' => $existingPaymentRecord ? $existingPaymentRecord->malipo_vya_vipande : 0,
+                'loan' => $existingPaymentRecord ? $existingPaymentRecord->loan : 0,
+                'kiasi_baki' => $existingPaymentRecord ? $existingPaymentRecord->kiasi_baki : 0,
                 'status' => 'pending',
                 'notes' => $request->notes
             ]
