@@ -449,36 +449,28 @@
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         @if($confirmation->payment_method)
                                             @switch($confirmation->payment_method)
-                                                @case('akiba')
-                                                    <div class="flex items-center">
-                                                        <div class="w-4 h-4 bg-blue-500 rounded-full mr-1"></div>
-                                                        <span class="text-xs">Akiba</span>
-                                                    </div>
-                                                    @break
-                                                @case('impe')
-                                                    <div class="flex items-center">
-                                                        <div class="w-4 h-4 bg-purple-500 rounded-full mr-1"></div>
-                                                        <span class="text-xs">IMPE {{ $confirmation->impe_years ?? '' }}y</span>
-                                                    </div>
-                                                    @break
-                                                @case('cash_mobile')
-                                                    <div class="flex items-center">
-                                                        <div class="w-4 h-4 bg-green-500 rounded-full mr-1"></div>
-                                                        <span class="text-xs">Mobile</span>
-                                                    </div>
-                                                    @break
-                                                @case('cash_bank')
-                                                    <div class="flex items-center">
-                                                        <div class="w-4 h-4 bg-yellow-500 rounded-full mr-1"></div>
-                                                        <span class="text-xs">Bank</span>
-                                                    </div>
-                                                    @break
-                                                @default
-                                                    <span class="text-xs text-gray-400">Unknown</span>
-                                            @endswitch
-                                        @else
-                                            <span class="text-xs text-gray-400">Not set</span>
-                                        @endif
+                                                    @case('akiba')
+                                                        <div class="flex items-center">
+                                                            <div class="w-4 h-4 bg-blue-500 rounded-full mr-1"></div>
+                                                            <span class="text-xs">Akiba</span>
+                                                        </div>
+                                                        @break
+                                                    @case('cash_mobile')
+                                                        <div class="flex items-center">
+                                                            <div class="w-4 h-4 bg-green-500 rounded-full mr-1"></div>
+                                                            <span class="text-xs">Mobile</span>
+                                                        </div>
+                                                        @break
+                                                    @case('cash_bank')
+                                                        <div class="flex items-center">
+                                                            <div class="w-4 h-4 bg-yellow-500 rounded-full mr-1"></div>
+                                                            <span class="text-xs">Bank</span>
+                                                        </div>
+                                                        @break
+                                                @endswitch
+                                            @else
+                                                <span class="text-xs text-gray-400">Not set</span>
+                                            @endif
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         @if($confirmation->status == 'pending')

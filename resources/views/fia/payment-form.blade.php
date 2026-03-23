@@ -463,48 +463,7 @@
                                         </div>
                                     </div>
                                     
-                                    <!-- IMPE -->
-                                    <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
-                                        <div class="flex items-start">
-                                            <input type="checkbox" name="payment_methods[]" value="impe" 
-                                                   class="payment-checkbox mt-1 w-5 h-5 text-green-600 rounded" 
-                                                   data-method="impe"
-                                                   onchange="togglePaymentMethod('impe')">
-                                            <div class="ml-4 flex-1">
-                                                <div class="flex items-center">
-                                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                                        </svg>
-                                                    </div>
-                                                    <div>
-                                                        <p class="font-semibold text-gray-900">Nawekeza tena IMPE</p>
-                                                        <p class="text-sm text-gray-500">Reinvest in IMPE</p>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-3 payment-amount-field" id="impe_amount_field" style="display: none;">
-                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Amount (TZS)</label>
-                                                    <div class="relative">
-                                                        <input type="number" name="payment_amounts[impe]" 
-                                                               class="payment-amount w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                                               placeholder="0.00" step="0.01" min="0"
-                                                               data-method="impe"
-                                                               oninput="updateAllocation()">
-                                                        <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        <label class="block text-sm font-medium text-gray-700 mb-1">IMPE Miaka</label>
-                                                        <select name="impe_years" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                                                            <option value="">Select years</option>
-                                                            <option value="4">Miaka 4</option>
-                                                            <option value="6">Miaka 6</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                                                                        
                                     <!-- Mobile Money -->
                                     <div class="payment-method-card border-2 border-gray-200 rounded-xl p-4 hover:border-green-300 transition-colors">
                                         <div class="flex items-start">
@@ -582,13 +541,7 @@
                                                                oninput="updateAllocation()">
                                                         <span class="absolute right-3 top-2.5 text-gray-500 font-charon">TZS</span>
                                                     </div>
-                                                    <div class="mt-3">
-                                                        <label class="block text-sm font-medium text-gray-700 mb-1">Jina la Benki</label>
-                                                        <input type="text" name="bank_name" 
-                                                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                                               placeholder="Enter bank name">
-                                                    </div>
-                                                </div>
+                                                                                                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -724,7 +677,7 @@
         
         function updateAllocation() {
             let allocatedAmount = 0;
-            const paymentMethods = ['akiba', 'impe', 'cash_mobile', 'cash_bank'];
+            const paymentMethods = ['akiba', 'cash_mobile', 'cash_bank'];
             
             paymentMethods.forEach(method => {
                 const checkbox = document.querySelector(`[data-method="${method}"]`);

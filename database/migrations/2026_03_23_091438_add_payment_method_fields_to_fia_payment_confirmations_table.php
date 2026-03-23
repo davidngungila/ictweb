@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('fia_payment_confirmations', function (Blueprint $table) {
             $table->string('payment_method')->nullable();
-            $table->string('impe_years')->nullable();
             $table->string('mobile_number')->nullable();
             $table->string('mobile_account_name')->nullable();
             $table->string('bank_name')->nullable();
@@ -26,7 +25,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('fia_payment_confirmations', function (Blueprint $table) {
-            $table->dropColumn(['payment_method', 'impe_years', 'mobile_number', 'mobile_account_name', 'bank_name']);
+            $table->dropColumn(['payment_method', 'mobile_number', 'mobile_account_name', 'bank_name']);
         });
     }
 };

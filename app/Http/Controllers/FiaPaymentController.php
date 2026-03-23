@@ -92,8 +92,7 @@ class FiaPaymentController extends Controller
             'member_name' => 'required|string',
             'member_type' => 'required|string',
             'member_email' => 'required|email',
-            'payment_method' => 'required|in:akiba,impe,cash_mobile,cash_bank',
-            'impe_years' => 'nullable|integer|in:4,6',
+            'payment_method' => 'required|in:akiba,cash_mobile,cash_bank',
             'mobile_number' => 'nullable|string',
             'mobile_account_name' => 'nullable|string',
             'notes' => 'nullable|string'
@@ -108,7 +107,6 @@ class FiaPaymentController extends Controller
                     'member_type' => $request->member_type,
                     'member_email' => $request->member_email,
                     'payment_method' => $request->payment_method,
-                    'impe_years' => $request->impe_years,
                     'mobile_number' => $request->mobile_number,
                     'mobile_account_name' => $request->mobile_account_name,
                     'status' => 'verified', // Changed from 'pending' to 'verified'
@@ -370,7 +368,6 @@ class FiaPaymentController extends Controller
                 'Loan',
                 'Kiasi Baki',
                 'Payment Method',
-                'IMPE Years',
                 'Mobile Number',
                 'Mobile Account Name',
                 'Bank Name',
@@ -382,18 +379,18 @@ class FiaPaymentController extends Controller
             // CSV Data
             foreach ($confirmations as $confirmation) {
                 $paymentMethodText = '';
-                switch($confirmation->payment_method) {
+                switch ($confirmation->payment_method) {
                     case 'akiba':
                         $paymentMethodText = 'Naweka Akiba';
-                        break;
-                    case 'impe':
-                        $paymentMethodText = 'Nawekeza tena IMPE';
                         break;
                     case 'cash_mobile':
                         $paymentMethodText = 'CASH - Kwa Simu (Halopes/Mix By Yas)';
                         break;
                     case 'cash_bank':
-                        $paymentMethodText = 'CASH - Bank';
+                        $paymentMethodText = 'CASH - Bank Transfer';
+                        break;
+                    default:
+                        $paymentMethodText = 'Unknown';
                         break;
                 }
 
@@ -411,7 +408,6 @@ class FiaPaymentController extends Controller
                     $confirmation->paymentRecord ? $confirmation->paymentRecord->loan : '',
                     $confirmation->paymentRecord ? number_format($confirmation->paymentRecord->kiasi_baki, 2) : '0.00',
                     $paymentMethodText,
-                    $confirmation->impe_years ?: '',
                     $confirmation->mobile_number ?: '',
                     $confirmation->mobile_account_name ?: '',
                     $confirmation->bank_name ?: '',

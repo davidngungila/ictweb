@@ -15,7 +15,6 @@ class FiaPaymentConfirmation extends Model
         'notes',
         'status',
         'payment_method',
-        'impe_years',
         'mobile_number',
         'mobile_account_name',
         'bank_name'

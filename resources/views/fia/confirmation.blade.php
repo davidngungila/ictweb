@@ -398,9 +398,6 @@
                                 @case('akiba')
                                     <span class="font-medium">Naweka Akiba</span> - Keep as savings
                                     @break
-                                @case('impe')
-                                    <span class="font-medium">Nawekeza tena IMPE</span> - Reinvest in IMPE
-                                    @break
                                 @case('cash_mobile')
                                     <span class="font-medium">CASH - Kwa Simu</span> - Receive via mobile money (Halopes/Mix By Yas)
                                     @break
@@ -410,12 +407,7 @@
                             @endswitch
                         </p>
                         
-                        @if($confirmation->impe_years)
-                        <p class="text-sm text-gray-600 mt-2">
-                            <span class="font-medium">IMPE Miaka:</span> {{ $confirmation->impe_years }} Miaka
-                        </p>
-                        @endif
-                        
+                                                
                         @if($confirmation->mobile_number)
                         <p class="text-sm text-gray-600 mt-2">
                             <span class="font-medium">Namba ya Simu:</span> {{ $confirmation->mobile_number }}
