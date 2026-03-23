@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FiaPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,23 @@ Route::get('/articles', function () {
 
 Route::get('/documents', function () {
     return view('documents');
+});
+
+// FIA Payment Routes (Public Access)
+Route::prefix('fia')->name('fia.')->group(function () {
+    // Member routes
+    Route::get('/verify', [FiaPaymentController::class, 'memberVerify'])->name('member.verify');
+    Route::post('/verify', [FiaPaymentController::class, 'memberVerifyProcess'])->name('member.verify.process');
+    Route::post('/submit', [FiaPaymentController::class, 'submitPayment'])->name('submit');
+    Route::get('/confirmation/{id}', [FiaPaymentController::class, 'confirmation'])->name('confirmation');
+    
+    // Admin routes (with passcode protection)
+    Route::get('/admin', [FiaPaymentController::class, 'adminPasscode'])->name('admin.passcode');
+    Route::post('/admin', [FiaPaymentController::class, 'adminPasscodeProcess'])->name('admin.passcode.process');
+    Route::get('/admin/dashboard', [FiaPaymentController::class, 'adminDashboard'])->name('admin.dashboard');
+    Route::post('/admin/update-status/{id}', [FiaPaymentController::class, 'updateStatus'])->name('admin.update.status');
+    Route::get('/admin/export', [FiaPaymentController::class, 'exportCsv'])->name('admin.export');
+    Route::post('/admin/logout', [FiaPaymentController::class, 'adminLogout'])->name('admin.logout');
 });
 
 // Admin Routes with organized folder structure and live database

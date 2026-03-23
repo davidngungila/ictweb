@@ -199,6 +199,7 @@
 
                     <a href="{{ url('/pricing') }}" class="nav-link font-bold hover:text-emerald-600 transition-colors py-8">Pricing</a>
                     <a href="{{ url('/about') }}" class="nav-link font-bold hover:text-emerald-600 transition-colors py-8">About Us</a>
+                    <a href="{{ route('fia.member.verify') }}" class="nav-link font-bold hover:text-emerald-600 transition-colors py-8">FIA Payment</a>
                     <a href="{{ url('/contact') }}" class="nav-link font-bold hover:text-emerald-600 transition-colors py-8">Contact</a>
                 </div>
 
@@ -258,6 +259,7 @@
 
                         <a href="{{ url('/pricing') }}" class="block text-2xl font-serif font-black text-slate-900 hover:text-emerald-600">Pricing</a>
                         <a href="{{ url('/about') }}" class="block text-2xl font-serif font-black text-slate-900 hover:text-emerald-600">About Us</a>
+                        <a href="{{ route('fia.member.verify') }}" class="block text-2xl font-serif font-black text-slate-900 hover:text-emerald-600">FIA Payment</a>
                         <a href="{{ url('/contact') }}" class="block text-2xl font-serif font-black text-slate-900 hover:text-emerald-600">Contact</a>
                     </div>
 
@@ -309,6 +311,7 @@
                         <li><a href="{{ url('/') }}" class="hover:text-white transition-colors">Home</a></li>
                         <li><a href="{{ url('/products') }}" class="hover:text-white transition-colors">Products</a></li>
                         <li><a href="{{ url('/pricing') }}" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="{{ route('fia.member.verify') }}" class="hover:text-white transition-colors">FIA Payment</a></li>
                         <li><a href="{{ url('/about') }}" class="hover:text-white transition-colors">About Us</a></li>
                         <li><a href="{{ url('/contact') }}" class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
