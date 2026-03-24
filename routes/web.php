@@ -70,6 +70,7 @@ Route::prefix('fia')->name('fia.')->group(function () {
     Route::post('/verify', [FiaPaymentController::class, 'memberVerifyProcess'])->name('member.verify.process');
     Route::post('/submit', [FiaPaymentController::class, 'submitPayment'])->name('submit');
     Route::get('/confirmation/{id}', [FiaPaymentController::class, 'confirmation'])->name('confirmation');
+    Route::get('/confirmation/{id}/pdf', [FiaPaymentController::class, 'confirmationPdf'])->name('confirmation.pdf');
     
     // Admin routes (with passcode protection)
     Route::get('/admin', [FiaPaymentController::class, 'adminPasscode'])->name('admin.passcode');

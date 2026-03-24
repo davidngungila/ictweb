@@ -179,14 +179,19 @@ class FiaPaymentController extends Controller
                 'member_id' => $request->member_id
             ]);
 
-            // Check if request expects JSON (AJAX) - use multiple methods
+            // Check if request expects JSON (AJAX)
             $isAjax = $request->ajax() || $request->expectsJson() || $request->header('X-Requested-With') === 'XMLHttpRequest';
             
             if ($isAjax) {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Payment verification submitted successfully!',
-                    'confirmation_id' => $confirmation->id
+                    'message' => 'Malipo yamekamilika kikamilifu!',
+                    'confirmation_id' => $confirmation->id,
+                    'member_name' => $request->member_name,
+                    'member_id' => $request->member_id,
+                    'total_amount' => number_format($totalAllocated, 2),
+                    'payment_summary' => $paymentMethodSummary,
+                    'payment_date' => now()->format('Y-m-d H:i:s')
                 ]);
             }
 
@@ -210,28 +215,41 @@ class FiaPaymentController extends Controller
                 ], 422);
             }
 
-            return back()
+            return redirect()
+                ->back()
                 ->withErrors($e->errors())
                 ->withInput();
-                
-        } catch (\Exception $e) {
-            \Log::error('Payment submission error:', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-                'input' => $request->all()
-            ]);
+        }
+    }
 
-            // Check if request expects JSON (AJAX)
-            $isAjax = $request->ajax() || $request->expectsJson() || $request->header('X-Requested-With') === 'XMLHttpRequest';
+    public function confirmationPdf($id)
+    {
+        try {
+            $confirmation = FiaPaymentConfirmation::findOrFail($id);
+            $paymentRecord = FiaPaymentRecord::where('member_id', $confirmation->member_id)->first();
             
-            if ($isAjax) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'An error occurred while submitting your payment verification: ' . $e->getMessage()
-                ], 500);
-            }
-
-            return back()->with('error', 'An error occurred while submitting your payment verification. Please try again.');
+            // Generate PDF
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('fia.confirmation-pdf', [
+                'confirmation' => $confirmation,
+                'paymentRecord' => $paymentRecord,
+                'member' => [
+                    'name' => $confirmation->member_name,
+                    'id' => $confirmation->member_id,
+                    'type' => $confirmation->member_type,
+                    'email' => $confirmation->member_email
+                ]
+            ]);
+            
+            // Download PDF
+            return $pdf->download("FIA_Confirmation_{$confirmation->id}.pdf");
+            
+        } catch (\Exception $e) {
+            \Log::error('PDF generation error:', [
+                'error' => $e->getMessage(),
+                'confirmation_id' => $id
+            ]);
+            
+            return back()->with('error', 'Unable to generate PDF. Please try again.');
         }
     }
 

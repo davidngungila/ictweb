@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=MonteCarlo&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         :root {
@@ -714,29 +715,36 @@
         const totalAmount = parseFloat('{{ $paymentRecord ? $paymentRecord->kiasi_baki : 0 }}');
         
         function togglePaymentMethod(method) {
-            const checkbox = document.querySelector(`[data-method="${method}"]`);
+            const checkbox = document.querySelector(`input[value="${method}"]`);
             const amountField = document.getElementById(`${method}_amount_field`);
-            const card = checkbox.closest('.payment-method-card');
             
-            if (checkbox.checked) {
-                amountField.style.display = 'block';
-                card.classList.add('border-green-500', 'bg-green-50');
-                card.classList.remove('border-gray-200');
+            if (checkbox && amountField) {
+                const card = checkbox.closest('.payment-method-card');
                 
-                // Auto-focus amount field
-                const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
-                if (amountInput) {
-                    amountInput.focus();
-                }
-            } else {
-                amountField.style.display = 'none';
-                card.classList.remove('border-green-500', 'bg-green-50');
-                card.classList.add('border-gray-200');
-                
-                // Clear amount field
-                const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
-                if (amountInput) {
-                    amountInput.value = '';
+                if (checkbox.checked) {
+                    amountField.style.display = 'block';
+                    if (card) {
+                        card.classList.add('border-green-500', 'bg-green-50');
+                        card.classList.remove('border-gray-200');
+                    }
+                    
+                    // Auto-focus amount field
+                    const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
+                    if (amountInput) {
+                        amountInput.focus();
+                    }
+                } else {
+                    amountField.style.display = 'none';
+                    if (card) {
+                        card.classList.remove('border-green-500', 'bg-green-50');
+                        card.classList.add('border-gray-200');
+                    }
+                    
+                    // Clear amount input
+                    const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
+                    if (amountInput) {
+                        amountInput.value = '';
+                    }
                 }
             }
             
@@ -745,43 +753,53 @@
         
         function updateAllocation() {
             let allocatedAmount = 0;
-            const paymentMethods = ['akiba', 'cash_mobile', 'cash_bank'];
+            const paymentMethods = ['akiba_regular', 'akiba_4_years', 'akiba_6_years', 'cash_mobile', 'cash_bank'];
             
             paymentMethods.forEach(method => {
-                const checkbox = document.querySelector(`[data-method="${method}"]`);
+                const checkbox = document.querySelector(`input[value="${method}"]`);
                 const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
                 
-                if (checkbox.checked && amountInput && amountInput.value) {
+                if (checkbox && checkbox.checked && amountInput && amountInput.value) {
                     allocatedAmount += parseFloat(amountInput.value) || 0;
                 }
             });
             
-            const remainingAmount = totalAmount - allocatedAmount;
-            const percentage = Math.min((allocatedAmount / totalAmount) * 100, 100);
+            // Update display
+            const allocatedElement = document.getElementById('allocated_amount_display');
+            const remainingElement = document.getElementById('remaining_amount_display');
+            const progressElement = document.getElementById('progress_bar');
+            const progressTextElement = document.getElementById('progress_text');
             
-            // Update displays
-            document.getElementById('allocated_amount_display').textContent = formatCurrency(allocatedAmount);
-            document.getElementById('remaining_amount_display').textContent = formatCurrency(Math.abs(remainingAmount));
+            if (allocatedElement) {
+                allocatedElement.textContent = formatCurrency(allocatedAmount);
+            }
+            
+            const remaining = totalAmount - allocatedAmount;
+            if (remainingElement) {
+                remainingElement.textContent = formatCurrency(remaining);
+            }
             
             // Update progress bar
-            document.getElementById('progress_bar').style.width = percentage + '%';
-            document.getElementById('progress_text').textContent = Math.round(percentage) + '% allocated';
+            const percentage = Math.min((allocatedAmount / totalAmount) * 100, 100);
+            if (progressElement) {
+                progressElement.style.width = percentage + '%';
+            }
+            if (progressTextElement) {
+                progressTextElement.textContent = Math.round(percentage) + '% allocated';
+            }
             
-            // Update validation message
-            const validationMessage = document.getElementById('validation_message');
-            const remainingStatus = document.getElementById('remaining_status');
-            const remainingDisplay = document.getElementById('remaining_amount_display');
-            
-            if (remainingAmount < 0) {
-                // Over-allocated
-                validationMessage.classList.remove('hidden', 'bg-green-100', 'bg-yellow-100', 'text-green-700', 'text-yellow-700');
-                validationMessage.classList.add('bg-red-100', 'text-red-700');
-                validationMessage.querySelector('p').textContent = '⚠️ Over-allocated by ' + formatCurrency(Math.abs(remainingAmount)) + '. Please adjust amounts.';
-                remainingStatus.classList.add('text-red-600');
-                remainingStatus.classList.remove('text-gray-500', 'text-green-600');
-                remainingDisplay.classList.add('text-red-600', 'font-bold');
-                remainingDisplay.classList.remove('text-gray-900', 'text-green-800');
-            } else if (remainingAmount === 0) {
+            // Update colors based on status
+            if (remainingElement) {
+                if (remaining < 0) {
+                    remainingElement.classList.add('text-red-600');
+                    remainingElement.classList.remove('text-gray-900', 'text-green-600');
+                } else if (remaining === 0) {
+                    remainingElement.classList.add('text-green-600');
+                    remainingElement.classList.remove('text-gray-900', 'text-red-600');
+                } else {
+                    remainingElement.classList.add('text-gray-900');
+                    remainingElement.classList.remove('text-red-600', 'text-green-600');
+                }
                 // Perfect allocation
                 validationMessage.classList.remove('hidden', 'bg-red-100', 'bg-yellow-100', 'text-red-700', 'text-yellow-700');
                 validationMessage.classList.add('bg-green-100', 'text-green-700');
@@ -824,9 +842,15 @@
             const paymentMethods = document.querySelectorAll('input[name="payment_methods[]"]:checked');
             let allocatedAmount = 0;
             let hasValidAmounts = true;
+            let invalidMethods = [];
             
             if (paymentMethods.length === 0) {
-                alert('Please select at least one payment method.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Hitilafu',
+                    text: 'Tafadhali chagua angalau njia moja ya malipo.',
+                    confirmButtonColor: '#10b981'
+                });
                 return;
             }
             
@@ -835,22 +859,66 @@
                 const amountInput = document.querySelector(`[data-method="${method}"].payment-amount`);
                 const amount = parseFloat(amountInput?.value) || 0;
                 
-                if (amount <= 0) {
-                    hasValidAmounts = false;
-                } else {
-                    allocatedAmount += amount;
+                // Only validate if checkbox is checked
+                if (checkbox.checked) {
+                    if (!amountInput || !amountInput.value || amount <= 0) {
+                        hasValidAmounts = false;
+                        const methodName = getPaymentMethodName(method);
+                        invalidMethods.push(methodName);
+                        console.log(`Invalid amount for ${method}: ${amount}, input value: ${amountInput?.value}`);
+                    } else {
+                        allocatedAmount += amount;
+                    }
                 }
             });
             
             if (!hasValidAmounts) {
-                alert('Please enter valid amounts greater than 0 for all selected payment methods.');
+                const errorMessage = invalidMethods.length > 1 
+                    ? `Tafadhali weka kiasi sahihi zaidi ya 0 kwa njia zifuatazo: ${invalidMethods.join(', ')}`
+                    : `Tafadhali weka kiasi sahihi zaidi ya 0 kwa njia ya malipo: ${invalidMethods[0]}`;
+                    
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Hitilafu ya Kiasi',
+                    text: errorMessage,
+                    confirmButtonColor: '#10b981'
+                });
                 return;
             }
             
-            if (Math.abs(allocatedAmount - totalAmount) > 0.01) {
-                if (!confirm(`The allocated amount (${formatCurrency(allocatedAmount)}) does not match the required amount (${formatCurrency(totalAmount)}). Do you want to continue?`)) {
-                    return;
-                }
+            // Helper function to get payment method names
+            function getPaymentMethodName(method) {
+                const names = {
+                    'akiba_regular': 'NAWEKA AKIBA',
+                    'akiba_4_years': 'NAWEKEZA FIA Miaka 4',
+                    'akiba_6_years': 'NAWEKEZA FIA Miaka 6',
+                    'cash_mobile': 'CASH - Kwa Simu',
+                    'cash_bank': 'CASH - Benki'
+                };
+                return names[method] || method;
+            }
+            
+            // Check if balance is over-allocated
+            if (allocatedAmount > totalAmount) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Balance Imezidi',
+                    text: `Umeweka pesa zaidi ya inahitajika! Umeweka ${formatCurrency(allocatedAmount)} badala ya ${formatCurrency(totalAmount)}.`,
+                    confirmButtonColor: '#10b981'
+                });
+                return;
+            }
+            
+            // Check if balance is remaining
+            if (allocatedAmount < totalAmount) {
+                const remainingAmount = totalAmount - allocatedAmount;
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Balance Bado Ip',
+                    text: `Bado kiasi cha ${formatCurrency(remainingAmount)} hakijatengwa. Tafadhali jumlisha pesa kufikia ${formatCurrency(totalAmount)}.`,
+                    confirmButtonColor: '#10b981'
+                });
+                return;
             }
             
             // Show loading splash
@@ -962,21 +1030,85 @@
                 document.getElementById('loadingSplash').classList.add('hidden');
                 
                 if (data.success) {
-                    // Show success modal
-                    document.getElementById('successModal').classList.remove('hidden');
-                    // Store confirmation ID for view button
-                    window.confirmationId = data.confirmation_id;
+                    // Create summary HTML
+                    let summaryHTML = '<div class="text-left">';
+                    summaryHTML += '<h4 class="font-bold text-lg mb-3">Muhtasari wa Malipo:</h4>';
+                    summaryHTML += '<div class="space-y-2">';
+                    summaryHTML += '<p><strong>Jina la Mwanachama:</strong> ' + (data.member_name || '{{ $member["name"] ?? "N/A" }}') + '</p>';
+                    summaryHTML += '<p><strong>Namba ya Mwanachama:</strong> ' + (data.member_id || '{{ $memberId ?? "N/A" }}') + '</p>';
+                    summaryHTML += '<p><strong>Kiasi Jumla:</strong> ' + (data.total_amount || '{{ $paymentRecord ? number_format($paymentRecord->kiasi_baki, 2) : "0.00" }}') + ' TZS</p>';
+                    
+                    if (data.payment_summary && data.payment_summary.length > 0) {
+                        summaryHTML += '<p><strong>Njia za Malipo:</strong></p>';
+                        summaryHTML += '<ul class="list-disc list-inside ml-4">';
+                        data.payment_summary.forEach(payment => {
+                            summaryHTML += '<li>' + payment + '</li>';
+                        });
+                        summaryHTML += '</ul>';
+                    }
+                    
+                    summaryHTML += '<p><strong>Idadi ya Uthibitisho:</strong> #' + (data.confirmation_id || 'N/A') + '</p>';
+                    summaryHTML += '<p><strong>Tarehe ya Malipo:</strong> ' + new Date().toLocaleDateString('sw-TZ') + '</p>';
+                    summaryHTML += '</div></div>';
+                    
+                    // Show success modal with summary and download options
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Mafanikio!',
+                        html: summaryHTML,
+                        showConfirmButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'Download PDF',
+                        cancelButtonText: 'Funga',
+                        confirmButtonColor: '#10b981',
+                        cancelButtonColor: '#6b7280',
+                        width: '600px'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Download PDF
+                            if (data.confirmation_id) {
+                                window.open('/fia/confirmation/' + data.confirmation_id + '/pdf', '_blank');
+                            }
+                        }
+                        
+                        // Redirect to confirmation page
+                        if (data.confirmation_id) {
+                            window.location.href = '/fia/confirmation/' + data.confirmation_id;
+                        } else {
+                            window.location.href = '/fia/verify';
+                        }
+                    });
                 } else {
-                    // Show error with specific message
-                    alert('Error: ' + (data.message || 'Something went wrong'));
-                    document.getElementById('loadingSplash').classList.add('hidden');
+                    // Show error with SweetAlert
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hitilafu',
+                        text: data.message || 'Kuna kitu kimekwenda vibaya',
+                        confirmButtonColor: '#10b981'
+                    });
                 }
             })
             .catch(error => {
                 console.error('Fetch error:', error);
                 console.error('Error details:', error.message);
-                alert('An error occurred: ' + error.message + '. Please try again.');
-                document.getElementById('loadingSplash').classList.add('hidden');
+                
+                // Handle validation errors specifically
+                if (error.message.includes('Validation errors:')) {
+                    const validationText = error.message.replace('Validation errors:', '').trim();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hitilafu ya Uthibitishaji',
+                        text: validationText,
+                        confirmButtonColor: '#10b981'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hitilafu',
+                        text: error.message + '. Tafadhali jaribu tena.',
+                        confirmButtonColor: '#10b981'
+                    });
+                }
             });
         }
         
