@@ -272,10 +272,26 @@ body {
     .feature-grid {
         @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
         display: grid !important;
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+    
+    @media (min-width: 768px) {
+        .feature-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .feature-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
     }
     
     .feature-card {
         @apply bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100;
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 320px !important;
     }
     
     /* Team Cards - 4 per row */
