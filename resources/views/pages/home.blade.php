@@ -135,6 +135,57 @@
     </div>
 </section>
 
+<!-- Why Choose Us -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Jezdan Technology?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Trusted ICT partner delivering excellence and innovation across Tanzania
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Growth with Confidence -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Growth with Confidence</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Focus on your business while we manage your IT. Ensure reliable performance and uninterrupted operations.</p>
+                </div>
+
+                <!-- Smarter IT Investments -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Smarter IT Investments</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Optimize IT costs without compromising quality. Extend the life of your infrastructure efficiently.</p>
+                </div>
+
+                <!-- Trusted Support & Innovation -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Trusted Support & Innovation</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Fast, reliable support whenever you need it. Leverage proven technologies to drive business forward.</p>
+                </div>
+
+                <!-- Local Expertise, Global Solutions -->
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Local Expertise, Global Solutions</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Based in Tanzania with deep market knowledge. Deliver IT services that meet world-class standards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Sample Portfolio -->
 <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-6">
@@ -144,12 +195,11 @@
                 Explore our latest projects and success stories from across Tanzania
             </p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: E-commerce Platform -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-14609258559-0abdc27e37c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1460925859-0abdc27e37c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="E-commerce Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
@@ -157,7 +207,7 @@
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">E-commerce Platform</h3>
-                <p class="text-gray-600 leading-relaxed">Complete e-commerce solution with payment integration and inventory management for a retail client in Dar es Salaam</p>
+                <p class="text-gray-600 leading-relaxed mb-4">Complete e-commerce solution with payment integration and inventory management for a retail client in Dar es Salaam</p>
                 <div class="flex flex-wrap gap-2 justify-center mt-4">
                     <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Laravel</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Vue.js</span>
@@ -176,7 +226,7 @@
                     <i class="fas fa-mobile-alt"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Banking App</h3>
-                <p class="text-gray-600 leading-relaxed">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
+                <p class="text-gray-600 leading-relaxed mb-4">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
                 <div class="flex flex-wrap gap-2 justify-center mt-4">
                     <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">React Native</span>
                     <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Node.js</span>
@@ -187,19 +237,19 @@
             <!-- Project 3: School Management System -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1a706d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1559028012-6d6d728e3a5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="School Management System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
+                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">School Management System</h3>
-                <p class="text-gray-600 leading-relaxed">Comprehensive school management software with student tracking and parent portal for an educational institution in Arusha</p>
+                <p class="text-gray-600 leading-relaxed mb-4">Comprehensive system for student management and academic tracking with automated reporting</p>
                 <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">PHP</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">MySQL</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Vue.js</span>
+                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">React</span>
+                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Node.js</span>
+                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">MongoDB</span>
                 </div>
             </div>
         </div>

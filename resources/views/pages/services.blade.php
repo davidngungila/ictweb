@@ -67,7 +67,7 @@
             <!-- Web Development -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-14609258559-0abdc27e37c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1460925859-0abdc27e37c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="Web Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
@@ -81,6 +81,12 @@
                     <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Vue.js</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React</span>
                     <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">MySQL</span>
+                </div>
+                <div class="mt-6 text-center">
+                    <a href="{{ route('services.web-development') }}" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Read More
+                    </a>
                 </div>
             </div>
 
@@ -102,6 +108,12 @@
                     <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Firebase</span>
                     <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Swift</span>
                 </div>
+                <div class="mt-6 text-center">
+                    <a href="{{ route('services.mobile-app-development') }}" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-700 transition-colors duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Read More
+                    </a>
+                </div>
             </div>
 
             <!-- Network Installation -->
@@ -121,6 +133,12 @@
                     <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Mikrotik</span>
                     <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Ubiquiti</span>
                     <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Fortinet</span>
+                </div>
+                <div class="mt-6 text-center">
+                    <a href="{{ route('services.network-installation') }}" class="inline-flex items-center px-6 py-3 bg-orange-600 text-white font-semibold rounded-full hover:bg-orange-700 transition-colors duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Read More
+                    </a>
                 </div>
             </div>
 
@@ -142,6 +160,12 @@
                     <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs">Antivirus</span>
                     <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs">SIEM</span>
                 </div>
+                <div class="mt-6 text-center">
+                    <a href="{{ route('services.cybersecurity') }}" class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Read More
+                    </a>
+                </div>
             </div>
 
             <!-- IT Support -->
@@ -162,6 +186,12 @@
                     <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Maintenance</span>
                     <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Consulting</span>
                 </div>
+                <div class="mt-6 text-center">
+                    <a href="{{ route('services.it-support') }}" class="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Read More
+                    </a>
+                </div>
             </div>
 
             <!-- ICT Consultancy -->
@@ -181,6 +211,12 @@
                     <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Planning</span>
                     <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Optimization</span>
                     <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Training</span>
+                </div>
+                <div class="mt-6 text-center">
+                    <a href="{{ route('services.ict-consultancy') }}" class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-colors duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Read More
+                    </a>
                 </div>
             </div>
         </div>
