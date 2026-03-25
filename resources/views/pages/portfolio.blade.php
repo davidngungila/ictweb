@@ -343,66 +343,11 @@
                 Hear from businesses across Tanzania who have transformed their operations with our solutions
             </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="bg-gray-50 rounded-2xl p-8 text-center">
-                <div class="flex justify-center mb-4">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                         alt="Client 1" class="w-20 h-20 rounded-full object-cover">
-                </div>
-                <div class="flex justify-center mb-4">
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                </div>
-                <p class="text-gray-600 mb-6 italic">"Jezdan Technology transformed our retail business with their e-commerce platform. Sales increased by 300% within the first 6 months!"</p>
-                <h4 class="font-bold text-gray-900 mb-1">Sarah Johnson</h4>
-                <p class="text-sm text-gray-500">CEO, Dar es Salaam Retail Ltd</p>
-            </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="bg-gray-50 rounded-2xl p-8 text-center">
-                <div class="flex justify-center mb-4">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                         alt="Client 2" class="w-20 h-20 rounded-full object-cover">
-                </div>
-                <div class="flex justify-center mb-4">
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                </div>
-                <p class="text-gray-600 mb-6 italic">"The mobile banking app they developed for us is secure, user-friendly, and has received excellent feedback from our customers."</p>
-                <h4 class="font-bold text-gray-900 mb-1">Michael Chen</h4>
-                <p class="text-sm text-gray-500">CTO, Tanzania Financial Services</p>
-            </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="bg-gray-50 rounded-2xl p-8 text-center">
-                <div class="flex justify-center mb-4">
-                    <img src="https://images.unsplash.com/photo-1494790108755-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                         alt="Client 3" class="w-20 h-20 rounded-full object-cover">
-                </div>
-                <div class="flex justify-center mb-4">
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                </div>
-                <p class="text-gray-600 mb-6 italic">"Their network infrastructure setup improved our operational efficiency by 40%. Professional team and excellent support!"</p>
-                <h4 class="font-bold text-gray-900 mb-1">Grace Mwangi</h4>
-                <p class="text-sm text-gray-500">IT Manager, Arusha Manufacturing</p>
-            </div>
-        </div>
+      
     </div>
+
+
+
 </section>
 
 <!-- CTA -->
