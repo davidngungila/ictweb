@@ -20,8 +20,64 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Top Header Bar -->
+    <div class="bg-gray-900 text-white py-2 sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between text-sm">
+                <!-- Left Side: Contact Info & Location -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-4">
+                        <!-- Phone -->
+                        <a href="tel:+255712345678" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-phone"></i>
+                            <span class="hidden md:inline">+255 712 345 678</span>
+                        </a>
+                        <!-- Email -->
+                        <a href="mailto:info@jezdan.co.tz" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                            <span class="hidden md:inline">info@jezdan.co.tz</span>
+                        </a>
+                        <!-- Location -->
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="hidden md:inline">Moshi, Kilimanjaro</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side: Quick Actions & Social Media -->
+                <div class="flex items-center space-x-4">
+                    <!-- Working Hours -->
+                    <div class="hidden lg:flex items-center gap-2">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri: 8AM-6PM</span>
+                    </div>
+                    
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/255712345678" target="_blank" class="bg-green-600 hover:bg-green-700 px-3 py-1 rounded-full flex items-center gap-2 transition-colors">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="hidden md:inline">WhatsApp</span>
+                    </a>
+                    
+                    <!-- Social Media Icons -->
+                    <div class="flex items-center space-x-2">
+                        <a href="https://facebook.com/jezdantechnology" target="_blank" class="hover:text-blue-400 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/jezdantechnology" target="_blank" class="hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://instagram.com/jezdantechnology" target="_blank" class="hover:text-blue-400 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="bg-white shadow-md sticky top-10 z-40">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-center h-16 relative">
                 <!-- Logo - Left Aligned -->
@@ -128,6 +184,11 @@
                         About Us
                     </a>
                     
+                    <!-- Contact -->
+                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2">
+                        Contact
+                    </a>
+                    
                     <!-- Right Section -->
                 <div class="absolute right-6 flex items-center space-x-4">
                     <!-- CTA Button -->
@@ -196,6 +257,10 @@
                     
                     <a href="{{ route('about') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-t pt-3">
                         About
+                    </a>
+                    
+                    <a href="{{ route('contact') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
+                        Contact
                     </a>
                     
                     <!-- Mobile Contact Dropdown -->

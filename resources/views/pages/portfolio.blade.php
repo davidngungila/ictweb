@@ -78,13 +78,7 @@
                 <h3 class="text-3xl font-bold text-gray-900 mb-2">100K+</h3>
                 <p class="text-gray-600">Lines of Code</p>
             </div>
-            <div class="text-center">
-                <div class="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-star text-orange-600 text-2xl"></i>
-                </div>
-                <h3 class="text-3xl font-bold text-gray-900 mb-2">5.0</h3>
-                <p class="text-gray-600">Client Rating</p>
-            </div>
+           
             <div class="text-center">
                 <div class="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-globe text-red-600 text-2xl"></i>
