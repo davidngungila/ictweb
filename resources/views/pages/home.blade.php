@@ -197,22 +197,22 @@
     <!-- Stats Section -->
     <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-4 gap-8 text-center">
                 <div class="stats-counter" data-aos="fade-up">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="150">0</div>
-                    <p class="text-blue-200">Projects Completed</p>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 font-heading" data-counter="150">0</div>
+                    <p class="text-blue-200 text-sm md:text-base">Projects Completed</p>
                 </div>
                 <div class="stats-counter" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="98">0</div>
-                    <p class="text-blue-200">Happy Clients</p>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 font-heading" data-counter="98">0</div>
+                    <p class="text-blue-200 text-sm md:text-base">Happy Clients</p>
                 </div>
                 <div class="stats-counter" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="15">0</div>
-                    <p class="text-blue-200">Years Experience</p>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 font-heading" data-counter="15">0</div>
+                    <p class="text-blue-200 text-sm md:text-base">Years Experience</p>
                 </div>
                 <div class="stats-counter" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="24">0</div>
-                    <p class="text-blue-200">Team Members</p>
+                    <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 font-heading" data-counter="24">0</div>
+                    <p class="text-blue-200 text-sm md:text-base">Team Members</p>
                 </div>
             </div>
         </div>
