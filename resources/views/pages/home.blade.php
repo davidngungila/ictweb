@@ -231,53 +231,72 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="group relative bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-blue-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-code"></i>
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Software Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-code text-lg"></i>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 font-heading">Software Development</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Custom business applications, School Management Systems, POS solutions, and licensing systems.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-blue-600 font-semibold">From 500,000 TZS</span>
-                        <a href="{{ route('services') }}" class="text-blue-600 hover:text-blue-700 font-medium">
-                            Learn More <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-4 font-heading">Software Development</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Custom business applications, School Management Systems, POS solutions, and licensing systems.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-blue-600 font-bold text-lg">From 500,000 TZS</span>
+                            <a href="{{ route('services') }}" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold group">
+                                Learn More <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="group relative bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-green-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-globe"></i>
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Web Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-globe text-lg"></i>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 font-heading">Web Design</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Professional websites with stunning designs. FREE setup - you only pay for domain and hosting.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-green-600 font-semibold">30,000 TZS/mo</span>
-                        <a href="{{ route('services') }}" class="text-green-600 hover:text-green-700 font-medium">
-                            Learn More <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-4 font-heading">Web Design</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Professional websites with stunning designs. FREE setup - you only pay for domain and hosting.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-green-600 font-bold text-lg">30,000 TZS/mo</span>
+                            <a href="{{ route('services') }}" class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold group">
+                                Learn More <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="group relative bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-purple-100" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-sms"></i>
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="SMS Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-sms text-lg"></i>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 font-heading">SMS Platform</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Instant SMS communication with pre-approved Sender IDs. No registration delays.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-purple-600 font-semibold">30 TZS/msg</span>
-                        <a href="{{ route('services') }}" class="text-purple-600 hover:text-purple-700 font-medium">
-                            Learn More <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-4 font-heading">SMS Platform</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Instant SMS communication with pre-approved Sender IDs. No registration delays.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-purple-600 font-bold text-lg">30 TZS/msg</span>
+                            <a href="{{ route('services') }}" class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-semibold group">
+                                Learn More <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-12" data-aos="fade-up">
-                <a href="{{ route('services') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <a href="{{ route('services') }}" class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <i class="fas fa-th-large"></i>
                     View All Services <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -297,13 +316,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold mr-4">
-                            JD
-                        </div>
+                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="John Doe" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-blue-100">
                         <div>
-                            <h4 class="font-bold text-blue-900">John Doe</h4>
+                            <h4 class="font-bold text-blue-900 text-lg">John Doe</h4>
                             <p class="text-sm text-gray-600">CEO, TechCorp Tanzania</p>
                         </div>
                     </div>
@@ -314,17 +331,15 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <i class="fas fa-star text-yellow-400"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed">"JezDan Technology transformed our business with their custom software solution. The team is professional, responsive, and delivers exceptional quality."</p>
+                    <p class="text-gray-600 leading-relaxed italic">"JezDan Technology transformed our business with their custom software solution. The team is professional, responsive, and delivers exceptional quality."</p>
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold mr-4">
-                            SM
-                        </div>
+                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Sarah Mwangi" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-green-100">
                         <div>
-                            <h4 class="font-bold text-blue-900">Sarah Mwangi</h4>
+                            <h4 class="font-bold text-blue-900 text-lg">Sarah Mwangi</h4>
                             <p class="text-sm text-gray-600">Director, Dar Academy</p>
                         </div>
                     </div>
@@ -335,17 +350,15 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <i class="fas fa-star text-yellow-400"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed">"Their School Management System has revolutionized how we operate. It's intuitive, comprehensive, and the support team is always available to help."</p>
+                    <p class="text-gray-600 leading-relaxed italic">"Their School Management System has revolutionized how we operate. It's intuitive, comprehensive, and the support team is always available to help."</p>
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold mr-4">
-                            AK
-                        </div>
+                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Ali Khamis" class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-purple-100">
                         <div>
-                            <h4 class="font-bold text-blue-900">Ali Khamis</h4>
+                            <h4 class="font-bold text-blue-900 text-lg">Ali Khamis</h4>
                             <p class="text-sm text-gray-600">Owner, Khamis Electronics</p>
                         </div>
                     </div>
@@ -356,29 +369,128 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <i class="fas fa-star text-yellow-400"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed">"The SMS platform helped us reach thousands of customers instantly. Best investment we've made for our marketing efforts."</p>
+                    <p class="text-gray-600 leading-relaxed italic">"The SMS platform helped us reach thousands of customers instantly. Best investment we've made for our marketing efforts."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-heading">Ready to Transform Your Business?</h2>
-                <p class="text-xl mb-8 text-blue-100 leading-relaxed">Let's discuss how our innovative solutions can help you achieve your business goals. Get a free consultation today.</p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="{{ route('contact') }}" class="px-10 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl">
-                        Get Free Consultation
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 font-heading leading-tight">Ready to Transform Your Business?</h2>
+                <p class="text-xl md:text-2xl mb-12 text-blue-100 leading-relaxed max-w-2xl mx-auto">Let's discuss how our innovative solutions can help you achieve your business goals. Get a free consultation today.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="{{ route('contact') }}" class="px-12 py-5 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-white/20 transform hover:scale-105 text-lg">
+                        <i class="fas fa-calendar-check mr-3"></i> Get Free Consultation
                     </a>
-                    <a href="tel:+255123456789" class="px-10 py-4 bg-blue-700/30 text-white font-bold rounded-full border border-white/20 hover:bg-blue-700/50 transition-all duration-300 backdrop-blur-md">
-                        <i class="fas fa-phone mr-2"></i> Call Us Now
+                    <a href="tel:+255123456789" class="px-12 py-5 bg-blue-700/50 text-white font-bold rounded-full border-2 border-white/30 hover:bg-blue-700/70 transition-all duration-300 backdrop-blur-md transform hover:scale-105 text-lg">
+                        <i class="fas fa-phone-alt mr-3"></i> Call Us Now
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-3">
+                            JD
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold font-heading">JezDan</h3>
+                            <p class="text-blue-400 text-sm">Technology</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Empowering Tanzanian businesses with innovative digital solutions, secure software development, and cutting-edge technology services.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 font-heading">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Home</a></li>
+                        <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> About Us</a></li>
+                        <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Services</a></li>
+                        <li><a href="{{ route('portfolio') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Portfolio</a></li>
+                        <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Our Services -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 font-heading">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Software Development</a></li>
+                        <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Web Design</a></li>
+                        <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> SMS Platform</a></li>
+                        <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Cybersecurity</a></li>
+                        <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> IT Consulting</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 font-heading">Contact Info</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-blue-400 mt-1"></i>
+                            <div>
+                                <p class="text-gray-400">Dar es Salaam, Tanzania</p>
+                                <p class="text-gray-400">East Africa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-phone text-blue-400"></i>
+                            <a href="tel:+255123456789" class="text-gray-400 hover:text-white transition-colors">+255 [Your Number]</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-blue-400"></i>
+                            <a href="mailto:info@jezdan.co.tz" class="text-gray-400 hover:text-white transition-colors">info@jezdan.co.tz</a>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-clock text-blue-400 mt-1"></i>
+                            <div>
+                                <p class="text-gray-400">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                <p class="text-gray-400">Sat: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; {{ date('Y') }} JezDan Technology. All rights reserved. | Designed with <i class="fas fa-heart text-red-500"></i> in Tanzania</p>
+            </div>
+        </div>
+    </footer>
 @endsection
 
 @section('scripts')

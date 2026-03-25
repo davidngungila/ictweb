@@ -7,28 +7,106 @@
 <style>
     .portfolio-hero {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
     }
     .portfolio-card {
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-style: preserve-3d;
     }
     .portfolio-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-15px) rotateX(5deg);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
     .filter-btn {
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+    .filter-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    .filter-btn:hover::before {
+        width: 300px;
+        height: 300px;
     }
     .filter-btn.active {
         background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
         color: white;
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
     }
     .portfolio-overlay {
-        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
     }
     .tech-tag {
-        transition: all 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
     }
     .tech-tag:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .floating {
+        animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .slide-in {
+        animation: slideIn 0.6s ease-out;
+    }
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .magnetic {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .stats-counter {
+        transition: all 0.5s ease;
+    }
+    .stats-counter:hover {
+        transform: scale(1.1);
+    }
+    .process-card {
+        transition: all 0.4s ease;
+        position: relative;
+    }
+    .process-card::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899, #3B82F6);
+        border-radius: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    .process-card:hover::before {
+        opacity: 1;
+    }
+    .process-card:hover {
+        transform: translateY(-5px);
     }
 </style>
 @endsection
@@ -38,22 +116,23 @@
     <section class="portfolio-hero py-32 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="absolute inset-0">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl floating" style="animation-delay: 1.5s"></div>
+            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl floating" style="animation-delay: 0.7s"></div>
         </div>
         <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-                <span class="inline-block px-4 py-2 bg-white/20 text-white rounded-full text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-md border border-white/30">Our Work</span>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight font-heading">Success <span class="text-blue-300">Stories</span></h1>
-                <p class="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                    Explore our portfolio of innovative digital solutions that have transformed businesses across Tanzania and beyond.
+            <div class="max-w-5xl mx-auto text-center slide-in" data-aos="fade-up">
+                <span class="inline-block px-6 py-3 bg-white/20 text-white rounded-full text-sm font-bold tracking-widest uppercase mb-8 backdrop-blur-md border border-white/30 floating">Our Work</span>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight font-heading magnetic">Success <span class="text-blue-300">Stories</span></h1>
+                <p class="text-xl md:text-2xl lg:text-3xl text-blue-100 leading-relaxed max-w-4xl mx-auto mb-12">
+                    Explore our portfolio of innovative digital solutions that have transformed businesses across Tanzania and beyond. Each project represents our commitment to excellence.
                 </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#featured" class="px-10 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl">
-                        View Featured Projects
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="#featured" class="px-12 py-5 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-white/20 transform hover:scale-105 text-lg magnetic">
+                        <i class="fas fa-rocket mr-3"></i> View Featured Projects
                     </a>
-                    <a href="{{ route('contact') }}" class="px-10 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                        Start Your Project
+                    <a href="{{ route('contact') }}" class="px-12 py-5 bg-white/20 text-white font-bold rounded-full border-2 border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md transform hover:scale-105 text-lg magnetic">
+                        <i class="fas fa-play mr-3"></i> Start Your Project
                     </a>
                 </div>
             </div>
@@ -61,24 +140,33 @@
     </section>
 
     <!-- Portfolio Stats -->
-    <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div class="container mx-auto px-6">
+    <section class="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-32 h-32 bg-white/10 rounded-full blur-2xl floating"></div>
+            <div class="absolute bottom-0 right-1/4 w-40 h-40 bg-white/10 rounded-full blur-2xl floating" style="animation-delay: 1s"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div data-aos="fade-up">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="150">0</div>
-                    <p class="text-blue-200">Projects Completed</p>
+                <div class="stats-counter" data-aos="fade-up">
+                    <div class="text-4xl md:text-6xl font-bold mb-3 font-heading" data-counter="150">0</div>
+                    <p class="text-blue-200 text-lg">Projects Completed</p>
+                    <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full"></div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="98">0</div>
-                    <p class="text-blue-200">Happy Clients</p>
+                <div class="stats-counter" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl md:text-6xl font-bold mb-3 font-heading" data-counter="98">0</div>
+                    <p class="text-blue-200 text-lg">Happy Clients</p>
+                    <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full"></div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="25">0</div>
-                    <p class="text-blue-200">Awards Won</p>
+                <div class="stats-counter" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl md:text-6xl font-bold mb-3 font-heading" data-counter="25">0</div>
+                    <p class="text-blue-200 text-lg">Awards Won</p>
+                    <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full"></div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 font-heading" data-counter="15">0</div>
-                    <p class="text-blue-200">Years Experience</p>
+                <div class="stats-counter" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl md:text-6xl font-bold mb-3 font-heading" data-counter="15">0</div>
+                    <p class="text-blue-200 text-lg">Years Experience</p>
+                    <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full"></div>
                 </div>
             </div>
         </div>
@@ -441,63 +529,86 @@
                 <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-bold tracking-widest uppercase mb-4">Our Process</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6 leading-tight font-heading">How We Work</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Our proven process ensures successful project delivery from concept to completion.
+                    Our proven process ensures successful project delivery from concept to completion with transparency and excellence.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Step 1 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
-                        1
+                <div class="process-card text-center bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6 transform hover:scale-110 transition-transform">
+                        <i class="fas fa-search"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-4 font-heading">Discovery</h3>
-                    <p class="text-gray-600 leading-relaxed">We understand your business needs, goals, and challenges through in-depth consultation.</p>
+                    <p class="text-gray-600 leading-relaxed">We understand your business needs, goals, and challenges through in-depth consultation and research.</p>
+                    <div class="mt-4 text-blue-600 font-semibold">1-2 Weeks</div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
-                        2
+                <div class="process-card text-center bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6 transform hover:scale-110 transition-transform">
+                        <i class="fas fa-drafting-compass"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-4 font-heading">Planning</h3>
-                    <p class="text-gray-600 leading-relaxed">We create a detailed project plan with timelines, milestones, and deliverables.</p>
+                    <p class="text-gray-600 leading-relaxed">We create a detailed project plan with timelines, milestones, and deliverables for success.</p>
+                    <div class="mt-4 text-green-600 font-semibold">1 Week</div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
-                        3
+                <div class="process-card text-center bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6 transform hover:scale-110 transition-transform">
+                        <i class="fas fa-code"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-4 font-heading">Development</h3>
                     <p class="text-gray-600 leading-relaxed">Our expert team builds your solution using cutting-edge technologies and best practices.</p>
+                    <div class="mt-4 text-purple-600 font-semibold">4-12 Weeks</div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
-                        4
+                <div class="process-card text-center bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6 transform hover:scale-110 transition-transform">
+                        <i class="fas fa-rocket"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-4 font-heading">Launch & Support</h3>
                     <p class="text-gray-600 leading-relaxed">We deploy your solution and provide ongoing support to ensure continued success.</p>
+                    <div class="mt-4 text-orange-600 font-semibold">Ongoing</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-heading">Ready to Start Your Project?</h2>
-                <p class="text-xl mb-8 text-blue-100 leading-relaxed">Join our list of successful clients. Let's discuss how we can bring your digital vision to life.</p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="{{ route('contact') }}" class="px-10 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl">
-                        Start Your Project
+    <section class="py-24 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl floating" style="animation-delay: 2s"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 font-heading magnetic">Ready to Start Your <span class="text-yellow-300">Project</span>?</h2>
+                <p class="text-xl md:text-2xl mb-12 text-blue-100 leading-relaxed max-w-3xl mx-auto">Join our list of successful clients. Let's discuss how we can bring your digital vision to life and create something extraordinary together.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="{{ route('contact') }}" class="px-12 py-5 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-white/20 transform hover:scale-105 text-lg magnetic">
+                        <i class="fas fa-rocket mr-3"></i> Start Your Project
                     </a>
-                    <a href="tel:+255123456789" class="px-10 py-4 bg-blue-700/30 text-white font-bold rounded-full border border-white/20 hover:bg-blue-700/50 transition-all duration-300 backdrop-blur-md">
-                        <i class="fas fa-phone mr-2"></i> Call Us Now
+                    <a href="tel:+255123456789" class="px-12 py-5 bg-white/20 text-white font-bold rounded-full border-2 border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md transform hover:scale-105 text-lg magnetic">
+                        <i class="fas fa-phone-alt mr-3"></i> Call Us Now
                     </a>
+                </div>
+                <div class="mt-12 flex justify-center gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-clock text-3xl mb-2 text-yellow-300"></i>
+                        <p class="text-sm">24/7 Support</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt text-3xl mb-2 text-yellow-300"></i>
+                        <p class="text-sm">100% Secure</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-award text-3xl mb-2 text-yellow-300"></i>
+                        <p class="text-sm">Award Winning</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -506,7 +617,31 @@
 
 @section('scripts')
 <script>
-    // Portfolio Filter
+    // Magnetic Effect for Elements
+    document.addEventListener('mousemove', (e) => {
+        const magneticElements = document.querySelectorAll('.magnetic');
+        
+        magneticElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const distance = Math.sqrt(x * x + y * y);
+            const maxDistance = 100;
+            
+            if (distance < maxDistance) {
+                const force = (maxDistance - distance) / maxDistance;
+                const translateX = x * force * 0.3;
+                const translateY = y * force * 0.3;
+                
+                element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            } else {
+                element.style.transform = 'translate(0, 0)';
+            }
+        });
+    });
+
+    // Portfolio Filter with Enhanced Animation
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
 
@@ -519,16 +654,16 @@
             
             const filter = button.dataset.filter;
             
-            portfolioCards.forEach(card => {
+            portfolioCards.forEach((card, index) => {
                 if (filter === 'all' || card.dataset.category === filter) {
                     card.style.display = 'block';
                     setTimeout(() => {
                         card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 10);
+                        card.style.transform = 'scale(1) translateY(0)';
+                    }, index * 100);
                 } else {
                     card.style.opacity = '0';
-                    card.style.transform = 'scale(0.8)';
+                    card.style.transform = 'scale(0.8) translateY(20px)';
                     setTimeout(() => {
                         card.style.display = 'none';
                     }, 300);
@@ -537,7 +672,7 @@
         });
     });
 
-    // Counter Animation
+    // Enhanced Counter Animation
     function animateCounter(element, target) {
         let current = 0;
         const increment = target / 100;
@@ -575,9 +710,55 @@
     });
 
     // Add suffix to counters
-    document.querySelector('[data-counter="98"]').dataset.suffix = '%';
-    document.querySelector('[data-counter="150"]').dataset.suffix = '+';
-    document.querySelector('[data-counter="25"]').dataset.suffix = '+';
-    document.querySelector('[data-counter="15"]').dataset.suffix = '+';
+    document.querySelector('[data-counter="98"]')?.setAttribute('data-suffix', '%');
+    document.querySelector('[data-counter="150"]')?.setAttribute('data-suffix', '+');
+    document.querySelector('[data-counter="25"]')?.setAttribute('data-suffix', '+');
+    document.querySelector('[data-counter="15"]')?.setAttribute('data-suffix', '+');
+
+    // Tech Tag Click Interaction
+    document.querySelectorAll('.tech-tag').forEach(tag => {
+        tag.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Parallax Effect for Hero Section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.floating');
+        
+        parallaxElements.forEach(element => {
+            const speed = element.dataset.speed || 0.5;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+
+    // Add Loading Animation for Images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.style.transition = 'opacity 0.5s';
+                this.style.opacity = '1';
+            }, 100);
+        });
+    });
 </script>
 @endsection
