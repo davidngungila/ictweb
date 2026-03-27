@@ -129,7 +129,7 @@
             <!-- Project 1: E-commerce Platform -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-14609258559-0abdc27e37c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/showing-cart-trolley-shopping-online-sign-graphic_j4fy9u.jpg" 
                          alt="E-commerce Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
@@ -149,7 +149,7 @@
             <!-- Project 2: School Management System -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1a706d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/modern-data-center-providing-cloud-services-enabling-businesses-access-computing-resources-storage-demand-internet-server-room-infrastructure-3d-render-animation_lljtml.jpg" 
                          alt="School Management System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent"></div>
                 </div>
@@ -168,7 +168,7 @@
             <!-- Project 3: Healthcare Portal -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1550752918-1dcf3f0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/enterprise-data-hub-operating-ai-workloads-systems-scalable-research_hov8tc.jpg" 
                          alt="Healthcare Portal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
@@ -200,7 +200,7 @@
             <!-- Mobile Banking App -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1512926330526-ee3925526fbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/internet-banking-online-payment-technology-concept_gtoa6s.jpg" 
                          alt="Mobile Banking App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
@@ -220,7 +220,7 @@
             <!-- Project 2: Food Delivery App -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1a706d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" 
                          alt="Food Delivery App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
@@ -240,7 +240,7 @@
             <!-- Project 3: Fitness Tracking App -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1571019695-6b9740d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/mainframe-devices-racks-room-with-big-data-cyber-internet-content-neon-light-cloud-computing-server-cabinet-modern-communication-storage-hardware-system_mywsie.jpg" 
                          alt="Fitness Tracking App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
@@ -273,7 +273,7 @@
             <!-- Corporate Network Setup -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef1b3966eab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" 
                          alt="Corporate Network Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
@@ -293,7 +293,7 @@
             <!-- Project 2: Data Center Setup -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef1b3966eab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg" 
                          alt="Data Center Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
@@ -313,7 +313,7 @@
             <!-- Project 3: Smart Office Network -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/beautiful-optical-fiber-detail_wck3wq.jpg" 
                          alt="Smart Office Network" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
@@ -347,7 +347,7 @@
             <!-- Testimonial 1 -->
             <div class="bg-gray-50 rounded-2xl p-8 text-center">
                 <div class="flex justify-center mb-4">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/portrait-male-engineer-working-field-engineers-day-celebration_afzsch.jpg" 
                          alt="Client 1" class="w-20 h-20 rounded-full object-cover">
                 </div>
                 <div class="flex justify-center mb-4">
@@ -365,7 +365,7 @@
             <!-- Testimonial 2 -->
             <div class="bg-gray-50 rounded-2xl p-8 text-center">
                 <div class="flex justify-center mb-4">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/programmer-home-office-concentrating-finding-bugs-while-he-codes_gctbqc.jpg" 
                          alt="Client 2" class="w-20 h-20 rounded-full object-cover">
                 </div>
                 <div class="flex justify-center mb-4">
@@ -383,7 +383,7 @@
             <!-- Testimonial 3 -->
             <div class="bg-gray-50 rounded-2xl p-8 text-center">
                 <div class="flex justify-center mb-4">
-                    <img src="https://images.unsplash.com/photo-1494790108755-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/irritated-african-american-man-struggling-reach-internet-provider_rriiiz.jpg" 
                          alt="Client 3" class="w-20 h-20 rounded-full object-cover">
                 </div>
                 <div class="flex justify-center mb-4">

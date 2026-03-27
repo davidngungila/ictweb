@@ -67,7 +67,7 @@
             <!-- Web Development -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1460925859-0abdc27e37c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" 
                          alt="Web Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
@@ -93,7 +93,7 @@
             <!-- Mobile App Development -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1512926330526-ee3925526fbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" 
                          alt="Mobile App Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
@@ -119,7 +119,7 @@
             <!-- Network Installation -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef1b3966eab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" 
                          alt="Network Installation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
@@ -145,7 +145,7 @@
             <!-- Cybersecurity -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae278f7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" 
                          alt="Cybersecurity" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 to-transparent"></div>
                 </div>
@@ -171,7 +171,7 @@
             <!-- IT Support -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551434810748-48b9885dbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" 
                          alt="IT Support" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
@@ -197,7 +197,7 @@
             <!-- ICT Consultancy -->
             <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551288041-h0d63f0b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" 
                          alt="ICT Consultancy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent"></div>
                 </div>
