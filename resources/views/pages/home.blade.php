@@ -163,8 +163,8 @@
         </button>
     </div>
     <div class="absolute bottom-0 left-0 right-0">
-        <svg class="w-full h-16 text-gray-50" viewBox="0 0 1440 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 64L60 58.7C120 53 240 43 360 37.3C480 32 600 32 720 34.7C840 37 960 43 1080 45.3C1200 48 1320 48 1380 48L1440 48V64H0V64Z" fill="currentColor"/>
+        <svg class="w-full h-8 text-gray-50" viewBox="0 0 1440 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 32L30 29.3C60 26.7 120 21.3 180 18.7C240 16 300 16 360 17.3C420 18.7 480 21.3 540 22.7C600 24 660 24 720 25.3C780 26.7 840 29.3 900 30.7C960 32 1020 32 1080 32C1140 32 1200 32 1260 32C1320 32 1380 32 1410 32L1440 32V32H0V32Z" fill="currentColor"/>
         </svg>
     </div>
 </section>
