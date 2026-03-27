@@ -421,7 +421,7 @@
                 <!-- CEO -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/portrait-male-engineer-working-field-engineers-day-celebration_afzsch.jpg" class="w-full h-64 object-cover">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                             <h3 class="text-lg font-bold text-white">Jeremia Thomas</h3>
                             <p class="text-blue-200 text-sm">Chief Executive Officer</p>
@@ -442,7 +442,7 @@
                 <!-- CTO -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" class="w-full h-64 object-cover">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                             <h3 class="text-lg font-bold text-white">Michael Johnson</h3>
                             <p class="text-blue-200 text-sm">Chief Technology Officer</p>
@@ -463,7 +463,7 @@
                 <!-- COO (UPDATED) -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/programmer-home-office-concentrating-finding-bugs-while-he-codes_gctbqc.jpg" class="w-full h-64 object-cover">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                             <h3 class="text-lg font-bold text-white">Sarah Mwangi</h3>
                             <p class="text-blue-200 text-sm">Chief Operating Officer</p>
@@ -484,7 +484,7 @@
                 <!-- CFO -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg" class="w-full h-64 object-cover">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                             <h3 class="text-lg font-bold text-white">Daniel Kimaro</h3>
                             <p class="text-blue-200 text-sm">Chief Financial Officer</p>
@@ -505,7 +505,7 @@
                 <!-- Head of Development -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-engineer-doing-node-tree-programming-optimize-resource-allocation-server-farm_mtnzvc.jpg" class="w-full h-64 object-cover">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                             <h3 class="text-lg font-bold text-white">Amina Hassan</h3>
                             <p class="text-blue-200 text-sm">Head of Development</p>

@@ -7,6 +7,9 @@
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white py-20 overflow-hidden">
     <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="absolute inset-0">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" class="w-full h-full object-cover opacity-40">
+    </div>
     <div class="relative container mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
             <div class="inline-flex items-center bg-green-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">

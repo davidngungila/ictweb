@@ -7,6 +7,9 @@
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 overflow-hidden">
     <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="absolute inset-0">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" class="w-full h-full object-cover opacity-40">
+    </div>
     <div class="relative container mx-auto px-6">
         <div class="max-w-4xl mx-auto text-center">
             <div class="inline-flex items-center bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
