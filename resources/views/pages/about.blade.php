@@ -401,41 +401,40 @@
     </div>
 </section>
 
+
+
+
 <!-- Team Section -->
 <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Leadership Team</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Meet the visionary leaders driving Jezdan Technology's success
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+
                 <!-- CEO -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="CEO" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                            <h3 class="text-xl font-bold text-white">Jeremia Thomas</h3>
-                            <p class="text-blue-200">Chief Executive Officer</p>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-lg font-bold text-white">Jeremia Thomas</h3>
+                            <p class="text-blue-200 text-sm">Chief Executive Officer</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Visionary leader with 15+ years of experience in technology and business strategy, 
-                            driving digital transformation across Tanzania.
+                    <div class="p-4 text-center">
+                        <p class="text-gray-600 text-sm mb-4">
+                            15+ years in tech leadership and digital transformation.
                         </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </a>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
@@ -443,62 +442,94 @@
                 <!-- CTO -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="CTO" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                            <h3 class="text-xl font-bold text-white">Michael Johnson</h3>
-                            <p class="text-blue-200">Chief Technology Officer</p>
+                        <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-lg font-bold text-white">Michael Johnson</h3>
+                            <p class="text-blue-200 text-sm">Chief Technology Officer</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Technology expert specializing in cloud architecture, cybersecurity, and enterprise solutions 
-                            with a passion for innovation.
+                    <div class="p-4 text-center">
+                        <p class="text-gray-600 text-sm mb-4">
+                            Expert in cloud systems, cybersecurity, and innovation.
                         </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </a>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <!-- COO -->
+                <!-- COO (UPDATED) -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="COO" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                            <h3 class="text-xl font-bold text-white">Sarah Mwangi</h3>
-                            <p class="text-blue-200">Chief Operating Officer</p>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-lg font-bold text-white">Sarah Mwangi</h3>
+                            <p class="text-blue-200 text-sm">Chief Operating Officer</p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Operations excellence expert with extensive experience in project management and 
-                            business process optimization.
+                    <div class="p-4 text-center">
+                        <p class="text-gray-600 text-sm mb-4">
+                            Operations expert focused on efficiency, execution, and growth.
                         </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </a>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
+
+                <!-- CFO -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-lg font-bold text-white">Daniel Kimaro</h3>
+                            <p class="text-blue-200 text-sm">Chief Financial Officer</p>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-gray-600 text-sm mb-4">
+                            Financial strategist ensuring sustainable growth.
+                        </p>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Head of Development -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-lg font-bold text-white">Amina Hassan</h3>
+                            <p class="text-blue-200 text-sm">Head of Development</p>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-gray-600 text-sm mb-4">
+                            Leads engineering teams delivering scalable solutions.
+                        </p>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 <!-- CTA Section -->
 <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">

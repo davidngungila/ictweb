@@ -135,6 +135,11 @@
     </div>
 </section>
 
+
+
+
+
+
 <!-- Why Choose Us -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
@@ -145,7 +150,7 @@
                     Trusted ICT partner delivering excellence and innovation across Tanzania
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <!-- Growth with Confidence -->
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
                     <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
@@ -185,6 +190,13 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
 
 <!-- Sample Portfolio -->
 <section class="py-20 bg-gray-50">
