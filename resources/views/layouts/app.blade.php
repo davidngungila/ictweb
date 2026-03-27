@@ -109,9 +109,9 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mr-3">
-                        JD
-                    </div>
+                    <a href="{{ route('home') }}" class="flex items-center hover:opacity-80 transition-opacity">
+                        <img src="{{ asset('jezdan-logo.png') }}" alt="Jezdan Technology" class="h-10 w-auto mr-3">
+                    </a>
                     <a href="{{ route('home') }}" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
                         Jezdan Technology
                     </a>
@@ -318,11 +318,11 @@
                 <!-- Company Info -->
                 <div>
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mr-3">
-                            JD
-                        </div>
-                        <span class="text-xl font-bold">Jezdan Technology</span>
-                    </div>
+                    <a href="{{ route('home') }}" class="flex items-center hover:opacity-80 transition-opacity">
+                        <img src="{{ asset('jezdan-logo.png') }}" alt="Jezdan Technology" class="h-10 w-auto mr-3">
+                    </a>
+                    <span class="text-xl font-bold">Jezdan Technology</span>
+                </div>
                     <p class="text-gray-400 text-sm leading-relaxed">
                         Reliable ICT solutions for businesses in Tanzania. Your trusted technology partner.
                     </p>
