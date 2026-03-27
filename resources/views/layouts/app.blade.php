@@ -6,6 +6,10 @@
     <title>@yield('title', 'Jezdan Technology')</title>
     <meta name="description" content="@yield('description', 'Jezdan Technology - Reliable ICT Solutions in Tanzania')">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('jezdan.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('jezdan.png') }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
