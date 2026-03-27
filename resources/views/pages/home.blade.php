@@ -24,6 +24,14 @@
                         <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                             Professional websites and web applications that drive your business forward
                         </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Get a Quote
+                            </a>
+                            <a href="{{ route('services.web-development') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                Learn More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,6 +51,14 @@
                         <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                             iOS and Android apps that engage users and deliver exceptional experiences
                         </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Get a Quote
+                            </a>
+                            <a href="{{ route('services.mobile-app-development') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                Learn More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,6 +78,14 @@
                         <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                             Professional network setup for seamless connectivity and security
                         </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Get a Quote
+                            </a>
+                            <a href="{{ route('services.network-installation') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                Learn More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,6 +105,14 @@
                         <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                             Protect your digital assets with comprehensive security measures
                         </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Get a Quote
+                            </a>
+                            <a href="{{ route('services.cybersecurity') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                Learn More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,6 +132,14 @@
                         <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                             24/7 support and strategic technology consulting for your business
                         </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Get a Quote
+                            </a>
+                            <a href="{{ route('services.ict-consultancy') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                Learn More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,31 +161,6 @@
         <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-20">
             <i class="fas fa-chevron-right"></i>
         </button>
-    </div>
-
-    <!-- Static Content Below Slider -->
-    <div class="container mx-auto px-6 py-12 relative z-10">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="mb-8">
-                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                    <i class="fas fa-award mr-2"></i> Leading ICT Provider in Tanzania
-                </span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Reliable ICT Solutions in Tanzania
-            </h1>
-            <p class="text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed max-w-3xl mx-auto">
-                Comprehensive technology solutions tailored for Tanzanian businesses. From innovative web applications to robust network infrastructure, we empower your digital transformation journey.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                    Get a Quote
-                </a>
-                <a href="{{ route('services') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                    Our Services
-                </a>
-            </div>
-        </div>
     </div>
     <div class="absolute bottom-0 left-0 right-0">
         <svg class="w-full h-16 text-gray-50" viewBox="0 0 1440 64" fill="none" xmlns="http://www.w3.org/2000/svg">
