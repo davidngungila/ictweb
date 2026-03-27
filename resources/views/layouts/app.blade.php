@@ -99,9 +99,9 @@
     <!-- Main Navigation -->
     <nav class="bg-white shadow-md sticky top-10 z-40">
         <div class="container mx-auto px-6">
-            <div class="flex items-center justify-center h-16 relative">
-                <!-- Logo - Left Aligned -->
-                <div class="absolute left-6 flex items-center">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
                     <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold mr-3">
                         JD
                     </div>
@@ -110,8 +110,8 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links - Centered -->
-                <div class="hidden md:flex items-center justify-center space-x-8">
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
                     <!-- Home -->
                     <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2">
                         Home
@@ -124,37 +124,37 @@
                         </button>
                         <div class="absolute top-full left-0 w-80 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
                             <div class="py-2">
-                                <a href="{{ route('services') }}#web-development" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                <a href="{{ route('services.web-development') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-globe text-blue-600"></i>
                                         <span>Web Development</span>
                                     </div>
                                 </a>
-                                <a href="{{ route('services') }}#mobile-app" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                <a href="{{ route('services.mobile-app-development') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-mobile-alt text-blue-600"></i>
                                         <span>Mobile Apps</span>
                                     </div>
                                 </a>
-                                <a href="{{ route('services') }}#network" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                <a href="{{ route('services.network-installation') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-network-wired text-blue-600"></i>
                                         <span>Network Installation</span>
                                     </div>
                                 </a>
-                                <a href="{{ route('services') }}#cybersecurity" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                <a href="{{ route('services.cybersecurity') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-shield-alt text-blue-600"></i>
                                         <span>Cybersecurity</span>
                                     </div>
                                 </a>
-                                <a href="{{ route('services') }}#it-support" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                <a href="{{ route('services.it-support') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-headset text-blue-600"></i>
                                         <span>IT Support</span>
                                     </div>
                                 </a>
-                                <a href="{{ route('services') }}#consultancy" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                <a href="{{ route('services.ict-consultancy') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                                     <div class="flex items-center gap-3">
                                         <i class="fas fa-lightbulb text-blue-600"></i>
                                         <span>ICT Consultancy</span>
@@ -208,97 +208,91 @@
                     <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2">
                         Contact
                     </a>
-                    
-                    <!-- Right Section -->
-                <div class="absolute right-6 flex items-center space-x-4">
-                    <!-- CTA Button -->
+                </div>
+
+                <!-- Desktop CTA Button -->
+                <div class="hidden md:block">
                     <a href="{{ route('contact') }}" class="px-6 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                         Get Quote
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden absolute right-6 p-2 rounded-lg text-gray-700 hover:text-blue-600" onclick="toggleMobileMenu()">
+                <button class="md:hidden p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-                <div class="px-6 py-4 space-y-3">
-                    <a href="{{ route('home') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
-                        Home
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
+                <div class="px-6 py-4 space-y-2">
+                    <!-- Home -->
+                    <a href="{{ route('home') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-home mr-3 text-blue-600"></i>Home
                     </a>
                     
-                    <!-- Mobile Services Dropdown -->
-                    <div class="border-t pt-3">
-                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-services')">
-                            Services <i class="fas fa-chevron-down text-xs"></i>
+                    <!-- Services -->
+                    <div class="border-t pt-2">
+                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-services')">
+                            <span><i class="fas fa-cogs mr-3 text-blue-600"></i>Services</span> 
+                            <i class="fas fa-chevron-down text-xs transition-transform" id="mobile-services-icon"></i>
                         </button>
-                        <div id="mobile-services" class="hidden pl-4 space-y-2">
-                            <a href="{{ route('services') }}#web-development" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-globe mr-2"></i>Web Development
+                        <div id="mobile-services" class="hidden pl-4 space-y-1 mt-1">
+                            <a href="{{ route('services.web-development') }}" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-globe mr-2 text-blue-500"></i>Web Development
                             </a>
-                            <a href="{{ route('services') }}#mobile-app" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-mobile-alt mr-2"></i>Mobile Apps
+                            <a href="{{ route('services.mobile-app-development') }}" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-mobile-alt mr-2 text-purple-500"></i>Mobile Apps
                             </a>
-                            <a href="{{ route('services') }}#network" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-network-wired mr-2"></i>Network Installation
+                            <a href="{{ route('services.network-installation') }}" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-network-wired mr-2 text-orange-500"></i>Network Installation
                             </a>
-                            <a href="{{ route('services') }}#cybersecurity" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-shield-alt mr-2"></i>Cybersecurity
+                            <a href="{{ route('services.cybersecurity') }}" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-shield-alt mr-2 text-red-500"></i>Cybersecurity
                             </a>
-                            <a href="{{ route('services') }}#it-support" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-headset mr-2"></i>IT Support
+                            <a href="{{ route('services.it-support') }}" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-headset mr-2 text-green-500"></i>IT Support
                             </a>
-                            <a href="{{ route('services') }}#consultancy" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-lightbulb mr-2"></i>ICT Consultancy
+                            <a href="{{ route('services.ict-consultancy') }}" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-lightbulb mr-2 text-indigo-500"></i>ICT Consultancy
                             </a>
                         </div>
                     </div>
                     
-                    <!-- Mobile Portfolio Dropdown -->
-                    <div class="border-t pt-3">
-                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-portfolio')">
-                            Portfolio <i class="fas fa-chevron-down text-xs"></i>
+                    <!-- Portfolio -->
+                    <div class="border-t pt-2">
+                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-portfolio')">
+                            <span><i class="fas fa-briefcase mr-3 text-blue-600"></i>Portfolio</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform" id="mobile-portfolio-icon"></i>
                         </button>
-                        <div id="mobile-portfolio" class="hidden pl-4 space-y-2">
-                            <a href="{{ route('portfolio') }}#web-projects" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-globe mr-2"></i>Web Projects
+                        <div id="mobile-portfolio" class="hidden pl-4 space-y-1 mt-1">
+                            <a href="{{ route('portfolio') }}#web-projects" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-globe mr-2 text-blue-500"></i>Web Projects
                             </a>
-                            <a href="{{ route('portfolio') }}#mobile-apps" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-mobile-alt mr-2"></i>Mobile Apps
+                            <a href="{{ route('portfolio') }}#mobile-apps" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-mobile-alt mr-2 text-purple-500"></i>Mobile Apps
                             </a>
-                            <a href="{{ route('portfolio') }}#network-projects" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-network-wired mr-2"></i>Network Solutions
+                            <a href="{{ route('portfolio') }}#network-projects" class="block text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-network-wired mr-2 text-orange-500"></i>Network Solutions
                             </a>
                         </div>
                     </div>
                     
-                    <a href="{{ route('about') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-t pt-3">
-                        About
+                    <!-- About -->
+                    <a href="{{ route('about') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-t pt-2">
+                        <i class="fas fa-info-circle mr-3 text-blue-600"></i>About Us
                     </a>
                     
-                    <a href="{{ route('contact') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-2">
-                        Contact
+                    <!-- Contact -->
+                    <a href="{{ route('contact') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-t pt-2">
+                        <i class="fas fa-envelope mr-3 text-blue-600"></i>Contact
                     </a>
                     
-                    <!-- Mobile Contact Dropdown -->
-                    <div class="border-t pt-3">
-                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-contact')">
-                            Contact <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        <div id="mobile-contact" class="hidden pl-4 space-y-2">
-                            <a href="{{ route('contact') }}" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-envelope mr-2"></i>Send Message
-                            </a>
-                            <a href="tel:+255123456789" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-phone mr-2"></i>Call Us
-                            </a>
-                                                        <a href="#" class="block text-gray-600 hover:text-blue-600 py-2">
-                                <i class="fas fa-map-marker-alt mr-2"></i>Get Directions
-                            </a>
-                        </div>
+                    <!-- Mobile CTA Button -->
+                    <div class="border-t pt-4 mt-4">
+                        <a href="{{ route('contact') }}" class="block w-full px-6 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all duration-300 text-center shadow-lg">
+                            Get Free Quote
+                        </a>
                     </div>
                 </div>
             </div>
@@ -408,8 +402,33 @@
         
         function toggleMobileSubmenu(id) {
             const submenu = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            
             submenu.classList.toggle('hidden');
+            
+            // Rotate chevron icon
+            if (icon) {
+                icon.classList.toggle('rotate-180');
+            }
         }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuButton = event.target.closest('button[onclick="toggleMobileMenu()"]');
+            
+            if (!mobileMenu.contains(event.target) && !menuButton && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Close mobile menu on window resize if desktop view
+        window.addEventListener('resize', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
     </script>
 <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/255123456789" target="_blank" 
