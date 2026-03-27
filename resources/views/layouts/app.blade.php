@@ -441,6 +441,83 @@
             }
         });
     </script>
+
+<!-- Page Transition Animation -->
+<style>
+    .page-transition {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    
+    .page-transition.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+    }
+</style>
+
+<script>
+    // Page transition functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainContent = document.querySelector('main');
+        if (mainContent) {
+            mainContent.classList.add('page-transition');
+            
+            // Trigger fade in animation
+            setTimeout(() => {
+                mainContent.classList.add('active');
+            }, 100);
+        }
+        
+        // Handle navigation links with fade out animation
+        const navigationLinks = document.querySelectorAll('a[href^="/"], a[href^="{{ url(\'/\') }}"]');
+        
+        navigationLinks.forEach(link => {
+            // Skip external links, anchors, and special links
+            const href = link.getAttribute('href');
+            if (href && 
+                !href.startsWith('http') && 
+                !href.startsWith('#') && 
+                !href.includes('mailto:') && 
+                !href.includes('tel:') &&
+                !href.includes('wa.me')) {
+                
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetUrl = this.getAttribute('href');
+                    
+                    // Fade out current page
+                    if (mainContent) {
+                        mainContent.classList.remove('active');
+                        mainContent.classList.add('fade-out');
+                    }
+                    
+                    // Navigate to new page after fade out
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 300);
+                });
+            }
+        });
+        
+        // Handle form submissions with fade out
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function() {
+                if (mainContent) {
+                    mainContent.classList.remove('active');
+                    mainContent.classList.add('fade-out');
+                }
+            });
+        });
+    });
+</script>
+
 <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/255123456789" target="_blank" 
        class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-500 transform hover:scale-110">
