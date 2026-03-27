@@ -6,11 +6,125 @@
 @section('content')
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white overflow-hidden">
-    <div class="absolute inset-0 bg-black/20"></div>
-    <div class="absolute inset-0">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg" alt="Jezdan Technology Team" class="w-full h-full object-cover opacity-30">
+    <!-- Hero Slider -->
+    <div class="relative h-96 md:h-[500px] overflow-hidden">
+        <div id="heroSlider" class="relative h-full">
+            <!-- Slide 1: Web Development -->
+            <div class="absolute inset-0 transition-opacity duration-1000" data-slide="0">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                                <i class="fas fa-code mr-2"></i> Web Development
+                            </span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Custom Web Solutions</h2>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                            Professional websites and web applications that drive your business forward
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Mobile App Development -->
+            <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="1">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                                <i class="fas fa-mobile-alt mr-2"></i> Mobile Apps
+                            </span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Native Mobile Applications</h2>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                            iOS and Android apps that engage users and deliver exceptional experiences
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Network Installation -->
+            <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="2">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                                <i class="fas fa-network-wired mr-2"></i> Network Solutions
+                            </span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Robust Network Infrastructure</h2>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                            Professional network setup for seamless connectivity and security
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Cybersecurity -->
+            <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="3">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                                <i class="fas fa-shield-alt mr-2"></i> Cybersecurity
+                            </span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Advanced Security Solutions</h2>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                            Protect your digital assets with comprehensive security measures
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: IT Support & Consultancy -->
+            <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="4">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg" alt="IT Support & Consultancy" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                                <i class="fas fa-headset mr-2"></i> IT Support & Consultancy
+                            </span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Expert IT Services</h2>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                            24/7 support and strategic technology consulting for your business
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+            <button onclick="showSlide(0)" class="w-3 h-3 bg-white rounded-full transition-all duration-300 slider-dot" data-dot="0"></button>
+            <button onclick="showSlide(1)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="1"></button>
+            <button onclick="showSlide(2)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="2"></button>
+            <button onclick="showSlide(3)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="3"></button>
+            <button onclick="showSlide(4)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="4"></button>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button onclick="previousSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-20">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-20">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
-    <div class="container mx-auto px-6 py-24 relative z-10">
+
+    <!-- Static Content Below Slider -->
+    <div class="container mx-auto px-6 py-12 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
             <div class="mb-8">
                 <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
@@ -293,4 +407,77 @@
         </div>
     </div>
 </section>
+
+<!-- Hero Slider JavaScript -->
+<script>
+let currentSlide = 0;
+const totalSlides = 5;
+let slideInterval;
+
+function showSlide(index) {
+    // Hide all slides
+    const slides = document.querySelectorAll('[data-slide]');
+    slides.forEach(slide => {
+        slide.classList.add('opacity-0');
+        slide.classList.remove('opacity-100');
+    });
+    
+    // Show current slide
+    const currentSlideElement = document.querySelector(`[data-slide="${index}"]`);
+    if (currentSlideElement) {
+        currentSlideElement.classList.remove('opacity-0');
+        currentSlideElement.classList.add('opacity-100');
+    }
+    
+    // Update dots
+    const dots = document.querySelectorAll('.slider-dot');
+    dots.forEach(dot => {
+        dot.classList.remove('bg-white');
+        dot.classList.add('bg-white/50');
+    });
+    
+    const currentDot = document.querySelector(`[data-dot="${index}"]`);
+    if (currentDot) {
+        currentDot.classList.remove('bg-white/50');
+        currentDot.classList.add('bg-white');
+    }
+    
+    currentSlide = index;
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+    resetInterval();
+}
+
+function previousSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+    resetInterval();
+}
+
+function startSlideShow() {
+    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+}
+
+function resetInterval() {
+    clearInterval(slideInterval);
+    startSlideShow();
+}
+
+// Initialize slider on page load
+document.addEventListener('DOMContentLoaded', function() {
+    showSlide(0);
+    startSlideShow();
+    
+    // Pause on hover
+    const slider = document.getElementById('heroSlider');
+    if (slider) {
+        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.addEventListener('mouseleave', startSlideShow);
+    }
+});
+</script>
+
 @endsection
