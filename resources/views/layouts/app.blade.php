@@ -475,7 +475,8 @@
         }
         
         // Handle navigation links with fade out animation
-        const navigationLinks = document.querySelectorAll('a[href^="/"], a[href^="{{ url(\'/\') }}"]');
+        const baseUrl = "{{ url('/') }}";
+        const navigationLinks = document.querySelectorAll('a[href^="/"], a[href^="' + baseUrl + '"]');
         
         navigationLinks.forEach(link => {
             // Skip external links, anchors, and special links
