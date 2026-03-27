@@ -446,18 +446,32 @@
 <style>
     .page-transition {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        transform: translateY(30px) scale(0.98);
+        filter: blur(2px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .page-transition.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
     }
     
     .fade-out {
         opacity: 0;
-        transition: opacity 0.3s ease-out;
+        transform: translateY(-20px) scale(0.98);
+        filter: blur(3px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 1, 1);
+    }
+    
+    /* Ensure smooth transitions for all child elements */
+    .page-transition * {
+        transition-delay: 0.1s;
+    }
+    
+    /* Prevent flash of unstyled content */
+    main {
+        overflow-x: hidden;
     }
 </style>
 
@@ -468,10 +482,10 @@
         if (mainContent) {
             mainContent.classList.add('page-transition');
             
-            // Trigger fade in animation
+            // Trigger fade in animation with slight delay
             setTimeout(() => {
                 mainContent.classList.add('active');
-            }, 100);
+            }, 50);
         }
         
         // Handle navigation links with fade out animation
@@ -501,7 +515,7 @@
                     // Navigate to new page after fade out
                     setTimeout(() => {
                         window.location.href = targetUrl;
-                    }, 300);
+                    }, 600);
                 });
             }
         });
