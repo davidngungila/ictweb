@@ -181,87 +181,153 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Web Development -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" 
                          alt="Web Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-globe"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Verified)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Web Development</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Professional websites and web applications tailored for Tanzanian businesses with modern design and functionality</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
+                        <p class="text-2xl font-bold text-gray-900">500,000 TZS</p>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        Get Quote <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Web Development</h3>
-                <p class="text-gray-600 leading-relaxed">Professional websites and web applications tailored for Tanzanian businesses with modern design and functionality</p>
             </div>
 
             <!-- Mobile App Development -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" 
                          alt="Mobile App Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-mobile-alt"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Verified)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Custom mobile applications for iOS and Android with intuitive design and powerful features</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
+                        <p class="text-2xl font-bold text-gray-900">800,000 TZS</p>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        Get Quote <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile App Development</h3>
-                <p class="text-gray-600 leading-relaxed">Custom mobile applications for iOS and Android with intuitive design and powerful features</p>
             </div>
 
             <!-- Network Installation -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" 
                          alt="Network Installation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-network-wired"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Verified)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Network Installation</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Professional network setup and configuration for seamless business operations across Tanzania</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
+                        <p class="text-2xl font-bold text-gray-900">300,000 TZS</p>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        Get Quote <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Network Installation</h3>
-                <p class="text-gray-600 leading-relaxed">Professional network setup and configuration for seamless business operations across Tanzania</p>
             </div>
 
             <!-- Cybersecurity -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" 
                          alt="Cybersecurity" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-shield-alt"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Verified)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cybersecurity</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Advanced security solutions to protect your digital assets and ensure business continuity</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
+                        <p class="text-2xl font-bold text-gray-900">400,000 TZS</p>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        Get Quote <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cybersecurity</h3>
-                <p class="text-gray-600 leading-relaxed">Advanced security solutions to protect your digital assets and ensure business continuity</p>
             </div>
 
             <!-- IT Support -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" 
                          alt="IT Support" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-headset"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Verified)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">IT Support</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Reliable 24/7 technical support and maintenance to keep your business running smoothly</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
+                        <p class="text-2xl font-bold text-gray-900">200,000 TZS</p>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        Get Quote <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">IT Support</h3>
-                <p class="text-gray-600 leading-relaxed">Reliable 24/7 technical support and maintenance to keep your business running smoothly</p>
             </div>
 
             <!-- ICT Consultancy -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" 
                          alt="ICT Consultancy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-lightbulb"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Verified)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">ICT Consultancy</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Strategic technology consulting to drive digital transformation and business growth</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
+                        <p class="text-2xl font-bold text-gray-900">600,000 TZS</p>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        Get Quote <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">ICT Consultancy</h3>
-                <p class="text-gray-600 leading-relaxed">Strategic technology consulting to drive digital transformation and business growth</p>
             </div>
         </div>
     </div>
@@ -341,59 +407,89 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: E-commerce Platform -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/showing-cart-trolley-shopping-online-sign-graphic_j4fy9u.jpg" 
                          alt="E-commerce Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">E-commerce Platform</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Complete e-commerce solution with payment integration and inventory management for a retail client in Dar es Salaam</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Laravel</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Vue.js</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">MySQL</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Completed)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">E-commerce Platform</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Complete e-commerce solution with payment integration and inventory management for a retail client in Dar es Salaam</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Laravel</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Vue.js</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">MySQL</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- Project 2: Mobile Banking App -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/internet-banking-online-payment-technology-concept_gtoa6s.jpg" 
                          alt="Mobile Banking App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Banking App</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">React Native</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Node.js</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Firebase</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Completed)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Banking App</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Firebase</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- Project 3: School Management System -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/modern-data-center-providing-cloud-services-enabling-businesses-access-computing-resources-storage-demand-internet-server-room-infrastructure-3d-render-animation_lljtml.jpg" 
                          alt="School Management System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">School Management System</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Comprehensive system for student management and academic tracking with automated reporting</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">React</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Node.js</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">MongoDB</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-500">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600">5.0 (Completed)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">School Management System</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Comprehensive system for student management and academic tracking with automated reporting</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">MongoDB</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-gray-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center gap-2">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
         </div>

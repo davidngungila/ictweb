@@ -16,7 +16,7 @@
             </div>
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Our Portfolio</h1>
             <p class="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Explore our latest projects and success stories from across Tanzania. From innovative web applications to robust network infrastructure, discover how we're transforming businesses across the nation.
+                Explore our latest ICT projects and success stories from across Tanzania. From innovative web applications to robust network infrastructure, discover how we're transforming businesses.
             </p>
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
@@ -25,11 +25,11 @@
                 </div>
                 <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                     <i class="fas fa-mobile-alt text-purple-300"></i>
-                    <span class="text-white">Mobile Apps</span>
+                    <span class="text-white">Mobile Applications</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                     <i class="fas fa-network-wired text-orange-300"></i>
-                    <span class="text-white">Network Solutions</span>
+                    <span class="text-white">Network Infrastructure</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                     <i class="fas fa-shield-alt text-red-300"></i>
@@ -42,6 +42,10 @@
                 <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                     <i class="fas fa-lightbulb text-indigo-300"></i>
                     <span class="text-white">ICT Consultancy</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <i class="fas fa-cloud text-cyan-300"></i>
+                    <span class="text-white">Cloud Services</span>
                 </div>
             </div>
         </div>
@@ -62,7 +66,7 @@
                     <i class="fas fa-project-diagram text-blue-600 text-2xl"></i>
                 </div>
                 <h3 class="text-3xl font-bold text-gray-900 mb-2">50+</h3>
-                <p class="text-gray-600">Projects Completed</p>
+                <p class="text-gray-600">ICT Projects Delivered</p>
             </div>
             <div class="text-center">
                 <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -75,13 +79,12 @@
                 <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-code text-purple-600 text-2xl"></i>
                 </div>
-                <h3 class="text-3xl font-bold text-gray-900 mb-2">100K+</h3>
+                <h3 class="text-3xl font-bold text-gray-900 mb-2">200K+</h3>
                 <p class="text-gray-600">Lines of Code</p>
             </div>
-           
             <div class="text-center">
-                <div class="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-globe text-red-600 text-2xl"></i>
+                <div class="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-globe text-orange-600 text-2xl"></i>
                 </div>
                 <h3 class="text-3xl font-bold text-gray-900 mb-2">15+</h3>
                 <p class="text-gray-600">Years Experience</p>
@@ -127,60 +130,228 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1: E-commerce Platform -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/showing-cart-trolley-shopping-online-sign-graphic_j4fy9u.jpg" 
                          alt="E-commerce Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">E-commerce Platform</h3>
-                <p class="text-gray-600 leading-relaxed">Complete e-commerce solution with payment integration and inventory management for a retail client in Dar es Salaam</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Laravel</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Vue.js</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">MySQL</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Stripe</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                            <span class="text-lg">🛒</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">E-commerce Platform</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Complete e-commerce solution with payment integration and inventory management for a retail client in Dar es Salaam</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Laravel</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Vue.js</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">MySQL</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Stripe</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Project 2: School Management System -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/modern-data-center-providing-cloud-services-enabling-businesses-access-computing-resources-storage-demand-internet-server-room-infrastructure-3d-render-animation_lljtml.jpg" 
                          alt="School Management System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">School Management System</h3>
-                <p class="text-gray-600 leading-relaxed">Comprehensive school management software with student tracking and parent portal for an educational institution in Arusha</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">PHP</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">MySQL</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Vue.js</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600">
+                            <span class="text-lg">🎓</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">School Management System</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Comprehensive school management software with student tracking and parent portal for an educational institution in Arusha</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 rounded text-xs">PHP</span>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 rounded text-xs">MySQL</span>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 rounded text-xs">Vue.js</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Project 3: Healthcare Portal -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/enterprise-data-hub-operating-ai-workloads-systems-scalable-research_hov8tc.jpg" 
                          alt="Healthcare Portal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-heartbeat"></i>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                            <span class="text-lg">🏥</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Healthcare Portal</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Patient management system with appointment scheduling, medical records, and telemedicine features for a private hospital in Moshi</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Healthcare Portal</h3>
-                <p class="text-gray-600 leading-relaxed">Patient management system with appointment scheduling, medical records, and telemedicine features for a private hospital in Moshi</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">React</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Node.js</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">MongoDB</span>
+            </div>
+
+            <!-- Project 4: Mobile Banking App -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/internet-banking-online-payment-technology-concept_gtoa6s.jpg" 
+                         alt="Mobile Banking App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                            <span class="text-lg">📱</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Banking App</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Flutter</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Swift</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Corporate Network Setup -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" 
+                         alt="Corporate Network Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+                            <span class="text-lg">🌐</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Corporate Network Setup</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Complete network infrastructure installation including LAN/WAN setup, security configuration, and 24/7 monitoring for a manufacturing company</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Cisco</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Mikrotik</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Ubiquiti</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Fortinet</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Food Delivery App -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" 
+                         alt="Food Delivery App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600">
+                            <span class="text-lg">🍔</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Food Delivery App</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">On-demand food delivery application with real-time tracking and payment integration</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-100 text-cyan-600 rounded text-xs">Flutter</span>
+                            <span class="px-2 py-1 bg-cyan-100 text-cyan-600 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-cyan-100 text-cyan-600 rounded text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-cyan-100 text-cyan-600 rounded text-xs">Google Maps</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -198,62 +369,116 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Mobile Banking App -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/internet-banking-online-payment-technology-concept_gtoa6s.jpg" 
                          alt="Mobile Banking App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Banking App</h3>
-                <p class="text-gray-600 leading-relaxed">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">React Native</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Flutter</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Firebase</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Swift</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                            <span class="text-lg">📱</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Banking App</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Secure mobile banking application with biometric authentication and real-time transactions for a financial institution</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Flutter</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Swift</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 2: Food Delivery App -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <!-- Food Delivery App -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" 
                          alt="Food Delivery App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Food Delivery App</h3>
-                <p class="text-gray-600 leading-relaxed">On-demand food delivery application with real-time tracking and payment integration</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Flutter</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Node.js</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Firebase</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Google Maps</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                            <span class="text-lg">🍔</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Food Delivery App</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">On-demand food delivery application with real-time tracking and payment integration</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Flutter</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Google Maps</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 3: Fitness Tracking App -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <!-- Fitness Tracking App -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/mainframe-devices-racks-room-with-big-data-cyber-internet-content-neon-light-cloud-computing-server-cabinet-modern-communication-storage-hardware-system_mywsie.jpg" 
                          alt="Fitness Tracking App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-running"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Fitness Tracking App</h3>
-                <p class="text-gray-600 leading-relaxed">Fitness tracking application with workout plans, progress monitoring, and social features</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">React Native</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">HealthKit</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Firebase</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Wearable API</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                            <span class="text-lg">🏃</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Fitness Tracking App</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Fitness tracking application with workout plans, progress monitoring, and social features</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">HealthKit</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">Wearable API</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -271,63 +496,116 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Corporate Network Setup -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" 
                          alt="Corporate Network Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Corporate Network Setup</h3>
-                <p class="text-gray-600 leading-relaxed">Complete network infrastructure installation including LAN/WAN setup, security configuration, and 24/7 monitoring for a manufacturing company</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Cisco</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Mikrotik</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Ubiquiti</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Fortinet</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+                            <span class="text-lg">🌐</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Corporate Network Setup</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Complete network infrastructure installation including LAN/WAN setup, security configuration, and 24/7 monitoring for a manufacturing company</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Cisco</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Mikrotik</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Ubiquiti</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Fortinet</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 2: Data Center Setup -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <!-- Data Center Setup -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg" 
                          alt="Data Center Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Data Center Setup</h3>
-                <p class="text-gray-600 leading-relaxed">Enterprise data center implementation with server rack setup, cooling systems, and backup solutions</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Dell</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">HP</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">VMware</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">APC</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+                            <span class="text-lg">🖥</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Data Center Setup</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Enterprise data center implementation with server rack setup, cooling systems, and backup solutions</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Dell</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">HP</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">VMware</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">APC</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project 3: Smart Office Network -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
+            <!-- Smart Office Network -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                <div class="relative h-48 overflow-hidden">
                     <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/beautiful-optical-fiber-detail_wck3wq.jpg" 
                          alt="Smart Office Network" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
                 </div>
-                <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-wifi"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Smart Office Network</h3>
-                <p class="text-gray-600 leading-relaxed">Smart office network setup with IoT integration and wireless connectivity solutions</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Cisco</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Meraki</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Ruckus</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Ubiquiti</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Google Nest</span>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+                            <span class="text-lg">📶</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-500">★★★★★</span>
+                            <span class="text-yellow-300">★★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Office Network</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smart office network setup with IoT integration and wireless connectivity solutions</p>
+                    <div class="mb-4">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">TECHNOLOGY</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Cisco</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Meraki</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Ruckus</span>
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">Google Nest</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
+                            View Project
+                        </a>
+                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
