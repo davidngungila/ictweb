@@ -101,4 +101,20 @@ class PageController extends Controller
     {
         return view('pages.services.ict-consultancy');
     }
+
+    /**
+     * Display system development service page.
+     */
+    public function servicesSystemDevelopment()
+    {
+        return view('pages.services.system-development');
+    }
+
+    /**
+     * Display cloud services service page.
+     */
+    public function servicesCloudServices()
+    {
+        return view('pages.services.cloud-services');
+    }
 }
