@@ -124,17 +124,17 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <!-- Home -->
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group">
+                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group {{ request()->routeIs('home') ? 'text-green-600' : '' }}">
                         Home
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform {{ request()->routeIs('home') ? 'scale-x-100' : 'scale-x-0' }} group-hover:scale-x-100 transition-transform duration-300"></span>
                     </a>
                     
                     <!-- Services Dropdown -->
                     <div class="relative group">
-                        <button class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 flex items-center gap-1 relative group">
+                        <button class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 flex items-center gap-1 relative group {{ request()->routeIs('services*') ? 'text-green-600' : '' }}">
                             Services 
                             <i class="fas fa-chevron-down text-xs ml-1 transition-transform group-hover:rotate-180"></i>
-                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-100"></span>
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform {{ request()->routeIs('services*') ? 'scale-x-100' : 'scale-x-0' }} group-hover:scale-x-100 transition-transform duration-300"></span>
                         </button>
                         <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
                             <div class="p-6">
@@ -236,7 +236,7 @@
                     
                     <!-- Portfolio Dropdown -->
                     <div class="relative group">
-                        <button class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 flex items-center gap-1">
+                        <button class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 flex items-center gap-1 {{ request()->routeIs('portfolio') ? 'text-green-600' : '' }}">
                             Portfolio <i class="fas fa-chevron-down text-xs ml-1 transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
@@ -332,15 +332,15 @@
                     </div>
                     
                     <!-- About Us -->
-                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group">
+                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group {{ request()->routeIs('about') ? 'text-green-600' : '' }}">
                         About Us
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform {{ request()->routeIs('about') ? 'scale-x-100' : 'scale-x-0' }} group-hover:scale-x-100 transition-transform duration-300"></span>
                     </a>
                     
                     <!-- Contact -->
-                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group">
+                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group {{ request()->routeIs('contact') ? 'text-green-600' : '' }}">
                         Contact
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform {{ request()->routeIs('contact') ? 'scale-x-100' : 'scale-x-0' }} group-hover:scale-x-100 transition-transform duration-300"></span>
                     </a>
                 </div>
 
@@ -361,18 +361,18 @@
             <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
                 <div class="px-6 py-4 space-y-2">
                     <!-- Home -->
-                    <a href="{{ route('home') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                    <a href="{{ route('home') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors {{ request()->routeIs('home') ? 'text-blue-600 bg-blue-50' : '' }}">
                         <i class="fas fa-home mr-3 text-blue-600"></i>Home
                     </a>
                     
                     <!-- Request Demo -->
-                    <a href="{{ route('request-demo') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                    <a href="{{ route('request-demo') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors {{ request()->routeIs('request-demo') ? 'text-blue-600 bg-blue-50' : '' }}">
                         <i class="fas fa-video mr-3 text-green-600"></i>Request Demo
                     </a>
                     
                     <!-- Services -->
                     <div class="border-t pt-2">
-                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-services')">
+                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between {{ request()->routeIs('services*') ? 'text-blue-600 bg-blue-50' : '' }}" onclick="toggleMobileSubmenu('mobile-services')">
                             <span><i class="fas fa-cogs mr-3 text-blue-600"></i>Services</span> 
                             <i class="fas fa-chevron-down text-xs transition-transform" id="mobile-services-icon"></i>
                         </button>
@@ -400,7 +400,7 @@
                     
                     <!-- Portfolio -->
                     <div class="border-t pt-2">
-                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between" onclick="toggleMobileSubmenu('mobile-portfolio')">
+                        <button class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between {{ request()->routeIs('portfolio') ? 'text-blue-600 bg-blue-50' : '' }}" onclick="toggleMobileSubmenu('mobile-portfolio')">
                             <span><i class="fas fa-briefcase mr-3 text-blue-600"></i>Portfolio</span>
                             <i class="fas fa-chevron-down text-xs transition-transform" id="mobile-portfolio-icon"></i>
                         </button>
@@ -418,12 +418,12 @@
                     </div>
                     
                     <!-- About -->
-                    <a href="{{ route('about') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-t pt-2">
+                    <a href="{{ route('about') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-t pt-2 {{ request()->routeIs('about') ? 'text-blue-600 bg-blue-50' : '' }}">
                         <i class="fas fa-info-circle mr-3 text-blue-600"></i>About Us
                     </a>
                     
                     <!-- Contact -->
-                    <a href="{{ route('contact') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-t pt-2">
+                    <a href="{{ route('contact') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-t pt-2 {{ request()->routeIs('contact') ? 'text-blue-600 bg-blue-50' : '' }}">
                         <i class="fas fa-envelope mr-3 text-blue-600"></i>Contact
                     </a>
                     

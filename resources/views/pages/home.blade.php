@@ -7,137 +7,170 @@
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white overflow-hidden">
     <!-- Hero Slider -->
-    <div class="relative h-96 md:h-[500px] overflow-hidden">
+    <div class="relative h-96 md:h-[600px] overflow-hidden">
         <div id="heroSlider" class="relative h-full">
-            <!-- Slide 1: Web Development -->
+            <!-- Slide 1: E-Commerce Solutions -->
             <div class="absolute inset-0 transition-opacity duration-1000" data-slide="0">
-                <div class="absolute inset-0 bg-black/40"></div>
-                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" class="w-full h-full object-cover">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="text-center px-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/showing-cart-trolley-shopping-online-sign-graphic_j4fy9u.jpg" alt="E-Commerce Solutions" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div class="text-left px-6 md:px-16 max-w-3xl">
                         <div class="mb-6">
                             <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                                <i class="fas fa-code mr-2"></i> Web Development
+                                <i class="fas fa-shopping-cart mr-2"></i> Success Stories
                             </span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Custom Web Solutions</h2>
-                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            Professional websites and web applications that drive your business forward
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">E-Commerce Solutions</h2>
+                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-semibold">Transforming online retail</p>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl">
+                            We design and implement e-commerce platforms that increase sales, streamline operations, and deliver exceptional customer experiences.
                         </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                                Get a Quote
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Start Your Project
                             </a>
-                            <a href="{{ route('services.web-development') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                                Learn More
+                            <a href="{{ route('portfolio') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                View Case Studies
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 2: Mobile App Development -->
+            <!-- Slide 2: Banking & Finance -->
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="1">
-                <div class="absolute inset-0 bg-black/40"></div>
-                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" class="w-full h-full object-cover">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="text-center px-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/internet-banking-online-payment-technology-concept_gtoa6s.jpg" alt="Banking & Finance" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div class="text-left px-6 md:px-16 max-w-3xl">
                         <div class="mb-6">
                             <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                                <i class="fas fa-mobile-alt mr-2"></i> Mobile Apps
+                                <i class="fas fa-university mr-2"></i> Success Stories
                             </span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Native Mobile Applications</h2>
-                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            iOS and Android apps that engage users and deliver exceptional experiences
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">Banking & Finance</h2>
+                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-semibold">Innovative fintech solutions</p>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl">
+                            Our technology empowers banks and financial institutions with secure, scalable, and customer-centric digital services.
                         </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                                Get a Quote
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Transform Your Bank
                             </a>
-                            <a href="{{ route('services.mobile-app-development') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                                Learn More
+                            <a href="{{ route('portfolio') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                View Case Studies
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 3: Network Installation -->
+            <!-- Slide 3: Education Systems -->
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="2">
-                <div class="absolute inset-0 bg-black/40"></div>
-                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" class="w-full h-full object-cover">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="text-center px-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/modern-data-center-providing-cloud-services-enabling-businesses-access-computing-resources-storage-demand-internet-server-room-infrastructure-3d-render-animation_lljtml.jpg" alt="Education Systems" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div class="text-left px-6 md:px-16 max-w-3xl">
                         <div class="mb-6">
                             <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                                <i class="fas fa-network-wired mr-2"></i> Network Solutions
+                                <i class="fas fa-graduation-cap mr-2"></i> Success Stories
                             </span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Robust Network Infrastructure</h2>
-                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            Professional network setup for seamless connectivity and security
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">Education Systems</h2>
+                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-semibold">Smart school management</p>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl">
+                            From student enrollment to performance tracking, our platforms make education administration seamless and efficient.
                         </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                                Get a Quote
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Modernize Your School
                             </a>
-                            <a href="{{ route('services.network-installation') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                                Learn More
+                            <a href="{{ route('portfolio') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                View Case Studies
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: Cybersecurity -->
+            <!-- Slide 4: Healthcare Solutions -->
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="3">
-                <div class="absolute inset-0 bg-black/40"></div>
-                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" class="w-full h-full object-cover">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="text-center px-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="Healthcare Solutions" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div class="text-left px-6 md:px-16 max-w-3xl">
                         <div class="mb-6">
                             <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                                <i class="fas fa-shield-alt mr-2"></i> Cybersecurity
+                                <i class="fas fa-heartbeat mr-2"></i> Success Stories
                             </span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Advanced Security Solutions</h2>
-                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            Protect your digital assets with comprehensive security measures
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">Healthcare Solutions</h2>
+                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-semibold">Modern medical management</p>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl">
+                            We develop healthcare systems that improve patient care, streamline records, and enhance hospital operations.
                         </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                                Get a Quote
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Enhance Patient Care
                             </a>
-                            <a href="{{ route('services.cybersecurity') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                                Learn More
+                            <a href="{{ route('portfolio') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                View Case Studies
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 5: IT Support & Consultancy -->
+            <!-- Slide 5: Enterprise Systems -->
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="4">
-                <div class="absolute inset-0 bg-black/40"></div>
-                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg" alt="IT Support & Consultancy" class="w-full h-full object-cover">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="text-center px-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="Enterprise Systems" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div class="text-left px-6 md:px-16 max-w-3xl">
                         <div class="mb-6">
                             <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                                <i class="fas fa-headset mr-2"></i> IT Support & Consultancy
+                                <i class="fas fa-building mr-2"></i> Success Stories
                             </span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-4">Expert IT Services</h2>
-                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            24/7 support and strategic technology consulting for your business
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">Enterprise Systems</h2>
+                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-semibold">Optimizing business operations</p>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl">
+                            Our enterprise solutions help organizations manage workflows, resources, and projects more effectively.
                         </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="{{ route('contact') }}" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                                Get a Quote
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Optimize Your Business
                             </a>
-                            <a href="{{ route('services.ict-consultancy') }}" class="px-6 py-3 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
-                                Learn More
+                            <a href="{{ route('portfolio') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                View Case Studies
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Security Projects -->
+            <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="5">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Security Projects" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div class="text-left px-6 md:px-16 max-w-3xl">
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                                <i class="fas fa-shield-alt mr-2"></i> Success Stories
+                            </span>
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-white">Security Projects</h2>
+                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-semibold">Protecting digital assets</p>
+                        <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl">
+                            We deliver cutting-edge cybersecurity implementations to safeguard businesses against cyber threats.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-start gap-4">
+                            <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                Secure Your Business
+                            </a>
+                            <a href="{{ route('portfolio') }}" class="px-8 py-4 bg-white/20 text-white font-bold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 backdrop-blur-md">
+                                View Case Studies
                             </a>
                         </div>
                     </div>
@@ -152,6 +185,7 @@
             <button onclick="showSlide(2)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="2"></button>
             <button onclick="showSlide(3)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="3"></button>
             <button onclick="showSlide(4)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="4"></button>
+            <button onclick="showSlide(5)" class="w-3 h-3 bg-white/50 rounded-full transition-all duration-300 slider-dot" data-dot="5"></button>
         </div>
 
         <!-- Navigation Arrows -->
@@ -522,7 +556,7 @@
 <!-- Hero Slider JavaScript -->
 <script>
 let currentSlide = 0;
-const totalSlides = 5;
+const totalSlides = 6;
 let slideInterval;
 
 function showSlide(index) {
