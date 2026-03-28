@@ -124,55 +124,111 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <!-- Home -->
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2">
+                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group">
                         Home
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                     </a>
                     
                     <!-- Services Dropdown -->
                     <div class="relative group">
-                        <button class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2 flex items-center gap-1">
-                            Services <i class="fas fa-chevron-down text-xs ml-1 transition-transform group-hover:rotate-180"></i>
+                        <button class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 flex items-center gap-1 relative group">
+                            Services 
+                            <i class="fas fa-chevron-down text-xs ml-1 transition-transform group-hover:rotate-180"></i>
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-100"></span>
                         </button>
-                        <div class="absolute top-full left-0 w-80 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
-                            <div class="py-2">
-                                <a href="{{ route('services.web-development') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-globe text-blue-600"></i>
-                                        <span>Web Development</span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
+                            <div class="p-6">
+                                <div class="grid grid-cols-2 gap-8">
+                                    <!-- Core Development Services -->
+                                    <div>
+                                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Core Development</h3>
+                                        <div class="space-y-3">
+                                            <a href="{{ route('services.web-development') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0">
+                                                    <span class="text-sm">🌐</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Web Development</span>
+                                                    <p class="text-xs text-gray-500">Professional websites & applications</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('services.mobile-app-development') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0">
+                                                    <span class="text-sm">📱</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Mobile Apps</span>
+                                                    <p class="text-xs text-gray-500">iOS & Android solutions</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('services.system-development') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 flex-shrink-0">
+                                                    <span class="text-sm">🧾</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">System Development</span>
+                                                    <p class="text-xs text-gray-500">Custom business systems</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('services.network-installation') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600 flex-shrink-0">
+                                                    <span class="text-sm">🌐</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Network Installation</span>
+                                                    <p class="text-xs text-gray-500">Infrastructure setup</p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="{{ route('services.mobile-app-development') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-mobile-alt text-blue-600"></i>
-                                        <span>Mobile Apps</span>
+                                    
+                                    <!-- Support & Infrastructure Services -->
+                                    <div>
+                                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Support Services</h3>
+                                        <div class="space-y-3">
+                                            <a href="{{ route('services.cybersecurity') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0">
+                                                    <span class="text-sm">🛡️</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Cybersecurity</span>
+                                                    <p class="text-xs text-gray-500">Security solutions</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('services.it-support') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0">
+                                                    <span class="text-sm">🧰</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">IT Support</span>
+                                                    <p class="text-xs text-gray-500">24/7 technical assistance</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('services.ict-consultancy') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 flex-shrink-0">
+                                                    <span class="text-sm">💡</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">ICT Consultancy</span>
+                                                    <p class="text-xs text-gray-500">Strategic technology planning</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('services.cloud-services') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 flex-shrink-0">
+                                                    <span class="text-sm">☁️</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Cloud Services</span>
+                                                    <p class="text-xs text-gray-500">Cloud infrastructure</p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="{{ route('services.network-installation') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-network-wired text-blue-600"></i>
-                                        <span>Network Installation</span>
-                                    </div>
-                                </a>
-                                <a href="{{ route('services.cybersecurity') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-shield-alt text-blue-600"></i>
-                                        <span>Cybersecurity</span>
-                                    </div>
-                                </a>
-                                <a href="{{ route('services.it-support') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-headset text-blue-600"></i>
-                                        <span>IT Support</span>
-                                    </div>
-                                </a>
-                                <a href="{{ route('services.ict-consultancy') }}" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-lightbulb text-blue-600"></i>
-                                        <span>ICT Consultancy</span>
-                                    </div>
-                                </a>
-                                <div class="border-t pt-2 mt-2">
-                                    <p class="text-xs text-gray-500 px-4">Professional ICT solutions for your business growth</p>
+                                </div>
+                                <div class="border-t mt-4 pt-4">
+                                    <a href="{{ route('services') }}" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-2">
+                                        View All Services <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -180,51 +236,118 @@
                     
                     <!-- Portfolio Dropdown -->
                     <div class="relative group">
-                        <button class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2 flex items-center gap-1">
+                        <button class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 flex items-center gap-1">
                             Portfolio <i class="fas fa-chevron-down text-xs ml-1 transition-transform group-hover:rotate-180"></i>
                         </button>
-                        <div class="absolute top-full left-0 w-72 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
-                            <div class="py-2">
-                                <a href="{{ route('portfolio') }}#web-projects" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-globe text-blue-600"></i>
-                                        <span>Web Projects</span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
+                            <div class="p-6">
+                                <div class="grid grid-cols-2 gap-8">
+                                    <!-- Project Categories -->
+                                    <div>
+                                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Project Categories</h3>
+                                        <div class="space-y-4">
+                                            <a href="#" class="flex items-start gap-3 group/item">
+                                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Web Projects" class="w-16 h-16 rounded-lg object-cover">
+                                                <div>
+                                                    <h4 class="font-semibold text-gray-900 group-hover/item:text-green-600 transition-colors">Web Projects</h4>
+                                                    <p class="text-sm text-gray-600">Websites & Web Apps</p>
+                                                    <p class="text-xs text-gray-500 mt-1">Custom web development solutions</p>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex items-start gap-3 group/item">
+                                                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Mobile Apps" class="w-16 h-16 rounded-lg object-cover">
+                                                <div>
+                                                    <h4 class="font-semibold text-gray-900 group-hover/item:text-green-600 transition-colors">Mobile Applications</h4>
+                                                    <p class="text-sm text-gray-600">iOS & Android Apps</p>
+                                                    <p class="text-xs text-gray-500 mt-1">Native and cross-platform apps</p>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex items-start gap-3 group/item">
+                                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Network Solutions" class="w-16 h-16 rounded-lg object-cover">
+                                                <div>
+                                                    <h4 class="font-semibold text-gray-900 group-hover/item:text-green-600 transition-colors">Network Infrastructure</h4>
+                                                    <p class="text-sm text-gray-600">IT Networks</p>
+                                                    <p class="text-xs text-gray-500 mt-1">Enterprise network solutions</p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="{{ route('portfolio') }}#mobile-apps" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-mobile-alt text-blue-600"></i>
-                                        <span>Mobile Apps</span>
+                                    
+                                    <!-- Success Stories -->
+                                    <div>
+                                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Success Stories</h3>
+                                        <div class="space-y-3">
+                                            <a href="{{ route('portfolio') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <i class="fas fa-shopping-cart text-green-600"></i>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">E-commerce Solutions</span>
+                                                    <p class="text-xs text-gray-500">Online retail platforms</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('portfolio') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <i class="fas fa-university text-green-600"></i>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Banking & Finance</span>
+                                                    <p class="text-xs text-gray-500">Financial technology solutions</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('portfolio') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <i class="fas fa-graduation-cap text-green-600"></i>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Education Systems</span>
+                                                    <p class="text-xs text-gray-500">School management platforms</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('portfolio') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <i class="fas fa-hospital text-green-600"></i>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Healthcare Solutions</span>
+                                                    <p class="text-xs text-gray-500">Medical management systems</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('portfolio') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <i class="fas fa-industry text-green-600"></i>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Enterprise Systems</span>
+                                                    <p class="text-xs text-gray-500">Business management solutions</p>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('portfolio') }}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition-colors group">
+                                                <i class="fas fa-shield-alt text-green-600"></i>
+                                                <div>
+                                                    <span class="text-gray-700 group-hover:text-green-600 transition-colors font-medium">Security Projects</span>
+                                                    <p class="text-xs text-gray-500">Cybersecurity implementations</p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </a>
-                                <a href="{{ route('portfolio') }}#network-projects" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-network-wired text-blue-600"></i>
-                                        <span>Network Solutions</span>
-                                    </div>
-                                </a>
-                                <div class="border-t pt-2 mt-2">
-                                    <p class="text-xs text-gray-500 px-4">Explore our latest projects and success stories</p>
+                                </div>
+                                <div class="border-t mt-4 pt-4">
+                                    <a href="{{ route('portfolio') }}" class="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-2">
+                                        View All Projects <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- About -->
-                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2">
+                    <!-- About Us -->
+                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group">
                         About Us
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                     </a>
                     
                     <!-- Contact -->
-                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2">
+                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-green-600 font-medium transition-colors py-2 relative group">
                         Contact
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                     </a>
                 </div>
 
-                <!-- Desktop CTA Button -->
-                <div class="hidden md:block">
-                    <a href="{{ route('contact') }}" class="px-6 py-2 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                        Get Quote
+                <!-- Desktop Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="{{ route('request-demo') }}" class="px-6 py-2 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        Request Demo
                     </a>
                 </div>
 
@@ -240,6 +363,11 @@
                     <!-- Home -->
                     <a href="{{ route('home') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">
                         <i class="fas fa-home mr-3 text-blue-600"></i>Home
+                    </a>
+                    
+                    <!-- Request Demo -->
+                    <a href="{{ route('request-demo') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-video mr-3 text-green-600"></i>Request Demo
                     </a>
                     
                     <!-- Services -->

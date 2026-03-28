@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     /**
-     * Display the home page.
+     * Display home page.
      */
     public function home()
     {
@@ -15,7 +15,7 @@ class PageController extends Controller
     }
 
     /**
-     * Display the about page.
+     * Display about page.
      */
     public function about()
     {
@@ -23,7 +23,7 @@ class PageController extends Controller
     }
 
     /**
-     * Display the services page.
+     * Display services page.
      */
     public function services()
     {
@@ -31,7 +31,7 @@ class PageController extends Controller
     }
 
     /**
-     * Display the portfolio page.
+     * Display portfolio page.
      */
     public function portfolio()
     {
@@ -44,6 +44,14 @@ class PageController extends Controller
     public function contact()
     {
         return view('pages.contact');
+    }
+
+    /**
+     * Display request demo page.
+     */
+    public function requestDemo()
+    {
+        return view('pages.request-demo');
     }
 
     /**

@@ -3,7 +3,39 @@
 @section('title', 'Contact Us - Jezdan Technology')
 @section('description', 'Contact Jezdan Technology in Moshi, Tanzania. Get in touch for reliable ICT solutions including web development, mobile apps, network installation, cybersecurity, and IT support.')
 
+@push('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+@endpush
+
 @section('content')
+<!-- Success/Error Messages -->
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: '{{ session('success') }}',
+            confirmButtonColor: '#10b981',
+            confirmButtonText: 'Great!',
+            timer: 5000,
+            timerProgressBar: true
+        });
+    </script>
+@endif
+
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Submission Error!',
+            text: '{{ session('error') }}',
+            confirmButtonColor: '#dc3545',
+            confirmButtonText: 'Try Again',
+            timer: 5000,
+            timerProgressBar: true
+        });
+    </script>
+@endif
 <!-- Hero Section -->
 <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 overflow-hidden">
     <div class="absolute inset-0 bg-black opacity-20"></div>
@@ -410,4 +442,9 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endpush
+
 @endsection
