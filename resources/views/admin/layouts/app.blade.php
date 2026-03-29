@@ -1185,23 +1185,12 @@
     </div>
     
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-6 mt-auto">
+    <footer class="bg-gray-900 text-gray-300 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
+            <div class="flex flex-col md:flex-row justify-center items-center text-center">
+                <div>
                     <p class="text-lg font-semibold text-white">Jezdan Technology — Reliable Systems. Real Results.</p>
-                    <p class="text-sm mt-1">© 2026 All Rights Reserved | Built with precision & innovation</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fas fa-globe"></i> Website
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fas fa-envelope"></i> Contact
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fas fa-shield-alt"></i> Support
-                    </a>
+                    <p class="text-sm mt-1"> 2026 All Rights Reserved | Built with precision & innovation</p>
                 </div>
             </div>
         </div>
