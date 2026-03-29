@@ -1168,10 +1168,25 @@
             deleteCallback();
         }
     }
-    </script>
     
-    <!-- Include Modal Component -->
-    @include('admin.components.modal')
+    function openModal(modalId) {
+        document.getElementById(modalId).classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('bg-opacity-50')) {
+            event.target.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    });
+    </script>
     
     <!-- Success/Error Notifications -->
     <div id="notification" class="fixed top-4 right-4 z-50 hidden">
