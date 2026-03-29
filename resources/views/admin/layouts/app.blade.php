@@ -200,17 +200,17 @@
                                     <i class="fas fa-chart-line mr-3 text-xs"></i>
                                     Overview
                                 </a>
-                                <a href="{{ route('admin.invoices.index') }}" 
+                                <a href="{{ route('admin.invoices.advanced') }}" 
                                    class="{{ request()->is('admin/invoices*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-file-invoice-dollar mr-3 text-xs"></i>
                                     Invoices
                                 </a>
-                                <a href="{{ route('admin.expenses.index') }}" 
+                                <a href="{{ route('admin.expenses.advanced') }}" 
                                    class="{{ request()->is('admin/expenses*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-money-bill-wave mr-3 text-xs"></i>
                                     Expenses
                                 </a>
-                                <a href="{{ route('admin.payments.index') }}" 
+                                <a href="{{ route('admin.payments.advanced') }}" 
                                    class="{{ request()->is('admin/payments*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-credit-card mr-3 text-xs"></i>
                                     Payments
@@ -607,19 +607,19 @@
                                 <i class="fas fa-chart-line mr-3 text-xs"></i>
                                 Overview
                             </a>
-                            <a href="{{ route('admin.invoices.index') }}" 
+                            <a href="{{ route('admin.invoices.advanced') }}" 
                                @click="mobileSidebarOpen = false"
                                class="{{ request()->is('admin/invoices*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                 <i class="fas fa-file-invoice-dollar mr-3 text-xs"></i>
                                 Invoices
                             </a>
-                            <a href="{{ route('admin.expenses.index') }}" 
+                            <a href="{{ route('admin.expenses.advanced') }}" 
                                @click="mobileSidebarOpen = false"
                                class="{{ request()->is('admin/expenses*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                 <i class="fas fa-money-bill-wave mr-3 text-xs"></i>
                                 Expenses
                             </a>
-                            <a href="{{ route('admin.payments.index') }}" 
+                            <a href="{{ route('admin.payments.advanced') }}" 
                                @click="mobileSidebarOpen = false"
                                class="{{ request()->is('admin/payments*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                 <i class="fas fa-credit-card mr-3 text-xs"></i>

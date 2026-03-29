@@ -235,6 +235,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.offers.advanced');
         })->name('offers.advanced');
         
+        // Financial Management Pages
+        Route::get('/invoices', function() {
+            return view('admin.invoices.advanced');
+        })->name('invoices.advanced');
+        
+        Route::get('/expenses', function() {
+            return view('admin.expenses.advanced');
+        })->name('expenses.advanced');
+        
+        Route::get('/payments', function() {
+            return view('admin.payments.advanced');
+        })->name('payments.advanced');
+        
         // Settings Sub-pages
         Route::get('/settings/general', function() {
             return view('admin.settings.general');
