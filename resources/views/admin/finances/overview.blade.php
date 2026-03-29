@@ -431,7 +431,7 @@
         <div class="bg-white shadow rounded-lg">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-medium text-gray-900">Recent Invoices</h3>
-                <a href="{{ route('admin.invoices.index') }}" class="text-sm text-blue-600 hover:text-blue-500">
+                <a href="{{ route('admin.invoices.advanced') }}" class="text-sm text-blue-600 hover:text-blue-500">
                     View all
                 </a>
             </div>
