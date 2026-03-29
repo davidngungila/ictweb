@@ -1049,8 +1049,31 @@
             </header>
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-y-auto">
+            <main class="flex-1 overflow-y-auto flex flex-col">
                 @yield('content')
+                
+                <!-- Success/Error Notifications -->
+                <div id="notification" class="fixed top-4 right-4 z-50 hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-4 flex items-center space-x-3">
+                        <div id="notification-icon"></div>
+                        <div>
+                            <p id="notification-title" class="font-medium text-gray-900"></p>
+                            <p id="notification-message" class="text-sm text-gray-500"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <footer class="bg-gray-900 text-gray-300 py-6 mt-auto">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col md:flex-row justify-center items-center text-center">
+                            <div>
+                                <p class="text-lg font-semibold text-white">Jezdan Technology — Reliable Systems. Real Results.</p>
+                                <p class="text-sm mt-1">© 2026 All Rights Reserved | Built with precision & innovation</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </main>
         </div>
     </div>
@@ -1187,28 +1210,5 @@
         }
     });
     </script>
-    
-    <!-- Success/Error Notifications -->
-    <div id="notification" class="fixed top-4 right-4 z-50 hidden">
-        <div class="bg-white rounded-lg shadow-lg p-4 flex items-center space-x-3">
-            <div id="notification-icon"></div>
-            <div>
-                <p id="notification-title" class="font-medium text-gray-900"></p>
-                <p id="notification-message" class="text-sm text-gray-500"></p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-center items-center text-center">
-                <div>
-                    <p class="text-lg font-semibold text-white">Jezdan Technology — Reliable Systems. Real Results.</p>
-                    <p class="text-sm mt-1"> 2026 All Rights Reserved | Built with precision & innovation</p>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
