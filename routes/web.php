@@ -222,6 +222,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.tasks.advanced');
         })->name('tasks.advanced');
         
+        // Advanced Package Management Pages
+        Route::get('/packages', function() {
+            return view('admin.packages.advanced');
+        })->name('packages.advanced');
+        
+        Route::get('/pricing', function() {
+            return view('admin.pricing.advanced');
+        })->name('pricing.advanced');
+        
+        Route::get('/offers', function() {
+            return view('admin.offers.advanced');
+        })->name('offers.advanced');
+        
         // Settings Sub-pages
         Route::get('/settings/general', function() {
             return view('admin.settings.general');
