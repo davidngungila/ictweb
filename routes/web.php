@@ -236,6 +236,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('offers.advanced');
         
         // Financial Management Pages
+        Route::get('/finances/overview', function() {
+            return view('admin.finances.overview');
+        })->name('finances.overview');
+        
         Route::get('/invoices', function() {
             return view('admin.invoices.advanced');
         })->name('invoices.advanced');
