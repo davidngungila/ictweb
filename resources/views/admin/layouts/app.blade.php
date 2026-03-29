@@ -1131,6 +1131,59 @@
         });
     </script>
     
+    <!-- Notification Functions -->
+    <script>
+    function showNotification(title, message, type = 'success') {
+        const notification = document.getElementById('notification');
+        const iconElement = document.getElementById('notification-icon');
+        const titleElement = document.getElementById('notification-title');
+        const messageElement = document.getElementById('notification-message');
+        
+        // Set content
+        titleElement.textContent = title;
+        messageElement.textContent = message;
+        
+        // Set icon based on type
+        if (type === 'success') {
+            iconElement.innerHTML = '<i class="fas fa-check-circle text-green-500 text-xl"></i>';
+        } else if (type === 'error') {
+            iconElement.innerHTML = '<i class="fas fa-exclamation-circle text-red-500 text-xl"></i>';
+        } else if (type === 'warning') {
+            iconElement.innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500 text-xl"></i>';
+        } else {
+            iconElement.innerHTML = '<i class="fas fa-info-circle text-blue-500 text-xl"></i>';
+        }
+        
+        // Show notification
+        notification.classList.remove('hidden');
+        
+        // Auto hide after 3 seconds
+        setTimeout(() => {
+            notification.classList.add('hidden');
+        }, 3000);
+    }
+    
+    function confirmDelete(itemName, deleteCallback) {
+        if (confirm(`Are you sure you want to delete "${itemName}"? This action cannot be undone.`)) {
+            deleteCallback();
+        }
+    }
+    </script>
+    
+    <!-- Include Modal Component -->
+    @include('admin.components.modal')
+    
+    <!-- Success/Error Notifications -->
+    <div id="notification" class="fixed top-4 right-4 z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-4 flex items-center space-x-3">
+            <div id="notification-icon"></div>
+            <div>
+                <p id="notification-title" class="font-medium text-gray-900"></p>
+                <p id="notification-message" class="text-sm text-gray-500"></p>
+            </div>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-6 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

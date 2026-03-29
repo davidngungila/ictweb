@@ -12,7 +12,7 @@
 
     <!-- Quick Actions -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+        <button onclick="openModal('createPackageModal')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
             <i class="fas fa-plus mr-2"></i>
             New Package
         </button>
@@ -153,7 +153,7 @@
                     <span class="text-4xl font-bold">$999</span>
                     <span class="text-blue-100 ml-2">/month</span>
                 </div>
-                <button class="w-full bg-white text-blue-600 py-2 px-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                <button onclick="openEditPackageModal('enterprise-pro')" class="w-full bg-white text-blue-600 py-2 px-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
                     Edit Package
                 </button>
             </div>
@@ -190,6 +190,16 @@
                         <span class="text-gray-500">Monthly Revenue</span>
                         <span class="font-semibold text-green-600">$126,873</span>
                     </div>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                <div class="flex justify-between">
+                    <button onclick="openEditPackageModal('enterprise-pro')" class="flex-1 mr-2 bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-edit mr-2"></i>Edit
+                    </button>
+                    <button onclick="openDeletePackageModal('Enterprise Pro')" class="flex-1 ml-2 bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                        <i class="fas fa-trash mr-2"></i>Delete
+                    </button>
                 </div>
             </div>
         </div>
@@ -653,4 +663,259 @@
         </div>
     </div>
 </div>
+
+<!-- Create Package Modal -->
+<div id="createPackageModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden">
+    <div class="relative top-20 mx-auto p-5 border w-[600px] shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-medium text-gray-900">Create New Package</h3>
+                <button onclick="closeModal('createPackageModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form onsubmit="handleCreatePackage(event)">
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Package Name</label>
+                            <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., Professional Plus">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Category</option>
+                                <option>Web Development</option>
+                                <option>Mobile Apps</option>
+                                <option>Cloud Services</option>
+                                <option>Consulting</option>
+                                <option>Support & Maintenance</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Describe the package features and benefits"></textarea>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Price</label>
+                            <input type="number" required min="0" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="99.99">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Billing Cycle</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option>Monthly</option>
+                                <option>Quarterly</option>
+                                <option>Annually</option>
+                                <option>One-time</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Coming Soon</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Features (one per line)</label>
+                        <textarea rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Unlimited Projects&#10;Priority Support&#10;Custom Integrations"></textarea>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" onclick="closeModal('createPackageModal')" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Create Package
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Package Modal -->
+<div id="editPackageModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden">
+    <div class="relative top-20 mx-auto p-5 border w-[600px] shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-medium text-gray-900">Edit Package</h3>
+                <button onclick="closeModal('editPackageModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form onsubmit="handleEditPackage(event)">
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Package Name</label>
+                            <input type="text" required id="editPackageName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                            <select required id="editPackageCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option>Web Development</option>
+                                <option>Mobile Apps</option>
+                                <option>Cloud Services</option>
+                                <option>Consulting</option>
+                                <option>Support & Maintenance</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea rows="3" required id="editPackageDescription" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Price</label>
+                            <input type="number" required min="0" step="0.01" id="editPackagePrice" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Billing Cycle</label>
+                            <select required id="editPackageBilling" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option>Monthly</option>
+                                <option>Quarterly</option>
+                                <option>Annually</option>
+                                <option>One-time</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select required id="editPackageStatus" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Coming Soon</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Features (one per line)</label>
+                        <textarea rows="4" required id="editPackageFeatures" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" onclick="closeModal('editPackageModal')" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Update Package
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deletePackageModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-medium text-gray-900">Delete Package</h3>
+                <button onclick="closeModal('deletePackageModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mt-2">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-900">Are you sure you want to delete this package?</p>
+                        <p class="text-sm text-gray-500" id="deletePackageName">Package name will appear here</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                    <p class="text-sm text-yellow-800">
+                        <strong>Warning:</strong> This action cannot be undone. All associated subscriptions will be affected.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex justify-end space-x-3">
+                <button onclick="closeModal('deletePackageModal')" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">
+                    Cancel
+                </button>
+                <button onclick="handleDeletePackage()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                    Delete Package
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// CRUD Operations
+function handleCreatePackage(event) {
+    event.preventDefault();
+    
+    // Simulate API call
+    showNotification('Success', 'Package created successfully!', 'success');
+    closeModal('createPackageModal');
+    
+    // Reset form
+    event.target.reset();
+}
+
+function handleEditPackage(event) {
+    event.preventDefault();
+    
+    // Simulate API call
+    showNotification('Success', 'Package updated successfully!', 'success');
+    closeModal('editPackageModal');
+}
+
+function openEditPackageModal(packageId) {
+    // Simulate loading package data
+    const packageData = {
+        name: 'Enterprise Pro',
+        category: 'All Services',
+        description: 'Complete business solution with advanced features',
+        price: '999',
+        billing: 'Monthly',
+        status: 'Active',
+        features: 'Unlimited Projects\nPriority Support\nCustom Integrations'
+    };
+    
+    // Populate form
+    document.getElementById('editPackageName').value = packageData.name;
+    document.getElementById('editPackageCategory').value = packageData.category;
+    document.getElementById('editPackageDescription').value = packageData.description;
+    document.getElementById('editPackagePrice').value = packageData.price;
+    document.getElementById('editPackageBilling').value = packageData.billing;
+    document.getElementById('editPackageStatus').value = packageData.status;
+    document.getElementById('editPackageFeatures').value = packageData.features;
+    
+    openModal('editPackageModal');
+}
+
+function openDeletePackageModal(packageName) {
+    document.getElementById('deletePackageName').textContent = `Package: ${packageName}`;
+    openModal('deletePackageModal');
+}
+
+function handleDeletePackage() {
+    // Simulate API call
+    showNotification('Success', 'Package deleted successfully!', 'success');
+    closeModal('deletePackageModal');
+}
+</script>
 @endsection
