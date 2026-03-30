@@ -14,12 +14,17 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        Admin::create([
-            'name' => 'Super Admin',
-            'email' => 'admin@jezdantech.com',
-            'password' => Hash::make('admin123'),
-            'role' => 'super_admin',
-            'active' => true,
-        ]);
+        // Check if admin already exists
+        $existingAdmin = \App\Models\Admin::where('email', 'admin@jezdantech.com')->first();
+        
+        if (!$existingAdmin) {
+            Admin::create([
+                'name' => 'Super Admin',
+                'email' => 'admin@jezdantech.com',
+                'password' => Hash::make('admin123'),
+                'role' => 'super_admin',
+                'active' => true,
+            ]);
+        }
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DemoRequestController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\ExpenseController;
+use App\Http\Controllers\Admin\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +52,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/contacts/{contact}/status', [AdminContactController::class, 'updateStatus'])->name('contacts.update-status');
         
         // Clients
-        Route::get('/clients', function() {
-            return view('admin.clients.index');
-        })->name('clients.index');
+        Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+        Route::get('/clients/data', [ClientController::class, 'data'])->name('clients.data');
+        Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
+        Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+        Route::get('/clients/{client}', [ClientController::class, 'show'])->name('clients.show');
+        Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+        Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
+        Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+        Route::get('/clients/search', [ClientController::class, 'search'])->name('clients.search');
+        Route::get('/clients/stats', [ClientController::class, 'stats'])->name('clients.stats');
         
         // Projects
         Route::get('/projects', function() {
