@@ -185,6 +185,6 @@ class ClientController extends Controller
             return $thisMonth > 0 ? 100 : 0;
         }
         
-        return round((($thisMonth - $lastMonth) / $lastMonth * 100, 2);
+        return round((($thisMonth - $lastMonth) / $lastMonth * 100), 2);
     }
 }
