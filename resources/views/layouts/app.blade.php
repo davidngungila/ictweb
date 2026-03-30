@@ -39,37 +39,14 @@
         }
     </style>
     
-    <!-- Google Analytics -->
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SRVTFSDXT"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Debug: Add debugging to verify tracking
-      console.log('Google Analytics: Initializing tracking with ID G-1SRVTFSDXT');
-      
-      gtag('config', 'G-1SRVTFSDXT', {
-        debug_mode: true,
-        send_page_view: true,
-        cookie_flags: 'SameSite=None;Secure'
-      });
-      
-      // Debug: Verify gtag is working
-      if (typeof gtag === 'function') {
-        console.log('Google Analytics: gtag function is available');
-      } else {
-        console.error('Google Analytics: gtag function is not available');
-      }
-      
-      // Debug: Test event tracking
-      gtag('event', 'debug_test', {
-        event_category: 'Debug',
-        event_label: 'Analytics Test',
-        value: 1
-      });
-      console.log('Google Analytics: Debug test event sent');
+      gtag('config', 'G-N2F56W4HPN');
     </script>
 </head>
 <body class="bg-gray-50 font-manrope">
