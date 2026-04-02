@@ -88,6 +88,12 @@
             }
         }
     </style>
+    
+    <!-- PDF.js for PDF previews -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen overflow-hidden">
@@ -160,6 +166,11 @@
                                    class="{{ request()->is('admin/services*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-cogs mr-3 text-xs"></i>
                                     Services
+                                </a>
+                                <a href="{{ route('admin.file-manager.index') }}" 
+                                   class="{{ request()->is('admin/file-manager*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                    <i class="fas fa-folder mr-3 text-xs"></i>
+                                    File Manager
                                 </a>
                             </div>
                         </div>

@@ -12,22 +12,22 @@
 
     <!-- Quick Actions -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+        <a href="{{ route('projects.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
             <i class="fas fa-plus mr-2"></i>
             New Project
-        </button>
-        <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+        </a>
+        <a href="{{ route('projects.index') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
             <i class="fas fa-users mr-2"></i>
             Assign Team
-        </button>
-        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
+        </a>
+        <a href="{{ route('projects.index') }}?view=timeline" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
             <i class="fas fa-chart-gantt mr-2"></i>
             Timeline View
-        </button>
-        <button class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
-            <i class="fas fa-cog mr-2"></i>
-            Settings
-        </button>
+        </a>
+        <a href="{{ route('dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
+            <i class="fas fa-tachometer-alt mr-2"></i>
+            Dashboard
+        </a>
     </div>
 
     <!-- Project Analytics Dashboard -->

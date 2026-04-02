@@ -12,40 +12,18 @@
             <p class="text-gray-600 mt-1">Intelligent demo scheduling and conversion tracking system</p>
         </div>
         <div class="flex space-x-3">
-            <div class="relative" x-data="{ open: false }">
-                <button @click="open = !open" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
-                    <i class="fas fa-calendar-plus mr-2"></i>
-                    Schedule Demo
-                    <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                </button>
-                <div x-show="open" @click.away="open = false" 
-                     x-transition:enter="transition ease-out duration-200"
-                     x-transition:enter-start="opacity-0 transform scale-95"
-                     x-transition:enter-end="opacity-100 transform scale-100"
-                     x-transition:leave="transition ease-in duration-75"
-                     x-transition:leave-start="opacity-100 transform scale-100"
-                     x-transition:leave-end="opacity-0 transform scale-95"
-                     class="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-video mr-2"></i>Video Call Demo
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-users mr-2"></i>In-Person Meeting
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-phone mr-2"></i>Phone Call Demo
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-chalkboard-teacher mr-2"></i>Group Demo Session
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+            <a href="{{ route('admin.demo-requests.create') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+                <i class="fas fa-plus mr-2"></i>
+                New Demo Request
+            </a>
+            <a href="{{ route('admin.demo-requests.export') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
                 <i class="fas fa-download mr-2"></i>
-                Advanced Export
-            </button>
+                Export
+            </a>
+            <a href="{{ route('admin.dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center">
+                <i class="fas fa-tachometer-alt mr-2"></i>
+                Dashboard
+            </a>
         </div>
     </div>
 

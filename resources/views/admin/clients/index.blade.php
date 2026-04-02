@@ -24,10 +24,18 @@
             <i class="fas fa-download mr-2"></i>
             Export
         </button>
+        <button onclick="downloadSample()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+            <i class="fas fa-file-csv mr-2"></i>
+            Sample
+        </button>
         <button onclick="importClients()" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center">
             <i class="fas fa-upload mr-2"></i>
             Import
         </button>
+        <a href="{{ route('admin.dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
+            <i class="fas fa-tachometer-alt mr-2"></i>
+            Dashboard
+        </a>
     </div>
 
     <!-- Statistics Cards -->
@@ -478,7 +486,12 @@ function closeModal(modalId) {
 }
 
 function editClient(id) {
-    fetch(`/admin/clients/${id}`)
+    fetch(`/admin/clients/${id}`, {
+        headers: {
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
         .then(response => response.json())
         .then(client => {
             // Populate edit form
@@ -500,7 +513,8 @@ function editClient(id) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to load client data'
+                text: 'Failed to load client data. Please try again.',
+                footer: 'Check console for details'
             });
         });
 }
@@ -679,12 +693,19 @@ function exportClients() {
     window.open('/admin/clients/export', '_blank');
 }
 
+function downloadSample() {
+    window.open('/admin/clients/import-sample', '_blank');
+}
+
 function importClients() {
     Swal.fire({
         title: 'Import Clients',
         html: `
             <input type="file" id="importFile" accept=".csv,.xlsx" class="swal2-input">
             <p class="text-sm text-gray-600 mt-2">Upload a CSV or Excel file with client data</p>
+            <button type="button" onclick="downloadSample()" class="text-blue-600 hover:text-blue-800 text-sm underline mt-2">
+                Download Sample CSV Template
+            </button>
         `,
         showCancelButton: true,
         confirmButtonText: 'Import',

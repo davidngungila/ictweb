@@ -4,22 +4,30 @@
 @section('page-title', 'Documents')
 
 @section('content')
-<div class="px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Advanced Header -->
+<div class="p-6">
+    <!-- Header with Actions -->
     <div class="flex items-center justify-between mb-8">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Document Manager</h1>
-            <p class="text-gray-600 mt-1">Organize, store, and manage all project documents and files</p>
+            <h1 class="text-2xl font-bold text-gray-900">Documents</h1>
+            <p class="text-gray-600 mt-1">Manage and organize all your documents</p>
         </div>
         <div class="flex space-x-3">
-            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+            <a href="{{ route('admin.file-manager.upload') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center justify-center">
                 <i class="fas fa-upload mr-2"></i>
-                Upload Files
-            </button>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
-                <i class="fas fa-folder-plus mr-2"></i>
-                New Folder
-            </button>
+                Upload Documents
+            </a>
+            <a href="{{ route('admin.file-manager.index') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center">
+                <i class="fas fa-folder mr-2"></i>
+                All Files
+            </a>
+            <a href="{{ route('admin.file-manager.downloads') }}" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 flex items-center justify-center">
+                <i class="fas fa-download mr-2"></i>
+                Downloads
+            </a>
+            <a href="{{ route('admin.dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center justify-center">
+                <i class="fas fa-tachometer-alt mr-2"></i>
+                Dashboard
+            </a>
         </div>
     </div>
 
@@ -29,9 +37,9 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm text-gray-600">Total Storage</p>
-                    <p class="text-2xl font-bold text-gray-900">45.2 GB</p>
+                    <p class="text-2xl font-bold text-gray-900" id="totalStorage">-</p>
                     <p class="text-xs text-blue-600 mt-1">
-                        <i class="fas fa-database"></i> 100 GB available
+                        <i class="fas fa-database"></i> <span id="availableStorage">-</span> available
                     </p>
                 </div>
                 <div class="p-3 bg-blue-100 rounded-lg">
@@ -44,9 +52,9 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm text-gray-600">Documents</p>
-                    <p class="text-2xl font-bold text-gray-900">3,847</p>
+                    <p class="text-2xl font-bold text-gray-900" id="documentsCount">{{ $documents->total() }}</p>
                     <p class="text-xs text-green-600 mt-1">
-                        <i class="fas fa-arrow-up"></i> 124 new this week
+                        <i class="fas fa-arrow-up"></i> <span id="newThisWeek">-</span> new this week
                     </p>
                 </div>
                 <div class="p-3 bg-green-100 rounded-lg">
@@ -58,14 +66,14 @@
         <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Folders</p>
-                    <p class="text-2xl font-bold text-gray-900">156</p>
+                    <p class="text-sm text-gray-600">Public Files</p>
+                    <p class="text-2xl font-bold text-gray-900" id="publicFilesCount">-</p>
                     <p class="text-xs text-purple-600 mt-1">
-                        <i class="fas fa-folder"></i> Organized structure
+                        <i class="fas fa-share"></i> Accessible to all
                     </p>
                 </div>
                 <div class="p-3 bg-purple-100 rounded-lg">
-                    <i class="fas fa-folder text-purple-600"></i>
+                    <i class="fas fa-share-alt text-purple-600"></i>
                 </div>
             </div>
         </div>
@@ -73,14 +81,14 @@
         <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Shared Files</p>
-                    <p class="text-2xl font-bold text-gray-900">892</p>
+                    <p class="text-sm text-gray-600">Total Downloads</p>
+                    <p class="text-2xl font-bold text-gray-900" id="totalDownloads">-</p>
                     <p class="text-xs text-yellow-600 mt-1">
-                        <i class="fas fa-share"></i> Active shares
+                        <i class="fas fa-download"></i> All time
                     </p>
                 </div>
                 <div class="p-3 bg-yellow-100 rounded-lg">
-                    <i class="fas fa-share-alt text-yellow-600"></i>
+                    <i class="fas fa-download text-yellow-600"></i>
                 </div>
             </div>
         </div>
@@ -123,272 +131,222 @@
             </div>
         </div>
         
-        <!-- File Grid -->
-        <div class="p-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Folder 1 -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-folder text-4xl text-yellow-500 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Contracts</p>
-                            <p class="text-xs text-gray-500">24 items</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Folder 2 -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-folder text-4xl text-blue-500 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Invoices</p>
-                            <p class="text-xs text-gray-500">18 items</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Folder 3 -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-folder text-4xl text-green-500 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Reports</p>
-                            <p class="text-xs text-gray-500">32 items</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- PDF File -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-file-pdf text-4xl text-red-500 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Project_Proposal.pdf</p>
-                            <p class="text-xs text-gray-500">2.4 MB</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Word Document -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-file-word text-4xl text-blue-600 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Meeting_Notes.docx</p>
-                            <p class="text-xs text-gray-500">156 KB</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Excel File -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-file-excel text-4xl text-green-600 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Budget_Tracker.xlsx</p>
-                            <p class="text-xs text-gray-500">324 KB</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Image File -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-file-image text-4xl text-purple-500 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Logo_Design.png</p>
-                            <p class="text-xs text-gray-500">1.2 MB</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video File -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-file-video text-4xl text-red-600 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Demo_Video.mp4</p>
-                            <p class="text-xs text-gray-500">45.6 MB</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Archive File -->
-                <div class="group cursor-pointer">
-                    <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-file-archive text-4xl text-yellow-600 mb-3"></i>
-                            <p class="text-sm font-medium text-gray-900 text-center truncate w-full">Project_Backup.zip</p>
-                            <p class="text-xs text-gray-500">124 MB</p>
-                        </div>
-                    </div>
-                    <div class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-unzip"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-download"></i>
-                            </button>
-                            <button class="text-gray-400 hover:text-gray-600 text-xs">
-                                <i class="fas fa-share"></i>
-                            </button>
+        <!-- Documents Table -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-gray-900">Documents</h3>
+                    <div class="flex items-center space-x-2">
+                        <div class="relative">
+                            <input type="text" id="searchInput" placeholder="Search documents..." 
+                                   class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Document</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Uploaded By</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Uploaded Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @if($documents->count() > 0)
+                            @foreach($documents as $document)
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                @if(str_starts_with($document->mime_type, 'image/'))
+                                                    <img src="{{ asset('storage/' . $document->file_path) }}" alt="{{ $document->original_name }}" class="h-10 w-10 rounded object-cover">
+                                                @else
+                                                    <i class="fas {{ getFileIcon($document->mime_type) }} text-gray-400"></i>
+                                                @endif
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">{{ $document->original_name }}</div>
+                                                @if($document->description)
+                                                    <div class="text-sm text-gray-500">{{ Str::limit($document->description, 50) }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $document->formatted_size }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $document->uploader ? $document->uploader->name : 'Unknown' }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $document->created_at->format('M d, Y') }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="{{ route('admin.file-manager.preview', $document) }}" class="text-blue-600 hover:text-blue-900 mr-3" target="_blank">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <button onclick="downloadDocument({{ $document->id }})" class="text-green-600 hover:text-green-900 mr-3">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        @if($document->uploaded_by === auth('admin')->id())
+                                            <button onclick="editDocument({{ $document->id }})" class="text-yellow-600 hover:text-yellow-900 mr-3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button onclick="deleteDocument({{ $document->id }})" class="text-red-600 hover:text-red-900">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="5" class="px-6 py-12 text-center">
+                                    <div class="text-gray-500">
+                                        <i class="fas fa-file-alt text-4xl text-gray-300 mb-4"></i>
+                                        <p class="text-lg">No documents found</p>
+                                        <p class="text-sm mt-2">Upload some documents to see them here</p>
+                                        <a href="{{ route('admin.file-manager.upload') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                            <i class="fas fa-upload mr-2"></i>
+                                            Upload Documents
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            @if($documents->hasPages())
+                <div class="px-6 py-4 border-t border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-gray-700">
+                            Showing <span class="font-medium">{{ $documents->firstItem() }}</span> to <span class="font-medium">{{ $documents->lastItem() }}</span> of <span class="font-medium">{{ $documents->total() }}</span> results
+                        </div>
+                        <div class="flex space-x-2">
+                            {{ $documents->links() }}
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
-    </div>
 
-    <!-- Recent Activity -->
-    <div class="bg-white rounded-lg shadow p-6 mt-6">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <i class="fas fa-history mr-2 text-blue-600"></i>
-            Recent Activity
-        </h3>
-        <div class="space-y-3">
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-green-100 rounded-lg">
-                    <i class="fas fa-upload text-green-600 text-xs"></i>
-                </div>
-                <div class="flex-1">
-                    <p class="text-sm text-gray-900">Sarah Johnson uploaded 3 files to Contracts folder</p>
-                    <p class="text-xs text-gray-500">2 minutes ago</p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-blue-100 rounded-lg">
-                    <i class="fas fa-folder-plus text-blue-600 text-xs"></i>
-                </div>
-                <div class="flex-1">
-                    <p class="text-sm text-gray-900">Michael Chen created new folder "Design Assets"</p>
-                    <p class="text-xs text-gray-500">15 minutes ago</p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-purple-100 rounded-lg">
-                    <i class="fas fa-share text-purple-600 text-xs"></i>
-                </div>
-                <div class="flex-1">
-                    <p class="text-sm text-gray-900">Emma Davis shared "Project_Proposal.pdf" with team</p>
-                    <p class="text-xs text-gray-500">1 hour ago</p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-yellow-100 rounded-lg">
-                    <i class="fas fa-download text-yellow-600 text-xs"></i>
-                </div>
-                <div class="flex-1">
-                    <p class="text-sm text-gray-900">Robert Kim downloaded "Budget_Tracker.xlsx"</p>
-                    <p class="text-xs text-gray-500">2 hours ago</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+// Load real statistics
+document.addEventListener('DOMContentLoaded', function() {
+    loadDocumentsStats();
+    setupEventListeners();
+});
+
+function loadDocumentsStats() {
+    fetch('/admin/file-manager/stats')
+        .then(response => response.json())
+        .then(data => {
+            // Update statistics
+            document.getElementById('totalStorage').textContent = formatFileSize(data.total_size || 0);
+            document.getElementById('availableStorage').textContent = formatFileSize(data.available_storage || 0);
+            document.getElementById('documentsCount').textContent = data.documents_count || 0;
+            document.getElementById('newThisWeek').textContent = data.new_this_week || 0;
+        })
+        .catch(error => {
+            console.error('Error loading stats:', error);
+        });
+}
+
+function setupEventListeners() {
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        filterTable();
+    });
+}
+
+function filterTable() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('tbody tr');
+    
+    rows.forEach(row => {
+        const fileName = row.querySelector('td:first-child .font-medium')?.textContent.toLowerCase() || '';
+        const matchesSearch = fileName.includes(searchValue);
+        row.style.display = matchesSearch ? '' : 'none';
+    });
+}
+
+function viewDocument(id) {
+    window.location.href = `/admin/file-manager/${id}`;
+}
+
+function downloadDocument(id) {
+    window.open(`/admin/file-manager/${id}/download`, '_blank');
+}
+
+function editDocument(id) {
+    window.location.href = `/admin/file-manager/${id}/edit`;
+}
+
+function deleteDocument(id) {
+    if (confirm('Are you sure you want to delete this document?')) {
+        fetch(`/admin/file-manager/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Failed to delete document: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting document:', error);
+            alert('Failed to delete document');
+        });
+    }
+}
+
+function formatFileSize(bytes) {
+    const units = ['B', 'KB', 'MB', 'GB'];
+    for (let i = 0; bytes > 1024 && i < units.length - 1; i++) {
+        bytes /= 1024;
+    }
+    return bytes.toFixed(2) + ' ' + units[i];
+}
+</script>
+
+@php
+    function getFileIcon($mimeType) {
+        if (str_starts_with($mimeType, 'image/')) return 'fa-image';
+        if (str_starts_with($mimeType, 'video/')) return 'fa-video';
+        if (str_contains($mimeType, 'pdf')) return 'fa-file-pdf';
+        if (str_contains($mimeType, 'word') || str_contains($mimeType, 'document')) return 'fa-file-word';
+        if (str_contains($mimeType, 'excel') || str_contains($mimeType, 'spreadsheet')) return 'fa-file-excel';
+        if (str_contains($mimeType, 'powerpoint') || str_contains($mimeType, 'presentation')) return 'fa-file-powerpoint';
+        if (str_contains($mimeType, 'zip') || str_contains($mimeType, 'rar')) return 'fa-file-archive';
+        if (str_contains($mimeType, 'text')) return 'fa-file-alt';
+        return 'fa-file';
+    }
+
+    function getFileIconColor($mimeType) {
+        if (str_starts_with($mimeType, 'image/')) return 'text-purple-500';
+        if (str_starts_with($mimeType, 'video/')) return 'text-red-600';
+        if (str_contains($mimeType, 'pdf')) return 'text-red-500';
+        if (str_contains($mimeType, 'word') || str_contains($mimeType, 'document')) return 'text-blue-600';
+        if (str_contains($mimeType, 'excel') || str_contains($mimeType, 'spreadsheet')) return 'text-green-600';
+        if (str_contains($mimeType, 'powerpoint') || str_contains($mimeType, 'presentation')) return 'text-orange-600';
+        if (str_contains($mimeType, 'zip') || str_contains($mimeType, 'rar')) return 'text-yellow-600';
+        if (str_contains($mimeType, 'text')) return 'text-gray-500';
+        return 'text-gray-400';
+    }
+@endphp
 @endsection

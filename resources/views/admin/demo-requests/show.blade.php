@@ -220,7 +220,7 @@
     
     <!-- Navigation -->
     <div class="flex items-center justify-between">
-        <a href="{{ route('admin.demo-requests.index') }}" 
+        <a href="{{ route('admin.demo-requests.advanced') }}" 
            class="px-4 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50">
             <i class="fas fa-arrow-left mr-2"></i>Back to Demo Requests
         </a>

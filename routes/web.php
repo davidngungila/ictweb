@@ -11,6 +11,10 @@ use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\FileManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,15 +38,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Authenticated admin routes
     Route::middleware(['admin.auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard/mother', function() {
+            return view('admin.dashboard.mother');
+        })->name('dashboard.mother');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         
         // Demo Requests
         Route::get('/demo-requests', [DemoRequestController::class, 'index'])->name('demo-requests.index');
+        Route::get('/demo-requests/data', [DemoRequestController::class, 'data'])->name('demo-requests.data');
+        Route::get('/demo-requests/create', [DemoRequestController::class, 'create'])->name('demo-requests.create');
+        Route::post('/demo-requests', [DemoRequestController::class, 'store'])->name('demo-requests.store');
         Route::get('/demo-requests/{demoRequest}', [DemoRequestController::class, 'show'])->name('demo-requests.show');
         Route::get('/demo-requests/{demoRequest}/edit', [DemoRequestController::class, 'edit'])->name('demo-requests.edit');
         Route::put('/demo-requests/{demoRequest}', [DemoRequestController::class, 'update'])->name('demo-requests.update');
         Route::delete('/demo-requests/{demoRequest}', [DemoRequestController::class, 'destroy'])->name('demo-requests.destroy');
         Route::post('/demo-requests/{demoRequest}/status', [DemoRequestController::class, 'updateStatus'])->name('demo-requests.update-status');
+        Route::get('/demo-requests/stats', [DemoRequestController::class, 'stats'])->name('demo-requests.stats');
+        Route::get('/demo-requests/export', [DemoRequestController::class, 'export'])->name('demo-requests.export');
         
         // Contacts
         Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
@@ -63,16 +75,67 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
         Route::get('/clients/search', [ClientController::class, 'search'])->name('clients.search');
         Route::get('/clients/stats', [ClientController::class, 'stats'])->name('clients.stats');
+        Route::get('/clients/export', [ClientController::class, 'export'])->name('clients.export');
+        Route::post('/clients/import', [ClientController::class, 'import'])->name('clients.import');
+        Route::get('/clients/import-sample', [ClientController::class, 'importSample'])->name('clients.import-sample');
+        
+        // Messages
+        Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+        Route::get('/messages/data', [MessageController::class, 'data'])->name('messages.data');
+        Route::get('/messages/create', [MessageController::class, 'create'])->name('messages.create');
+        Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+        Route::get('/messages/{message}', [MessageController::class, 'show'])->name('messages.show');
+        Route::get('/messages/{message}/edit', [MessageController::class, 'edit'])->name('messages.edit');
+        Route::put('/messages/{message}', [MessageController::class, 'update'])->name('messages.update');
+        Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+        Route::post('/messages/{message}/mark-read', [MessageController::class, 'markAsRead'])->name('messages.mark-read');
+        Route::post('/messages/{message}/mark-unread', [MessageController::class, 'markAsUnread'])->name('messages.mark-unread');
+        Route::post('/messages/{message}/mark-replied', [MessageController::class, 'markAsReplied'])->name('messages.mark-replied');
+        Route::get('/messages/stats', [MessageController::class, 'stats'])->name('messages.stats');
+        Route::get('/messages/export', [MessageController::class, 'export'])->name('messages.export');
         
         // Projects
-        Route::get('/projects', function() {
-            return view('admin.projects.index');
-        })->name('projects.index');
+        Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+        Route::get('/projects/data', [ProjectController::class, 'data'])->name('projects.data');
+        Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+        Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+        Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+        Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+        Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+        Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+        Route::post('/projects/{project}/progress', [ProjectController::class, 'updateProgress'])->name('projects.progress');
+        Route::get('/projects/stats', [ProjectController::class, 'stats'])->name('projects.stats');
+        Route::get('/projects/export', [ProjectController::class, 'export'])->name('projects.export');
         
         // Services
-        Route::get('/services', function() {
-            return view('admin.services.index');
-        })->name('services.index');
+        Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+        Route::get('/services/data', [ServiceController::class, 'data'])->name('services.data');
+        Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+        Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+        Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
+        Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('services.edit');
+        Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
+        Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
+        Route::post('/services/{service}/toggle-featured', [ServiceController::class, 'toggleFeatured'])->name('services.toggle-featured');
+        Route::get('/services/stats', [ServiceController::class, 'stats'])->name('services.stats');
+        Route::get('/services/export', [ServiceController::class, 'export'])->name('services.export');
+        
+        // File Manager
+        Route::get('/file-manager', [FileManagerController::class, 'index'])->name('file-manager.index');
+        Route::get('/file-manager/upload', [FileManagerController::class, 'upload'])->name('file-manager.upload');
+        Route::get('/file-manager/create-folder', function() {
+            return view('admin.file-manager.create-folder');
+        })->name('file-manager.create-folder');
+        Route::post('/file-manager', [FileManagerController::class, 'store'])->name('file-manager.store');
+        Route::get('/file-manager/documents', [FileManagerController::class, 'documents'])->name('file-manager.documents');
+        Route::get('/file-manager/downloads', [FileManagerController::class, 'downloads'])->name('file-manager.downloads');
+        Route::get('/file-manager/{fileManager}', [FileManagerController::class, 'show'])->name('file-manager.show');
+        Route::get('/file-manager/{fileManager}/edit', [FileManagerController::class, 'edit'])->name('file-manager.edit');
+        Route::put('/file-manager/{fileManager}', [FileManagerController::class, 'update'])->name('file-manager.update');
+        Route::delete('/file-manager/{fileManager}', [FileManagerController::class, 'destroy'])->name('file-manager.destroy');
+        Route::get('/file-manager/{fileManager}/download', [FileManagerController::class, 'download'])->name('file-manager.download');
+        Route::get('/file-manager/{fileManager}/preview', [FileManagerController::class, 'preview'])->name('file-manager.preview');
+        Route::get('/file-manager/stats', [FileManagerController::class, 'stats'])->name('file-manager.stats');
         
         // Packages
         Route::get('/packages', function() {
@@ -140,17 +203,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('client-portal.feedback');
         
         // File Manager
-        Route::get('/file-manager/documents', function() {
-            return view('admin.file-manager.documents');
-        })->name('file-manager.documents');
+        Route::get('/file-manager/documents', [FileManagerController::class, 'documents'])->name('file-manager.documents');
         
         Route::get('/file-manager/uploads', function() {
             return view('admin.file-manager.uploads');
         })->name('file-manager.uploads');
         
-        Route::get('/file-manager/downloads', function() {
-            return view('admin.file-manager.downloads');
-        })->name('file-manager.downloads');
+        Route::get('/file-manager/downloads', [FileManagerController::class, 'downloads'])->name('file-manager.downloads');
         
         // Communication Center
         Route::get('/communication/internal-chat', function() {

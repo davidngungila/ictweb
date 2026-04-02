@@ -12,43 +12,18 @@
             <p class="text-gray-600 mt-1">Intelligent project tracking and resource management system</p>
         </div>
         <div class="flex space-x-3">
-            <div class="relative" x-data="{ open: false }">
-                <button @click="open = !open" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
-                    <i class="fas fa-plus mr-2"></i>
-                    New Project
-                    <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                </button>
-                <div x-show="open" @click.away="open = false" 
-                     x-transition:enter="transition ease-out duration-200"
-                     x-transition:enter-start="opacity-0 transform scale-95"
-                     x-transition:enter-end="opacity-100 transform scale-100"
-                     x-transition:leave="transition ease-in duration-75"
-                     x-transition:leave-start="opacity-100 transform scale-100"
-                     x-transition:leave-end="opacity-0 transform scale-95"
-                     class="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-code mr-2"></i>Web Development
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-mobile-alt mr-2"></i>Mobile App
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-laptop-code mr-2"></i>Software Solution
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-handshake mr-2"></i>Consulting Project
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-copy mr-2"></i>Clone Existing
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+            <a href="{{ route('projects.create') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+                <i class="fas fa-plus mr-2"></i>
+                New Project
+            </a>
+            <a href="{{ route('projects.export') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
                 <i class="fas fa-download mr-2"></i>
-                Advanced Export
-            </button>
+                Export
+            </a>
+            <a href="{{ route('dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center">
+                <i class="fas fa-tachometer-alt mr-2"></i>
+                Dashboard
+            </a>
         </div>
     </div>
 
