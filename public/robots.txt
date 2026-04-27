@@ -1,2 +1,11 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://www.jezdantech.com/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /storage/
+
+# Crawl-delay (optional, if needed)
+Crawl-delay: 1

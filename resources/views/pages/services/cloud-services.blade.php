@@ -1,312 +1,229 @@
 @extends('layouts.app')
 
-@section('title', 'Cloud Services - Jezdan Technology')
-@section('description', 'Professional cloud services in Tanzania. Cloud migration, cloud storage, cloud computing, and cloud security solutions for businesses.')
+@section('title', 'Cloud Services in Tanzania | Secure Cloud Solutions')
+
+@section('meta_tags')
+  <meta name="description" content="Secure cloud services in Tanzania. We provide cloud hosting, storage solutions and cloud migration for businesses.">
+  <meta name="keywords" content="cloud services Tanzania, cloud hosting Dar es Salaam, cloud storage Tanzania">
+  <meta property="og:title" content="Cloud Services in Tanzania">
+  <meta property="og:description" content="Secure cloud services in Tanzania. We provide cloud hosting, storage solutions and cloud migration for businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+@endsection
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-cyan-900 via-cyan-800 to-cyan-900 text-white py-20 overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Cloud Services" class="w-full h-full object-cover opacity-40">
+<!-- HERO -->
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left" style="max-width: 800px;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Cloud Services
+      </div>
+      <h1 class="hero-title">
+        Transform Your Business <span>With Cloud</span>
+      </h1>
+      <p class="hero-subtitle">
+        Scalable cloud solutions for Tanzanian businesses. Cloud migration, cloud storage, cloud computing, and cloud security to enhance flexibility, reduce costs, and drive innovation.
+      </p>
     </div>
-    <div class="relative container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center bg-cyan-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-                <i class="fas fa-cloud text-yellow-400 mr-3"></i>
-                <span class="text-sm font-semibold">Professional Cloud Services</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Cloud Services</h1>
-            <p class="text-xl text-cyan-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Transform your business with scalable cloud solutions that enhance flexibility, 
-                reduce costs, and drive innovation for Tanzanian companies.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-cyan-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Scalable Infrastructure
-                </span>
-                <span class="bg-cyan-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Cost Effective
-                </span>
-                <span class="bg-cyan-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Secure & Reliable
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
-    </div>
+  </div>
 </section>
 
-<!-- Service Overview -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Cloud Transformation Solutions</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Empower your business with cutting-edge cloud services designed for scalability, 
-                        security, and performance. Our expert team helps Tanzanian businesses leverage 
-                        cloud technology to drive growth and innovation.
-                    </p>
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 bg-cyan-600 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 mt-1">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900">Cloud Migration</h4>
-                                <p class="text-gray-600">Seamless migration of your existing infrastructure to the cloud</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 bg-cyan-600 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 mt-1">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900">Cloud Storage</h4>
-                                <p class="text-gray-600">Secure, scalable storage solutions for your business data</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-6 h-6 bg-cyan-600 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 mt-1">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900">Cloud Computing</h4>
-                                <p class="text-gray-600">High-performance computing resources on demand</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="{{ route('contact') }}" class="px-8 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors">
-                            Get Started
-                        </a>
-                        <a href="{{ route('request-demo') }}" class="px-8 py-3 border-2 border-cyan-600 text-cyan-600 font-semibold rounded-lg hover:bg-cyan-50 transition-colors">
-                            Request Demo
-                        </a>
-                    </div>
-                </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" 
-                         alt="Cloud Services" class="rounded-2xl shadow-2xl">
-                    <div class="absolute -bottom-6 -left-6 bg-cyan-600 text-white p-6 rounded-xl shadow-xl">
-                        <div class="text-3xl font-bold">99.9%</div>
-                        <div class="text-sm">Uptime Guarantee</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- SERVICE DETAILS -->
+<section class="services" style="background: var(--off-white);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-cloud"></i> What We Offer</div>
+      <h2 class="section-title">Comprehensive <span>Cloud Services</span> Solutions</h2>
+      <p class="section-sub">We provide scalable, secure, and reliable cloud solutions that transform your business operations.</p>
     </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
+        <h3>Cloud Migration</h3>
+        <p>Seamless migration of your applications, data, and infrastructure to the cloud with zero-downtime migration, data integrity assurance, and post-migration support.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-database"></i></div>
+        <h3>Cloud Storage</h3>
+        <p>Secure, scalable, and reliable cloud storage solutions with unlimited storage options, automated backups, and version control.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-server"></i></div>
+        <h3>Cloud Computing</h3>
+        <p>High-performance computing resources on demand with auto-scaling resources, load balancing, and performance monitoring.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cloud Security</h3>
+        <p>Advanced security solutions to protect your cloud infrastructure with encryption services, threat detection, and compliance management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cloud-download-alt"></i></div>
+        <h3>Cloud Backup</h3>
+        <p>Automated backup solutions to ensure your data is always safe with automated scheduling, quick recovery, and disaster recovery.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Cloud Consulting</h3>
+        <p>Expert guidance to help you make the right cloud decisions with strategy development, cost optimization, and vendor selection.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Services Grid -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Cloud Services</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Comprehensive cloud solutions tailored to meet your specific business needs
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Cloud Migration -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Migration</h3>
-                <p class="text-gray-600 mb-6">Seamless migration of your applications, data, and infrastructure to the cloud with minimal downtime.</p>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Zero-downtime migration</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Data integrity assurance</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Post-migration support</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Cloud Storage -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Storage</h3>
-                <p class="text-gray-600 mb-6">Secure, scalable, and reliable cloud storage solutions for all your business data needs.</p>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Unlimited storage options</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Automated backups</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Version control</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Cloud Computing -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Computing</h3>
-                <p class="text-gray-600 mb-6">High-performance computing resources on demand with flexible scaling options.</p>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Auto-scaling resources</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Load balancing</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Performance monitoring</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Cloud Security -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Security</h3>
-                <p class="text-gray-600 mb-6">Advanced security solutions to protect your cloud infrastructure and data from threats.</p>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Encryption services</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Threat detection</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Compliance management</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Cloud Backup -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
-                    <i class="fas fa-cloud-download-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Backup</h3>
-                <p class="text-gray-600 mb-6">Automated backup solutions to ensure your data is always safe and recoverable.</p>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Automated scheduling</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Quick recovery</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Disaster recovery</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Cloud Consulting -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud Consulting</h3>
-                <p class="text-gray-600 mb-6">Expert guidance to help you make the right cloud decisions for your business.</p>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Strategy development</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Cost optimization</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-cyan-600"></i>
-                        <span>Vendor selection</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<!-- TECHNOLOGIES -->
+<div class="tech-strip">
+  <div class="tech-strip-inner">
+    <div style="text-align:center;">
+      <div class="section-label" style="display:inline-flex;"><i class="fas fa-code-branch"></i> Technologies We Use</div>
+      <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.6rem;font-weight:900;margin-top:8px;">Built with <span style="color:var(--accent);">Leading Platforms</span></h3>
     </div>
+    <div class="tech-logos">
+      <div class="tech-logo-item">AWS</div>
+      <div class="tech-logo-item">Google Cloud</div>
+      <div class="tech-logo-item">Azure</div>
+      <div class="tech-logo-item">DigitalOcean</div>
+      <div class="tech-logo-item">Docker</div>
+      <div class="tech-logo-item">Kubernetes</div>
+      <div class="tech-logo-item">Terraform</div>
+      <div class="tech-logo-item">Ansible</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING PACKAGES -->
+<section class="tour-packages" id="packages">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
+      <h2 class="section-title">Cloud Services <span>Pricing Packages</span></h2>
+      <p class="section-sub">Monthly packages with scalable resources and 99.9% uptime guarantee.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Basic</div>
+        <div class="pricing-name">Cloud Basic</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">500K</span>
+          <span class="pricing-period">– 1M/mo</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> 50GB storage</li>
+          <li><i class="fas fa-check"></i> Basic computing (2 vCPU)</li>
+          <li><i class="fas fa-check"></i> Standard backup</li>
+          <li><i class="fas fa-check"></i> Email support</li>
+          <li><i class="fas fa-check"></i> 99.9% uptime SLA</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Standard</div>
+        <div class="pricing-name">Cloud Standard</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">1M</span>
+          <span class="pricing-period">– 3M/mo</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> 500GB storage</li>
+          <li><i class="fas fa-check"></i> Enhanced computing (4 vCPU)</li>
+          <li><i class="fas fa-check"></i> Daily backup + DR</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+          <li><i class="fas fa-check"></i> Auto-scaling</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-name">Cloud Enterprise</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">3M</span>
+          <span class="pricing-period">– 10M/mo</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Unlimited storage</li>
+          <li><i class="fas fa-check"></i> High-performance (8+ vCPU)</li>
+          <li><i class="fas fa-check"></i> Real-time backup + DR</li>
+          <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+          <li><i class="fas fa-check"></i> Custom architecture</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Technologies -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Cloud Technologies We Use</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                We work with leading cloud platforms to deliver the best solutions for your business
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow">
-                <i class="fab fa-aws text-4xl text-orange-600"></i>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow">
-                <i class="fab fa-google text-4xl text-blue-600"></i>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow">
-                <i class="fab fa-microsoft text-4xl text-blue-700"></i>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow">
-                <i class="fab fa-digital-ocean text-4xl text-blue-500"></i>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow">
-                <i class="fab fa-docker text-4xl text-blue-600"></i>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow">
-                <i class="fab fa-kubernetes text-4xl text-blue-600"></i>
-            </div>
-        </div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-header" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label"><i class="fas fa-route"></i> How We Work</div>
+      <h2 class="section-title" style="color:white;">Our Cloud <span>Migration Process</span></h2>
+      <p class="section-sub">From assessment to deployment — we ensure a smooth transition to the cloud.</p>
     </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Assessment</h4>
+        <p>Evaluating your current infrastructure and cloud readiness.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Planning</h4>
+        <p>Creating a detailed migration strategy and architecture design.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Migration</h4>
+        <p>Executing seamless migration with minimal downtime.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Optimization</h4>
+        <p>Monitoring performance and optimizing for cost and efficiency.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform to the Cloud?</h2>
-            <p class="text-xl text-cyan-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Let our cloud experts help you leverage the power of cloud computing to drive your business forward.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="{{ route('contact') }}" class="px-10 py-4 bg-white text-cyan-600 font-bold rounded-full hover:bg-cyan-50 transition-colors">
-                    Get Started Today
-                </a>
-                <a href="{{ route('request-demo') }}" class="px-10 py-4 bg-cyan-800 text-white font-bold rounded-full hover:bg-cyan-900 transition-colors">
-                    Schedule a Demo
-                </a>
-            </div>
-        </div>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Transform to the Cloud <span>Today</span></h2>
+    <p>Get a free cloud assessment and detailed quote within 24 hours. Scale your business with our cloud solutions.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20cloud%20services." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
-</section>
+  </div>
+</div>
+@endsection
 
+@section('meta_tags')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2F56W4HPN');
+    </script>
 @endsection

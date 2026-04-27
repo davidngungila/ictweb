@@ -1,513 +1,148 @@
 @extends('layouts.app')
 
-@section('title', 'Services - Jezdan Technology')
-@section('description', 'Jezdan Technology offers comprehensive ICT services including web development, mobile app development, network installation, cybersecurity, IT support, and ICT consultancy in Tanzania.')
+@section('title', 'ICT Services in Tanzania | Web, Apps, Network & IT Solutions')
+
+@section('meta_tags')
+  <meta name="description" content="Explore our comprehensive ICT services in Tanzania including web development, mobile apps, network installation, cybersecurity and IT support.">
+  <meta name="keywords" content="ICT services Tanzania, web development Tanzania, IT solutions Dar es Salaam, technology services Tanzania">
+  <meta property="og:title" content="ICT Services in Tanzania">
+  <meta property="og:description" content="Explore our comprehensive ICT services in Tanzania including web development, mobile apps, network installation, cybersecurity and IT support.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N2F56W4HPN');
+  </script>
+@endsection
 
 @section('content')
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-black/20"></div>
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="mb-8">
-                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
-                    <i class="fas fa-cogs mr-2"></i> 🔥 SERVICES ZAKO (8)
-                </span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Our Services</h1>
-            <p class="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Comprehensive ICT solutions designed to meet all your technology needs. From innovative web applications to robust network infrastructure, we deliver excellence across Tanzania.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-globe text-blue-300"></i>
-                    <span class="text-white">Web Development</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-mobile-alt text-purple-300"></i>
-                    <span class="text-white">Mobile Applications</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-network-wired text-orange-300"></i>
-                    <span class="text-white">Network Infrastructure</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-shield-alt text-red-300"></i>
-                    <span class="text-white">Cybersecurity</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-headset text-green-300"></i>
-                    <span class="text-white">IT Support</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-lightbulb text-indigo-300"></i>
-                    <span class="text-white">ICT Consultancy</span>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <i class="fas fa-cloud text-cyan-300"></i>
-                    <span class="text-white">Cloud Services</span>
-                </div>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="#services-grid" class="px-10 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all duration-300 shadow-xl">
-                    Explore Services
-                </a>
-                <a href="{{ route('request-demo') }}" class="px-10 py-4 bg-white text-blue-600 font-bold rounded-full border-2 border-blue-600 hover:bg-blue-50 transition-all duration-300">
-                    Request Demo
-                </a>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left" style="max-width: 800px;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        What We Offer
+      </div>
+      <h1 class="hero-title">
+        Comprehensive <span>ICT Services</span><br/>
+        Built for East Africa
+      </h1>
+      <p class="hero-subtitle">
+        We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.
+      </p>
     </div>
-    <div class="absolute bottom-0 left-0 right-0">
-        <svg class="w-full h-16 text-gray-50" viewBox="0 0 1440 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 64L60 58.7C120 53 240 43 360 37.3C480 32 600 32 720 34.7C840 37 960 43 1080 45.3C1200 48 1320 48 1380 48L1440 48V64H0V64Z" fill="currentColor"/>
-        </svg>
-    </div>
+  </div>
 </section>
 
-<!-- Services Grid -->
-<section id="services-grid" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Web Development -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Web Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                            <span class="text-lg">🌐</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Web Development</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Professional websites and web applications tailored for Tanzanian businesses with modern design and functionality</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">500,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.web-development') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-divider"></div>
+    <div class="trust-item"><i class="fas fa-mobile-alt"></i> Online Payment Integrated</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><i class="fab fa-whatsapp"></i> WhatsApp Business Support</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><i class="fas fa-globe-africa"></i> Serving All Tanzania</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><i class="fas fa-headset"></i> 24/7 Technical Support</div>
+    <div class="trust-divider"></div>
+  </div>
+</div>
 
-            <!-- Mobile App Development -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Mobile App Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
-                            <span class="text-lg">📱</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Custom mobile applications for iOS and Android with intuitive design and powerful features</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">800,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.mobile-app-development') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- System Development -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="System Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
-                            <span class="text-lg">🧾</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">System Development</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Custom systems (HR, School, Hospital, POS) to automate business operations and improve efficiency</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">PRICING</p>
-                        <p class="text-2xl font-bold text-gray-900">Custom Quote</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.system-development') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Network Installation -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Network Installation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600">
-                            <span class="text-lg">🌐</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Network Installation</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Professional network setup and configuration for seamless business operations</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">300,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.network-installation') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cybersecurity -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Cybersecurity" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600">
-                            <span class="text-lg">🛡️</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cybersecurity</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Advanced security solutions to protect your systems, data, and business from cyber threats</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">400,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.cybersecurity') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- IT Support -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1581291518855-1f4a7394626?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="IT Support" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                            <span class="text-lg">🧰</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">IT Support</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Reliable 24/7 technical support, troubleshooting, and maintenance services</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">200,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.it-support') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ICT Consultancy -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1552664730-d15b4852c61e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="ICT Consultancy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600">
-                            <span class="text-lg">💡</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">ICT Consultancy</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Strategic technology consulting to help businesses grow and adopt digital solutions</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">600,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.ict-consultancy') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cloud Services -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1451187580451-4dc904955e93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Cloud Services" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600">
-                            <span class="text-lg">☁️</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-yellow-500">★★★★★</span>
-                            <span class="text-yellow-300">★★</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud Services</h3>
-                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">Cloud hosting, server setup, backups, and deployment solutions for scalable systems</p>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">STARTING FROM</p>
-                        <p class="text-2xl font-bold text-gray-900">150,000 TZS</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('services.cloud-services') }}" class="flex-1 bg-gray-900 text-white font-semibold py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-sm text-center">
-                            View Details
-                        </a>
-                        <a href="{{ route('contact') }}" class="flex-1 bg-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:bg-green-700 transition-colors duration-300 text-sm text-center">
-                            Get Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-layer-group"></i> What We Offer</div>
+      <h2 class="section-title">Comprehensive <span>ICT Services</span><br/>Built for East Africa</h2>
+      <p class="section-sub">We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.</p>
     </div>
+    <div class="services-grid">
+      <div class="service-card" id="web-development">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 400,000</span>
+        <a href="{{ route('services.web-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="mobile-apps">
+        <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
+        <h3>Mobile App Development</h3>
+        <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 3,000,000</span>
+        <a href="{{ route('services.mobile-app-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="networking">
+        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+        <h3>Network Installation</h3>
+        <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
+        <a href="{{ route('services.network-installation') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="cybersecurity">
+        <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Cybersecurity</h3>
+        <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
+        <a href="{{ route('services.cybersecurity') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="it-support">
+        <div class="service-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+        <h3>IT Support</h3>
+        <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 150,000/mo</span>
+        <a href="{{ route('services.it-support') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="consultancy">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>ICT Consultancy</h3>
+        <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 500,000</span>
+        <a href="{{ route('services.ict-consultancy') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-camera"></i></div>
+        <h3>CCTV &amp; Security Systems</h3>
+        <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 2,000,000</span>
+        <a href="{{ route('contact') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Statistics Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Core Services</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Professional technology solutions tailored for Tanzanian businesses
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Web Development -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" 
-                         alt="Web Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
-                </div>
-                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Web Development</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Professional websites and web applications with modern design and functionality</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Laravel</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Vue.js</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React</span>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">MySQL</span>
-                </div>
-                <div class="mt-6 text-center">
-                    <a href="{{ route('services.web-development') }}" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i>
-                        Read More
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile App Development -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" 
-                         alt="Mobile App Development" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
-                </div>
-                <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile App Development</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Custom mobile applications for iOS and Android with native performance</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">React Native</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Flutter</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Firebase</span>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">Swift</span>
-                </div>
-                <div class="mt-6 text-center">
-                    <a href="{{ route('services.mobile-app-development') }}" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-700 transition-colors duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i>
-                        Read More
-                    </a>
-                </div>
-            </div>
-
-            <!-- Network Installation -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" 
-                         alt="Network Installation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-orange-900/80 to-transparent"></div>
-                </div>
-                <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Network Installation</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Professional network setup and configuration for seamless connectivity</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Cisco</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Mikrotik</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Ubiquiti</span>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">Fortinet</span>
-                </div>
-                <div class="mt-6 text-center">
-                    <a href="{{ route('services.network-installation') }}" class="inline-flex items-center px-6 py-3 bg-orange-600 text-white font-semibold rounded-full hover:bg-orange-700 transition-colors duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i>
-                        Read More
-                    </a>
-                </div>
-            </div>
-
-            <!-- Cybersecurity -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" 
-                         alt="Cybersecurity" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 to-transparent"></div>
-                </div>
-                <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Cybersecurity</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Advanced security solutions to protect your digital assets</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs">Firewall</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs">VPN</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs">Antivirus</span>
-                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs">SIEM</span>
-                </div>
-                <div class="mt-6 text-center">
-                    <a href="{{ route('services.cybersecurity') }}" class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i>
-                        Read More
-                    </a>
-                </div>
-            </div>
-
-            <!-- IT Support -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" 
-                         alt="IT Support" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
-                </div>
-                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">IT Support</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">24/7 technical support and maintenance services</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Remote Support</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">On-site Service</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Maintenance</span>
-                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">Consulting</span>
-                </div>
-                <div class="mt-6 text-center">
-                    <a href="{{ route('services.it-support') }}" class="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i>
-                        Read More
-                    </a>
-                </div>
-            </div>
-
-            <!-- ICT Consultancy -->
-            <div class="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div class="relative h-48 mb-6 overflow-hidden">
-                    <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" 
-                         alt="ICT Consultancy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 to-transparent"></div>
-                </div>
-                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 -mt-12 relative z-10">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">ICT Consultancy</h3>
-                <p class="text-gray-600 leading-relaxed mb-4">Strategic technology consulting to drive digital transformation</p>
-                <div class="flex flex-wrap gap-2 justify-center mt-4">
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Strategy</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Planning</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Optimization</span>
-                    <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs">Training</span>
-                </div>
-                <div class="mt-6 text-center">
-                    <a href="{{ route('services.ict-consultancy') }}" class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-colors duration-300">
-                        <i class="fas fa-arrow-right mr-2"></i>
-                        Read More
-                    </a>
-                </div>
-            </div>
-        </div>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to <span>Get Started</span>?</h2>
+    <p>Get a free consultation and detailed quote within 24 hours. No commitment required.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20your%20services." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
-</section>
+  </div>
+</div>
+@endsection
 
-             
-        </div>
-    </div>
-</section>
+@section('meta_tags')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2F56W4HPN');
+    </script>
 @endsection

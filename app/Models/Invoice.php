@@ -44,6 +44,15 @@ class Invoice extends Model
         ];
     }
 
+    public static function generateInvoiceNumber()
+    {
+        $prefix = 'INV';
+        $date = date('Ymd');
+        $lastInvoice = self::where('invoice_number', 'like', "{$prefix}{$date}%")->orderBy('id', 'desc')->first();
+        $sequence = $lastInvoice ? (int) substr($lastInvoice->invoice_number, -4) + 1 : 1;
+        return $prefix . $date . str_pad($sequence, 4, '0', STR_PAD_LEFT);
+    }
+
     public static function getPaymentMethods()
     {
         return [

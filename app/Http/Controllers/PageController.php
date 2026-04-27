@@ -31,6 +31,14 @@ class PageController extends Controller
     }
 
     /**
+     * Display pricing page.
+     */
+    public function pricing()
+    {
+        return view('pages.pricing');
+    }
+
+    /**
      * Display portfolio page.
      */
     public function portfolio()

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\FileManagerController;
+use App\Http\Controllers\PackageOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -364,7 +365,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+// Package Selection & Payment
+Route::get('/package-selection', [PackageOrderController::class, 'showSelectionForm'])->name('package.selection');
+Route::post('/package/order', [PackageOrderController::class, 'processOrder'])->name('package.order.process');
+Route::get('/payment/{order}', [PackageOrderController::class, 'showPaymentPage'])->name('payment.show');
+Route::post('/payment/{order}/initiate', [PackageOrderController::class, 'initiatePayment'])->name('payment.initiate');
+Route::get('/payment/{order}/check-status', [PackageOrderController::class, 'checkPaymentStatus'])->name('payment.check.status');
+Route::get('/payment/confirmation/{order}', [PackageOrderController::class, 'paymentConfirmation'])->name('payment.confirmation');
+Route::get('/payment/receipt/{order}', [PackageOrderController::class, 'downloadReceipt'])->name('payment.receipt');
+Route::post('/webhook/snippe', [PackageOrderController::class, 'handleWebhook'])->name('webhook.snippe')->withoutMiddleware(['csrf']);
 
 // Service Pages
 Route::get('/services/web-development', [PageController::class, 'servicesWebDevelopment'])->name('services.web-development');

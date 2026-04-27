@@ -1,335 +1,229 @@
 @extends('layouts.app')
 
-@section('title', 'ICT Consultancy Services - Jezdan Technology')
-@section('description', 'Professional ICT consultancy services in Tanzania. Strategic technology consulting, digital transformation planning, optimization, and training for business growth.')
+@section('title', 'ICT Consultancy Services in Tanzania | Digital Transformation')
+
+@section('meta_tags')
+  <meta name="description" content="Expert ICT consultancy in Tanzania. We help businesses improve operations with technology, systems and digital transformation strategies.">
+  <meta name="keywords" content="ICT consultancy Tanzania, IT consulting Dar es Salaam, digital transformation Tanzania">
+  <meta property="og:title" content="ICT Consultancy Services in Tanzania">
+  <meta property="og:description" content="Expert ICT consultancy in Tanzania. We help businesses improve operations with technology, systems and digital transformation strategies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+@endsection
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-900 text-white py-20 overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="absolute inset-0">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" class="w-full h-full object-cover opacity-40">
+<!-- HERO -->
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left" style="max-width: 800px;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        ICT Consultancy
+      </div>
+      <h1 class="hero-title">
+        Transform Your Business <span>With Strategy</span>
+      </h1>
+      <p class="hero-subtitle">
+        Strategic technology consulting that drives digital innovation, operational efficiency, and sustainable growth for Tanzanian businesses. Expert guidance for your digital transformation journey.
+      </p>
     </div>
-    <div class="relative container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center bg-indigo-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-                <i class="fas fa-lightbulb text-yellow-400 mr-3"></i>
-                <span class="text-sm font-semibold">Strategic ICT Consultancy</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">ICT Consultancy</h1>
-            <p class="text-xl text-indigo-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Transform your business with strategic technology consulting that drives digital innovation, 
-                operational efficiency, and sustainable growth for Tanzanian companies.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-indigo-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Digital Strategy
-                </span>
-                <span class="bg-indigo-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Business Optimization
-                </span>
-                <span class="bg-indigo-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Expert Guidance
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
-    </div>
+  </div>
 </section>
 
-<!-- Service Overview -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Strategic Technology Consulting</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        We provide expert ICT consultancy services that help Tanzanian businesses leverage technology 
-                        for competitive advantage, operational excellence, and sustainable growth in the digital age.
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                        Our consultants combine deep industry knowledge with local market understanding 
-                        to deliver actionable strategies that drive real business transformation and ROI.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-chart-line text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">Data-Driven</div>
-                                <div class="text-gray-600">Analytics-based decisions</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-rocket text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">Innovation Focus</div>
-                                <div class="text-gray-600">Cutting-edge solutions</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1552664730-dec69d88e8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ICT Consultancy" class="rounded-2xl shadow-2xl">
-                    <div class="absolute -bottom-6 -right-6 bg-indigo-600 text-white rounded-2xl p-6 shadow-xl">
-                        <div class="text-3xl font-bold mb-2">200+</div>
-                        <div class="text-sm">Consulting Projects</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- SERVICE DETAILS -->
+<section class="services" style="background: var(--off-white);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-lightbulb"></i> What We Offer</div>
+      <h2 class="section-title">Comprehensive <span>ICT Consultancy</span> Solutions</h2>
+      <p class="section-sub">We help Tanzanian businesses leverage technology for competitive advantage and sustainable growth.</p>
     </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-sitemap"></i></div>
+        <h3>Digital Strategy</h3>
+        <p>Comprehensive digital transformation roadmap with technology assessment, digital roadmap, and competitive analysis.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Process Optimization</h3>
+        <p>Business process analysis and optimization for maximum efficiency with workflow analysis, automation planning, and efficiency metrics.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+        <h3>Technology Planning</h3>
+        <p>Strategic technology infrastructure planning with infrastructure design, vendor evaluation, and budget optimization.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Training & Development</h3>
+        <p>Staff training and capability development for technology adoption with technical training, skills development, and change management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Performance Analytics</h3>
+        <p>KPI development and business intelligence for data-driven decisions with dashboard design and ROI analysis.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Compliance & Risk</h3>
+        <p>Regulatory compliance and risk management for business protection with compliance audits, risk assessment, and policy development.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Consultancy Services -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Consultancy Services</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Comprehensive technology consulting solutions for business transformation
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Digital Strategy</h3>
-                    <p class="text-gray-600 mb-4">Comprehensive digital transformation roadmap and technology planning.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>Technology Assessment</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>Digital Roadmap</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>Competitive Analysis</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Process Optimization</h3>
-                    <p class="text-gray-600 mb-4">Business process analysis and optimization for maximum efficiency.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Workflow Analysis</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Automation Planning</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Efficiency Metrics</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Technology Planning</h3>
-                    <p class="text-gray-600 mb-4">Strategic technology infrastructure planning and vendor selection.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center grid-cols-2">
-                            <i class="fas fa-check text-green-600"></i>
-                            <span>Infrastructure Design</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600"></i>
-                            <span>Vendor Evaluation</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600"></i>
-                            <span>Budget Optimization</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Training & Development</h3>
-                    <p class="text-gray-600 mb-4">Staff training and capability development for technology adoption.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600"></i>
-                            <span>Technical Training</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600"></i>
-                            <span>Skills Development</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600"></i>
-                            <span>Change Management</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Performance Analytics</h3>
-                    <p class="text-gray-600 mb-4">KPI development and business intelligence for data-driven decisions.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600"></i>
-                            <span>KPI Development</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600"></i>
-                            <span>Dashboard Design</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600"></i>
-                            <span>ROI Analysis</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Compliance & Risk</h3>
-                    <p class="text-gray-600 mb-4">Regulatory compliance and risk management for business protection.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600"></i>
-                            <span>Compliance Audits</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600"></i>
-                            <span>Risk Assessment</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600"></i>
-                            <span>Policy Development</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- TECHNOLOGIES -->
+<div class="tech-strip">
+  <div class="tech-strip-inner">
+    <div style="text-align:center;">
+      <div class="section-label" style="display:inline-flex;"><i class="fas fa-code-branch"></i> Technologies We Use</div>
+      <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.6rem;font-weight:900;margin-top:8px;">Built with <span style="color:var(--accent);">Industry Tools</span></h3>
     </div>
+    <div class="tech-logos">
+      <div class="tech-logo-item">Tableau</div>
+      <div class="tech-logo-item">Power BI</div>
+      <div class="tech-logo-item">Jira</div>
+      <div class="tech-logo-item">Confluence</div>
+      <div class="tech-logo-item">Miro</div>
+      <div class="tech-logo-item">Asana</div>
+      <div class="tech-logo-item">ServiceNow</div>
+      <div class="tech-logo-item">Salesforce</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING PACKAGES -->
+<section class="tour-packages" id="packages">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
+      <h2 class="section-title">Consultancy <span>Pricing Packages</span></h2>
+      <p class="section-sub">Project-based and retainer options tailored to your needs.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Basic</div>
+        <div class="pricing-name">Consult Basic</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">1M</span>
+          <span class="pricing-period">– 3M</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Technology assessment</li>
+          <li><i class="fas fa-check"></i> Basic digital roadmap</li>
+          <li><i class="fas fa-check"></i> 2 consulting sessions</li>
+          <li><i class="fas fa-check"></i> Written report</li>
+          <li><i class="fas fa-check"></i> Delivered in 1–2 weeks</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Standard</div>
+        <div class="pricing-name">Consult Standard</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">3M</span>
+          <span class="pricing-period">– 8M</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Full digital strategy</li>
+          <li><i class="fas fa-check"></i> Process optimization</li>
+          <li><i class="fas fa-check"></i> 5 consulting sessions</li>
+          <li><i class="fas fa-check"></i> Implementation roadmap</li>
+          <li><i class="fas fa-check"></i> Delivered in 3–4 weeks</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-name">Consult Enterprise</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">8M</span>
+          <span class="pricing-period">– 20M+</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Full transformation strategy</li>
+          <li><i class="fas fa-check"></i> Dedicated consultant</li>
+          <li><i class="fas fa-check"></i> Ongoing advisory (3 months)</li>
+          <li><i class="fas fa-check"></i> Training for staff</li>
+          <li><i class="fas fa-check"></i> Delivered in 1–2 months</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Consulting Process -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Consulting Process</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Structured approach for successful technology transformation
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Discovery</h3>
-                    <p class="text-gray-600">Understanding your business, challenges, and opportunities for tailored solutions.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Analysis</h3>
-                    <p class="text-gray-600">Comprehensive analysis of current systems and future requirements.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Strategy</h3>
-                    <p class="text-gray-600">Developing actionable strategies and implementation roadmaps for success.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Implementation</h3>
-                    <p class="text-gray-600">Guiding successful implementation and measuring business impact.</p>
-                </div>
-            </div>
-        </div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-header" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label"><i class="fas fa-route"></i> How We Work</div>
+      <h2 class="section-title" style="color:white;">Our Consulting <span>Process</span></h2>
+      <p class="section-sub">From discovery to implementation — we ensure a structured approach for successful transformation.</p>
     </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>Understanding your business, challenges, and opportunities for tailored solutions.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Analysis</h4>
+        <p>Comprehensive analysis of current systems and future requirements.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Strategy</h4>
+        <p>Developing actionable strategies and implementation roadmaps for success.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Implementation</h4>
+        <p>Guiding successful implementation and measuring business impact.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Success Metrics -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Proven Results</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Measurable business impact from our consulting engagements
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center">
-                    <div class="text-3xl font-bold text-green-600 mb-2">40%</div>
-                    <p class="text-gray-600">Average Cost Reduction</p>
-                </div>
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 text-center">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">3x</div>
-                    <p class="text-gray-600">Productivity Increase</p>
-                </div>
-                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 text-center">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">95%</div>
-                    <p class="text-gray-600">Client Satisfaction</p>
-                </div>
-                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 text-center">
-                    <div class="text-3xl font-bold text-orange-600 mb-2">6 Months</div>
-                    <p class="text-gray-600">Average ROI Timeline</p>
-                </div>
-            </div>
-        </div>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Transform Your Business <span>With Strategy</span></h2>
+    <p>Get a free consultation and detailed proposal within 24 hours. Start your digital transformation journey today.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20ICT%20consultancy." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
-</section>
+  </div>
+</div>
+@endsection
 
-<!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-indigo-600 to-indigo-800 text-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Transform Your Business Today</h2>
-            <p class="text-xl text-indigo-100 mb-8 leading-relaxed">
-                Let our expert consultants guide your digital transformation journey with proven strategies 
-                and actionable insights that drive sustainable business growth.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-full hover:bg-gray-100 transition-colors duration-300">
-                    <i class="fas fa-phone mr-2"></i>Get Free Consultation
-                </a>
-                <a href="{{ route('portfolio') }}#consulting-projects" class="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-indigo-600 transition-colors duration-300">
-                    <i class="fas fa-eye mr-2"></i>View Our Work
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+@section('meta_tags')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2F56W4HPN');
+    </script>
 @endsection

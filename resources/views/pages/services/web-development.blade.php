@@ -1,400 +1,234 @@
 @extends('layouts.app')
 
-@section('title', 'Web Development Services - Jezdan Technology')
-@section('description', 'Professional web development services in Tanzania. Custom websites, web applications, e-commerce solutions using Laravel, Vue.js, React, and modern technologies.')
+@section('title', 'Web Development Services in Tanzania | Affordable & Professional')
+
+@section('meta_tags')
+  <meta name="description" content="Get modern, responsive and SEO-friendly websites in Tanzania. We design business websites that attract customers and grow your brand.">
+  <meta name="keywords" content="web development Tanzania, website design Dar es Salaam, business websites Tanzania">
+  <meta property="og:title" content="Web Development Services in Tanzania">
+  <meta property="og:description" content="Get modern, responsive and SEO-friendly websites in Tanzania. We design business websites that attract customers and grow your brand.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+@endsection
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="absolute inset-0">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" class="w-full h-full object-cover opacity-40">
+<!-- HERO -->
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left" style="max-width: 800px;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Web Development
+      </div>
+      <h1 class="hero-title">
+        Custom <span>Web Development</span><br/>
+        for Tanzanian Businesses
+      </h1>
+      <p class="hero-subtitle">
+        Professional websites and web applications tailored to your business needs. From simple starter sites to complex e-commerce platforms with full CMS and mobile money payments.
+      </p>
     </div>
-    <div class="relative container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-                <i class="fas fa-code text-yellow-400 mr-3"></i>
-                <span class="text-sm font-semibold">Professional Web Development</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Web Development</h1>
-            <p class="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Transform your business with custom websites and web applications that drive growth, 
-                enhance user experience, and deliver measurable results for Tanzanian companies.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Custom Solutions
-                </span>
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>Modern Technologies
-                </span>
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>SEO Optimized
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
-    </div>
+  </div>
 </section>
 
-<!-- Service Overview -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Custom Web Solutions</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        We create powerful, scalable web applications tailored to your specific business needs. 
-                        Our expert development team combines cutting-edge technology with deep understanding of the Tanzanian market 
-                        to deliver solutions that drive real business value.
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                        From simple brochure websites to complex enterprise applications, we ensure your digital presence 
-                        stands out, performs flawlessly, and converts visitors into customers.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-rocket text-blue-600"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">Fast Development</div>
-                                <div class="text-gray-600">Agile methodology</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-mobile-alt text-blue-600"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">Mobile Responsive</div>
-                                <div class="text-gray-600">All devices covered</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="rounded-2xl shadow-2xl">
-                    <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white rounded-2xl p-6 shadow-xl">
-                        <div class="text-3xl font-bold mb-2">500+</div>
-                        <div class="text-sm">Websites Delivered</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- SERVICE DETAILS -->
+<section class="services" style="background: var(--off-white);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-code"></i> What We Offer</div>
+      <h2 class="section-title">Comprehensive <span>Web Development</span> Solutions</h2>
+      <p class="section-sub">We build powerful, scalable web applications using modern technologies like Laravel, React, and Vue.js.</p>
     </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+        <h3>E-commerce Solutions</h3>
+        <p>Complete online stores with payment gateway integration (M-Pesa, TigoPesa, AzamPesa), inventory management, and order processing systems.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Corporate Websites</h3>
+        <p>Professional business websites showcasing your brand and services effectively with custom design and SEO optimization.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+        <h3>Web Applications</h3>
+        <p>Custom business applications for process automation, data analytics, and API integration to streamline your operations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fab fa-wordpress"></i></div>
+        <h3>CMS Development</h3>
+        <p>Content management systems using WordPress or custom CMS solutions for easy website updates and maintenance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-search"></i></div>
+        <h3>SEO Services</h3>
+        <p>Search engine optimization to improve your online visibility, including keyword research, on-page optimization, and performance tracking.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>Beautiful, user-friendly interfaces that enhance user experience with responsive design, user testing, and brand integration.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Technologies Stack -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Technology Stack</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    We use modern, proven technologies to build robust and scalable web solutions
-                </p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 text-2xl mx-auto mb-6">
-                        <i class="fab fa-laravel"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Laravel</h3>
-                    <p class="text-gray-600">Robust PHP framework for enterprise applications</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl mx-auto mb-6">
-                        <i class="fab fa-vuejs"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Vue.js</h3>
-                    <p class="text-gray-600">Progressive JavaScript framework for modern UIs</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mx-auto mb-6">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">React</h3>
-                    <p class="text-gray-600">Component-based library for interactive interfaces</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-2xl mx-auto mb-6">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">MySQL</h3>
-                    <p class="text-gray-600">Reliable database management and optimization</p>
-                </div>
-            </div>
-        </div>
+<!-- TECHNOLOGIES -->
+<div class="tech-strip">
+  <div class="tech-strip-inner">
+    <div style="text-align:center;">
+      <div class="section-label" style="display:inline-flex;"><i class="fas fa-code-branch"></i> Technologies We Use</div>
+      <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.6rem;font-weight:900;margin-top:8px;">Built with <span style="color:var(--accent);">Industry-Leading Tools</span></h3>
     </div>
+    <div class="tech-logos">
+      <div class="tech-logo-item">Laravel</div>
+      <div class="tech-logo-item">React.js</div>
+      <div class="tech-logo-item">Vue.js</div>
+      <div class="tech-logo-item">WordPress</div>
+      <div class="tech-logo-item">Node.js</div>
+      <div class="tech-logo-item">MySQL</div>
+      <div class="tech-logo-item">MongoDB</div>
+      <div class="tech-logo-item">M-Pesa API</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING PACKAGES -->
+<section class="tour-packages" id="packages">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
+      <h2 class="section-title">Web Development <span>Pricing Packages</span></h2>
+      <p class="section-sub">All packages include a free domain + hosting for the first year (worth TZS 150,000), SSL certificate, and 1 month of free support.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-name">Web Starter</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Individuals & small businesses</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">400K</span>
+          <span class="pricing-period">– 700K</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> 1–5 pages, mobile-responsive</li>
+          <li><i class="fas fa-check"></i> Contact form with spam protection</li>
+          <li><i class="fas fa-check"></i> WhatsApp button integration</li>
+          <li><i class="fas fa-check"></i> Social media links</li>
+          <li><i class="fas fa-check"></i> Google Maps location</li>
+          <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
+          <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Business</div>
+        <div class="pricing-name">Web Business</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing companies</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">800K</span>
+          <span class="pricing-period">– 1.5M</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> 8–15 pages with full CMS</li>
+          <li><i class="fas fa-check"></i> Blog with SEO-rich content</li>
+          <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
+          <li><i class="fas fa-check"></i> Professional email accounts</li>
+          <li><i class="fas fa-check"></i> SSL + full security setup</li>
+          <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">E-Commerce</div>
+        <div class="pricing-name">Online Store</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Selling online in Tanzania</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">TZS</span>
+          <span class="pricing-amount">1.5M</span>
+          <span class="pricing-period">– 2.5M</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> 10–20 pages with product catalogue</li>
+          <li><i class="fas fa-check"></i> Shopping cart & checkout</li>
+          <li><i class="fas fa-check"></i> M-Pesa, TigoPesa & AzamPesa</li>
+          <li><i class="fas fa-check"></i> Order management dashboard</li>
+          <li><i class="fas fa-check"></i> SMS order confirmations</li>
+          <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
+        </ul>
+        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Services Included -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Web Services</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Comprehensive web development solutions tailored to your business needs
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">E-commerce Solutions</h3>
-                    <p class="text-gray-600 mb-4">Complete online stores with payment integration, inventory management, and order processing.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Payment Gateway Integration</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Inventory Management</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Mobile Shopping Cart</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Corporate Websites</h3>
-                    <p class="text-gray-600 mb-4">Professional business websites showcasing your brand and services effectively.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600"></i>
-                            <span>Custom Design</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600"></i>
-                            <span>Content Management</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600"></i>
-                            <span>SEO Optimization</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Web Applications</h3>
-                    <p class="text-gray-600 mb-4">Custom business applications for process automation and efficiency.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600"></i>
-                            <span>Process Automation</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600"></i>
-                            <span>Data Analytics</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600"></i>
-                            <span>API Integration</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-wordpress"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">CMS Development</h3>
-                    <p class="text-gray-600 mb-4">Content management systems for easy website updates and maintenance.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600"></i>
-                            <span>WordPress Development</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600"></i>
-                            <span>Custom CMS</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600"></i>
-                            <span>Training & Support</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">SEO Services</h3>
-                    <p class="text-gray-600 mb-4">Search engine optimization to improve your online visibility and rankings.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600"></i>
-                            <span>Keyword Research</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600"></i>
-                            <span>On-Page Optimization</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600"></i>
-                            <span>Performance Tracking</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-teal-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">UI/UX Design</h3>
-                    <p class="text-gray-600 mb-4">Beautiful, user-friendly interfaces that enhance user experience.</p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-teal-600"></i>
-                            <span>Responsive Design</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-teal-600"></i>
-                            <span>User Testing</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-teal-600"></i>
-                            <span>Brand Integration</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-header" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label"><i class="fas fa-route"></i> How We Work</div>
+      <h2 class="section-title" style="color:white;">Our Web Development <span>Process</span></h2>
+      <p class="section-sub">From discovery to deployment — we make every step smooth, transparent, and efficient.</p>
     </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>Understanding your requirements, goals, and target audience to create the perfect solution strategy.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Design</h4>
+        <p>Creating wireframes, mockups, and prototypes to visualize the perfect user experience.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Development</h4>
+        <p>Building your solution using clean code, best practices, and modern technologies.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Launch</h4>
+        <p>Deploying your solution and providing ongoing support for optimal performance.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Process Section -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Development Process</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    We follow a proven methodology to ensure project success and client satisfaction
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Discovery</h3>
-                    <p class="text-gray-600">Understanding your requirements, goals, and target audience to create the perfect solution strategy.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-pencil-ruler"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Design</h3>
-                    <p class="text-gray-600">Creating wireframes, mockups, and prototypes to visualize the perfect user experience.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Development</h3>
-                    <p class="text-gray-600">Building your solution using clean code, best practices, and modern technologies.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Launch</h3>
-                    <p class="text-gray-600">Deploying your solution and providing ongoing support for optimal performance.</p>
-                </div>
-            </div>
-        </div>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to Build Your <span>Web Solution</span>?</h2>
+    <p>Get a free consultation and detailed quote within 24 hours. No commitment required.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20web%20development." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
-</section>
+  </div>
+</div>
+@endsection
 
-<!-- Portfolio Showcase -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Recent Web Projects</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Explore our latest web development projects for Tanzanian businesses
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6f458?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="E-commerce Platform" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">E-commerce Platform</h3>
-                        <p class="text-gray-600 mb-4">Complete online store with payment integration and inventory management.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Laravel</span>
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Vue.js</span>
-                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <img src="https://images.unsplash.com/photo-1559028012-6d6d728e3a5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="School Management" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">School Management System</h3>
-                        <p class="text-gray-600 mb-4">Comprehensive system for student management and academic tracking.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm">Node.js</span>
-                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <img src="https://images.unsplash.com/photo-1563013544-6574fb3f1e7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Healthcare Portal" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Healthcare Portal</h3>
-                        <p class="text-gray-600 mb-4">Patient management system with appointment scheduling.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Laravel</span>
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Vue.js</span>
-                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Build Your Web Solution?</h2>
-            <p class="text-xl text-blue-100 mb-8 leading-relaxed">
-                Let us create a powerful web presence that drives your business growth. 
-                Contact us today for a free consultation and project estimate.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('contact') }}" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors duration-300">
-                    <i class="fas fa-phone mr-2"></i>Get Free Quote
-                </a>
-                <a href="{{ route('portfolio') }}#web-projects" class="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-blue-600 transition-colors duration-300">
-                    <i class="fas fa-eye mr-2"></i>View Our Work
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+@section('meta_tags')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2F56W4HPN');
+    </script>
 @endsection

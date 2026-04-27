@@ -1,554 +1,225 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Jezdan Technology')
-@section('description', 'Learn about Jezdan Technology - our company overview, vision, mission, core values, and why we are the trusted ICT solutions provider in Tanzania.')
+@section('title', 'About Us | ICT Solutions Company in Tanzania')
+
+@section('meta_tags')
+  <meta name="description" content="Learn about our ICT company in Tanzania. We provide web development, systems, networks and IT solutions for businesses and organizations.">
+  <meta name="keywords" content="about ICT company Tanzania, IT experts Tanzania, software company Dar es Salaam">
+  <meta property="og:title" content="About Us | ICT Solutions Company in Tanzania">
+  <meta property="og:description" content="Learn about our ICT company in Tanzania. We provide web development, systems, networks and IT solutions for businesses and organizations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+@endsection
 
 @section('content')
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="relative container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-                <i class="fas fa-trophy text-yellow-400 mr-3"></i>
-                <span class="text-sm font-semibold">10+ Years of Excellence in ICT Solutions</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">About Jezdan Technology</h1>
-            <p class="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Transforming businesses across Tanzania through innovative technology solutions, 
-                digital expertise, and unwavering commitment to excellence since 2014.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-check-circle mr-2"></i>ISO Certified
-                </span>
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-users mr-2"></i>50+ Expert Professionals
-                </span>
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-globe-africa mr-2"></i>Pan-Tanzania Presence
-                </span>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left" style="max-width: 800px;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        About Us
+      </div>
+      <h1 class="hero-title">
+        Tanzania's Most Trusted <span>ICT Partner</span>
+      </h1>
+      <p class="hero-subtitle">
+        Based in Arusha — the gateway to Kilimanjaro and Tanzania's safari capital — we understand your market better than anyone. We've helped tour operators, hotels, NGOs, and businesses across Tanzania go digital and grow faster.
+      </p>
     </div>
-    <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
-    </div>
+  </div>
 </section>
 
-<!-- Statistics Section -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
-                <div class="text-gray-600">Projects Completed</div>
-            </div>
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">300+</div>
-                <div class="text-gray-600">Happy Clients</div>
-            </div>
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">10M+</div>
-                <div class="text-gray-600">Lines of Code</div>
-            </div>
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">4.9/5</div>
-                <div class="text-gray-600">Client Rating</div>
-            </div>
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-img-stack">
+        <div class="why-img-main">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="TechNova Africa Team" />
         </div>
+        <div class="why-img-sec">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80" alt="Working on digital solutions" />
+        </div>
+        <div class="why-img-badge2">
+          <div class="why-img-badge2-num">7+</div>
+          <div class="why-img-badge2-label">Years of Excellence</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label"><i class="fas fa-star"></i> Why TechNova Africa</div>
+        <h2 class="section-title">Tanzania's Most Trusted <span>ICT Partner</span></h2>
+        <p style="color:var(--text-mid);line-height:1.75;margin-bottom:8px;">
+          Based in Arusha — the gateway to Kilimanjaro and Tanzania's safari capital — we understand your market better than anyone. We've helped tour operators, hotels, NGOs, and businesses across Tanzania go digital and grow faster.
+        </p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h5>Deep Local Market Knowledge</h5>
+              <p>We know the Tanzanian business landscape — from M-Pesa integrations to Swahili content and TCRA compliance requirements.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-icon"><i class="fas fa-bolt"></i></div>
+            <div>
+              <h5>Fast Delivery, No Shortcuts</h5>
+              <p>Most projects delivered in days — not months. We use modern frameworks and agile workflows to move fast without sacrificing quality.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-icon"><i class="fas fa-phone-volume"></i></div>
+            <div>
+              <h5>Real Support in Real Time</h5>
+              <p>Call, WhatsApp, or SMS us — we actually answer. Our local team speaks Swahili and English and responds fast.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-icon"><i class="fas fa-coins"></i></div>
+            <div>
+              <h5>Transparent, Competitive Pricing</h5>
+              <p>No surprise fees. Our packages are clearly priced in TZS with everything spelled out upfront. We work within Tanzanian budgets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- Company Overview -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Company Overview</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Jezdan Technology is a premier ICT solutions provider based in Tanzania, dedicated to delivering cutting-edge technology services to businesses of all sizes. Since our inception in 2014, we have established ourselves as a reliable partner for digital transformation across East Africa.
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Our team of 50+ skilled professionals combines deep technical expertise with comprehensive understanding of local business environments, ensuring solutions that are not only technologically advanced but also practical and effective for the Tanzanian and African markets.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-blue-600"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">Headquarters</div>
-                                <div class="text-gray-600">Dar es Salaam, Tanzania</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-users text-blue-600"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">Team Size</div>
-                                <div class="text-gray-600">50+ Professionals</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        We pride ourselves on delivering projects on time, within budget, and to the highest international standards, helping our clients achieve their business objectives through innovative technology solutions.
-                    </p>
-                </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1603726838662-fb4c4f5c7c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Jezdan Technology" class="rounded-2xl shadow-2xl">
-                    <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white rounded-2xl p-6 shadow-xl">
-                        <div class="text-3xl font-bold mb-2">10+</div>
-                        <div class="text-sm">Years of Excellence</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-header" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label"><i class="fas fa-route"></i> How We Work</div>
+      <h2 class="section-title" style="color:white;">Our Simple <span>4-Step Process</span></h2>
+      <p class="section-sub">From first call to going live — we make every step smooth, transparent, and efficient.</p>
     </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Free Consultation</h4>
+        <p>We discuss your goals, requirements, and budget. No hidden costs — full transparency from the start.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Custom Proposal</h4>
+        <p>You receive a detailed proposal with clear scope, timeline, pricing, and all deliverables.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Development</h4>
+        <p>Our team builds your solution with regular updates, testing, and feedback rounds along the way.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Launch &amp; Support</h4>
+        <p>We deploy, train your team, and provide 1 month of free post-launch support and monitoring.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Vision & Mission -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision & Mission</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Guided by clear principles and ambitious goals for Tanzania's digital future
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Vision -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-8">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Vision</h3>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        To be the leading ICT solutions provider in Tanzania and East Africa, empowering businesses with innovative technology that drives growth, efficiency, and competitive advantage in the digital age.
-                    </p>
-                    <ul class="text-left space-y-3 text-gray-600">
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-check-circle text-blue-600"></i>
-                            <span>Pan-African technology leadership</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-check-circle text-blue-600"></i>
-                            <span>Digital transformation catalyst</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-check-circle text-blue-600"></i>
-                            <span>Innovation-driven growth</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Mission -->
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-green-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-8">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Mission</h3>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        To provide reliable, innovative, and affordable ICT solutions that transform business operations, enhance productivity, and enable our clients to achieve their strategic objectives through technology.
-                    </p>
-                    <ul class="text-left space-y-3 text-gray-600">
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-check-circle text-green-600"></i>
-                            <span>Client-centric solutions</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-check-circle text-green-600"></i>
-                            <span>Quality and reliability</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-check-circle text-green-600"></i>
-                            <span>Affordable innovation</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- TECHNOLOGIES -->
+<div class="tech-strip">
+  <div class="tech-strip-inner">
+    <div style="text-align:center;">
+      <div class="section-label" style="display:inline-flex;"><i class="fas fa-code-branch"></i> Technologies We Use</div>
+      <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.6rem;font-weight:900;margin-top:8px;">Built with <span style="color:var(--accent);">Industry-Leading Tools</span></h3>
     </div>
-</section>
-
-<!-- Core Values -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Core Values</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    The principles that guide our actions and define our culture
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Integrity -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-2xl mx-auto mb-6">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Integrity</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
-                        We conduct business with honesty, transparency, and ethical principles in all our interactions.
-                    </p>
-                </div>
-
-                <!-- Excellence -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mx-auto mb-6">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Excellence</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
-                        We strive for the highest quality standards in every project and service we deliver.
-                    </p>
-                </div>
-
-                <!-- Innovation -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl mx-auto mb-6">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Innovation</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
-                        We embrace creativity and cutting-edge technology to solve complex business challenges.
-                    </p>
-                </div>
-
-                <!-- Customer Focus -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-2xl mx-auto mb-6">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Customer Focus</h3>
-                    <p class="text-gray-600 text-center leading-relaxed">
-                        Our clients' success is our success; we prioritize their needs above all else.
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="tech-logos">
+      <div class="tech-logo-item">Flutter</div>
+      <div class="tech-logo-item">React Native</div>
+      <div class="tech-logo-item">WordPress</div>
+      <div class="tech-logo-item">Laravel</div>
+      <div class="tech-logo-item">Node.js</div>
+      <div class="tech-logo-item">React.js</div>
+      <div class="tech-logo-item">MySQL</div>
+      <div class="tech-logo-item">Firebase</div>
+      <div class="tech-logo-item">M-Pesa API</div>
+      <div class="tech-logo-item">TigoPesa API</div>
+      <div class="tech-logo-item">Google Analytics</div>
+      <div class="tech-logo-item">AWS / Cloud</div>
+      <div class="tech-logo-item">Cisco / Ubiquiti</div>
+      <div class="tech-logo-item">Mikrotik</div>
     </div>
-</section>
+  </div>
+</div>
 
-<!-- Why Choose Us -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Jezdan Technology?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Discover what makes us the preferred ICT partner for businesses across Tanzania
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Local Expertise -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Local Expertise</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Deep understanding of Tanzanian business environment, regulations, and market dynamics.
-                    </p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600 text-xs"></i>
-                            <span>Local market knowledge</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600 text-xs"></i>
-                            <span>Regulatory compliance</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-blue-600 text-xs"></i>
-                            <span>Cultural understanding</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Expert Team -->
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Expert Team</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        50+ skilled professionals with extensive experience in diverse technology domains.
-                    </p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600 text-xs"></i>
-                            <span>Certified professionals</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600 text-xs"></i>
-                            <span>Continuous training</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-green-600 text-xs"></i>
-                            <span>Domain expertise</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Quality Solutions -->
-                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Quality Solutions</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        High-quality services that meet and exceed international standards and best practices.
-                    </p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600 text-xs"></i>
-                            <span>ISO certified processes</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600 text-xs"></i>
-                            <span>Quality assurance</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-purple-600 text-xs"></i>
-                            <span>Best practices</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Affordable Pricing -->
-                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-tag"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Affordable Pricing</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Competitive rates without compromising on quality or service delivery standards.
-                    </p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600 text-xs"></i>
-                            <span>Transparent pricing</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600 text-xs"></i>
-                            <span>Value for money</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-orange-600 text-xs"></i>
-                            <span>Flexible packages</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Timely Delivery -->
-                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Timely Delivery</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Projects delivered on time, every time, with efficient project management.
-                    </p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600 text-xs"></i>
-                            <span>Agile methodology</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600 text-xs"></i>
-                            <span>Project tracking</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-red-600 text-xs"></i>
-                            <span>On-time guarantee</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Ongoing Support -->
-                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-teal-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
-                        <i class="fas fa-life-ring"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">24/7 Support</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Round-the-clock support and maintenance services to ensure business continuity.
-                    </p>
-                    <ul class="space-y-2 text-gray-600 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-teal-600 text-xs"></i>
-                            <span>24/7 availability</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-teal-600 text-xs"></i>
-                            <span>Quick response time</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-check text-teal-600 text-xs"></i>
-                            <span>Proactive monitoring</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">500<span>+</span></span>
+      <div class="stat-label">Projects Completed</div>
+      <div class="stat-bar"><div class="stat-bar-fill" style="width:90%"></div></div>
     </div>
-</section>
-
-
-
-
-<!-- Team Section -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Leadership Team</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Meet the visionary leaders driving Jezdan Technology's success
-                </p>
-            </div>
-
-            <!-- GRID -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-
-                <!-- CEO -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/portrait-male-engineer-working-field-engineers-day-celebration_afzsch.jpg" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-lg font-bold text-white">Jeremia Thomas</h3>
-                            <p class="text-blue-200 text-sm">Chief Executive Officer</p>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <p class="text-gray-600 text-sm mb-4">
-                            15+ years in tech leadership and digital transformation.
-                        </p>
-                        <div class="flex justify-center gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTO -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-lg font-bold text-white">Michael Johnson</h3>
-                            <p class="text-blue-200 text-sm">Chief Technology Officer</p>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <p class="text-gray-600 text-sm mb-4">
-                            Expert in cloud systems, cybersecurity, and innovation.
-                        </p>
-                        <div class="flex justify-center gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- COO (UPDATED) -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/programmer-home-office-concentrating-finding-bugs-while-he-codes_gctbqc.jpg" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-lg font-bold text-white">Sarah Mwangi</h3>
-                            <p class="text-blue-200 text-sm">Chief Operating Officer</p>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <p class="text-gray-600 text-sm mb-4">
-                            Operations expert focused on efficiency, execution, and growth.
-                        </p>
-                        <div class="flex justify-center gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CFO -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-lg font-bold text-white">Daniel Kimaro</h3>
-                            <p class="text-blue-200 text-sm">Chief Financial Officer</p>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <p class="text-gray-600 text-sm mb-4">
-                            Financial strategist ensuring sustainable growth.
-                        </p>
-                        <div class="flex justify-center gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Head of Development -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-engineer-doing-node-tree-programming-optimize-resource-allocation-server-farm_mtnzvc.jpg" class="w-full h-64 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-lg font-bold text-white">Amina Hassan</h3>
-                            <p class="text-blue-200 text-sm">Head of Development</p>
-                        </div>
-                    </div>
-                    <div class="p-4 text-center">
-                        <p class="text-gray-600 text-sm mb-4">
-                            Leads engineering teams delivering scalable solutions.
-                        </p>
-                        <div class="flex justify-center gap-4">
-                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <div class="stat-item">
+      <span class="stat-num">200<span>+</span></span>
+      <div class="stat-label">Active Clients</div>
+      <div class="stat-bar"><div class="stat-bar-fill" style="width:75%"></div></div>
     </div>
-</section>
-
-
-
-
-<!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
-            <p class="text-xl text-blue-100 mb-8 leading-relaxed">
-                Join hundreds of Tanzanian businesses that have already partnered with Jezdan Technology 
-                for their digital transformation journey.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('contact') }}" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
-                    Get Started Today
-                </a>
-                <a href="{{ route('portfolio') }}" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300">
-                    View Our Work
-                </a>
-            </div>
-        </div>
+    <div class="stat-item">
+      <span class="stat-num">7<span>+</span></span>
+      <div class="stat-label">Years in Business</div>
+      <div class="stat-bar"><div class="stat-bar-fill" style="width:60%"></div></div>
     </div>
-</section>
+    <div class="stat-item">
+      <span class="stat-num">98<span>%</span></span>
+      <div class="stat-label">Client Satisfaction Rate</div>
+      <div class="stat-bar"><div class="stat-bar-fill" style="width:98%"></div></div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">24<span>/7</span></span>
+      <div class="stat-label">Support Availability</div>
+      <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to Work <span>With Us</span>?</h2>
+    <p>Let's discuss how we can help your business grow. Get a free consultation and detailed quote within 24 hours.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/255700000000?text=Hello%20TechNova%20Africa!%20I'm%20interested%20in%20working%20with%20you." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
+    </div>
+  </div>
+</div>
+@endsection
+
+@section('meta_tags')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2F56W4HPN');
+    </script>
+@endsection
+
+@section('additional_scripts')
+<script>
+  // Intersection Observer for count-up animation
+  const statNums = document.querySelectorAll('.stat-num');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeInUp 0.6s ease both';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(n => observer.observe(n));
+</script>
 @endsection

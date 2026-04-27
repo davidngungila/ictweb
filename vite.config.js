@@ -10,6 +10,17 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    build: {
+        minify: 'terser',
+        cssMinify: true,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vendor: ['vue', 'axios'],
+                },
+            },
+        },
+    },
     server: {
         watch: {
             ignored: ['**/storage/framework/views/**'],

@@ -1,450 +1,300 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - Jezdan Technology')
-@section('description', 'Contact Jezdan Technology in Moshi, Tanzania. Get in touch for reliable ICT solutions including web development, mobile apps, network installation, cybersecurity, and IT support.')
+@section('title', 'Contact Us | ICT Company in Tanzania')
 
-@push('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-@endpush
+@section('meta_tags')
+  <meta name="description" content="Contact our ICT company in Tanzania for web development, mobile apps, network installation and IT support services.">
+  <meta name="keywords" content="contact ICT company Tanzania, IT services Dar es Salaam contact, Jezdan Technology contact">
+  <meta property="og:title" content="Contact Us | ICT Company in Tanzania">
+  <meta property="og:description" content="Contact our ICT company in Tanzania for web development, mobile apps, network installation and IT support services.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+@endsection
 
 @section('content')
-<!-- Success/Error Messages -->
-@if(session('success'))
+<!-- HERO -->
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-left" style="max-width: 800px;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Get In Touch
+      </div>
+      <h1 class="hero-title">
+        Let's Build Something <span>Great Together</span>
+      </h1>
+      <p class="hero-subtitle">
+        Whether you're starting from scratch or upgrading your existing systems, our team in Moshi, Kilimanjaro is ready to help. Reach out today for a free, no-obligation consultation.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'd%20like%20a%20free%20consultation." class="btn-primary" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us Now
+        </a>
+        <a href="tel:+255685847002" class="btn-outline">
+          <i class="fas fa-phone"></i> Call Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label"><i class="fas fa-envelope"></i> Contact Information</div>
+        <h3>Get In <span style="color:var(--accent);">Touch</span></h3>
+        <p>We're here to help with all your ICT needs. Reach out through any of these channels and we'll respond within 2 hours.</p>
+        
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-detail-label">Location</div>
+              <div class="contact-detail-val">Moshi, Kilimanjaro, Tanzania</div>
+              <a href="https://maps.google.com/?q=Moshi,Kilimanjaro,Tanzania" target="_blank" style="color:var(--accent);font-size:0.85rem;text-decoration:none;">
+                <i class="fas fa-external-link-alt"></i> View on Map
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="contact-detail-label">Phone Numbers</div>
+              <div class="contact-detail-val">
+                <a href="tel:+255685847002" style="color:var(--navy);text-decoration:none;">+255 685 847 002</a>
+              </div>
+              <div class="contact-detail-val">
+                <a href="tel:+255622239304" style="color:var(--navy);text-decoration:none;">+255 622 239 304</a>
+              </div>
+              <div style="margin-top:8px;">
+                <a href="https://wa.me/255685847002" target="_blank" class="btn-whatsapp" style="padding:6px 14px;font-size:0.8rem;">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://wa.me/255622239304" target="_blank" class="btn-whatsapp" style="padding:6px 14px;font-size:0.8rem;">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-val">
+                <a href="mailto:jezdantechnology@gmail.com" style="color:var(--navy);text-decoration:none;">jezdantechnology@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="contact-detail-label">Working Hours</div>
+              <div class="contact-detail-val">Mon–Sat: 8am–7pm | Sun: 9am–2pm</div>
+              <div style="color:var(--success);font-size:0.8rem;margin-top:4px;">
+                <i class="fas fa-circle" style="font-size:6px;"></i> Available Now
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Media Quick Links -->
+        <div style="margin-top:32px;">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:12px;">Follow Us</div>
+          <div style="display:flex;gap:10px;">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <h4>Send Us a Message</h4>
+          <div style="display:flex;align-items:center;gap:6px;color:var(--success);font-size:0.85rem;">
+            <span style="width:8px;height:8px;background:var(--success);border-radius:50%;animation:pulse 2s infinite;"></span>
+            We Reply Within 2 Hours
+          </div>
+        </div>
+        
+        <form onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" class="form-control" placeholder="Your full name" required id="fullName" oninput="validateField(this)" />
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp *</label>
+              <input type="tel" class="form-control" placeholder="+255 7XX XXX XXX" required id="phone" oninput="validateField(this)" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" placeholder="your@email.com" id="email" oninput="validateField(this)" />
+          </div>
+          <div class="form-group">
+            <label>Service Interested In *</label>
+            <select class="form-control" required id="service" onchange="validateField(this)">
+              <option value="">-- Select a Service --</option>
+              <option value="web">Web Development</option>
+              <option value="mobile">Mobile App Development</option>
+              <option value="network">Network Installation</option>
+              <option value="cybersecurity">Cybersecurity</option>
+              <option value="it-support">IT Support</option>
+              <option value="consultancy">ICT Consultancy</option>
+              <option value="system">System Development</option>
+              <option value="cloud">Cloud Services</option>
+              <option value="multiple">Multiple Services</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Budget Range (TZS)</label>
+            <select class="form-control" id="budget">
+              <option value="">-- Select Budget Range --</option>
+              <option value="under-500k">Under 500,000</option>
+              <option value="500k-1.5m">500,000 – 1,500,000</option>
+              <option value="1.5m-5m">1,500,000 – 5,000,000</option>
+              <option value="5m-15m">5,000,000 – 15,000,000</option>
+              <option value="15m+">15,000,000+</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Project</label>
+            <textarea class="form-control" placeholder="Describe your project, goals, and any specific requirements..." id="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Message — We Reply Within 2 Hours
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK ACTION CARDS -->
+<section style="background:var(--off-white);padding:80px 5%;">
+  <div class="container">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-label" style="display:inline-flex;"><i class="fas fa-bolt"></i> Quick Actions</div>
+      <h2 class="section-title">Connect <span>Instantly</span></h2>
+      <p class="section-sub">Choose your preferred way to reach us</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'd%20like%20a%20free%20consultation." target="_blank" style="background:white;border-radius:var(--radius);padding:32px;text-decoration:none;box-shadow:var(--shadow);transition:all 0.3s;display:block;">
+        <div style="width:64px;height:64px;background:#25d366;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i class="fab fa-whatsapp" style="font-size:28px;color:white;"></i>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:8px;">WhatsApp Chat</h3>
+        <p style="color:var(--text-mid);font-size:0.92rem;line-height:1.6;">Get instant responses on WhatsApp. We reply within minutes.</p>
+      </a>
+      
+      <a href="tel:+255685847002" style="background:white;border-radius:var(--radius);padding:32px;text-decoration:none;box-shadow:var(--shadow);transition:all 0.3s;display:block;">
+        <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--accent),var(--accent-bright));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i class="fas fa-phone" style="font-size:28px;color:white;"></i>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:8px;">Call Us</h3>
+        <p style="color:var(--text-mid);font-size:0.92rem;line-height:1.6;">Speak directly with our team. Available 8am–7pm.</p>
+      </a>
+      
+      <a href="mailto:jezdantechnology@gmail.com" style="background:white;border-radius:var(--radius);padding:32px;text-decoration:none;box-shadow:var(--shadow);transition:all 0.3s;display:block;">
+        <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i class="fas fa-envelope" style="font-size:28px;color:var(--accent-bright);"></i>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:8px;">Email Us</h3>
+        <p style="color:var(--text-mid);font-size:0.92rem;line-height:1.6;">Send detailed inquiries. We respond within 2 hours.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to Start Your <span>Project</span>?</h2>
+    <p>Contact us today for a free consultation. No commitment required.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20your%20services." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="tel:+255685847002" class="btn-primary"><i class="fas fa-phone"></i> Call Us Now</a>
+    </div>
+  </div>
+</div>
+@endsection
+
+@section('meta_tags')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
     <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Message Sent!',
-            text: '{{ session('success') }}',
-            confirmButtonColor: '#10b981',
-            confirmButtonText: 'Great!',
-            timer: 5000,
-            timerProgressBar: true
-        });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N2F56W4HPN');
     </script>
-@endif
+@endsection
 
-@if(session('error'))
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Submission Error!',
-            text: '{{ session('error') }}',
-            confirmButtonColor: '#dc3545',
-            confirmButtonText: 'Try Again',
-            timer: 5000,
-            timerProgressBar: true
-        });
-    </script>
-@endif
-<!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-20 overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="relative container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-                <i class="fas fa-envelope text-yellow-400 mr-3"></i>
-                <span class="text-sm font-semibold">Get in Touch with Our Expert Team</span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Contact Us</h1>
-            <p class="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-                Ready to transform your business with cutting-edge ICT solutions? 
-                Our expert team in Moshi, Tanzania is here to help you achieve your digital goals.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-clock mr-2"></i>24/7 Support
-                </span>
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-shield-alt mr-2"></i>Secure & Reliable
-                </span>
-                <span class="bg-blue-700 bg-opacity-50 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-                    <i class="fas fa-award mr-2"></i>Expert Team
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
-    </div>
-</section>
+@section('additional_styles')
+<style>
+  .contact-detail-val a:hover {
+    color: var(--accent) !important;
+  }
+  .quick-action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+  }
+</style>
+@endsection
 
-<!-- Quick Contact Info -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Phone -->
-                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Call Us</h3>
-                    <p class="text-gray-600 mb-2">+255 712 345 678</p>
-                    <p class="text-sm text-gray-500">Mon-Fri: 8AM-6PM</p>
-                </div>
-
-                <!-- Email -->
-                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Email Us</h3>
-                    <p class="text-gray-600 mb-2">info@jezdan.co.tz</p>
-                    <p class="text-sm text-gray-500">24/7 Support</p>
-                </div>
-
-                <!-- WhatsApp -->
-                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">WhatsApp</h3>
-                    <p class="text-gray-600 mb-2">+255 712 345 678</p>
-                    <p class="text-sm text-gray-500">Instant Response</p>
-                </div>
-
-                <!-- Location -->
-                <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Visit Us</h3>
-                    <p class="text-gray-600 mb-2">Moshi, Kilimanjaro</p>
-                    <p class="text-sm text-gray-500">Tanzania</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Fill out the form below and our team will get back to you within 24 hours
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Contact Form -->
-                <div class="lg:col-span-2">
-                    <form action="{{ route('contact.submit') }}" method="POST" class="bg-white rounded-2xl shadow-lg p-8">
-                        @csrf
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
-                                <input type="text" id="name" name="name" required 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                                       placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
-                                <input type="email" id="email" name="email" required 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                                       placeholder="john@example.com">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                                       placeholder="+255 123 456 789">
-                            </div>
-                            <div>
-                                <label for="company" class="block text-gray-700 font-medium mb-2">Company Name</label>
-                                <input type="text" id="company" name="company" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                                       placeholder="Your Company Ltd">
-                            </div>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="service" class="block text-gray-700 font-medium mb-2">Service Interested In *</label>
-                            <select id="service" name="service" required
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
-                                <option value="">Select a service</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="mobile-app">Mobile App Development</option>
-                                <option value="network-installation">Network Installation</option>
-                                <option value="cybersecurity">Cybersecurity</option>
-                                <option value="it-support">IT Support</option>
-                                <option value="ict-consultancy">ICT Consultancy</option>
-                                <option value="digital-marketing">Digital Marketing</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="budget" class="block text-gray-700 font-medium mb-2">Project Budget</label>
-                            <select id="budget" name="budget" 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
-                                <option value="">Select budget range</option>
-                                <option value="under-1m">Under TZS 1 Million</option>
-                                <option value="1m-5m">TZS 1-5 Million</option>
-                                <option value="5m-10m">TZS 5-10 Million</option>
-                                <option value="10m-20m">TZS 10-20 Million</option>
-                                <option value="over-20m">Over TZS 20 Million</option>
-                                <option value="discuss">Discuss in person</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Project Details *</label>
-                            <textarea id="message" name="message" rows="5" required 
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                                      placeholder="Tell us about your project requirements, timeline, and any specific needs..."></textarea>
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="flex items-center">
-                                <input type="checkbox" name="privacy" required class="mr-2">
-                                <span class="text-gray-700">I agree to the privacy policy and terms of service *</span>
-                            </label>
-                        </div>
-
-                        <button type="submit" 
-                                class="w-full px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Contact Information -->
-                <div>
-                    <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Why Choose Us?</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <i class="fas fa-check text-blue-600 text-sm"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 mb-1">Expert Team</h4>
-                                    <p class="text-gray-600 text-sm">10+ years of experience in ICT solutions</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <i class="fas fa-check text-blue-600 text-sm"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 mb-1">24/7 Support</h4>
-                                    <p class="text-gray-600 text-sm">Round-the-clock technical assistance</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <i class="fas fa-check text-blue-600 text-sm"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 mb-1">Local Expertise</h4>
-                                    <p class="text-gray-600 text-sm">Deep understanding of Tanzanian market</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Office Hours -->
-                    <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Office Hours</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-700">Monday - Friday</span>
-                                <span class="font-semibold text-gray-900">8:00 AM - 6:00 PM</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-700">Saturday</span>
-                                <span class="font-semibold text-gray-900">9:00 AM - 2:00 PM</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-700">Sunday</span>
-                                <span class="text-red-600 font-semibold">Closed</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Media -->
-                    <div class="bg-white rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Follow Us</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <a href="https://facebook.com/jezdantechnology" target="_blank" 
-                               class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                                <i class="fab fa-facebook-f text-blue-600"></i>
-                                <span class="text-gray-700">Facebook</span>
-                            </a>
-                            <a href="https://linkedin.com/company/jezdantechnology" target="_blank" 
-                               class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                                <i class="fab fa-linkedin-in text-blue-600"></i>
-                                <span class="text-gray-700">LinkedIn</span>
-                            </a>
-                            <a href="https://instagram.com/jezdantechnology" target="_blank" 
-                               class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                                <i class="fab fa-instagram text-blue-600"></i>
-                                <span class="text-gray-700">Instagram</span>
-                            </a>
-                            <a href="https://wa.me/255712345678" target="_blank" 
-                               class="flex items-center gap-3 p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-                                <i class="fab fa-whatsapp text-green-600"></i>
-                                <span class="text-gray-700">WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Map Section -->
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Find Our Office</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Visit our headquarters in Moshi, Kilimanjaro for in-person consultations and project discussions
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Map -->
-                <div class="bg-gray-200 rounded-2xl h-96 flex items-center justify-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 opacity-50"></div>
-                    <div class="relative text-center">
-                        <i class="fas fa-map-marked-alt text-6xl text-blue-600 mb-4"></i>
-                        <p class="text-gray-700 font-semibold">Interactive Map</p>
-                        <p class="text-gray-600">Moshi, Kilimanjaro, Tanzania</p>
-                        <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                            <i class="fas fa-directions mr-2"></i>Get Directions
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Address Details -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Office Address</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Jezdan Technology</h4>
-                                <p class="text-gray-600">ICT Solutions Provider</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Address</h4>
-                                <p class="text-gray-600">Moshi Municipality</p>
-                                <p class="text-gray-600">Kilimanjaro Region</p>
-                                <p class="text-gray-600">Tanzania</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Contact</h4>
-                                <p class="text-gray-600">+255 712 345 678</p>
-                                <p class="text-gray-600">info@jezdan.co.tz</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Business Hours</h4>
-                                <p class="text-gray-600">Mon-Fri: 8:00 AM - 6:00 PM</p>
-                                <p class="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
-                                <p class="text-gray-600">Sunday: Closed</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Quick answers to common questions about our services
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">What services do you offer?</h3>
-                    <p class="text-gray-600">We offer comprehensive ICT solutions including web development, mobile apps, network installation, cybersecurity, IT support, and digital marketing.</p>
-                </div>
-
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">How long does a project take?</h3>
-                    <p class="text-gray-600">Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex applications may take 2-6 months.</p>
-                </div>
-
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Do you provide ongoing support?</h3>
-                    <p class="text-gray-600">Yes, we offer 24/7 support and maintenance packages for all our clients to ensure smooth operations.</p>
-                </div>
-
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">What are your payment terms?</h3>
-                    <p class="text-gray-600">We offer flexible payment plans including 50% upfront and 50% on completion, with options for milestone-based payments.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
-            <p class="text-xl text-blue-100 mb-8 leading-relaxed">
-                Join hundreds of Tanzanian businesses that have transformed their operations with our innovative ICT solutions. 
-                Contact us today for a free consultation and quote.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+255712345678" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors duration-300">
-                    <i class="fas fa-phone mr-2"></i>Call Now
-                </a>
-                <a href="https://wa.me/255712345678" target="_blank" class="px-8 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300">
-                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
-                </a>
-                <a href="{{ route('contact') }}" class="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-blue-600 transition-colors duration-300">
-                    <i class="fas fa-envelope mr-2"></i>Email Us
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-@push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@endpush
-
+@section('additional_scripts')
+<script>
+  // Form validation
+  function validateField(field) {
+    field.style.borderColor = field.value.trim() ? 'var(--success)' : 'var(--light-gray)';
+  }
+  
+  // Form submit with validation
+  function submitForm(event) {
+    event.preventDefault();
+    
+    const fullName = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    
+    if (!fullName || !phone || !service) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    
+    const btn = document.getElementById('submitBtn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    btn.style.background = 'linear-gradient(135deg, var(--navy), var(--navy-light))';
+    
+    // Simulate form submission
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent! We\'ll reply within 2 hours.';
+      btn.style.background = 'linear-gradient(135deg, #00c896, #00a67e)';
+      
+      // Reset form
+      document.querySelector('form').reset();
+      
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message — We Reply Within 2 Hours';
+        btn.style.background = '';
+      }, 4000);
+    }, 1500);
+  }
+</script>
 @endsection
