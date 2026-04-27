@@ -365,7 +365,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/services', [PageController::class, 'services'])->name('services');
+// Pricing Pages
 Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
+Route::get('/pricing/tour-websites', function() { return view('pages.pricing.tour-websites'); })->name('pricing.tour-websites');
+Route::get('/pricing/web-development', function() { return view('pages.pricing.web-development'); })->name('pricing.web-development');
+Route::get('/pricing/mobile-apps', function() { return view('pages.pricing.mobile-apps'); })->name('pricing.mobile-apps');
+Route::get('/pricing/networking', function() { return view('pages.pricing.networking'); })->name('pricing.networking');
+Route::get('/pricing/cybersecurity', function() { return view('pages.pricing.cybersecurity'); })->name('pricing.cybersecurity');
+Route::get('/pricing/it-support', function() { return view('pages.pricing.it-support'); })->name('pricing.it-support');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 

@@ -126,7 +126,7 @@
           <li><i class="fas fa-check"></i> Analytics dashboard</li>
           <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
         </ul>
-        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
@@ -147,7 +147,7 @@
           <li><i class="fas fa-check"></i> Push notifications</li>
           <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
         </ul>
-        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Enterprise</div>
@@ -167,7 +167,7 @@
           <li><i class="fas fa-check"></i> Full white-label branding</li>
           <li><i class="fas fa-check"></i> Delivered in 10–14 weeks</li>
         </ul>
-        <a href="{{ route('contact') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
       </div>
     </div>
   </div>
@@ -215,7 +215,7 @@
       <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20mobile%20app%20development." class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
-      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
+      <a href="{{ route('package.selection') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
   </div>
 </div>

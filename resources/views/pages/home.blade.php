@@ -35,7 +35,7 @@
       </p>
       <div class="hero-actions">
         <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Explore Packages</a>
-        <a href="#contact" class="btn-outline"><i class="fas fa-phone"></i> Free Consultation</a>
+        <a href="{{ route('package.selection') }}" class="btn-outline"><i class="fas fa-phone"></i> Free Consultation</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -144,7 +144,7 @@
         <h3>CCTV &amp; Security Systems</h3>
         <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 2,000,000</span>
-        <a href="#contact" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('package.selection') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -190,7 +190,7 @@
             <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
             <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -213,7 +213,7 @@
             <li><i class="fas fa-check"></i> Advanced Analytics &amp; conversion funnels</li>
             <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -235,7 +235,7 @@
             <li><i class="fas fa-check"></i> 500 SMS credits + bulk SMS campaigns</li>
             <li><i class="fas fa-check"></i> 6 months priority support</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
       </div>
     </div>
@@ -262,7 +262,7 @@
             <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
             <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -283,7 +283,7 @@
             <li><i class="fas fa-check"></i> SSL + full security setup</li>
             <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">E-Commerce</div>
@@ -303,7 +303,7 @@
             <li><i class="fas fa-check"></i> SMS order confirmations</li>
             <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
       </div>
     </div>
@@ -329,7 +329,7 @@
             <li><i class="fas fa-check"></i> Analytics dashboard</li>
             <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -350,7 +350,7 @@
             <li><i class="fas fa-check"></i> Push notifications</li>
             <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -370,7 +370,7 @@
             <li><i class="fas fa-check"></i> Full white-label branding</li>
             <li><i class="fas fa-check"></i> Delivered in 10–14 weeks</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
       </div>
     </div>
@@ -396,7 +396,7 @@
             <li><i class="fas fa-check"></i> Network credentials documentation</li>
             <li><i class="fas fa-check"></i> Delivered in 1–3 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Best Value</div>
@@ -417,7 +417,7 @@
             <li><i class="fas fa-check"></i> SMS maintenance alerts</li>
             <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -437,7 +437,7 @@
             <li><i class="fas fa-check"></i> Optional CCTV integration</li>
             <li><i class="fas fa-check"></i> Delivered in 5–10 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
       </div>
     </div>
@@ -463,7 +463,7 @@
             <li><i class="fas fa-check"></i> Security report delivered</li>
             <li><i class="fas fa-check"></i> Completed in 2–5 days</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Recommended</div>
@@ -484,7 +484,7 @@
             <li><i class="fas fa-check"></i> Analytics security dashboard</li>
             <li><i class="fas fa-check"></i> Monthly security reports</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -503,7 +503,7 @@
             <li><i class="fas fa-check"></i> Dedicated security analyst</li>
             <li><i class="fas fa-check"></i> Ongoing retainer</li>
           </ul>
-          <a href="#contact" class="btn-package">Request Quote</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
         </div>
       </div>
     </div>
@@ -528,7 +528,7 @@
             <li><i class="fas fa-check"></i> SMS ticket system</li>
             <li><i class="fas fa-check"></i> Up to 5 devices supported</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -548,7 +548,7 @@
             <li><i class="fas fa-check"></i> Monthly analytics reports</li>
             <li><i class="fas fa-check"></i> Unlimited devices</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -567,7 +567,7 @@
             <li><i class="fas fa-check"></i> Dedicated account manager</li>
             <li><i class="fas fa-check"></i> Priority escalation path</li>
           </ul>
-          <a href="#contact" class="btn-package">Get Started</a>
+          <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
         </div>
       </div>
     </div>
@@ -903,7 +903,7 @@
       <a href="https://wa.me/255700000000?text=Hello%20TechNova%20Africa!%20I'm%20interested%20in%20your%20services." class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
-      <a href="#contact" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
+      <a href="{{ route('package.selection') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
   </div>
 </div>
