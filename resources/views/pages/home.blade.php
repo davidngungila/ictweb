@@ -621,11 +621,6 @@
       <div class="stat-bar"><div class="stat-bar-fill" style="width:75%"></div></div>
     </div>
     <div class="stat-item">
-      <span class="stat-num">7<span>+</span></span>
-      <div class="stat-label">Years in Business</div>
-      <div class="stat-bar"><div class="stat-bar-fill" style="width:60%"></div></div>
-    </div>
-    <div class="stat-item">
       <span class="stat-num">98<span>%</span></span>
       <div class="stat-label">Client Satisfaction Rate</div>
       <div class="stat-bar"><div class="stat-bar-fill" style="width:98%"></div></div>
@@ -930,21 +925,31 @@
             <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div>
               <div class="contact-detail-label">Location</div>
-              <div class="contact-detail-val">Arusha, Tanzania (Serving All of TZ)</div>
+              <div class="contact-detail-val">Moshi, Kilimanjaro, Tanzania</div>
+              <a href="https://maps.google.com/?q=Moshi,Kilimanjaro,Tanzania" target="_blank" style="font-size: 0.8rem; color: var(--accent); text-decoration: none;">View on Map</a>
             </div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
             <div>
-              <div class="contact-detail-label">Phone / WhatsApp</div>
-              <div class="contact-detail-val">+255 700 000 000</div>
+              <div class="contact-detail-label">Phone Numbers</div>
+              <div class="contact-detail-val">+255 685 847 002</div>
+              <div class="contact-detail-val">+255 622 239 304</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <div class="contact-detail-label">WhatsApp</div>
+              <div class="contact-detail-val">+255 685 847 002</div>
+              <div class="contact-detail-val">+255 622 239 304</div>
             </div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <div class="contact-detail-label">Email</div>
-              <div class="contact-detail-val">info@technovaafrica.co.tz</div>
+              <div class="contact-detail-val">jezdantechnology@gmail.com</div>
             </div>
           </div>
           <div class="contact-detail">
@@ -952,6 +957,7 @@
             <div>
               <div class="contact-detail-label">Working Hours</div>
               <div class="contact-detail-val">Mon–Sat: 8am–7pm | Sun: 9am–2pm</div>
+              <div class="contact-detail-val" style="color: #28a745; font-size: 0.85rem; font-weight: 600;">Available Now</div>
             </div>
           </div>
         </div>

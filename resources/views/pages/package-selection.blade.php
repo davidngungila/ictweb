@@ -467,7 +467,7 @@
           <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 1.1rem;">📱 Mobile & Advanced</h4>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
             <label class="addon-card" style="display: block; padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
-              <input type="checkbox" name="selected_addons[]" value="mobile_app" data-price="800000" style="margin-right: 10px;">
+              <input type="checkbox" name="selected_addons[]" value="mobile_app_android" data-price="800000" style="margin-right: 10px;">
               <div>
                 <div style="font-weight: 600;">Mobile App (Android – Basic)</div>
                 <div style="font-size: 0.85rem; color: #666; margin: 5px 0;">Convert your system into a mobile app</div>

@@ -110,11 +110,6 @@
       <div class="stat-bar"><div class="stat-bar-fill" style="width:75%"></div></div>
     </div>
     <div class="stat-item">
-      <span class="stat-num">7<span>+</span></span>
-      <div class="stat-label">Years in Business</div>
-      <div class="stat-bar"><div class="stat-bar-fill" style="width:60%"></div></div>
-    </div>
-    <div class="stat-item">
       <span class="stat-num">98<span>%</span></span>
       <div class="stat-label">Client Satisfaction Rate</div>
       <div class="stat-bar"><div class="stat-bar-fill" style="width:98%"></div></div>
