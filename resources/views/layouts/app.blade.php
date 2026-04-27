@@ -890,7 +890,7 @@
 <!-- NAV -->
 <nav>
   <a href="{{ route('home') }}" class="nav-logo">
-    <img src="{{ asset('jezdan-logo.png') }}" alt="Jezdan Technology" style="height: 40px; width: auto; background: white; border-radius: 8px; padding: 5px;">
+    <img src="{{ asset('jezdan-logo.png') }}" alt="Jezdan Technology" style="height: 60px; width: auto; background: white; border-radius: 8px; padding: 5px;">
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
@@ -913,7 +913,7 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="{{ route('home') }}" style="margin-bottom: 15px; display: inline-block;">
-        <img src="{{ asset('jezdan-logo.png') }}" alt="Jezdan Technology" style="height: 50px; width: auto; background: white; border-radius: 8px; padding: 5px;">
+        <img src="{{ asset('jezdan-logo.png') }}" alt="Jezdan Technology" style="height: 70px; width: auto; background: white; border-radius: 8px; padding: 5px;">
       </a>
       <p>Jezdan Technology is a leading ICT company based in Moshi, Kilimanjaro, Tanzania. We deliver world-class digital services with a deep understanding of Tanzania's unique business landscape.</p>
       <div class="footer-social">
