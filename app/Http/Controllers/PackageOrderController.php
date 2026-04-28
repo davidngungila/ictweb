@@ -24,33 +24,115 @@ class PackageOrderController extends Controller
     }
     public function showSelectionForm()
     {
-        $services = Service::where('status', 'active')->get();
-        $packages = Package::where('status', 'active')->get();
-        return view('pages.package-selection', compact('services', 'packages'));
+        // Redirect to step 1 of the new 3-step wizard
+        return redirect()->route('package.selection.step1');
     }
 
-    public function processOrder(Request $request)
+    // New 3-step wizard methods
+    public function showStep1()
+    {
+        return view('pages.package-selection.step1-combined');
+    }
+
+    public function processStep1(Request $request)
     {
         $validated = $request->validate([
             'client_name' => 'required|string|max:255',
             'client_email' => 'required|email|max:255',
             'client_phone' => 'required|string|max:20',
-            'service_id' => 'nullable|exists:services,id',
-            'package_id' => 'nullable|exists:packages,id',
-            'selected_features' => 'required|array',
-            'selected_features.*' => 'string',
+            'company_name' => 'nullable|string|max:255',
+            'service_id' => 'required|integer|in:1,2,3,4,5,6',
+            'package_id' => 'required|integer|in:1,2,3',
+            'selected_addons' => 'nullable|array',
+            'selected_addons.*' => 'string',
             'notes' => 'nullable|string',
         ]);
 
-        $service = Service::find($request->service_id);
-        $package = Package::find($request->package_id);
+        session()->put('package_order_data', $validated);
+        return redirect()->route('package.selection.step2');
+    }
+
+    public function showStep2()
+    {
+        $step1Data = session('package_order_data', []);
+        return view('pages.package-selection.step2-review')
+            ->with('old', array_merge($step1Data, old()));
+    }
+
+    public function processStep2(Request $request)
+    {
+        $step1Data = session('package_order_data', []);
+        
+        // Merge with any additional notes from review page
+        $validated = array_merge($step1Data, [
+            'notes' => $request->input('notes', $step1Data['notes'] ?? null),
+        ]);
+
+        session()->put('package_order_data', $validated);
+        
+        // Process the order directly
+        return $this->processOrder($request);
+    }
+
+    public function processOrder(Request $request)
+    {
+        // Get data from session (new 3-step wizard)
+        $orderData = session('package_order_data', []);
+
+        $validated = [
+            'client_name' => $orderData['client_name'] ?? '',
+            'client_email' => $orderData['client_email'] ?? '',
+            'client_phone' => $orderData['client_phone'] ?? '',
+            'service_id' => $orderData['service_id'] ?? null,
+            'package_id' => $orderData['package_id'] ?? null,
+            'selected_addons' => $orderData['selected_addons'] ?? [],
+            'notes' => $orderData['notes'] ?? null,
+        ];
+
+        // Hardcoded services and packages data
+        $services = [
+            1 => ['name' => 'Web Development', 'base_price' => 400000],
+            2 => ['name' => 'Mobile App Development', 'base_price' => 3000000],
+            3 => ['name' => 'Network Installation', 'base_price' => 300000],
+            4 => ['name' => 'Cybersecurity', 'base_price' => 300000],
+            5 => ['name' => 'IT Support', 'base_price' => 150000],
+            6 => ['name' => 'ICT Consultancy', 'base_price' => 500000],
+        ];
+
+        $packages = [
+            1 => ['name' => 'Starter Package', 'price' => 400000],
+            2 => ['name' => 'Business Package', 'price' => 800000],
+            3 => ['name' => 'Enterprise Package', 'price' => 1500000],
+        ];
+
+        $service = $services[$validated['service_id']] ?? null;
+        $package = $packages[$validated['package_id']] ?? null;
 
         // Calculate total price
-        $basePrice = $package ? $package->price : ($service ? $service->base_price : 0);
+        $basePrice = $package ? $package['price'] : ($service ? $service['base_price'] : 0);
         $totalPrice = $basePrice;
 
-        // Add feature costs if needed (you can define feature pricing logic here)
-        // For now, we'll assume features are included in the package price
+        // Add addon prices
+        $addonPrices = [
+            'travel_blog_5_posts' => 150000,
+            'advanced_seo' => 300000,
+            'social_auto_posting' => 150000,
+            'email_marketing' => 200000,
+            'google_automation' => 100000,
+            'ai_chatbot' => 250000,
+            'bulk_sms_system' => 200000,
+            'online_payment' => 200000,
+            'api_integration' => 150000,
+            'admin_dashboard' => 300000,
+            'booking_system' => 250000,
+            'ecommerce' => 350000,
+        ];
+
+        if (isset($validated['selected_addons'])) {
+            foreach ($validated['selected_addons'] as $addon) {
+                $totalPrice += $addonPrices[$addon] ?? 0;
+            }
+        }
 
         // Calculate 30% advance payment
         $advancePayment = $totalPrice * 0.30;
@@ -64,14 +146,15 @@ class PackageOrderController extends Controller
                 'client_name' => $validated['client_name'],
                 'client_email' => $validated['client_email'],
                 'client_phone' => $validated['client_phone'],
-                'service_id' => $request->service_id,
-                'package_id' => $request->package_id,
-                'selected_features' => $validated['selected_features'],
+                'service_id' => $validated['service_id'],
+                'package_id' => $validated['package_id'],
+                'selected_features' => [],
+                'selected_addons' => $validated['selected_addons'] ?? [],
                 'total_price' => $totalPrice,
                 'advance_payment' => $advancePayment,
                 'remaining_balance' => $remainingBalance,
                 'status' => 'pending',
-                'notes' => $validated['notes'] ?? null,
+                'notes' => $validated['notes'],
             ]);
 
             // Generate invoice
@@ -91,26 +174,38 @@ class PackageOrderController extends Controller
                 'notes' => "30% advance payment for package order. Remaining balance: TZS " . number_format($remainingBalance, 2),
             ]);
 
+            // Clear session data (new 3-step wizard)
+            session()->forget('package_order_data');
+
             DB::commit();
 
+            // Generate PDF invoice
+            $pdf = \PDF::loadView('receipts.invoice', compact('order', 'invoice'));
+            $invoicePdf = $pdf->output();
+
+            // Store invoice PDF in session for display
+            session()->put('invoice_pdf', base64_encode($invoicePdf));
+
             return redirect()->route('payment.show', ['order' => $order->id])
-                ->with('success', 'Order created successfully. Please complete the advance payment.');
+                ->with('success', 'Order created successfully. Please complete the advance payment.')
+                ->with('show_invoice_modal', true);
 
         } catch (\Exception $e) {
             DB::rollBack();
+            Log::error('Order creation failed', ['error' => $e->getMessage()]);
             return back()->with('error', 'Failed to create order. Please try again.');
         }
     }
 
     public function showPaymentPage($orderId)
     {
-        $order = PackageOrder::with(['service', 'package'])->findOrFail($orderId);
+        $order = PackageOrder::findOrFail($orderId);
         return view('pages.payment', compact('order'));
     }
 
     public function initiatePayment(Request $request, $orderId)
     {
-        $order = PackageOrder::with(['service', 'package'])->findOrFail($orderId);
+        $order = PackageOrder::findOrFail($orderId);
         $paymentMethod = $request->input('payment_method', 'mobile');
         
         Log::info('Initiating payment', [
@@ -158,7 +253,7 @@ class PackageOrderController extends Controller
 
     public function paymentConfirmation($orderId)
     {
-        $order = PackageOrder::with(['service', 'package'])->findOrFail($orderId);
+        $order = PackageOrder::findOrFail($orderId);
         return view('pages.payment-confirmation', compact('order'));
     }
 
@@ -212,6 +307,12 @@ class PackageOrderController extends Controller
         $pdf = \PDF::loadView('receipts.payment', compact('order'));
         
         return $pdf->download("receipt_{$order->order_number}.pdf");
+    }
+
+    public function showPaymentSuccess($orderId)
+    {
+        $order = PackageOrder::with(['service', 'package'])->findOrFail($orderId);
+        return view('pages.package-selection.payment-success', compact('order'));
     }
 
     public function handleWebhook(Request $request)

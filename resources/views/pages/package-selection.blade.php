@@ -242,6 +242,8 @@
 <!-- PACKAGE SELECTION FORM -->
 <section class="services" style="padding: 60px 0;">
   <div class="container">
+    <form action="{{ route('package.order.process') }}" method="POST">
+      @csrf
     <div class="selection-layout">
       <!-- Left Column - Form Sections -->
       <div>

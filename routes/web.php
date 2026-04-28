@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\FileManagerController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\PricingPlanController;
+use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\PackageOrderController;
 
 /*
@@ -139,19 +142,43 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/file-manager/stats', [FileManagerController::class, 'stats'])->name('file-manager.stats');
         
         // Packages
-        Route::get('/packages', function() {
-            return view('admin.packages.index');
-        })->name('packages.index');
+        Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
+        Route::get('/packages/data', [PackageController::class, 'data'])->name('packages.data');
+        Route::get('/packages/create', [PackageController::class, 'create'])->name('packages.create');
+        Route::post('/packages', [PackageController::class, 'store'])->name('packages.store');
+        Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
+        Route::get('/packages/{package}/edit', [PackageController::class, 'edit'])->name('packages.edit');
+        Route::put('/packages/{package}', [PackageController::class, 'update'])->name('packages.update');
+        Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->name('packages.destroy');
+        Route::post('/packages/{package}/toggle-featured', [PackageController::class, 'toggleFeatured'])->name('packages.toggle-featured');
+        Route::get('/packages/stats', [PackageController::class, 'stats'])->name('packages.stats');
+        Route::get('/packages/export', [PackageController::class, 'export'])->name('packages.export');
         
         // Pricing
-        Route::get('/pricing', function() {
-            return view('admin.pricing.index');
-        })->name('pricing.index');
+        Route::get('/pricing', [PricingPlanController::class, 'index'])->name('pricing.index');
+        Route::get('/pricing/data', [PricingPlanController::class, 'data'])->name('pricing.data');
+        Route::get('/pricing/create', [PricingPlanController::class, 'create'])->name('pricing.create');
+        Route::post('/pricing', [PricingPlanController::class, 'store'])->name('pricing.store');
+        Route::get('/pricing/{pricingPlan}', [PricingPlanController::class, 'show'])->name('pricing.show');
+        Route::get('/pricing/{pricingPlan}/edit', [PricingPlanController::class, 'edit'])->name('pricing.edit');
+        Route::put('/pricing/{pricingPlan}', [PricingPlanController::class, 'update'])->name('pricing.update');
+        Route::delete('/pricing/{pricingPlan}', [PricingPlanController::class, 'destroy'])->name('pricing.destroy');
+        Route::post('/pricing/{pricingPlan}/toggle-active', [PricingPlanController::class, 'toggleActive'])->name('pricing.toggle-active');
+        Route::get('/pricing/stats', [PricingPlanController::class, 'stats'])->name('pricing.stats');
+        Route::get('/pricing/export', [PricingPlanController::class, 'export'])->name('pricing.export');
         
         // Offers
-        Route::get('/offers', function() {
-            return view('admin.offers.index');
-        })->name('offers.index');
+        Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+        Route::get('/offers/data', [OfferController::class, 'data'])->name('offers.data');
+        Route::get('/offers/create', [OfferController::class, 'create'])->name('offers.create');
+        Route::post('/offers', [OfferController::class, 'store'])->name('offers.store');
+        Route::get('/offers/{offer}', [OfferController::class, 'show'])->name('offers.show');
+        Route::get('/offers/{offer}/edit', [OfferController::class, 'edit'])->name('offers.edit');
+        Route::put('/offers/{offer}', [OfferController::class, 'update'])->name('offers.update');
+        Route::delete('/offers/{offer}', [OfferController::class, 'destroy'])->name('offers.destroy');
+        Route::post('/offers/{offer}/toggle-active', [OfferController::class, 'toggleActive'])->name('offers.toggle-active');
+        Route::get('/offers/stats', [OfferController::class, 'stats'])->name('offers.stats');
+        Route::get('/offers/export', [OfferController::class, 'export'])->name('offers.export');
         
         // Payments
         Route::get('/payments', function() {
@@ -291,19 +318,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.tasks.advanced');
         })->name('tasks.advanced');
         
-        // Advanced Package Management Pages
-        Route::get('/packages', function() {
-            return view('admin.packages.advanced');
-        })->name('packages.advanced');
-        
-        Route::get('/pricing', function() {
-            return view('admin.pricing.advanced');
-        })->name('pricing.advanced');
-        
-        Route::get('/offers', function() {
-            return view('admin.offers.advanced');
-        })->name('offers.advanced');
-        
         // Settings Sub-pages
         Route::get('/settings/general', function() {
             return view('admin.settings.general');
@@ -378,13 +392,66 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // Package Selection & Payment
 Route::get('/package-selection', [PackageOrderController::class, 'showSelectionForm'])->name('package.selection');
+
+// Multi-step wizard routes (3-step flow)
+Route::get('/package-selection/step1', [PackageOrderController::class, 'showStep1'])->name('package.selection.step1');
+Route::post('/package-selection/step1/process', [PackageOrderController::class, 'processStep1'])->name('package.selection.step1.process');
+Route::get('/package-selection/step2', [PackageOrderController::class, 'showStep2'])->name('package.selection.step2');
+Route::post('/package-selection/step2/process', [PackageOrderController::class, 'processStep2'])->name('package.selection.step2.process');
+
 Route::post('/package/order', [PackageOrderController::class, 'processOrder'])->name('package.order.process');
 Route::get('/payment/{order}', [PackageOrderController::class, 'showPaymentPage'])->name('payment.show');
 Route::post('/payment/{order}/initiate', [PackageOrderController::class, 'initiatePayment'])->name('payment.initiate');
 Route::get('/payment/{order}/check-status', [PackageOrderController::class, 'checkPaymentStatus'])->name('payment.check.status');
 Route::get('/payment/confirmation/{order}', [PackageOrderController::class, 'paymentConfirmation'])->name('payment.confirmation');
+Route::get('/payment/success/{order}', [PackageOrderController::class, 'showPaymentSuccess'])->name('payment.success');
 Route::get('/payment/receipt/{order}', [PackageOrderController::class, 'downloadReceipt'])->name('payment.receipt');
 Route::post('/webhook/snippe', [PackageOrderController::class, 'handleWebhook'])->name('webhook.snippe')->withoutMiddleware(['csrf']);
+
+// Test payment route
+Route::get('/test-payment', function() {
+    // Create a test order
+    $order = \App\Models\PackageOrder::create([
+        'order_number' => 'TEST-' . time(),
+        'client_name' => 'Test User',
+        'client_email' => 'test@example.com',
+        'client_phone' => '0622239304',
+        'service_id' => 1,
+        'package_id' => 1,
+        'selected_features' => [],
+        'selected_addons' => [],
+        'total_price' => 2000,
+        'advance_payment' => 2000,
+        'remaining_balance' => 0,
+        'status' => 'pending',
+        'notes' => 'Test payment',
+    ]);
+    
+    // Initiate payment
+    $snippeService = new \App\Services\SnippePaymentService();
+    $payment = $snippeService->createMobileMoneyPayment($order);
+    
+    if ($payment) {
+        $order->update([
+            'payment_reference' => $payment['reference'],
+            'payment_token' => $payment['payment_token'],
+            'payment_status' => 'pending',
+        ]);
+        
+        return response()->json([
+            'success' => true,
+            'order_id' => $order->id,
+            'payment_reference' => $payment['reference'],
+            'payment_token' => $payment['payment_token'],
+            'message' => 'Payment initiated. Check your phone for USSD prompt.',
+        ]);
+    }
+    
+    return response()->json([
+        'success' => false,
+        'message' => 'Failed to initiate payment',
+    ]);
+})->name('test.payment');
 
 // Service Pages
 Route::get('/services/web-development', [PageController::class, 'servicesWebDevelopment'])->name('services.web-development');

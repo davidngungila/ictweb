@@ -12,42 +12,189 @@
             <p class="text-gray-600 mt-1">Strategic discount campaigns and promotional offers management</p>
         </div>
         <div class="flex space-x-3">
-            <div class="relative" x-data="{ open: false }">
-                <button @click="open = !open" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
-                    <i class="fas fa-plus mr-2"></i>
-                    Create Offer
-                    <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                </button>
-                <div x-show="open" @click.away="open = false" 
-                     x-transition:enter="transition ease-out duration-200"
-                     x-transition:enter-start="opacity-0 transform scale-95"
-                     x-transition:enter-end="opacity-100 transform scale-100"
-                     x-transition:leave="transition ease-in duration-75"
-                     x-transition:leave-start="opacity-100 transform scale-100"
-                     x-transition:leave-end="opacity-0 transform scale-95"
-                     class="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-percentage mr-2"></i>Percentage Discount
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-dollar-sign mr-2"></i>Fixed Amount
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-gift mr-2"></i>Free Trial
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-shopping-bag mr-2"></i>Bogo Deal
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-rocket mr-2"></i>Limited Time
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i class="fas fa-copy mr-2"></i>Clone Existing
-                        </a>
-                    </div>
+            <a href="{{ route('admin.offers.create') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+                <i class="fas fa-plus mr-2"></i>
+                Create Offer
+            </a>
+            <a href="{{ route('admin.offers.export') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+                <i class="fas fa-download mr-2"></i>
+                Export Offers
+            </a>
+        </div>
+    </div>
+
+    <!-- Advanced Analytics Dashboard -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600">Total Offers</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $offers->count() }}</p>
+                </div>
+                <div class="p-3 bg-blue-100 rounded-lg">
+                    <i class="fas fa-tags text-blue-600"></i>
                 </div>
             </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600">Active</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $offers->where('is_active', true)->count() }}</p>
+                </div>
+                <div class="p-3 bg-green-100 rounded-lg">
+                    <i class="fas fa-check-circle text-green-600"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600">Valid</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $offers->where('is_active', true)->where(function($q) { $q->whereNull('valid_until')->orWhere('valid_until', '>', now()); })->count() }}</p>
+                </div>
+                <div class="p-3 bg-purple-100 rounded-lg">
+                    <i class="fas fa-clock text-purple-600"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600">Total Used</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $offers->sum('used_count') }}</p>
+                </div>
+                <div class="p-3 bg-yellow-100 rounded-lg">
+                    <i class="fas fa-users text-yellow-600"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Filters and Search -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+            <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search offers..." 
+                           class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full lg:w-80">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">All Types</option>
+                    <option value="percentage">Percentage</option>
+                    <option value="fixed">Fixed Amount</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Offers Table -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Offer</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Discount</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usage</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valid Period</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @forelse($offers as $offer)
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">{{ $offer->name }}</div>
+                            <div class="text-sm text-gray-500 max-w-xs truncate">{{ $offer->description }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-mono text-gray-900 bg-gray-100 px-2 py-1 rounded">{{ $offer->code }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            @if($offer->discount_type === 'percentage')
+                            <div class="text-sm text-gray-900">{{ $offer->discount_value }}%</div>
+                            @else
+                            <div class="text-sm text-gray-900">{{ $offer->currency ?? 'TZS' }} {{ number_format($offer->discount_value, 0) }}</div>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">{{ $offer->used_count }} / {{ $offer->usage_limit ?? '∞' }}</div>
+                            <div class="w-16 bg-gray-200 rounded-full h-2 mt-1">
+                                @if($offer->usage_limit)
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: {{ min(($offer->used_count / $offer->usage_limit) * 100, 100) }}%"></div>
+                                @endif
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">
+                                {{ $offer->valid_from ? $offer->valid_from->format('M d, Y') : '-' }}
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                {{ $offer->valid_until ? $offer->valid_until->format('M d, Y') : 'No limit' }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            @if($offer->isValid())
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                Valid
+                            </span>
+                            @elseif($offer->isExpired())
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                Expired
+                            </span>
+                            @else
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                Inactive
+                            </span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <div class="flex space-x-1">
+                                <a href="{{ route('admin.offers.show', $offer) }}" class="text-blue-600 hover:text-blue-900 p-1" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ route('admin.offers.edit', $offer) }}" class="text-green-600 hover:text-green-900 p-1" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="{{ route('admin.offers.destroy', $offer) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:text-red-900 p-1" title="Delete" onclick="return confirm('Are you sure you want to delete this offer?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="7" class="px-6 py-12 text-center text-gray-500">
+                            <i class="fas fa-inbox text-4xl mb-4"></i>
+                            <p class="text-lg">No offers found</p>
+                            <a href="{{ route('admin.offers.create') }}" class="text-blue-600 hover:text-blue-900">Create your first offer</a>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@endsection
             <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
                 <i class="fas fa-download mr-2"></i>
                 Export Offers

@@ -187,17 +187,17 @@
                             </button>
                             
                             <div id="packages-dropdown" class="hidden space-y-1 pl-10">
-                                <a href="{{ route('admin.packages.advanced') }}" 
+                                <a href="{{ route('admin.packages.index') }}" 
                                    class="{{ request()->is('admin/packages*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-box mr-3 text-xs"></i>
                                     Packages
                                 </a>
-                                <a href="{{ route('admin.pricing.advanced') }}" 
+                                <a href="{{ route('admin.pricing.index') }}" 
                                    class="{{ request()->is('admin/pricing*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-tags mr-3 text-xs"></i>
                                     Pricing
                                 </a>
-                                <a href="{{ route('admin.offers.advanced') }}" 
+                                <a href="{{ route('admin.offers.index') }}" 
                                    class="{{ request()->is('admin/offers*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-percentage mr-3 text-xs"></i>
                                     Offers / Discounts
@@ -590,19 +590,19 @@
                         </button>
                         
                         <div id="mobile-packages-dropdown" class="hidden space-y-1 pl-10">
-                            <a href="{{ route('admin.packages.advanced') }}" 
+                            <a href="{{ route('admin.packages.index') }}" 
                                @click="mobileSidebarOpen = false"
                                class="{{ request()->is('admin/packages*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                 <i class="fas fa-box mr-3 text-xs"></i>
                                 Packages
                             </a>
-                            <a href="{{ route('admin.pricing.advanced') }}" 
+                            <a href="{{ route('admin.pricing.index') }}" 
                                @click="mobileSidebarOpen = false"
                                class="{{ request()->is('admin/pricing*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                 <i class="fas fa-tags mr-3 text-xs"></i>
                                 Pricing
                             </a>
-                            <a href="{{ route('admin.offers.advanced') }}" 
+                            <a href="{{ route('admin.offers.index') }}" 
                                @click="mobileSidebarOpen = false"
                                class="{{ request()->is('admin/offers*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                 <i class="fas fa-percentage mr-3 text-xs"></i>

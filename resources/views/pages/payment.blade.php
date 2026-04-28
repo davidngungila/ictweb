@@ -13,7 +13,7 @@
     <div class="hero-left" style="max-width: 800px;">
       <div class="hero-badge">
         <span class="dot"></span>
-        Payment
+        Step 3 of 3
       </div>
       <h1 class="hero-title">
         Complete Your <span>Advance Payment</span>
@@ -24,6 +24,16 @@
     </div>
   </div>
 </section>
+
+<!-- Progress Bar -->
+<div style="background: white; padding: 25px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+  <div class="container">
+    <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+      <div style="height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-bright)); width: 100%;"></div>
+    </div>
+    <div style="text-align: center; margin-top: 10px; font-weight: 600; color: var(--accent);">100% Complete</div>
+  </div>
+</div>
 
 <!-- PAYMENT SECTION -->
 <section class="services" style="padding: 80px 0;">
@@ -58,33 +68,54 @@
       <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2 style="margin-bottom: 25px; font-size: 1.5rem;">Order Summary</h2>
         
+        @php
+          // Hardcoded services and packages
+          $services = [
+              1 => 'Web Development',
+              2 => 'Mobile App Development',
+              3 => 'Network Installation',
+              4 => 'Cybersecurity',
+              5 => 'IT Support',
+              6 => 'ICT Consultancy',
+          ];
+          
+          $packages = [
+              1 => 'Starter Package',
+              2 => 'Business Package',
+              3 => 'Enterprise Package',
+          ];
+          
+          $serviceName = $services[$order->service_id] ?? 'N/A';
+          $packageName = $packages[$order->package_id] ?? 'N/A';
+        @endphp
+        
         <div style="margin-bottom: 20px;">
           <div style="color: #666; font-size: 0.9rem;">Order Number</div>
           <div style="font-weight: 700; font-size: 1.1rem;">{{ $order->order_number }}</div>
         </div>
 
-        @if($order->service)
         <div style="margin-bottom: 20px;">
           <div style="color: #666; font-size: 0.9rem;">Service</div>
-          <div style="font-weight: 600;">{{ $order->service->name }}</div>
+          <div style="font-weight: 600;">{{ $serviceName }}</div>
         </div>
-        @endif
 
-        @if($order->package)
         <div style="margin-bottom: 20px;">
           <div style="color: #666; font-size: 0.9rem;">Package</div>
-          <div style="font-weight: 600;">{{ $order->package->name }}</div>
+          <div style="font-weight: 600;">{{ $packageName }}</div>
         </div>
-        @endif
 
         <div style="margin-bottom: 20px;">
           <div style="color: #666; font-size: 0.9rem;">Selected Features</div>
           <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+            @if($order->selected_features)
             @foreach($order->selected_features as $feature)
             <span style="background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">
               {{ ucfirst(str_replace('_', ' ', $feature)) }}
             </span>
             @endforeach
+            @else
+            <span style="color: #999; font-style: italic;">No features selected</span>
+            @endif
           </div>
         </div>
 
@@ -175,7 +206,85 @@
   </div>
 </div>
 
+<!-- Invoice Modal -->
+<div id="invoiceModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+  <div style="background: white; padding: 30px; border-radius: 20px; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 style="margin: 0; color: var(--accent);">Your Invoice</h2>
+      <button onclick="closeInvoiceModal()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">&times;</button>
+    </div>
+    <div id="invoiceContent" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+      <iframe id="invoiceFrame" style="width: 100%; height: 500px; border: none;"></iframe>
+    </div>
+    <div style="margin-top: 20px; text-align: center;">
+      <button onclick="closeInvoiceModal()" class="btn-primary" style="padding: 12px 30px;">
+        <i class="fas fa-check" style="margin-right: 8px;"></i> Close & Proceed to Payment
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Success Modal -->
+<div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10001; align-items: center; justify-content: center;">
+  <div style="background: white; padding: 50px; border-radius: 20px; text-align: center; max-width: 500px; width: 90%;">
+    <div style="margin-bottom: 30px;">
+      <i class="fas fa-check-circle" style="font-size: 4rem; color: #00c896;"></i>
+    </div>
+    <h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #333;">Payment Successful!</h2>
+    <p style="color: #666; margin-bottom: 30px;">
+      Thank you! Your payment of <strong>TZS {{ number_format($order->advance_payment, 0) }}</strong> has been successfully received.
+    </p>
+    <div style="background: #f0f8ff; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: left;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="color: #666;">Order Number:</span>
+        <span style="font-weight: 600;">{{ $order->order_number }}</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="color: #666;">Amount Paid:</span>
+        <span style="font-weight: 600; color: #00c896;">TZS {{ number_format($order->advance_payment, 0) }}</span>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <span style="color: #666;">Remaining Balance:</span>
+        <span style="font-weight: 600;">TZS {{ number_format($order->remaining_balance, 0) }}</span>
+      </div>
+    </div>
+    <button onclick="closeSuccessModal()" class="btn-primary" style="padding: 15px 40px;">
+      <i class="fas fa-home" style="margin-right: 8px;"></i> Return to Home
+    </button>
+  </div>
+</div>
+
 <script>
+// Show invoice modal automatically if invoice PDF is available
+@php
+  $invoicePdf = session('invoice_pdf');
+  $showInvoiceModal = session('show_invoice_modal');
+  session()->forget('invoice_pdf');
+  session()->forget('show_invoice_modal');
+@endphp
+@if(isset($invoicePdf) && $showInvoiceModal)
+window.addEventListener('load', function() {
+  const invoiceModal = document.getElementById('invoiceModal');
+  const invoiceFrame = document.getElementById('invoiceFrame');
+  const pdfData = atob('{{ $invoicePdf }}');
+  const blob = new Blob([pdfData], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  invoiceFrame.src = url;
+  invoiceModal.style.display = 'flex';
+});
+@endif
+
+function closeInvoiceModal() {
+  const invoiceModal = document.getElementById('invoiceModal');
+  invoiceModal.style.display = 'none';
+}
+
+function closeSuccessModal() {
+  const successModal = document.getElementById('successModal');
+  successModal.style.display = 'none';
+  window.location.href = '{{ url('/') }}';
+}
+
 function initiatePayment() {
   const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
   
@@ -183,20 +292,20 @@ function initiatePayment() {
   const modal = document.getElementById('paymentModal');
   modal.style.display = 'flex';
   
-  // Animate progress bar
+  // Animate progress bar from 0 to 100%
   let progress = 0;
   const progressBar = document.getElementById('progressBar');
   const progressText = document.getElementById('progressText');
   
   const interval = setInterval(() => {
-    progress += Math.random() * 15;
+    progress += 2; // Increment by 2 for smooth animation
     if (progress >= 100) {
       progress = 100;
       clearInterval(interval);
     }
     progressBar.style.width = progress + '%';
     progressText.textContent = Math.round(progress) + '%';
-  }, 200);
+  }, 50); // Update every 50ms for smooth animation
   
   if (paymentMethod === 'mobile') {
     // Initiate mobile money payment (USSD push) - no redirect
@@ -219,7 +328,7 @@ function initiatePayment() {
       
       document.body.appendChild(form);
       form.submit();
-    }, 2000); // Wait 2 seconds for animation
+    }, 3000); // Wait 3 seconds for animation to complete
   } else if (paymentMethod === 'card') {
     // Initiate card payment - will redirect to secure checkout
     setTimeout(() => {
@@ -241,7 +350,7 @@ function initiatePayment() {
       
       document.body.appendChild(form);
       form.submit();
-    }, 2000); // Wait 2 seconds for animation
+    }, 3000); // Wait 3 seconds for animation to complete
   }
 }
 
@@ -252,7 +361,12 @@ setInterval(() => {
     .then(response => response.json())
     .then(data => {
       if (data.status === 'completed') {
-        window.location.href = '{{ route('payment.confirmation', ['order' => $order->id]) }}';
+        // Show success modal instead of redirecting
+        const paymentModal = document.getElementById('paymentModal');
+        paymentModal.style.display = 'none';
+        
+        const successModal = document.getElementById('successModal');
+        successModal.style.display = 'flex';
       }
     });
 }, 10000);

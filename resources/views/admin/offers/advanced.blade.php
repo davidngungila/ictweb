@@ -12,22 +12,22 @@
 
     <!-- Quick Actions -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+        <a href="{{ route('admin.offers.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
             <i class="fas fa-plus mr-2"></i>
             New Campaign
-        </button>
-        <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+        </a>
+        <a href="{{ route('admin.offers.create') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
             <i class="fas fa-percentage mr-2"></i>
             Create Discount
-        </button>
-        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
+        </a>
+        <a href="{{ route('admin.offers.stats') }}" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
             <i class="fas fa-chart-line mr-2"></i>
             Analytics
-        </button>
-        <button class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
+        </a>
+        <a href="{{ route('admin.dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
             <i class="fas fa-cog mr-2"></i>
-            Settings
-        </button>
+            Dashboard
+        </a>
     </div>
 
     <!-- Offers Analytics Dashboard -->
