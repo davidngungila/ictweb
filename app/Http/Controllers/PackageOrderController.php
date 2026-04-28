@@ -55,6 +55,12 @@ class PackageOrderController extends Controller
     public function showStep2()
     {
         $step1Data = session('package_order_data', []);
+        
+        // Redirect to step1 if no data exists
+        if (empty($step1Data)) {
+            return redirect()->route('package.selection.step1')->with('error', 'Please complete step 1 first.');
+        }
+        
         return view('pages.package-selection.step2-review')
             ->with('old', array_merge($step1Data, old()));
     }

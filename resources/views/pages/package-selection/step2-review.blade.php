@@ -301,7 +301,7 @@
           <h3 class="section-title">
             <i class="fas fa-edit"></i> Additional Notes
           </h3>
-          <p style="color: #666;">{{ $data['notes'] ?: 'No additional notes provided' }}</p>
+          <p style="color: #666;">{{ $data['notes'] ?? 'No additional notes provided' }}</p>
         </div>
 
         <!-- Price Summary -->
