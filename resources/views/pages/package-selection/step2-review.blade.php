@@ -364,12 +364,32 @@
           <button type="button" onclick="history.back()" class="btn-secondary" style="flex: 1; display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
           </button>
+          <button type="button" onclick="generateInvoice()" class="btn-secondary" style="flex: 1; display: flex; align-items: center; justify-content: center; border-color: var(--accent); color: var(--accent);">
+            <i class="fas fa-file-invoice" style="margin-right: 8px;"></i> Generate Invoice
+          </button>
           <button type="submit" class="btn-primary" style="flex: 2; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-check" style="margin-right: 8px;"></i> Generate Invoice & Proceed to Payment
+            <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Proceed to Payment
           </button>
         </div>
       </div>
     </form>
   </div>
 </section>
+
+<script>
+function generateInvoice() {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = '{{ route('package.invoice.generate') }}';
+  
+  const csrfToken = document.createElement('input');
+  csrfToken.type = 'hidden';
+  csrfToken.name = '_token';
+  csrfToken.value = '{{ csrf_token() }}';
+  form.appendChild(csrfToken);
+  
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
 @endsection

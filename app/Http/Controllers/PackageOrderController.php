@@ -74,6 +74,86 @@ class PackageOrderController extends Controller
         return $this->processOrder($request);
     }
 
+    public function generateInvoice(Request $request)
+    {
+        // Get data from session
+        $orderData = session('package_order_data', []);
+
+        // Calculate prices
+        $services = [
+            1 => ['name' => 'Web Development', 'base_price' => 400000],
+            2 => ['name' => 'Mobile App Development', 'base_price' => 3000000],
+            3 => ['name' => 'Network Installation', 'base_price' => 300000],
+            4 => ['name' => 'Cybersecurity', 'base_price' => 300000],
+            5 => ['name' => 'IT Support', 'base_price' => 150000],
+            6 => ['name' => 'ICT Consultancy', 'base_price' => 500000],
+        ];
+
+        $packages = [
+            1 => ['name' => 'Starter Package', 'price' => 400000],
+            2 => ['name' => 'Business Package', 'price' => 800000],
+            3 => ['name' => 'Enterprise Package', 'price' => 1500000],
+        ];
+
+        $addonPrices = [
+            'travel_blog_5_posts' => 150000,
+            'advanced_seo' => 300000,
+            'social_auto_posting' => 150000,
+            'email_marketing' => 200000,
+            'google_automation' => 100000,
+            'ai_chatbot' => 250000,
+            'bulk_sms_system' => 200000,
+            'online_payment' => 200000,
+            'api_integration' => 150000,
+            'admin_dashboard' => 300000,
+            'booking_system' => 250000,
+            'ecommerce' => 350000,
+        ];
+
+        $basePrice = $packages[$orderData['package_id']]['price'] ?? 0;
+        $addonsTotal = 0;
+        if($orderData['selected_addons'] ?? []) {
+            foreach($orderData['selected_addons'] as $addon) {
+                $addonsTotal += $addonPrices[$addon] ?? 0;
+            }
+        }
+        $totalPrice = $basePrice + $addonsTotal;
+        $advancePayment = $totalPrice * 0.3;
+        $remainingBalance = $totalPrice - $advancePayment;
+
+        // Create temporary order object for invoice
+        $tempOrder = (object)[
+            'order_number' => 'INV-' . time(),
+            'client_name' => $orderData['client_name'],
+            'client_email' => $orderData['client_email'],
+            'client_phone' => $orderData['client_phone'],
+            'total_price' => $totalPrice,
+            'advance_payment' => $advancePayment,
+            'remaining_balance' => $remainingBalance,
+        ];
+
+        // Create temporary invoice object
+        $tempInvoice = (object)[
+            'invoice_number' => 'INV-' . time(),
+            'client_name' => $orderData['client_name'],
+            'client_email' => $orderData['client_email'],
+            'client_phone' => $orderData['client_phone'],
+            'description' => 'Package Order - ' . $services[$orderData['service_id']]['name'] . ' - ' . $packages[$orderData['package_id']]['name'],
+            'amount' => $advancePayment,
+            'tax' => 0,
+            'total' => $advancePayment,
+            'due_date' => now()->addDays(7),
+            'status' => 'pending',
+            'created_at' => now(),
+        ];
+
+        // Generate PDF invoice
+        $pdf = \PDF::loadView('receipts.invoice', ['order' => $tempOrder, 'invoice' => $tempInvoice]);
+        
+        // Download the PDF
+        return $pdf->download('invoice-' . $tempInvoice->invoice_number . '.pdf');
+    }
+
     public function processOrder(Request $request)
     {
         // Get data from session (new 3-step wizard)

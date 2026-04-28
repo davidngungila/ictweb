@@ -398,6 +398,7 @@ Route::get('/package-selection/step1', [PackageOrderController::class, 'showStep
 Route::post('/package-selection/step1/process', [PackageOrderController::class, 'processStep1'])->name('package.selection.step1.process');
 Route::get('/package-selection/step2', [PackageOrderController::class, 'showStep2'])->name('package.selection.step2');
 Route::post('/package-selection/step2/process', [PackageOrderController::class, 'processStep2'])->name('package.selection.step2.process');
+Route::post('/package/invoice/generate', [PackageOrderController::class, 'generateInvoice'])->name('package.invoice.generate');
 
 Route::post('/package/order', [PackageOrderController::class, 'processOrder'])->name('package.order.process');
 Route::get('/payment/{order}', [PackageOrderController::class, 'showPaymentPage'])->name('payment.show');

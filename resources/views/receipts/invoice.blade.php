@@ -133,22 +133,26 @@
         <div class="section">
             <div class="section-title">Payment Summary</div>
             <div class="info-row">
-                <span class="info-label">Total Amount</span>
+                <span class="info-label">Total Package Amount</span>
                 <span class="info-value">TZS {{ number_format($order->total_price, 0) }}</span>
             </div>
-            <div class="info-row">
-                <span class="info-label">Advance Payment (30%)</span>
-                <span class="info-value">TZS {{ number_format($order->advance_payment, 0) }}</span>
+            <div class="info-row" style="background: #f0f8ff; padding: 10px; border-radius: 5px;">
+                <span class="info-label" style="color: #0066cc; font-weight: bold;">Advance Payment (30%)</span>
+                <span class="info-value" style="color: #0066cc; font-weight: bold;">TZS {{ number_format($order->advance_payment, 0) }}</span>
             </div>
             <div class="info-row">
-                <span class="info-label">Remaining Balance</span>
+                <span class="info-label">Remaining Balance (70%)</span>
                 <span class="info-value">TZS {{ number_format($order->remaining_balance, 0) }}</span>
             </div>
         </div>
 
         <div class="total-row">
-            <span class="total-label">Amount Due (30% Advance)</span>
+            <span class="total-label">Amount Due Now (30% Advance)</span>
             <span class="total-value">TZS {{ number_format($invoice->amount, 0) }}</span>
+        </div>
+
+        <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 5px; font-size: 14px; color: #856404;">
+            <strong>Note:</strong> This is a 30% advance payment invoice. The remaining balance of TZS {{ number_format($order->remaining_balance, 0) }} will be due upon project completion.
         </div>
 
         <div class="footer">
