@@ -207,22 +207,7 @@
 </div>
 
 <!-- Invoice Modal -->
-<div id="invoiceModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
-  <div style="background: white; padding: 30px; border-radius: 20px; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-      <h2 style="margin: 0; color: var(--accent);">Your Invoice</h2>
-      <button onclick="closeInvoiceModal()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">&times;</button>
-    </div>
-    <div id="invoiceContent" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
-      <iframe id="invoiceFrame" style="width: 100%; height: 500px; border: none;"></iframe>
-    </div>
-    <div style="margin-top: 20px; text-align: center;">
-      <button onclick="closeInvoiceModal()" class="btn-primary" style="padding: 12px 30px;">
-        <i class="fas fa-check" style="margin-right: 8px;"></i> Close & Proceed to Payment
-      </button>
-    </div>
-  </div>
-</div>
+<!-- Removed per user request -->
 
 <!-- Payment Success Modal -->
 <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10001; align-items: center; justify-content: center;">
@@ -255,29 +240,7 @@
 </div>
 
 <script>
-// Show invoice modal automatically if invoice PDF is available
-@php
-  $invoicePdf = session('invoice_pdf');
-  $showInvoiceModal = session('show_invoice_modal');
-  session()->forget('invoice_pdf');
-  session()->forget('show_invoice_modal');
-@endphp
-@if(isset($invoicePdf) && $showInvoiceModal)
-window.addEventListener('load', function() {
-  const invoiceModal = document.getElementById('invoiceModal');
-  const invoiceFrame = document.getElementById('invoiceFrame');
-  const pdfData = atob('{{ $invoicePdf }}');
-  const blob = new Blob([pdfData], { type: 'application/pdf' });
-  const url = URL.createObjectURL(blob);
-  invoiceFrame.src = url;
-  invoiceModal.style.display = 'flex';
-});
-@endif
-
-function closeInvoiceModal() {
-  const invoiceModal = document.getElementById('invoiceModal');
-  invoiceModal.style.display = 'none';
-}
+// Invoice modal removed per user request
 
 function closeSuccessModal() {
   const successModal = document.getElementById('successModal');

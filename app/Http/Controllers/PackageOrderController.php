@@ -143,6 +143,14 @@ class PackageOrderController extends Controller
             'remaining_balance' => $remainingBalance,
         ];
 
+        // Get image data for header
+        $headerImagePath = public_path('header_pdf.png');
+        $headerImageBase64 = '';
+        if (file_exists($headerImagePath)) {
+            $headerImageBase64 = base64_encode(file_get_contents($headerImagePath));
+            $headerImageBase64 = 'data:image/png;base64,' . $headerImageBase64;
+        }
+
         // Create temporary invoice object
         $tempInvoice = (object)[
             'invoice_number' => 'INV-' . time(),
@@ -156,10 +164,13 @@ class PackageOrderController extends Controller
             'due_date' => now()->addDays(7),
             'status' => 'pending',
             'created_at' => now(),
+            'header_image' => $headerImageBase64,
         ];
 
         // Generate PDF invoice
-        $pdf = \PDF::loadView('receipts.invoice', ['order' => $tempOrder, 'invoice' => $tempInvoice]);
+        $pdf = \PDF::loadView('receipts.invoice', ['order' => $tempOrder, 'invoice' => $tempInvoice])
+            ->setOption('enable-local-file-access', true)
+            ->setOption('images', true);
         
         // Download the PDF
         return $pdf->download('invoice-' . $tempInvoice->invoice_number . '.pdf');
@@ -270,16 +281,8 @@ class PackageOrderController extends Controller
 
             DB::commit();
 
-            // Generate PDF invoice
-            $pdf = \PDF::loadView('receipts.invoice', compact('order', 'invoice'));
-            $invoicePdf = $pdf->output();
-
-            // Store invoice PDF in session for display
-            session()->put('invoice_pdf', base64_encode($invoicePdf));
-
             return redirect()->route('payment.show', ['order' => $order->id])
-                ->with('success', 'Order created successfully. Please complete the advance payment.')
-                ->with('show_invoice_modal', true);
+                ->with('success', 'Order created successfully. Please complete the advance payment.');
 
         } catch (\Exception $e) {
             DB::rollBack();

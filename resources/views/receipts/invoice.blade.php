@@ -107,12 +107,18 @@
 <body>
     <div class="invoice">
         <!-- Header Image -->
-        <img src="{{ asset('header_pdf.png') }}" alt="Jezdan Technology Header" class="header-image">
+        @if(isset($invoice->header_image) && $invoice->header_image)
+            <img src="{{ $invoice->header_image }}" alt="Jezdan Technology Header" class="header-image" style="display: block;">
+        @else
+            <img src="{{ url('header_pdf.png') }}" alt="Jezdan Technology Header" class="header-image" style="display: block;">
+        @endif
         
         <div class="header-content">
             <div class="header">
-                <div class="logo">Jezdan Technology</div>
-                <div class="invoice-details">
+                <div style="width: 100%; border-bottom: 2px solid #0066cc; padding-bottom: 20px;">
+                    <!-- Horizontal line instead of logo -->
+                </div>
+                <div class="invoice-details" style="text-align: right;">
                     <div class="invoice-number">Invoice #{{ $invoice->invoice_number }}</div>
                     <div class="invoice-date">Date: {{ $invoice->created_at->format('d M Y') }}</div>
                     <div class="invoice-date">Due: {{ $invoice->due_date->format('d M Y') }}</div>
