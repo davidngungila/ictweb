@@ -84,6 +84,11 @@ class PackageOrderController extends Controller
     {
         // Get data from session
         $orderData = session('package_order_data', []);
+        
+        // Redirect to step1 if no data exists or required fields are missing
+        if (empty($orderData) || !isset($orderData['package_id']) || !isset($orderData['service_id'])) {
+            return redirect()->route('package.selection.step1')->with('error', 'Please complete step 1 first to generate invoice.');
+        }
 
         // Calculate prices
         $services = [
