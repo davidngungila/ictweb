@@ -38,7 +38,7 @@
           <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1;">Discover the latest web technologies and frameworks that are transforming how Tanzanian businesses build their online presence.</p>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
             <span style="font-size: 0.8rem; color: #999;">April 28, 2025</span>
-            <a href="{{ route('blog.post', 'web-development-trends-2025') }}" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
           <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1;">Essential cybersecurity measures every Tanzanian business should implement to protect their digital assets.</p>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
             <span style="font-size: 0.8rem; color: #999;">April 25, 2025</span>
-            <a href="{{ route('blog.post', 'cybersecurity-tips') }}" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
           <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1;">Best practices for network infrastructure in Tanzania's hospitality industry to ensure guest satisfaction.</p>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
             <span style="font-size: 0.8rem; color: #999;">April 20, 2025</span>
-            <a href="{{ route('blog.post', 'networking-hotels-lodges') }}" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
           <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1;">The benefits of mobile applications for Tanzanian businesses and how to get started with app development.</p>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
             <span style="font-size: 0.8rem; color: #999;">April 15, 2025</span>
-            <a href="{{ route('blog.post', 'mobile-apps-2025') }}" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
           <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1;">How cloud services can help small and medium enterprises in Tanzania reduce costs and improve efficiency.</p>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
             <span style="font-size: 0.8rem; color: #999;">April 10, 2025</span>
-            <a href="{{ route('blog.post', 'cloud-computing-smes') }}" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@
           <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1;">Why proactive IT maintenance is better than reactive fixes for businesses in Tanzania.</p>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
             <span style="font-size: 0.8rem; color: #999;">April 5, 2025</span>
-            <a href="{{ route('blog.post', 'proactive-it-support') }}" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
