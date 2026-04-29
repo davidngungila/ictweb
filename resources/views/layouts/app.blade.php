@@ -947,8 +947,8 @@
         <li><a href="{{ route('pricing') }}">Pricing</a></li>
         <li><a href="{{ route('contact') }}">Contact Us</a></li>
         <li><a href="{{ route('portfolio') }}">Our Portfolio</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Careers</a></li>
+        <li><a href="{{ route('blog') }}">Blog</a></li>
+        <li><a href="{{ route('careers') }}">Careers</a></li>
       </ul>
     </div>
     <div class="footer-col">

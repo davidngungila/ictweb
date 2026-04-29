@@ -389,6 +389,8 @@ Route::get('/pricing/cybersecurity', function() { return view('pages.pricing.cyb
 Route::get('/pricing/it-support', function() { return view('pages.pricing.it-support'); })->name('pricing.it-support');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/blog', function() { return view('pages.blog'); })->name('blog');
+Route::get('/careers', function() { return view('pages.careers'); })->name('careers');
 
 // Package Selection & Payment
 Route::get('/package-selection', [PackageOrderController::class, 'showSelectionForm'])->name('package.selection');
