@@ -98,49 +98,49 @@
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Web Development</h3>
         <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 400,000</span>
         <a href="{{ route('services.web-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Mobile App Development</h3>
         <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 3,000,000</span>
         <a href="{{ route('services.mobile-app-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Network Installation</h3>
         <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
         <a href="{{ route('services.network-installation') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Cybersecurity</h3>
         <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
         <a href="{{ route('services.cybersecurity') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>IT Support</h3>
         <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 150,000/mo</span>
         <a href="{{ route('services.it-support') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>ICT Consultancy</h3>
         <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 500,000</span>
         <a href="{{ route('services.ict-consultancy') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-camera"></i></div>
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/male-electrician-works-switchboard-overalls-against-backdrop-emergency-lighting_xpsb7u.jpg" alt="CCTV & Security Systems" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>CCTV &amp; Security Systems</h3>
         <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
         <span class="service-price"><i class="fas fa-tag"></i> From TZS 2,000,000</span>
