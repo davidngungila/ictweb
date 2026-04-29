@@ -45,7 +45,7 @@
     </div>
     <div class="services-grid">
       <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80" alt="Safari Website" style="width: 100%; height: 200px; object-fit: cover;" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Safari Website" style="width: 100%; height: 200px; object-fit: cover;" />
         <div style="padding: 24px;">
           <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Kilimanjaro Summit Tours</h3>
           <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Complete tour operator website with booking engine, M-Pesa integration, and multi-language support for international visitors.</p>
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80" alt="E-Commerce" style="width: 100%; height: 200px; object-fit: cover;" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="E-Commerce" style="width: 100%; height: 200px; object-fit: cover;" />
         <div style="padding: 24px;">
           <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Tanzania Crafts Store</h3>
           <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Full-featured e-commerce platform with product catalog, shopping cart, and M-Pesa payment integration for local artisans.</p>
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Mobile App" style="width: 100%; height: 200px; object-fit: cover;" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/showing-cart-trolley-shopping-online-sign-graphic_j4fy9u.jpg" alt="Mobile App" style="width: 100%; height: 200px; object-fit: cover;" />
         <div style="padding: 24px;">
           <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">SwiftDeliver App</h3>
           <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Cross-platform delivery app with real-time GPS tracking, driver management, and TigoPesa payment integration.</p>
@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Network Installation" style="width: 100%; height: 200px; object-fit: cover;" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/beautiful-optical-fiber-detail_wck3wq.jpg" alt="Network Installation" style="width: 100%; height: 200px; object-fit: cover;" />
         <div style="padding: 24px;">
           <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Serengeti Lodge Network</h3>
           <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Enterprise-grade network installation with multi-AP deployment, guest Wi-Fi, and 24/7 monitoring for luxury safari lodge.</p>
@@ -77,7 +77,7 @@
         </div>
       </div>
       <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80" alt="Cybersecurity" style="width: 100%; height: 200px; object-fit: cover;" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 200px; object-fit: cover;" />
         <div style="padding: 24px;">
           <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Hotel Security Audit</h3>
           <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Comprehensive cybersecurity assessment for hotel chain, including vulnerability scanning, penetration testing, and TCRA compliance.</p>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Corporate Website" style="width: 100%; height: 200px; object-fit: cover;" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/modern-data-center-providing-cloud-services-enabling-businesses-access-computing-resources-storage-demand-internet-server-room-infrastructure-3d-render-animation_lljtml.jpg" alt="Corporate Website" style="width: 100%; height: 200px; object-fit: cover;" />
         <div style="padding: 24px;">
           <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Precision Air Supplier</h3>
           <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Professional corporate website with CMS, blog, and advanced analytics dashboard for aviation supplier company.</p>

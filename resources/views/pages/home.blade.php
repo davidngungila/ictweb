@@ -56,7 +56,7 @@
     </div>
     <div class="hero-right">
       <div class="hero-img-card">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80" alt="Tech Solutions Tanzania" />
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg" alt="Tech Solutions Tanzania" />
         <div class="hero-img-badge">
           <div class="hero-img-badge-title">Uptime Guarantee</div>
           <div class="hero-img-badge-val">99.9% SLA</div>
@@ -639,10 +639,10 @@
     <div class="why-grid">
       <div class="why-img-stack">
         <div class="why-img-main">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="TechNova Africa Team" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" alt="TechNova Africa Team" />
         </div>
         <div class="why-img-sec">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80" alt="Working on digital solutions" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Working on digital solutions" />
         </div>
         <div class="why-img-badge2">
           <div class="why-img-badge2-num">7+</div>
@@ -826,7 +826,7 @@
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testimonial-text">"TechNova built our safari website in just 9 days. The M-Pesa booking integration works flawlessly and we've seen a 60% increase in direct bookings since launching. Exceptional team!"</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="testimonial-avatar" alt="Client" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/programmer-home-office-concentrating-finding-bugs-while-he-codes_gctbqc.jpg" class="testimonial-avatar" alt="Client" />
           <div>
             <div class="testimonial-name">James Makwaya</div>
             <div class="testimonial-role">CEO, Kilimanjaro Summit Tours, Arusha</div>
@@ -837,7 +837,7 @@
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testimonial-text">"Their cybersecurity audit revealed 3 critical vulnerabilities in our hotel network we didn't know about. They fixed everything in 2 days. I sleep much better now knowing we're protected."</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" class="testimonial-avatar" alt="Client" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/portrait-male-engineer-working-field-engineers-day-celebration_afzsch.jpg" class="testimonial-avatar" alt="Client" />
           <div>
             <div class="testimonial-name">Amina Rashidi</div>
             <div class="testimonial-role">Operations Manager, Serengeti Lodge Group</div>
@@ -848,7 +848,7 @@
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testimonial-text">"We needed a full mobile app for our delivery business. TechNova delivered a beautiful, fully functional Android and iOS app with real-time tracking and TigoPesa payments. World-class work!"</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" class="testimonial-avatar" alt="Client" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg" class="testimonial-avatar" alt="Client" />
           <div>
             <div class="testimonial-name">David Msangi</div>
             <div class="testimonial-role">Founder, SwiftDeliver Tanzania, Dar es Salaam</div>
@@ -859,7 +859,7 @@
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testimonial-text">"The network installation at our camp was professional and fast. No downtime, crystal-clear coverage in every tent, and the guest Wi-Fi works perfectly. Our guests love it!"</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100&q=80" class="testimonial-avatar" alt="Client" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" class="testimonial-avatar" alt="Client" />
           <div>
             <div class="testimonial-name">Peter Nkosi</div>
             <div class="testimonial-role">General Manager, Tarangire Tented Camp</div>
@@ -870,7 +870,7 @@
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testimonial-text">"After switching to TechNova's IT Support plan, our office IT issues dropped by 80%. They respond within minutes, not hours. Best investment we've made for our NGO this year."</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?w=100&q=80" class="testimonial-avatar" alt="Client" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" class="testimonial-avatar" alt="Client" />
           <div>
             <div class="testimonial-name">Grace Mutua</div>
             <div class="testimonial-role">Director, WaterAid East Africa, Arusha</div>
@@ -881,7 +881,7 @@
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testimonial-text">"Our ICT consultancy engagement with TechNova was transformational. They gave us a clear digital roadmap, helped select the right vendors, and saved us over TZS 5M in bad software decisions."</p>
         <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" class="testimonial-avatar" alt="Client" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/irritated-african-american-man-struggling-reach-internet-provider_rriiiz.jpg" class="testimonial-avatar" alt="Client" />
           <div>
             <div class="testimonial-name">Robert Kimani</div>
             <div class="testimonial-role">CFO, Precision Air Supplier, Nairobi</div>

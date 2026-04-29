@@ -41,10 +41,10 @@
     <div class="why-grid">
       <div class="why-img-stack">
         <div class="why-img-main">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="TechNova Africa Team" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg" alt="TechNova Africa Team" />
         </div>
         <div class="why-img-sec">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=80" alt="Working on digital solutions" />
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Working on digital solutions" />
         </div>
         <div class="why-img-badge2">
           <div class="why-img-badge2-num">7+</div>
