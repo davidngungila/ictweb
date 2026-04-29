@@ -189,7 +189,7 @@
             <p><strong>Jezdan Technology</strong></p>
             <p>Moshi, Kilimanjaro, Tanzania</p>
             <p>Phone: +255 685 847 002 | +255 622 239 304</p>
-            <p>Email: jezdantechnology@gmail.com</p>
+            <p>Email: info@jezdantech.com</p>
             <p style="margin-top: 15px;">Thank you for your payment!</p>
         </div>
     </div>

@@ -956,7 +956,7 @@
       <ul>
         <li><a href="tel:+255685847002"><i class="fas fa-phone" style="width:14px;"></i> +255 685 847 002</a></li>
         <li><a href="tel:+255622239304"><i class="fas fa-phone" style="width:14px;"></i> +255 622 239 304</a></li>
-        <li><a href="mailto:jezdantechnology@gmail.com"><i class="fas fa-envelope" style="width:14px;"></i> jezdantechnology@gmail.com</a></li>
+        <li><a href="mailto:info@jezdantech.com"><i class="fas fa-envelope" style="width:14px;"></i> info@jezdantech.com</a></li>
         <li><a href="#"><i class="fas fa-map-marker-alt" style="width:14px;"></i> Moshi, Kilimanjaro, Tanzania</a></li>
         <li><a href="https://wa.me/255685847002" target="_blank"><i class="fab fa-whatsapp" style="width:14px;color:#25d366;"></i> WhatsApp Us</a></li>
       </ul>

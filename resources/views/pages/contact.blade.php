@@ -90,7 +90,7 @@
             <div>
               <div class="contact-detail-label">Email</div>
               <div class="contact-detail-val">
-                <a href="mailto:jezdantechnology@gmail.com" style="color:var(--navy);text-decoration:none;">jezdantechnology@gmail.com</a>
+                <a href="mailto:info@jezdantech.com" style="color:var(--navy);text-decoration:none;">info@jezdantech.com</a>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@
         <p style="color:var(--text-mid);font-size:0.92rem;line-height:1.6;">Speak directly with our team. Available 8am–7pm.</p>
       </a>
       
-      <a href="mailto:jezdantechnology@gmail.com" style="background:white;border-radius:var(--radius);padding:32px;text-decoration:none;box-shadow:var(--shadow);transition:all 0.3s;display:block;">
+      <a href="mailto:info@jezdantech.com" style="background:white;border-radius:var(--radius);padding:32px;text-decoration:none;box-shadow:var(--shadow);transition:all 0.3s;display:block;">
         <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
           <i class="fas fa-envelope" style="font-size:28px;color:var(--accent-bright);"></i>
         </div>

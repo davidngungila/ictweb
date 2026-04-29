@@ -949,7 +949,7 @@
             <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <div class="contact-detail-label">Email</div>
-              <div class="contact-detail-val">jezdantechnology@gmail.com</div>
+              <div class="contact-detail-val">info@jezdantech.com</div>
             </div>
           </div>
           <div class="contact-detail">
