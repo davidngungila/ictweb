@@ -390,6 +390,7 @@ Route::get('/pricing/it-support', function() { return view('pages.pricing.it-sup
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/blog', function() { return view('pages.blog'); })->name('blog');
+Route::get('/blog/{slug}', function($slug) { return view('pages.blog.' . $slug); })->name('blog.post');
 Route::get('/careers', function() { return view('pages.careers'); })->name('careers');
 
 // Package Selection & Payment
