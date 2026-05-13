@@ -272,6 +272,9 @@ class PackageOrderController extends Controller
             if (Schema::hasColumn('package_orders', 'selected_addons')) {
                 $orderPayload['selected_addons'] = $validated['selected_addons'] ?? [];
             }
+            if (Schema::hasColumn('package_orders', 'payment_page_token')) {
+                $orderPayload['payment_page_token'] = PackageOrder::generateUniquePaymentPageToken();
+            }
             if (Schema::hasColumn('package_orders', 'payment_status')) {
                 $orderPayload['payment_status'] = 'not_started';
             }
@@ -310,7 +313,15 @@ class PackageOrderController extends Controller
 
             DB::commit();
 
-            return redirect()->route('payment.show', ['order' => $order->id])
+            $order->refresh();
+            $order->ensurePaymentPageToken();
+
+            if ($order->payment_page_token) {
+                return redirect()->route('payment.show', ['checkout' => $order->payment_page_token])
+                    ->with('success', 'Order created successfully. Please complete the advance payment.');
+            }
+
+            return redirect('/payment/' . $order->id)
                 ->with('success', 'Order created successfully. Please complete the advance payment.');
 
         } catch (\Exception $e) {
@@ -328,15 +339,22 @@ class PackageOrderController extends Controller
         }
     }
 
-    public function showPaymentPage($orderId)
+    protected function findOrderByPaymentCheckout(string $checkout): PackageOrder
     {
-        $order = PackageOrder::findOrFail($orderId);
+        return PackageOrder::where('payment_page_token', $checkout)->firstOrFail();
+    }
+
+    public function showPaymentPage(string $checkout)
+    {
+        $order = $this->findOrderByPaymentCheckout($checkout);
+        $order->ensurePaymentPageToken();
+
         return view('pages.payment', compact('order'));
     }
 
-    public function initiatePayment(Request $request, $orderId)
+    public function initiatePayment(Request $request, string $checkout)
     {
-        $order = PackageOrder::findOrFail($orderId);
+        $order = $this->findOrderByPaymentCheckout($checkout);
         $paymentMethod = $request->validate([
             'payment_method' => 'required|in:mobile,card',
         ])['payment_method'];
@@ -348,7 +366,7 @@ class PackageOrderController extends Controller
             : back()->with('error', $message);
 
         Log::info('Initiating payment', [
-            'order_id' => $orderId,
+            'order_id' => $order->id,
             'payment_method' => $paymentMethod,
             'wants_json' => $wantsJson,
         ]);
@@ -362,29 +380,29 @@ class PackageOrderController extends Controller
         }
 
         if ($paymentMethod === 'card') {
-            $checkout = $this->snippeService->createCardPayment($order);
-            Log::info('Card payment response', ['checkout' => $checkout]);
+            $cardResult = $this->snippeService->createCardPayment($order);
+            Log::info('Card payment response', ['checkout' => $cardResult]);
 
-            if (isset($checkout['error'])) {
-                return $jsonError($checkout['error']);
+            if (isset($cardResult['error'])) {
+                return $jsonError($cardResult['error']);
             }
 
-            if (isset($checkout['payment_url'])) {
+            if (isset($cardResult['payment_url'])) {
                 $order->update([
-                    'payment_reference' => $checkout['reference'] ?? null,
-                    'payment_token' => $checkout['payment_token'] ?? null,
+                    'payment_reference' => $cardResult['reference'] ?? null,
+                    'payment_token' => $cardResult['payment_token'] ?? null,
                     'payment_status' => 'initiated',
                 ]);
-                Log::info('Redirecting to payment_url', ['url' => $checkout['payment_url']]);
+                Log::info('Redirecting to payment_url', ['url' => $cardResult['payment_url']]);
 
                 if ($wantsJson) {
                     return response()->json([
                         'ok' => true,
-                        'redirect_url' => $checkout['payment_url'],
+                        'redirect_url' => $cardResult['payment_url'],
                     ]);
                 }
 
-                return redirect($checkout['payment_url']);
+                return redirect($cardResult['payment_url']);
             }
 
             $fallback = 'Could not start card checkout. Please try again or choose mobile money.';
@@ -417,15 +435,15 @@ class PackageOrderController extends Controller
         return back()->with('success', 'Payment initiated! Please check your phone for the USSD prompt to complete payment.');
     }
 
-    public function paymentConfirmation($orderId)
+    public function paymentConfirmation(string $checkout)
     {
-        $order = PackageOrder::findOrFail($orderId);
+        $order = $this->findOrderByPaymentCheckout($checkout);
         return view('pages.payment-confirmation', compact('order'));
     }
 
-    public function checkPaymentStatus($orderId)
+    public function checkPaymentStatus(string $checkout)
     {
-        $order = PackageOrder::findOrFail($orderId);
+        $order = $this->findOrderByPaymentCheckout($checkout);
 
         if ($order->payment_status === 'completed' || $order->status === 'paid_advance') {
             return response()->json(['status' => 'completed']);
@@ -483,9 +501,9 @@ class PackageOrderController extends Controller
         return response()->json(['status' => $order->payment_status ?? 'pending']);
     }
 
-    public function downloadReceipt($orderId)
+    public function downloadReceipt(string $checkout)
     {
-        $order = PackageOrder::with(['service', 'package'])->findOrFail($orderId);
+        $order = PackageOrder::with(['service', 'package'])->where('payment_page_token', $checkout)->firstOrFail();
         
         if ($order->status !== 'paid_advance') {
             return back()->with('error', 'Payment not completed yet.');
@@ -497,9 +515,9 @@ class PackageOrderController extends Controller
         return $pdf->download("receipt_{$order->order_number}.pdf");
     }
 
-    public function showPaymentSuccess($orderId)
+    public function showPaymentSuccess(string $checkout)
     {
-        $order = PackageOrder::with(['service', 'package'])->findOrFail($orderId);
+        $order = PackageOrder::with(['service', 'package'])->where('payment_page_token', $checkout)->firstOrFail();
         return view('pages.package-selection.payment-success', compact('order'));
     }
 

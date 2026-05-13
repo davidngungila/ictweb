@@ -41,6 +41,9 @@ class SnippePaymentService
     public function createCheckout($order)
     {
         try {
+            if ($order instanceof PackageOrder) {
+                $order->ensurePaymentPageToken();
+            }
             $sessionPayload = [
                 'amount' => (int) $order->advance_payment,
                 'currency' => 'TZS',
@@ -173,6 +176,9 @@ class SnippePaymentService
     public function createMobileMoneyPayment($order)
     {
         try {
+            if ($order instanceof PackageOrder) {
+                $order->ensurePaymentPageToken();
+            }
             $phone = $this->formatPhoneForSnippe($order->client_phone);
             if ($phone === '') {
                 return ['error' => 'Please provide a valid Tanzania mobile number for M-Pesa / mobile money.'];
@@ -239,6 +245,7 @@ class SnippePaymentService
     public function createCardPayment($order)
     {
         try {
+            $order->ensurePaymentPageToken();
             $phone = $this->formatPhoneForSnippe($order->client_phone);
             if ($phone === '') {
                 return ['error' => 'Please provide a valid phone number on your order for card checkout.'];
@@ -250,7 +257,9 @@ class SnippePaymentService
                     'amount' => (int) $order->advance_payment,
                     'currency' => 'TZS',
                     'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
-                    'cancel_url' => route('payment.show', ['order' => $order->id]),
+                    'cancel_url' => $order->payment_page_token
+                        ? route('payment.show', ['checkout' => $order->payment_page_token])
+                        : url('/payment/' . $order->id),
                 ],
                 'phone_number' => $phone,
                 'customer' => $this->customerBlock($order),
@@ -549,10 +558,21 @@ class SnippePaymentService
      */
     protected function buildPostPaymentRedirectUrl($order)
     {
+        if ($order instanceof PackageOrder) {
+            $order->ensurePaymentPageToken();
+        }
+
         $separator = str_contains($this->postPaymentRedirectUrl, '?') ? '&' : '?';
-        return $this->postPaymentRedirectUrl . $separator . http_build_query([
-            'order' => $order->id,
+
+        $query = [
             'order_number' => $order->order_number,
-        ]);
+        ];
+        if ($order instanceof PackageOrder && $order->payment_page_token) {
+            $query['ref'] = $order->payment_page_token;
+        } else {
+            $query['order'] = $order->id;
+        }
+
+        return $this->postPaymentRedirectUrl . $separator . http_build_query($query);
     }
 }

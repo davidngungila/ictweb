@@ -89,7 +89,7 @@
       </div>
 
       <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="{{ route('payment.receipt', ['order' => $order->id]) }}" class="btn-primary" style="padding: 12px 30px; border-radius: 50px; text-decoration: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; display: inline-block;">
+        <a href="{{ route('payment.receipt', ['checkout' => $order->payment_page_token]) }}" class="btn-primary" style="padding: 12px 30px; border-radius: 50px; text-decoration: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; display: inline-block;">
           <i class="fas fa-download"></i> Download Receipt
         </a>
         <a href="{{ route('home') }}" class="btn-primary" style="padding: 12px 30px; border-radius: 50px; text-decoration: none; background: #6c757d; color: white; display: inline-block;">

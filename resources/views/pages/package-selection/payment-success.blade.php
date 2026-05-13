@@ -193,7 +193,7 @@
       </div>
 
       <div style="display: flex; gap: 15px; margin-top: 30px;">
-        <a href="{{ route('payment.receipt', $order->id) }}" class="btn-primary" style="flex: 1; padding: 15px; border-radius: 8px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; text-decoration: none; font-weight: 600; text-align: center; transition: transform 0.2s;">
+        <a href="{{ route('payment.receipt', ['checkout' => $order->payment_page_token]) }}" class="btn-primary" style="flex: 1; padding: 15px; border-radius: 8px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; text-decoration: none; font-weight: 600; text-align: center; transition: transform 0.2s;">
           <i class="fas fa-download"></i> Download Receipt
         </a>
         <a href="{{ url('/') }}" class="btn-secondary" style="flex: 1; padding: 15px; border-radius: 8px; border: 2px solid #e0e0e0; background: white; color: #666; text-decoration: none; font-weight: 600; text-align: center; transition: all 0.3s;">

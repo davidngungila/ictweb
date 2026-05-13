@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PricingPlanController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\PackageOrderController;
+use App\Models\PackageOrder;
 
 /*
 |--------------------------------------------------------------------------
@@ -408,12 +409,24 @@ Route::post('/package-selection/step2/process', [PackageOrderController::class, 
 Route::post('/package/invoice/generate', [PackageOrderController::class, 'generateInvoice'])->name('package.invoice.generate');
 
 Route::post('/package/order', [PackageOrderController::class, 'processOrder'])->name('package.order.process');
-Route::get('/payment/{order}', [PackageOrderController::class, 'showPaymentPage'])->name('payment.show');
-Route::post('/payment/{order}/initiate', [PackageOrderController::class, 'initiatePayment'])->name('payment.initiate');
-Route::get('/payment/{order}/check-status', [PackageOrderController::class, 'checkPaymentStatus'])->name('payment.check.status');
-Route::get('/payment/confirmation/{order}', [PackageOrderController::class, 'paymentConfirmation'])->name('payment.confirmation');
-Route::get('/payment/success/{order}', [PackageOrderController::class, 'showPaymentSuccess'])->name('payment.success');
-Route::get('/payment/receipt/{order}', [PackageOrderController::class, 'downloadReceipt'])->name('payment.receipt');
+
+$paymentCheckoutToken = '[a-f0-9]{32}';
+Route::get('/payment/checkout/{checkout}', [PackageOrderController::class, 'showPaymentPage'])->name('payment.show')->where('checkout', $paymentCheckoutToken);
+Route::post('/payment/checkout/{checkout}/initiate', [PackageOrderController::class, 'initiatePayment'])->name('payment.initiate')->where('checkout', $paymentCheckoutToken);
+Route::get('/payment/checkout/{checkout}/check-status', [PackageOrderController::class, 'checkPaymentStatus'])->name('payment.check.status')->where('checkout', $paymentCheckoutToken);
+Route::get('/payment/checkout/{checkout}/confirmation', [PackageOrderController::class, 'paymentConfirmation'])->name('payment.confirmation')->where('checkout', $paymentCheckoutToken);
+Route::get('/payment/checkout/{checkout}/success', [PackageOrderController::class, 'showPaymentSuccess'])->name('payment.success')->where('checkout', $paymentCheckoutToken);
+Route::get('/payment/checkout/{checkout}/receipt', [PackageOrderController::class, 'downloadReceipt'])->name('payment.receipt')->where('checkout', $paymentCheckoutToken);
+
+Route::get('/payment/{order}', function (string $order) {
+    $o = PackageOrder::findOrFail((int) $order);
+    $o->ensurePaymentPageToken();
+    if (! $o->payment_page_token) {
+        abort(503, 'Payment checkout is not available until database migrations are applied.');
+    }
+
+    return redirect()->route('payment.show', ['checkout' => $o->payment_page_token], 301);
+})->whereNumber('order');
 Route::post('/webhook/snippe', [PackageOrderController::class, 'handleWebhook'])->name('webhook.snippe')->withoutMiddleware(['csrf']);
 
 // Test payment route
@@ -435,6 +448,9 @@ Route::get('/test-payment', function() {
         'notes' => 'Test payment',
     ]);
     
+    $order->refresh();
+    $order->ensurePaymentPageToken();
+
     // Initiate payment
     $snippeService = new \App\Services\SnippePaymentService();
     $payment = $snippeService->createMobileMoneyPayment($order);

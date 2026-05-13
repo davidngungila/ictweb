@@ -113,8 +113,13 @@
 </style>
 
 @php
+  $ref = request('ref');
   $orderId = request('order');
   $orderNumber = request('order_number');
+  $orderFromRef = null;
+  if (is_string($ref) && preg_match('/^[a-f0-9]{32}$/', $ref)) {
+      $orderFromRef = \App\Models\PackageOrder::where('payment_page_token', $ref)->first();
+  }
 @endphp
 
 <section class="hero" style="min-height: 36vh;">
@@ -143,12 +148,20 @@
 
         <div class="detail-grid">
           <div class="detail-item">
-            <div class="detail-key">Order ID</div>
-            <div class="detail-value">{{ $orderId ?: 'Will be shared by our team' }}</div>
+            <div class="detail-key">Order number</div>
+            <div class="detail-value">{{ optional($orderFromRef)->order_number ?? $orderNumber ?? ($orderId ? 'ORD #' . $orderId : 'Will be shared by our team') }}</div>
           </div>
           <div class="detail-item">
-            <div class="detail-key">Order Number</div>
-            <div class="detail-value">{{ $orderNumber ?: 'Will be shared by our team' }}</div>
+            <div class="detail-key">Payment reference</div>
+            <div class="detail-value">
+              @if($orderFromRef && $orderFromRef->payment_page_token)
+                {{ substr($orderFromRef->payment_page_token, 0, 8) }}…
+              @elseif(is_string($ref) && $ref !== '')
+                {{ strlen($ref) > 12 ? substr($ref, 0, 8).'…' : $ref }}
+              @else
+                —
+              @endif
+            </div>
           </div>
           <div class="detail-item">
             <div class="detail-key">Support WhatsApp</div>

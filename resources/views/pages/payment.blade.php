@@ -254,13 +254,13 @@
         <h2><i class="fas fa-lock" style="margin-right:8px;"></i> Pay deposit</h2>
         <p style="color:#666;font-size:0.9rem;line-height:1.5;margin-bottom:1.25rem;">Pay <strong>TZS {{ number_format($order->advance_payment, 0) }}</strong> securely. This matches your selected plan’s first milestone.</p>
 
-        <form id="paymentForm" action="{{ route('payment.initiate', ['order' => $order->id]) }}" method="POST">
+        <form id="paymentForm" action="{{ route('payment.initiate', ['checkout' => $order->payment_page_token]) }}" method="POST">
           @csrf
 
           <div id="payment-page-data"
-            data-initiate-url="{{ route('payment.initiate', ['order' => $order->id]) }}"
-            data-check-url="{{ route('payment.check.status', ['order' => $order->id]) }}"
-            data-thank-url="{{ route('thank.you') }}?{{ http_build_query(['order' => $order->id, 'order_number' => $order->order_number]) }}"
+            data-initiate-url="{{ route('payment.initiate', ['checkout' => $order->payment_page_token]) }}"
+            data-check-url="{{ route('payment.check.status', ['checkout' => $order->payment_page_token]) }}"
+            data-thank-url="{{ route('thank.you') }}?{{ http_build_query(array_merge(['order_number' => $order->order_number], $order->payment_page_token ? ['ref' => $order->payment_page_token] : ['order' => $order->id])) }}"
             data-csrf="{{ csrf_token() }}"
             data-awaiting-mobile="{{ (in_array($order->payment_status, ['pending', 'initiated'], true) && $order->payment_reference) ? '1' : '0' }}"
             style="display:none;"
@@ -323,8 +323,8 @@
     <h3 id="paymentModalTitle" style="margin-bottom: 12px; font-size: 1.25rem; color: #1a2744;">Connecting…</h3>
     <p id="paymentModalSubtitle">Reaching the payment gateway securely.</p>
     <div id="paymentCountdownWrap" style="display: none;">
-      <div id="paymentCountdown">5:00</div>
-      <p style="font-size: 0.82rem; color: #666; margin-top: 6px;">Approve on your phone when prompted. We check every second for confirmation.</p>
+      <div id="paymentCountdown">1:00</div>
+      <p style="font-size: 0.82rem; color: #666; margin-top: 6px;">Approve on your phone when prompted. We check every second for up to 1 minute.</p>
     </div>
     <div id="progressBarContainer" style="background: #eee; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 16px;">
       <div id="progressBar" style="background: linear-gradient(90deg, var(--accent), var(--accent-bright)); height: 100%; width: 0%; transition: width 0.35s ease;"></div>
@@ -377,7 +377,7 @@
   const THANK_URL = cfg.dataset.thankUrl;
   const THANK_FALLBACK = @json(route('thank.you'));
   const CSRF = cfg.dataset.csrf;
-  const MOBILE_WAIT_SEC = 300;
+  const MOBILE_WAIT_SEC = 60;
   const POLL_MS = 1000;
   const MAX_POLL_MS = 2 * 60 * 60 * 1000;
 
@@ -502,6 +502,11 @@
         countdownTimer = null;
         cdEl.textContent = '0:00';
         bar.style.width = '0%';
+        if (pollTimer) clearInterval(pollTimer);
+        pollTimer = null;
+        hideModal();
+        alert('We could not confirm payment within 1 minute. If you paid, refresh this page or contact support.');
+        resetPayButton();
       }
     }, 1000);
 
