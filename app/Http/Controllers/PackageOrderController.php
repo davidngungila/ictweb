@@ -356,15 +356,18 @@ class PackageOrderController extends Controller
             'order_id' => $orderId,
             'payment_method' => $paymentMethod,
         ]);
+
+        if (! $this->snippeService->isConfigured()) {
+            return back()->with('error', 'Payment gateway is not configured. Set SNIPPE_API_KEY in your .env file, then run php artisan config:clear.');
+        }
         
         if ($paymentMethod === 'card') {
             // Create card payment - redirects to secure checkout
             $checkout = $this->snippeService->createCardPayment($order);
             Log::info('Card payment response', ['checkout' => $checkout]);
             
-            if (!$checkout) {
-                Log::error('Payment initiation failed', ['order_id' => $orderId]);
-                return back()->with('error', 'Failed to initiate payment. Please try again.');
+            if (isset($checkout['error'])) {
+                return back()->with('error', $checkout['error']);
             }
 
             // Redirect to card payment URL
@@ -382,15 +385,14 @@ class PackageOrderController extends Controller
             $payment = $this->snippeService->createMobileMoneyPayment($order);
             Log::info('Mobile money payment response', ['payment' => $payment]);
             
-            if (!$payment) {
-                Log::error('Payment initiation failed', ['order_id' => $orderId]);
-                return back()->with('error', 'Failed to initiate payment. Please try again.');
+            if (isset($payment['error'])) {
+                return back()->with('error', $payment['error']);
             }
 
             // Store payment reference and return to payment page with status
             $order->update([
-                'payment_reference' => $payment['reference'],
-                'payment_token' => $payment['payment_token'],
+                'payment_reference' => $payment['reference'] ?? null,
+                'payment_token' => $payment['payment_token'] ?? null,
                 'payment_status' => 'pending',
             ]);
 

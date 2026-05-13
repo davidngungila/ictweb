@@ -4,24 +4,35 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
 use App\Models\PackageOrder;
 use App\Models\Invoice;
 
 class SnippePaymentService
 {
-    protected $snippeKey;
-    protected $webhookSecret;
-    protected $postPaymentRedirectUrl;
-    protected $webhookUrl;
-    protected $baseUrl = 'https://api.snippe.sh';
+    protected string $snippeKey;
+
+    protected string $webhookSecret;
+
+    protected string $postPaymentRedirectUrl;
+
+    protected ?string $webhookUrl;
+
+    protected string $baseUrl;
 
     public function __construct()
     {
-        $this->snippeKey = env('SNIPPE_API_KEY', '');
-        $this->webhookSecret = env('SNIPPE_WEBHOOK_SECRET', '');
-        $this->postPaymentRedirectUrl = env('SNIPPE_POST_PAYMENT_REDIRECT_URL', 'https://jezdantech.com/thank-you');
-        $this->webhookUrl = env('SNIPPE_WEBHOOK_URL', 'https://example.com/webhooks');
+        $cfg = config('services.snippe', []);
+        $this->snippeKey = (string) ($cfg['api_key'] ?? '');
+        $this->webhookSecret = (string) ($cfg['webhook_secret'] ?? '');
+        $this->postPaymentRedirectUrl = (string) ($cfg['post_payment_redirect_url'] ?? 'https://jezdantech.com/thank-you');
+        $webhook = $cfg['webhook_url'] ?? null;
+        $this->webhookUrl = is_string($webhook) && $webhook !== '' ? $webhook : null;
+        $this->baseUrl = rtrim((string) ($cfg['base_url'] ?? 'https://api.snippe.sh'), '/');
+    }
+
+    public function isConfigured(): bool
+    {
+        return $this->snippeKey !== '';
     }
 
     /**
@@ -30,22 +41,17 @@ class SnippePaymentService
     public function createCheckout($order)
     {
         try {
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $this->snippeKey,
-                'Content-Type' => 'application/json',
-                'Idempotency-Key' => 'order-' . $order->id . '-' . time(),
-            ])->post($this->baseUrl . '/api/v1/sessions', [
+            $sessionPayload = [
                 'amount' => (int) $order->advance_payment,
                 'currency' => 'TZS',
                 'allowed_methods' => ['mobile_money', 'card'],
                 'customer' => [
                     'name' => $order->client_name,
-                    'phone' => $this->formatPhoneNumber($order->client_phone),
+                    'phone' => $this->formatPhoneForSnippe($order->client_phone),
                     'email' => $order->client_email,
                 ],
                 'description' => "Order #{$order->order_number} - 30% Advance Payment",
                 'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
-                'webhook_url' => $this->webhookUrl,
                 'metadata' => [
                     'order_id' => $order->id,
                     'order_number' => $order->order_number,
@@ -54,7 +60,14 @@ class SnippePaymentService
                     'client_phone' => $order->client_phone,
                 ],
                 'expires_in' => 3600, // 1 hour
-            ]);
+            ];
+            $sessionPayload = array_merge($sessionPayload, $this->webhookPayloadField());
+
+            $response = Http::timeout(45)->withHeaders([
+                'Authorization' => 'Bearer ' . $this->snippeKey,
+                'Content-Type' => 'application/json',
+                'Idempotency-Key' => 'order-' . $order->id . '-' . time(),
+            ])->post($this->baseUrl . '/api/v1/sessions', $sessionPayload);
 
             if ($response->successful()) {
                 $data = $response->json();
@@ -160,58 +173,58 @@ class SnippePaymentService
     public function createMobileMoneyPayment($order)
     {
         try {
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $this->snippeKey,
-                'Content-Type' => 'application/json',
-                'Idempotency-Key' => 'mobile-' . $order->id . '-' . time(),
-            ])->post($this->baseUrl . '/v1/payments', [
+            $phone = $this->formatPhoneForSnippe($order->client_phone);
+            if ($phone === '') {
+                return ['error' => 'Please provide a valid Tanzania mobile number for M-Pesa / mobile money.'];
+            }
+
+            $payload = [
                 'payment_type' => 'mobile',
                 'details' => [
                     'amount' => (int) $order->advance_payment,
                     'currency' => 'TZS',
-                    'phone_number' => $this->formatPhoneNumber($order->client_phone),
-                    'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
                 ],
-                'phone_number' => $this->formatPhoneNumber($order->client_phone),
-                'customer' => [
-                    'firstname' => $this->getFirstName($order->client_name),
-                    'lastname' => $this->getLastName($order->client_name),
-                    'email' => $order->client_email,
-                    'address' => $order->client_address ?? 'N/A',
-                    'city' => $order->client_city ?? 'Dar es Salaam',
-                    'state' => $order->client_state ?? 'DSM',
-                    'postcode' => $order->client_postcode ?? '14101',
-                    'country' => 'TZ',
-                ],
-                'webhook_url' => $this->webhookUrl,
+                'phone_number' => $phone,
+                'customer' => $this->customerBlock($order),
                 'metadata' => [
                     'order_id' => $order->id,
                     'order_number' => $order->order_number,
                 ],
-            ]);
+            ];
+            $payload = array_merge($payload, $this->webhookPayloadField());
 
-            if ($response->successful()) {
-                $data = $response->json();
-                return [
-                    'payment_token' => $data['data']['payment_token'] ?? null,
-                    'reference' => $data['data']['reference'] ?? null,
-                    'status' => $data['data']['status'] ?? null,
-                    'payment_qr_code' => $data['data']['payment_qr_code'] ?? null,
-                ];
+            $response = Http::timeout(45)->withHeaders([
+                'Authorization' => 'Bearer ' . $this->snippeKey,
+                'Content-Type' => 'application/json',
+                'Idempotency-Key' => 'mobile-' . $order->id . '-' . time(),
+            ])->post($this->baseUrl . '/v1/payments', $payload);
+
+            $parsed = $this->parseV1PaymentCreateResponse($response);
+            if (! $parsed['ok']) {
+                Log::error('Snippe mobile money payment failed', [
+                    'order_id' => $order->id,
+                    'message' => $parsed['message'] ?? null,
+                    'response' => $parsed['raw'] ?? $response->body(),
+                ]);
+
+                return ['error' => $this->userFacingGatewayMessage($parsed['message'] ?? null)];
             }
 
-            Log::error('Snippe mobile money payment failed', [
-                'response' => $response->body(),
-                'order_id' => $order->id,
-            ]);
+            $data = $parsed['data'];
 
-            return null;
+            return [
+                'payment_token' => $data['payment_token'] ?? null,
+                'reference' => $data['reference'] ?? null,
+                'status' => $data['status'] ?? null,
+                'payment_qr_code' => $data['payment_qr_code'] ?? null,
+            ];
         } catch (\Exception $e) {
             Log::error('Snippe mobile money payment error', [
                 'error' => $e->getMessage(),
                 'order_id' => $order->id,
             ]);
-            return null;
+
+            return ['error' => 'Failed to reach payment gateway. Please try again shortly.'];
         }
     }
 
@@ -221,11 +234,12 @@ class SnippePaymentService
     public function createCardPayment($order)
     {
         try {
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $this->snippeKey,
-                'Content-Type' => 'application/json',
-                'Idempotency-Key' => 'card-' . $order->id . '-' . time(),
-            ])->post($this->baseUrl . '/v1/payments', [
+            $phone = $this->formatPhoneForSnippe($order->client_phone);
+            if ($phone === '') {
+                return ['error' => 'Please provide a valid phone number on your order for card checkout.'];
+            }
+
+            $payload = [
                 'payment_type' => 'card',
                 'details' => [
                     'amount' => (int) $order->advance_payment,
@@ -233,45 +247,46 @@ class SnippePaymentService
                     'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
                     'cancel_url' => route('payment.show', ['order' => $order->id]),
                 ],
-                'phone_number' => $this->formatPhoneNumber($order->client_phone),
-                'customer' => [
-                    'firstname' => $this->getFirstName($order->client_name),
-                    'lastname' => $this->getLastName($order->client_name),
-                    'email' => $order->client_email,
-                    'address' => $order->client_address ?? 'N/A',
-                    'city' => $order->client_city ?? 'Dar es Salaam',
-                    'state' => $order->client_state ?? 'DSM',
-                    'postcode' => $order->client_postcode ?? '14101',
-                    'country' => 'TZ',
-                ],
-                'webhook_url' => $this->webhookUrl,
+                'phone_number' => $phone,
+                'customer' => $this->customerBlock($order),
                 'metadata' => [
                     'order_id' => $order->id,
                     'order_number' => $order->order_number,
                 ],
-            ]);
+            ];
+            $payload = array_merge($payload, $this->webhookPayloadField());
 
-            if ($response->successful()) {
-                $data = $response->json();
-                return [
-                    'payment_url' => $data['data']['payment_url'] ?? null,
-                    'payment_token' => $data['data']['payment_token'] ?? null,
-                    'reference' => $data['data']['reference'] ?? null,
-                ];
+            $response = Http::timeout(45)->withHeaders([
+                'Authorization' => 'Bearer ' . $this->snippeKey,
+                'Content-Type' => 'application/json',
+                'Idempotency-Key' => 'card-' . $order->id . '-' . time(),
+            ])->post($this->baseUrl . '/v1/payments', $payload);
+
+            $parsed = $this->parseV1PaymentCreateResponse($response);
+            if (! $parsed['ok']) {
+                Log::error('Snippe card payment failed', [
+                    'order_id' => $order->id,
+                    'message' => $parsed['message'] ?? null,
+                    'response' => $parsed['raw'] ?? $response->body(),
+                ]);
+
+                return ['error' => $this->userFacingGatewayMessage($parsed['message'] ?? null)];
             }
 
-            Log::error('Snippe card payment failed', [
-                'response' => $response->body(),
-                'order_id' => $order->id,
-            ]);
+            $data = $parsed['data'];
 
-            return null;
+            return [
+                'payment_url' => $data['payment_url'] ?? null,
+                'payment_token' => $data['payment_token'] ?? null,
+                'reference' => $data['reference'] ?? null,
+            ];
         } catch (\Exception $e) {
             Log::error('Snippe card payment error', [
                 'error' => $e->getMessage(),
                 'order_id' => $order->id,
             ]);
-            return null;
+
+            return ['error' => 'Failed to reach payment gateway. Please try again shortly.'];
         }
     }
 
@@ -348,7 +363,7 @@ class SnippePaymentService
     public function getPaymentStatus($reference)
     {
         try {
-            $response = Http::withHeaders([
+            $response = Http::timeout(30)->withHeaders([
                 'Authorization' => 'Bearer ' . $this->snippeKey,
             ])->get($this->baseUrl . '/v1/payments/' . $reference);
 
@@ -367,21 +382,131 @@ class SnippePaymentService
     }
 
     /**
-     * Format phone number to international format
+     * Snippe expects MSISDN as digits only, e.g. 2557XXXXXXXX (no leading +).
      */
-    protected function formatPhoneNumber($phone)
+    protected function formatPhoneForSnippe(?string $phone): string
     {
-        // Remove any non-digit characters
-        $phone = preg_replace('/[^0-9]/', '', $phone);
-        
-        // Add 255 prefix if not present
-        if (strlen($phone) === 10 && substr($phone, 0, 1) === '0') {
-            $phone = '255' . substr($phone, 1);
-        } elseif (strlen($phone) === 9) {
-            $phone = '255' . $phone;
+        if ($phone === null || $phone === '') {
+            return '';
         }
-        
-        return '+' . $phone;
+        $digits = preg_replace('/\D+/', '', $phone);
+        if ($digits === null || $digits === '') {
+            return '';
+        }
+        if (str_starts_with($digits, '0') && strlen($digits) === 10) {
+            $digits = '255' . substr($digits, 1);
+        } elseif (strlen($digits) === 9) {
+            $digits = '255' . $digits;
+        } elseif (str_starts_with($digits, '255') && strlen($digits) === 12) {
+            // ok
+        } elseif (str_starts_with($digits, '00255')) {
+            $digits = substr($digits, 2);
+        } elseif (str_starts_with($digits, '255') && strlen($digits) > 12) {
+            $digits = substr($digits, 0, 12);
+        }
+
+        if (strlen($digits) < 12 || ! str_starts_with($digits, '255')) {
+            return '';
+        }
+
+        return $digits;
+    }
+
+    protected function customerBlock(PackageOrder $order): array
+    {
+        $first = $this->getFirstName($order->client_name);
+        $last = $this->getLastName($order->client_name);
+        if ($last === '') {
+            $last = $first !== '' ? $first : 'Customer';
+        }
+        if ($first === '') {
+            $first = 'Customer';
+        }
+
+        return [
+            'firstname' => $first,
+            'lastname' => $last,
+            'email' => $order->client_email,
+            'address' => $order->client_address ?? 'N/A',
+            'city' => $order->client_city ?? 'Dar es Salaam',
+            'state' => $order->client_state ?? 'DSM',
+            'postcode' => $order->client_postcode ?? '14101',
+            'country' => 'TZ',
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    protected function webhookPayloadField(): array
+    {
+        if ($this->webhookUrl && filter_var($this->webhookUrl, FILTER_VALIDATE_URL)) {
+            return ['webhook_url' => $this->webhookUrl];
+        }
+
+        return [];
+    }
+
+    /**
+     * @return array{ok: bool, data: array, message?: string, raw?: string}
+     */
+    protected function parseV1PaymentCreateResponse(\Illuminate\Http\Client\Response $response): array
+    {
+        $raw = $response->body();
+        $json = $response->json();
+        if (! is_array($json)) {
+            return ['ok' => false, 'data' => [], 'message' => 'Invalid response from payment gateway.', 'raw' => $raw];
+        }
+
+        $data = $json['data'] ?? [];
+        if (! is_array($data)) {
+            $data = [];
+        }
+
+        $topStatus = $json['status'] ?? null;
+        $httpOk = $response->successful();
+
+        $hasRedirectOrToken = ! empty($data['payment_url']) || ! empty($data['payment_token']);
+        $hasMobileRef = ! empty($data['reference']) || ! empty($data['payment_token']);
+        $usable = $hasRedirectOrToken || $hasMobileRef;
+
+        $failedTop = in_array($topStatus, ['error', 'failed'], true);
+        $dataStatus = $data['status'] ?? null;
+        $failedData = in_array($dataStatus, ['error', 'failed'], true);
+
+        if ($httpOk && $usable && ! $failedTop && ! $failedData) {
+            return ['ok' => true, 'data' => $data];
+        }
+
+        $msg = $json['message'] ?? ($data['message'] ?? null);
+        if ($msg === null && isset($json['errors'])) {
+            $err = $json['errors'];
+            $msg = is_array($err) ? json_encode($err) : (string) $err;
+        }
+
+        return [
+            'ok' => false,
+            'data' => $data,
+            'message' => is_string($msg) && $msg !== '' ? $msg : 'Payment gateway rejected the request.',
+            'raw' => $raw,
+        ];
+    }
+
+    protected function userFacingGatewayMessage(?string $apiMessage): string
+    {
+        if ($apiMessage === null || $apiMessage === '') {
+            return 'Failed to initiate payment. Please try again.';
+        }
+        $trimmed = trim($apiMessage);
+        if (config('app.debug')) {
+            return strlen($trimmed) > 500 ? substr($trimmed, 0, 500) . '…' : $trimmed;
+        }
+
+        if (strlen($trimmed) <= 180) {
+            return $trimmed;
+        }
+
+        return 'Failed to initiate payment. Please try again.';
     }
 
     /**

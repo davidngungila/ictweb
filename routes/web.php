@@ -438,26 +438,26 @@ Route::get('/test-payment', function() {
     // Initiate payment
     $snippeService = new \App\Services\SnippePaymentService();
     $payment = $snippeService->createMobileMoneyPayment($order);
-    
-    if ($payment) {
+
+    if (! isset($payment['error'])) {
         $order->update([
-            'payment_reference' => $payment['reference'],
-            'payment_token' => $payment['payment_token'],
+            'payment_reference' => $payment['reference'] ?? null,
+            'payment_token' => $payment['payment_token'] ?? null,
             'payment_status' => 'pending',
         ]);
-        
+
         return response()->json([
             'success' => true,
             'order_id' => $order->id,
-            'payment_reference' => $payment['reference'],
-            'payment_token' => $payment['payment_token'],
+            'payment_reference' => $payment['reference'] ?? null,
+            'payment_token' => $payment['payment_token'] ?? null,
             'message' => 'Payment initiated. Check your phone for USSD prompt.',
         ]);
     }
-    
+
     return response()->json([
         'success' => false,
-        'message' => 'Failed to initiate payment',
+        'message' => $payment['error'] ?? 'Failed to initiate payment',
     ]);
 })->name('test.payment');
 

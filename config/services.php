@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'snippe' => [
+        'api_key' => env('SNIPPE_API_KEY'),
+        'webhook_secret' => env('SNIPPE_WEBHOOK_SECRET'),
+        'base_url' => rtrim(env('SNIPPE_API_BASE_URL', 'https://api.snippe.sh'), '/'),
+        'post_payment_redirect_url' => env('SNIPPE_POST_PAYMENT_REDIRECT_URL', 'https://jezdantech.com/thank-you'),
+        'webhook_url' => env('SNIPPE_WEBHOOK_URL'),
+    ],
+
 ];
