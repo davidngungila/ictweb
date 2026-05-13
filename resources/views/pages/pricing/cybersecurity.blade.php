@@ -64,7 +64,7 @@
           <li><i class="fas fa-check"></i> Security report delivered</li>
           <li><i class="fas fa-check"></i> Completed in 2–5 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 1) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- STANDARD -->
@@ -87,7 +87,7 @@
           <li><i class="fas fa-check"></i> Analytics security dashboard</li>
           <li><i class="fas fa-check"></i> Monthly security reports</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 2) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- ENTERPRISE -->
@@ -108,7 +108,7 @@
           <li><i class="fas fa-check"></i> Dedicated security analyst</li>
           <li><i class="fas fa-check"></i> Ongoing retainer</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 3) }}" class="btn-package">Request Quote</a>
       </div>
     </div>
     

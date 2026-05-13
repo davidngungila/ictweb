@@ -193,7 +193,10 @@ class SnippePaymentService
             ];
             $payload = array_merge($payload, $this->webhookPayloadField());
 
-            $response = Http::timeout(45)->withHeaders([
+            $response = Http::connectTimeout(25)
+                ->timeout(120)
+                ->retry(3, 750, throw: false)
+                ->withHeaders([
                 'Authorization' => 'Bearer ' . $this->snippeKey,
                 'Content-Type' => 'application/json',
                 'Idempotency-Key' => 'mobile-' . $order->id . '-' . time(),
@@ -218,13 +221,15 @@ class SnippePaymentService
                 'status' => $data['status'] ?? null,
                 'payment_qr_code' => $data['payment_qr_code'] ?? null,
             ];
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::error('Snippe mobile money payment error', [
                 'error' => $e->getMessage(),
                 'order_id' => $order->id,
             ]);
 
-            return ['error' => 'Failed to reach payment gateway. Please try again shortly.'];
+            $detail = config('app.debug') ? ' '.$e->getMessage() : '';
+
+            return ['error' => 'Failed to reach payment gateway. Check your connection and try again.'.$detail];
         }
     }
 
@@ -256,7 +261,10 @@ class SnippePaymentService
             ];
             $payload = array_merge($payload, $this->webhookPayloadField());
 
-            $response = Http::timeout(45)->withHeaders([
+            $response = Http::connectTimeout(25)
+                ->timeout(120)
+                ->retry(3, 750, throw: false)
+                ->withHeaders([
                 'Authorization' => 'Bearer ' . $this->snippeKey,
                 'Content-Type' => 'application/json',
                 'Idempotency-Key' => 'card-' . $order->id . '-' . time(),
@@ -280,13 +288,15 @@ class SnippePaymentService
                 'payment_token' => $data['payment_token'] ?? null,
                 'reference' => $data['reference'] ?? null,
             ];
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::error('Snippe card payment error', [
                 'error' => $e->getMessage(),
                 'order_id' => $order->id,
             ]);
 
-            return ['error' => 'Failed to reach payment gateway. Please try again shortly.'];
+            $detail = config('app.debug') ? ' '.$e->getMessage() : '';
+
+            return ['error' => 'Failed to reach payment gateway. Check your connection and try again.'.$detail];
         }
     }
 
@@ -363,7 +373,10 @@ class SnippePaymentService
     public function getPaymentStatus($reference)
     {
         try {
-            $response = Http::timeout(30)->withHeaders([
+            $response = Http::connectTimeout(8)
+                ->timeout(14)
+                ->retry(1, 300, throw: false)
+                ->withHeaders([
                 'Authorization' => 'Bearer ' . $this->snippeKey,
             ])->get($this->baseUrl . '/v1/payments/' . $reference);
 

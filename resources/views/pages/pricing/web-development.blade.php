@@ -65,7 +65,7 @@
           <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
           <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- BUSINESS -->
@@ -88,7 +88,7 @@
           <li><i class="fas fa-check"></i> SSL + full security setup</li>
           <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- E-COMMERCE -->
@@ -110,7 +110,7 @@
           <li><i class="fas fa-check"></i> SMS order confirmations</li>
           <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Get Started</a>
       </div>
     </div>
     

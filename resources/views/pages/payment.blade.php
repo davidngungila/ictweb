@@ -65,6 +65,34 @@
   .ict-payment-legal-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; background: #fff9e6; border: 1px solid #f5e6b3; border-radius: 10px; font-size: 0.82rem; color: #5c4813; line-height: 1.5; }
   .ict-payment-legal-note i { margin-top: 2px; flex-shrink: 0; color: #c9a227; }
   .ict-payment-legal-note p { margin: 0; }
+  #paymentModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+  .payment-modal-inner {
+    background: #fff;
+    padding: clamp(28px, 5vw, 40px);
+    border-radius: 20px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+  }
+  #paymentCountdownWrap { margin: 18px 0 8px; }
+  #paymentCountdown {
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+    font-weight: 800;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+  #paymentModalSubtitle { color: #555; line-height: 1.55; font-size: 0.95rem; margin-bottom: 8px; }
+  #paymentModalCancel {
+    margin-top: 18px;
+    background: none;
+    border: none;
+    color: #888;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  #paymentModalCancel:hover { color: var(--accent); }
 </style>
 <!-- HERO -->
 <section class="hero" style="min-height: min(42vh, 360px);">
@@ -229,6 +257,14 @@
         <form id="paymentForm" action="{{ route('payment.initiate', ['order' => $order->id]) }}" method="POST">
           @csrf
 
+          <div id="payment-page-data"
+            data-initiate-url="{{ route('payment.initiate', ['order' => $order->id]) }}"
+            data-check-url="{{ route('payment.check.status', ['order' => $order->id]) }}"
+            data-thank-url="{{ route('thank.you') }}?{{ http_build_query(['order' => $order->id, 'order_number' => $order->order_number]) }}"
+            data-csrf="{{ csrf_token() }}"
+            data-awaiting-mobile="{{ (in_array($order->payment_status, ['pending', 'initiated'], true) && $order->payment_reference) ? '1' : '0' }}"
+            style="display:none;"
+          ></div>
           <div style="margin-bottom: 1.25rem;">
             <span style="font-weight: 600; display:block; margin-bottom: 10px;">Payment method</span>
             <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -264,33 +300,37 @@
             </ul>
           </div>
 
-          <button id="payNowButton" type="button" onclick="initiatePayment()" class="btn-primary" style="width:100%;padding:14px 18px;font-size:1.05rem;border-radius:12px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent-bright));color:#fff;cursor:pointer;">
-            <i class="fas fa-lock"></i> <span id="payButtonText">Pay TZS {{ number_format($order->advance_payment, 0) }} now</span>
+          <button id="payNowButton" type="button" onclick="initiatePayment()" class="btn-primary" style="width:100%;padding:14px 18px;font-size:1.05rem;border-radius:12px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent-bright));color:#fff;cursor:pointer;" @if(in_array($order->payment_status, ['pending', 'initiated'], true) && $order->payment_reference) disabled @endif>
+            <i class="fas fa-lock"></i> <span id="payButtonText">@if(in_array($order->payment_status, ['pending', 'initiated'], true) && $order->payment_reference)Waiting for phone confirmation…@else Pay TZS {{ number_format($order->advance_payment, 0) }} now @endif</span>
           </button>
         </form>
       </div>
     </div>
 
-    <div class="pay-card" style="margin-top: clamp(18px, 3vw, 28px);">
-      @include('partials.ict-project-payment-plans')
+    <div class="pay-card" style="margin-top: clamp(18px, 3vw, 28px); padding: 16px 18px; font-size: 0.88rem; color: #555; line-height: 1.55;">
+      {{ \App\Support\PackagePricing::paymentWorkLegalNote() }}
     </div>
   </div>
 </section>
 
 <!-- Payment Modal -->
-<div id="paymentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
-  <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%;">
-    <div style="margin-bottom: 30px;">
-      <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--accent);"></i>
+<div id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+  <div class="payment-modal-inner">
+    <div style="margin-bottom: 22px;">
+      <i class="fas fa-spinner fa-spin" id="paymentModalSpinner" style="font-size: 2.75rem; color: var(--accent);"></i>
+      <i class="fas fa-mobile-screen-button" id="paymentModalPhone" style="font-size: 2.75rem; color: var(--accent); display: none;"></i>
     </div>
-    <h3 style="margin-bottom: 15px; font-size: 1.3rem;">Initiating Payment</h3>
-    <p style="color: #666; margin-bottom: 25px;">Please wait while we set up your secure payment...</p>
-    
-    <div style="background: #f0f0f0; border-radius: 10px; height: 10px; overflow: hidden; margin-bottom: 15px;">
-      <div id="progressBar" style="background: linear-gradient(135deg, var(--accent), var(--accent-bright)); height: 100%; width: 0%; transition: width 0.3s;"></div>
+    <h3 id="paymentModalTitle" style="margin-bottom: 12px; font-size: 1.25rem; color: #1a2744;">Connecting…</h3>
+    <p id="paymentModalSubtitle">Reaching the payment gateway securely.</p>
+    <div id="paymentCountdownWrap" style="display: none;">
+      <div id="paymentCountdown">5:00</div>
+      <p style="font-size: 0.82rem; color: #666; margin-top: 6px;">Approve on your phone when prompted. We check every second for confirmation.</p>
     </div>
-    
-    <div id="progressText" style="font-size: 0.9rem; color: #666;">0%</div>
+    <div id="progressBarContainer" style="background: #eee; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 16px;">
+      <div id="progressBar" style="background: linear-gradient(90deg, var(--accent), var(--accent-bright)); height: 100%; width: 0%; transition: width 0.35s ease;"></div>
+    </div>
+    <div id="progressText" style="font-size: 0.82rem; color: #888; margin-top: 10px;"></div>
+    <button type="button" id="paymentModalCancel" style="display: none;">Close and try later</button>
   </div>
 </div>
 
@@ -322,72 +362,241 @@
       </div>
     </div>
     <button onclick="closeSuccessModal()" class="btn-primary" style="padding: 15px 40px;">
-      <i class="fas fa-home" style="margin-right: 8px;"></i> Return to Home
+      <i class="fas fa-check" style="margin-right: 8px;"></i> Continue to thank you page
     </button>
   </div>
 </div>
 
 <script>
-// Invoice modal removed per user request
+(function () {
+  const cfg = document.getElementById('payment-page-data');
+  if (!cfg) return;
 
-function closeSuccessModal() {
-  const successModal = document.getElementById('successModal');
-  successModal.style.display = 'none';
-  window.location.href = '{{ url('/') }}';
-}
+  const INITIATE_URL = cfg.dataset.initiateUrl;
+  const CHECK_URL = cfg.dataset.checkUrl;
+  const THANK_URL = cfg.dataset.thankUrl;
+  const THANK_FALLBACK = @json(route('thank.you'));
+  const CSRF = cfg.dataset.csrf;
+  const MOBILE_WAIT_SEC = 300;
+  const POLL_MS = 1000;
+  const MAX_POLL_MS = 2 * 60 * 60 * 1000;
 
-function initiatePayment() {
-  const form = document.getElementById('paymentForm');
-  const button = document.getElementById('payNowButton');
-  const buttonText = document.getElementById('payButtonText');
+  let sessionAwaiting = cfg.dataset.awaitingMobile === '1';
 
-  if (!form || !button || !buttonText) {
-    return;
+  let pollTimer = null;
+  let countdownTimer = null;
+  let pollStartedAt = 0;
+
+  function getModal() { return document.getElementById('paymentModal'); }
+  function getEl(id) { return document.getElementById(id); }
+
+  function showModal() {
+    const m = getModal();
+    m.style.display = 'flex';
   }
 
-  button.disabled = true;
-  button.style.opacity = '0.8';
-  button.style.cursor = 'not-allowed';
-  buttonText.textContent = 'Initializing secure payment...';
+  function hideModal() {
+    const m = getModal();
+    m.style.display = 'none';
+  }
 
-  const modal = document.getElementById('paymentModal');
-  modal.style.display = 'flex';
+  function stopTimers() {
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = null;
+    if (countdownTimer) clearInterval(countdownTimer);
+    countdownTimer = null;
+  }
 
-  let progress = 0;
-  const progressBar = document.getElementById('progressBar');
-  const progressText = document.getElementById('progressText');
+  function setConnectingPhase() {
+    getEl('paymentModalTitle').textContent = 'Connecting…';
+    getEl('paymentModalSubtitle').textContent = 'Reaching the payment gateway securely.';
+    getEl('paymentCountdownWrap').style.display = 'none';
+    getEl('paymentModalSpinner').style.display = 'inline-block';
+    getEl('paymentModalPhone').style.display = 'none';
+    getEl('progressBar').style.width = '35%';
+    getEl('progressText').textContent = '';
+    getEl('paymentModalCancel').style.display = 'none';
+  }
 
-  const interval = setInterval(() => {
-    progress += 4;
-    if (progress >= 92) {
-      progress = 92;
-      clearInterval(interval);
+  function setWaitingPhase() {
+    getEl('paymentModalTitle').textContent = 'Waiting for confirmation…';
+    getEl('paymentModalSubtitle').textContent = 'Complete the payment on your phone when you receive the prompt. This page updates automatically.';
+    getEl('paymentCountdownWrap').style.display = 'block';
+    getEl('paymentModalSpinner').style.display = 'none';
+    getEl('paymentModalPhone').style.display = 'inline-block';
+    getEl('paymentModalCancel').style.display = 'inline';
+  }
+
+  function formatMmSs(sec) {
+    const s = Math.max(0, Math.floor(sec));
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return m + ':' + String(r).padStart(2, '0');
+  }
+
+  function resetPayButton() {
+    const button = getEl('payNowButton');
+    const buttonText = getEl('payButtonText');
+    if (button) {
+      button.disabled = false;
+      button.style.opacity = '1';
+      button.style.cursor = 'pointer';
     }
-    progressBar.style.width = progress + '%';
-    progressText.textContent = Math.round(progress) + '%';
-  }, 120);
+    if (buttonText) {
+      buttonText.textContent = 'Pay TZS {{ number_format($order->advance_payment, 0) }} now';
+    }
+  }
 
-  setTimeout(() => form.submit(), 450);
-}
-
-// Check payment status every 10 seconds if pending
-@if(in_array($order->payment_status, ['pending', 'initiated']))
-const pollInterval = setInterval(() => {
-  fetch('{{ route('payment.check.status', ['order' => $order->id]) }}')
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'completed') {
-        clearInterval(pollInterval);
-        // Show success modal instead of redirecting
-        const paymentModal = document.getElementById('paymentModal');
-        paymentModal.style.display = 'none';
-        
-        const successModal = document.getElementById('successModal');
-        successModal.style.display = 'flex';
-      }
+  async function postInitiate(paymentMethod) {
+    const fd = new FormData();
+    fd.append('_token', CSRF);
+    fd.append('payment_method', paymentMethod);
+    const res = await fetch(INITIATE_URL, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+      body: fd,
+      credentials: 'same-origin',
     });
-}, 10000);
-@endif
+    const data = await res.json().catch(function () { return {}; });
+    if (!res.ok || data.ok === false) {
+      const msg = data.message || (data.errors && JSON.stringify(data.errors)) || 'Payment could not be started.';
+      throw new Error(typeof msg === 'string' ? msg : 'Payment could not be started.');
+    }
+    return data;
+  }
+
+  async function checkOnce() {
+    const res = await fetch(CHECK_URL, {
+      headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+      credentials: 'same-origin',
+    });
+    return res.json();
+  }
+
+  function goThankYou() {
+    stopTimers();
+    window.location.href = THANK_URL || THANK_FALLBACK;
+  }
+
+  function beginMobilePollingAndCountdown() {
+    sessionAwaiting = true;
+    stopTimers();
+    setWaitingPhase();
+    pollStartedAt = Date.now();
+
+    let left = MOBILE_WAIT_SEC;
+    const cdEl = getEl('paymentCountdown');
+    const bar = getEl('progressBar');
+    cdEl.textContent = formatMmSs(left);
+    bar.style.width = '100%';
+
+    countdownTimer = setInterval(function () {
+      left -= 1;
+      cdEl.textContent = formatMmSs(left);
+      bar.style.width = Math.max(0, (left / MOBILE_WAIT_SEC) * 100) + '%';
+      if (left <= 0) {
+        if (countdownTimer) clearInterval(countdownTimer);
+        countdownTimer = null;
+        cdEl.textContent = '0:00';
+        bar.style.width = '0%';
+      }
+    }, 1000);
+
+    async function tick() {
+      if (Date.now() - pollStartedAt > MAX_POLL_MS) {
+        stopTimers();
+        hideModal();
+        alert('We could not confirm payment within the maximum wait time. If you paid, refresh this page or contact support.');
+        resetPayButton();
+        return;
+      }
+      try {
+        const data = await checkOnce();
+        if (data.status === 'completed') {
+          goThankYou();
+          return;
+        }
+        if (data.status === 'failed') {
+          stopTimers();
+          hideModal();
+          alert('Payment was declined or failed. You can try again.');
+          resetPayButton();
+        }
+      } catch (e) {
+        /* ignore transient network errors; next tick retries */
+      }
+    }
+
+    tick();
+    pollTimer = setInterval(tick, POLL_MS);
+  }
+
+  window.initiatePayment = async function () {
+    const form = getEl('paymentForm');
+    const button = getEl('payNowButton');
+    const buttonText = getEl('payButtonText');
+    const methodInput = form.querySelector('input[name="payment_method"]:checked');
+    if (!form || !button || !buttonText || !methodInput) return;
+
+    const method = methodInput.value;
+
+    button.disabled = true;
+    button.style.opacity = '0.85';
+    button.style.cursor = 'wait';
+    buttonText.textContent = method === 'card' ? 'Opening secure checkout…' : 'Starting mobile payment…';
+
+    showModal();
+    setConnectingPhase();
+
+    try {
+      if (method === 'card') {
+        const data = await postInitiate('card');
+        if (data.redirect_url) {
+          window.location.href = data.redirect_url;
+          return;
+        }
+        throw new Error('No checkout URL returned.');
+      }
+
+      await postInitiate('mobile');
+      beginMobilePollingAndCountdown();
+    } catch (err) {
+      hideModal();
+      resetPayButton();
+      alert(err.message || 'Something went wrong.');
+    }
+  };
+
+  getEl('paymentModalCancel').addEventListener('click', function () {
+    stopTimers();
+    hideModal();
+    if (sessionAwaiting) {
+      const b = getEl('payNowButton');
+      const t = getEl('payButtonText');
+      if (b) b.disabled = true;
+      if (t) t.textContent = 'Payment pending — refresh this page after paying on your phone';
+    } else {
+      resetPayButton();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (cfg.dataset.awaitingMobile === '1') {
+      showModal();
+      beginMobilePollingAndCountdown();
+    }
+  });
+})();
+
+function closeSuccessModal() {
+  const cfg = document.getElementById('payment-page-data');
+  const fallback = @json(route('thank.you'));
+  document.getElementById('successModal').style.display = 'none';
+  window.location.href = (cfg && cfg.dataset.thankUrl) ? cfg.dataset.thankUrl : fallback;
+}
 </script>
 
 <style>

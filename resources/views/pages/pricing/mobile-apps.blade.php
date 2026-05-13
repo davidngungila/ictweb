@@ -64,7 +64,7 @@
           <li><i class="fas fa-check"></i> Analytics dashboard</li>
           <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 1) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- STANDARD -->
@@ -87,7 +87,7 @@
           <li><i class="fas fa-check"></i> Push notifications</li>
           <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 2) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- ENTERPRISE -->
@@ -109,7 +109,7 @@
           <li><i class="fas fa-check"></i> Full white-label branding</li>
           <li><i class="fas fa-check"></i> Delivered in 10–14 weeks</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 3) }}" class="btn-package">Get Started</a>
       </div>
     </div>
     

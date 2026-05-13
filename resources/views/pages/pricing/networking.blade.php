@@ -64,7 +64,7 @@
           <li><i class="fas fa-check"></i> Network credentials documentation</li>
           <li><i class="fas fa-check"></i> Delivered in 1–3 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 1) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- STANDARD -->
@@ -87,7 +87,7 @@
           <li><i class="fas fa-check"></i> SMS maintenance alerts</li>
           <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 2) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- ENTERPRISE -->
@@ -109,7 +109,7 @@
           <li><i class="fas fa-check"></i> Optional CCTV integration</li>
           <li><i class="fas fa-check"></i> Delivered in 5–10 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 3) }}" class="btn-package">Get Started</a>
       </div>
     </div>
     

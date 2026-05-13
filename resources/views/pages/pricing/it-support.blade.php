@@ -63,7 +63,7 @@
           <li><i class="fas fa-check"></i> SMS ticket system</li>
           <li><i class="fas fa-check"></i> Up to 5 devices supported</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 1) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- STANDARD -->
@@ -85,7 +85,7 @@
           <li><i class="fas fa-check"></i> Monthly analytics reports</li>
           <li><i class="fas fa-check"></i> Unlimited devices</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 2) }}" class="btn-package">Get Started</a>
       </div>
       
       <!-- ENTERPRISE -->
@@ -106,7 +106,7 @@
           <li><i class="fas fa-check"></i> Dedicated account manager</li>
           <li><i class="fas fa-check"></i> Priority escalation path</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 3) }}" class="btn-package">Get Started</a>
       </div>
     </div>
     

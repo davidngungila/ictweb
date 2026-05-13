@@ -557,12 +557,12 @@
           </div>
           <div class="summary-advance">
             <strong>{{ $advPct }}% deposit due at checkout:</strong> TZS {{ number_format($advancePayment, 0) }}
-            <div style="font-size:0.88rem;color:#555;margin-top:10px;line-height:1.55;">Later payments follow the milestones in your <strong>{{ \App\Support\PackagePricing::paymentPlanLabel($payPlan) }}</strong>.</div>
+            <div style="font-size:0.88rem;color:#555;margin-top:10px;line-height:1.55;">Remaining balance is invoiced per your project’s agreed milestone schedule.</div>
           </div>
         </div>
 
-        <div class="review-card">
-          @include('partials.ict-project-payment-plans')
+        <div class="review-card" style="font-size:0.88rem;color:#555;line-height:1.55;">
+          {{ \App\Support\PackagePricing::paymentWorkLegalNote() }}
         </div>
 
         <!-- Navigation Buttons -->

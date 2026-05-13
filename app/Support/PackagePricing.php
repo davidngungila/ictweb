@@ -387,62 +387,66 @@ class PackagePricing
     }
 
     /**
-     * Long-form copy for Preferred Payment Plans (step 2 + payment page).
-     *
-     * @return list<array{id: string, title: string, tagline: string, schedule: list<string>, suitable: list<string>}>
+     * URL to package wizard step 1 with optional pricing vertical (e.g. tour websites share web tiers).
      */
-    public static function ictProjectPaymentPlansDetail(): array
+    public static function wizardUrl(int $serviceId, int $packageId = 1, ?string $vertical = null): string
+    {
+        $query = [
+            'service_id' => $serviceId,
+            'package_id' => $packageId,
+        ];
+        if ($vertical !== null && $vertical !== '') {
+            $query['vertical'] = $vertical;
+        }
+
+        return route('package.selection.step1', $query);
+    }
+
+    /**
+     * When `?vertical=tour` with service_id=1, the wizard shows tour-oriented labels (same tier prices as web).
+     *
+     * @return array<string, array{name?: string, desc?: string, features?: list<string>, popular?: bool}>
+     */
+    public static function tourVerticalTierOverlays(): array
     {
         return [
-            [
-                'id' => 'startup',
-                'title' => '1. Startup / Small Project Plan',
-                'tagline' => 'Best for small websites, branding, setup, or quick ICT services.',
-                'schedule' => [
-                    '50% advance payment — before project starts',
-                    '50% final payment — after project completion and client approval',
-                ],
-                'suitable' => [
-                    'Business websites',
-                    'Logo design',
-                    'Social media setup',
-                    'Basic systems',
-                    'CCTV installation',
+            '1' => [
+                'name' => 'Tour Starter',
+                'desc' => 'Best for solo guides & new startups.',
+                'features' => [
+                    '1–5 pages (Home, About, Tours, Contact)',
+                    'Basic tour listing with descriptions & pricing',
+                    'Photo gallery (up to 20 photos)',
+                    'WhatsApp & phone booking CTAs',
+                    '50 SMS credits included',
+                    'Basic Google Analytics',
                 ],
             ],
-            [
-                'id' => 'standard',
-                'title' => '2. Standard Project Plan',
-                'tagline' => 'Best for medium-size systems and business solutions.',
-                'schedule' => [
-                    '40% deposit — project initiation',
-                    '40% midway payment — after first demo / progress milestone',
-                    '20% final payment — before deployment or handover',
-                ],
-                'suitable' => [
-                    'School systems',
-                    'SACCO systems',
-                    'Inventory systems',
-                    'Mobile apps',
-                    'Network installation',
+            '2' => [
+                'name' => 'Tour Business',
+                'desc' => 'Growing safari operators.',
+                'popular' => true,
+                'features' => [
+                    '8–15 pages with blog & testimonials',
+                    'Calendar-based booking engine',
+                    'M-Pesa, TigoPesa & AzamPesa payments',
+                    'Safari package management panel',
+                    'Video embedding (safari footage)',
+                    '200 SMS credits included',
+                    'Advanced analytics & conversion funnels',
                 ],
             ],
-            [
-                'id' => 'enterprise',
-                'title' => '3. Enterprise / Large Project Plan',
-                'tagline' => 'Best for organizations, government, hospitals, and large platforms.',
-                'schedule' => [
-                    '30% initial payment — contract signing',
-                    '30% — development phase',
-                    '30% — testing & training phase',
-                    '10% — after go-live support',
-                ],
-                'suitable' => [
-                    'ERP systems',
-                    'Banking systems',
-                    'Cloud infrastructure',
-                    'Enterprise software',
-                    'Multi-branch systems',
+            '3' => [
+                'name' => 'Tour Enterprise',
+                'desc' => 'Kilimanjaro specialists & large operators.',
+                'features' => [
+                    'Unlimited pages — fully custom',
+                    'Full tour management admin panel',
+                    'Multi-currency & multi-language (EN/DE/FR)',
+                    'Customer CRM with trip history',
+                    'Invoices, itineraries & vouchers',
+                    'Email marketing newsletter system',
+                    '500 SMS credits + bulk SMS campaigns',
                 ],
             ],
         ];

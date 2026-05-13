@@ -462,6 +462,7 @@
       $prefillPackage = old('package_id', request('package_id'));
     @endphp
     <script type="application/json" id="package-matrix-json">{!! json_encode(\App\Support\PackagePricing::matrixForJs()) !!}</script>
+    <script type="application/json" id="tour-vertical-overrides">{!! json_encode(\App\Support\PackagePricing::tourVerticalTierOverlays()) !!}</script>
 
     <form action="{{ route('package.selection.step1.process') }}" method="POST">
       @csrf
@@ -660,6 +661,9 @@
   (function () {
     var matrixEl = document.getElementById('package-matrix-json');
     var matrix = matrixEl ? JSON.parse(matrixEl.textContent) : {};
+    var tourOverridesEl = document.getElementById('tour-vertical-overrides');
+    var tourOverrides = tourOverridesEl ? JSON.parse(tourOverridesEl.textContent) : {};
+    var verticalTour = @json(request('vertical') === 'tour');
     var prefillService = @json($prefillService !== null && $prefillService !== '' ? (string) $prefillService : null);
     var prefillPackage = @json($prefillPackage !== null && $prefillPackage !== '' ? (string) $prefillPackage : null);
 
@@ -769,9 +773,16 @@
       var ids = Object.keys(tiers).map(Number).sort(function (a, b) { return a - b; });
       var html = '';
       ids.forEach(function (tierId) {
-        var p = tiers[String(tierId)];
-        if (!p) {
+        var pRaw = tiers[String(tierId)];
+        if (!pRaw) {
           return;
+        }
+        var p = pRaw;
+        if (verticalTour && String(serviceId) === '1') {
+          var ov = tourOverrides[String(tierId)];
+          if (ov) {
+            p = Object.assign({}, pRaw, ov);
+          }
         }
         var popularClass = p.popular ? ' popular' : '';
         var checked = '';

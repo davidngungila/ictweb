@@ -97,7 +97,7 @@
             <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
             <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
           </ul>
-          <a href="{{ route('package.selection.step1', ['service_id' => 1, 'package_id' => 1]) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1, 'tour') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -120,7 +120,7 @@
             <li><i class="fas fa-check"></i> Advanced Analytics &amp; conversion funnels</li>
             <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
           </ul>
-          <a href="{{ route('package.selection.step1', ['service_id' => 1, 'package_id' => 2]) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2, 'tour') }}" class="btn-package">Get Started</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -142,7 +142,7 @@
             <li><i class="fas fa-check"></i> 500 SMS credits + bulk SMS campaigns</li>
             <li><i class="fas fa-check"></i> 6 months priority support</li>
           </ul>
-          <a href="{{ route('package.selection.step1', ['service_id' => 1, 'package_id' => 3]) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3, 'tour') }}" class="btn-package">Get Started</a>
         </div>
       </div>
     </div>

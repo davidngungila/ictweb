@@ -340,26 +340,35 @@ class PackageOrderController extends Controller
         $paymentMethod = $request->validate([
             'payment_method' => 'required|in:mobile,card',
         ])['payment_method'];
-        
+
+        $wantsJson = $request->expectsJson() || $request->ajax();
+
+        $jsonError = fn (string $message, int $code = 422) => $wantsJson
+            ? response()->json(['ok' => false, 'message' => $message], $code)
+            : back()->with('error', $message);
+
         Log::info('Initiating payment', [
             'order_id' => $orderId,
             'payment_method' => $paymentMethod,
+            'wants_json' => $wantsJson,
         ]);
 
         if (! $this->snippeService->isConfigured()) {
-            return back()->with('error', 'Payment gateway is not configured. Set SNIPPE_API_KEY in your .env file, then run php artisan config:clear.');
+            $msg = 'Payment gateway is not configured. Set SNIPPE_API_KEY in your .env file, then run php artisan config:clear.';
+
+            return $wantsJson
+                ? response()->json(['ok' => false, 'message' => $msg], 422)
+                : back()->with('error', $msg);
         }
-        
+
         if ($paymentMethod === 'card') {
-            // Create card payment - redirects to secure checkout
             $checkout = $this->snippeService->createCardPayment($order);
             Log::info('Card payment response', ['checkout' => $checkout]);
-            
+
             if (isset($checkout['error'])) {
-                return back()->with('error', $checkout['error']);
+                return $jsonError($checkout['error']);
             }
 
-            // Redirect to card payment URL
             if (isset($checkout['payment_url'])) {
                 $order->update([
                     'payment_reference' => $checkout['reference'] ?? null,
@@ -367,28 +376,45 @@ class PackageOrderController extends Controller
                     'payment_status' => 'initiated',
                 ]);
                 Log::info('Redirecting to payment_url', ['url' => $checkout['payment_url']]);
+
+                if ($wantsJson) {
+                    return response()->json([
+                        'ok' => true,
+                        'redirect_url' => $checkout['payment_url'],
+                    ]);
+                }
+
                 return redirect($checkout['payment_url']);
             }
-        } else {
-            // Create direct mobile money payment (USSD push) - no redirect needed
-            $payment = $this->snippeService->createMobileMoneyPayment($order);
-            Log::info('Mobile money payment response', ['payment' => $payment]);
-            
-            if (isset($payment['error'])) {
-                return back()->with('error', $payment['error']);
-            }
 
-            // Store payment reference and return to payment page with status
-            $order->update([
-                'payment_reference' => $payment['reference'] ?? null,
-                'payment_token' => $payment['payment_token'] ?? null,
-                'payment_status' => 'pending',
-            ]);
+            $fallback = 'Could not start card checkout. Please try again or choose mobile money.';
 
-            return back()->with('success', 'Payment initiated! Please check your phone for the USSD prompt to complete payment.');
+            return $jsonError($fallback);
         }
 
-        return back()->with('error', 'Payment gateway error. Please try again.');
+        $payment = $this->snippeService->createMobileMoneyPayment($order);
+        Log::info('Mobile money payment response', ['payment' => $payment]);
+
+        if (isset($payment['error'])) {
+            return $jsonError($payment['error']);
+        }
+
+        $order->update([
+            'payment_reference' => $payment['reference'] ?? null,
+            'payment_token' => $payment['payment_token'] ?? null,
+            'payment_status' => 'pending',
+        ]);
+
+        if ($wantsJson) {
+            return response()->json([
+                'ok' => true,
+                'poll' => true,
+                'reference' => $payment['reference'] ?? null,
+                'message' => 'Check your phone for the payment prompt.',
+            ]);
+        }
+
+        return back()->with('success', 'Payment initiated! Please check your phone for the USSD prompt to complete payment.');
     }
 
     public function paymentConfirmation($orderId)
@@ -400,38 +426,60 @@ class PackageOrderController extends Controller
     public function checkPaymentStatus($orderId)
     {
         $order = PackageOrder::findOrFail($orderId);
-        
-        // Check payment status via Snippe API if we have a reference
+
+        if ($order->payment_status === 'completed' || $order->status === 'paid_advance') {
+            return response()->json(['status' => 'completed']);
+        }
+
+        if ($order->payment_status === 'failed' || $order->status === 'payment_failed') {
+            return response()->json(['status' => 'failed']);
+        }
+
         if ($order->payment_reference) {
             $status = $this->snippeService->getPaymentStatus($order->payment_reference);
-            
-            if ($status && isset($status['data']['status'])) {
-                $snippeStatus = $status['data']['status'];
-                
-                // Update order status based on Snippe status
-                if ($snippeStatus === 'completed' || $snippeStatus === 'success') {
+
+            $snippeStatus = null;
+            if (is_array($status)) {
+                $data = $status['data'] ?? [];
+                $snippeStatus = is_array($data)
+                    ? ($data['status'] ?? $data['payment_status'] ?? $data['state'] ?? null)
+                    : null;
+                if ($snippeStatus === null) {
+                    $snippeStatus = $status['status'] ?? null;
+                }
+            }
+
+            if (is_string($snippeStatus) && $snippeStatus !== '') {
+                $normalized = strtolower($snippeStatus);
+
+                if (in_array($normalized, ['completed', 'success', 'paid', 'successful', 'complete'], true)) {
                     $order->update([
                         'status' => 'paid_advance',
                         'payment_status' => 'completed',
                     ]);
-                    
-                    // Update invoice
+
                     $invoice = Invoice::where('order_id', $order->id)->first();
                     if ($invoice) {
-                        $invoice->update(['status' => 'paid']);
+                        $invoice->update([
+                            'status' => 'paid',
+                            'paid_date' => now(),
+                        ]);
                     }
-                    
+
                     return response()->json(['status' => 'completed']);
-                } elseif ($snippeStatus === 'failed') {
+                }
+
+                if (in_array($normalized, ['failed', 'error', 'cancelled', 'canceled'], true)) {
                     $order->update([
                         'status' => 'payment_failed',
                         'payment_status' => 'failed',
                     ]);
+
                     return response()->json(['status' => 'failed']);
                 }
             }
         }
-        
+
         return response()->json(['status' => $order->payment_status ?? 'pending']);
     }
 
