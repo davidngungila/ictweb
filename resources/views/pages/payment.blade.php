@@ -367,6 +367,29 @@
   </div>
 </div>
 
+<!-- Timeout Modal -->
+<div id="timeoutModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10002; align-items: center; justify-content: center; padding: 20px;">
+  <div style="background: white; padding: 40px; border-radius: 24px; text-align: center; max-width: 450px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+    <div style="margin-bottom: 25px;">
+      <div style="width: 80px; height: 80px; background: #fff5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+        <i class="fas fa-clock" style="font-size: 2.5rem; color: #e53e3e;"></i>
+      </div>
+    </div>
+    <h3 style="margin-bottom: 15px; font-size: 1.4rem; color: #1a2744; font-weight: 700;">Payment Confirmation Pending</h3>
+    <p style="color: #4a5568; margin-bottom: 30px; line-height: 1.6; font-size: 1rem;">
+      We could not confirm payment within 1 minute. If you paid, refresh this page or contact support.
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <button onclick="window.location.reload()" class="btn-primary" style="width: 100%; padding: 14px; border-radius: 12px; font-weight: 600;">
+        <i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Refresh Page
+      </button>
+      <a href="{{ route('contact') }}" style="color: #718096; text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 10px;">
+        Contact Support
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   const cfg = document.getElementById('payment-page-data');
@@ -505,7 +528,7 @@
         if (pollTimer) clearInterval(pollTimer);
         pollTimer = null;
         hideModal();
-        alert('We could not confirm payment within 1 minute. If you paid, refresh this page or contact support.');
+        document.getElementById('timeoutModal').style.display = 'flex';
         resetPayButton();
       }
     }, 1000);
@@ -514,7 +537,7 @@
       if (Date.now() - pollStartedAt > MAX_POLL_MS) {
         stopTimers();
         hideModal();
-        alert('We could not confirm payment within the maximum wait time. If you paid, refresh this page or contact support.');
+        document.getElementById('timeoutModal').style.display = 'flex';
         resetPayButton();
         return;
       }
