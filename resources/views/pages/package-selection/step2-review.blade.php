@@ -157,6 +157,172 @@
     font-style: italic;
     font-size: 0.9rem;
   }
+
+  .step2-inner {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 clamp(10px, 3vw, 12px);
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .review-card {
+      padding: clamp(16px, 5vw, 28px);
+      border-radius: 14px;
+    }
+    .section-title {
+      font-size: 1.12rem;
+      flex-wrap: wrap;
+      row-gap: 8px;
+    }
+    .review-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 12px 0;
+    }
+    .review-value {
+      text-align: left;
+      max-width: 100%;
+      word-break: break-word;
+    }
+    .summary-total {
+      flex-direction: column;
+      gap: 10px;
+      font-size: 1.22rem;
+      align-items: flex-start;
+    }
+  }
+
+  .review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .review-actions .btn-secondary {
+    flex: 1 1 160px;
+    min-width: 0;
+  }
+
+  .review-actions .btn-primary {
+    flex: 2 1 220px;
+    min-width: 0;
+  }
+
+  @media (max-width: 640px) {
+    .review-actions {
+      flex-direction: column;
+    }
+    .review-actions .btn-secondary,
+    .review-actions .btn-primary {
+      flex: 1 1 auto;
+      width: 100%;
+    }
+  }
+
+  .feature-list-review {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: #444;
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  .feature-list-review li {
+    margin-bottom: 6px;
+  }
+
+  .ict-plans-wrap {
+    margin-top: 4px;
+  }
+
+  .ict-plans-heading {
+    font-size: 1.12rem;
+    color: var(--accent);
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    line-height: 1.35;
+  }
+
+  .ict-plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 16px;
+  }
+
+  .ict-plan-card {
+    border: 1px solid #e8edf5;
+    border-radius: 14px;
+    padding: 16px 18px;
+    background: #fbfcff;
+  }
+
+  .ict-plan-title {
+    font-size: 1rem;
+    margin: 0 0 8px;
+    color: #1a2744;
+  }
+
+  .ict-plan-tagline {
+    font-size: 0.88rem;
+    color: #555;
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+
+  .ict-plan-sub {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 12px 0 6px;
+  }
+
+  .ict-plan-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.88rem;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  .ict-plan-suitable {
+    list-style: disc;
+  }
+
+  .ict-payment-legal-note {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #fff9e6;
+    border: 1px solid #f5e6b3;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    color: #5c4813;
+    line-height: 1.55;
+  }
+
+  .ict-payment-legal-note i {
+    margin-top: 3px;
+    flex-shrink: 0;
+    color: #c9a227;
+  }
+
+  .ict-payment-legal-note p {
+    margin: 0;
+  }
+
+  .step2-shell {
+    padding: clamp(32px, 6vw, 70px) 0 !important;
+  }
 </style>
 
 <!-- HERO -->
@@ -192,7 +358,7 @@
 </div>
 
 <!-- REVIEW FORM -->
-<section class="services" style="padding: 70px 0;">
+<section class="services step2-shell" style="padding: 70px 0;">
   <div class="container">
     @if(session('success'))
     <div style="background:#d4edda;border:1px solid #c3e6cb;color:#155724;padding:14px 18px;border-radius:12px;margin-bottom:22px;display:flex;align-items:center;gap:10px;">
@@ -227,14 +393,14 @@
       <input type="hidden" name="service_id" value="{{ $data['service_id'] ?? '' }}">
       <input type="hidden" name="package_id" value="{{ $data['package_id'] ?? '' }}">
       <input type="hidden" name="timeline_priority" value="{{ $data['timeline_priority'] ?? 'standard' }}">
-      <input type="hidden" name="payment_plan" value="{{ $data['payment_plan'] ?? 'one_time' }}">
+      <input type="hidden" name="payment_plan" value="{{ $data['payment_plan'] ?? 'enterprise' }}">
       <input type="hidden" name="estimated_total" value="{{ $data['estimated_total'] ?? 0 }}">
       @foreach($data['selected_addons'] ?? [] as $addon)
       <input type="hidden" name="selected_addons[]" value="{{ $addon }}">
       @endforeach
       <input type="hidden" name="notes" value="{{ $data['notes'] ?? '' }}">
 
-      <div style="max-width: 950px; margin: 0 auto;">
+      <div class="step2-inner">
         <!-- Contact Information -->
         <div class="review-card">
           <h3 class="section-title">
@@ -294,7 +460,21 @@
           @endif
         </div>
 
+        @if($package && !empty($package['features']))
+        <div class="review-card">
+          <h3 class="section-title">
+            <i class="fas fa-list-check"></i> Package includes
+          </h3>
+          <ul class="feature-list-review">
+            @foreach($package['features'] as $feat)
+              <li>{{ $feat }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
+
         <!-- Selected Add-ons -->
+        @php $addonLabels = \App\Support\PackagePricing::addonLabels(); @endphp
         <div class="review-card">
           <h3 class="section-title">
             <i class="fas fa-rocket"></i> Selected Add-ons
@@ -303,7 +483,7 @@
             <div style="display: flex; flex-wrap: wrap;">
               @foreach($data['selected_addons'] as $addon)
               <span class="feature-tag">
-                <i class="fas fa-plus" style="margin-right: 5px;"></i> {{ ucfirst(str_replace('_', ' ', $addon)) }}
+                <i class="fas fa-plus" style="margin-right: 5px;"></i> {{ $addonLabels[$addon] ?? ucfirst(str_replace('_', ' ', $addon)) }}
               </span>
               @endforeach
             </div>
@@ -330,8 +510,8 @@
             <span class="review-value">{{ ucfirst(str_replace('_', ' ', $data['timeline_priority'] ?? 'standard')) }}</span>
           </div>
           <div class="review-item">
-            <span class="review-label">Payment Plan</span>
-            <span class="review-value">{{ ucfirst(str_replace('_', ' ', $data['payment_plan'] ?? 'one_time')) }}</span>
+            <span class="review-label">Preferred payment plan</span>
+            <span class="review-value">{{ \App\Support\PackagePricing::paymentPlanLabel($data['payment_plan'] ?? null) }}</span>
           </div>
         </div>
 
@@ -348,20 +528,7 @@
           @endif
           
           @php
-            $addonPrices = [
-                'travel_blog_5_posts' => 150000,
-                'advanced_seo' => 300000,
-                'social_auto_posting' => 150000,
-                'email_marketing' => 200000,
-                'google_automation' => 100000,
-                'ai_chatbot' => 250000,
-                'bulk_sms_system' => 200000,
-                'online_payment' => 200000,
-                'api_integration' => 150000,
-                'admin_dashboard' => 300000,
-                'booking_system' => 250000,
-                'ecommerce' => 350000,
-            ];
+            $addonPrices = \App\Support\PackagePricing::addonPrices();
             
             $basePrice = $package ? $package['price'] : 0;
             $addonsTotal = 0;
@@ -371,7 +538,10 @@
                 }
             }
             $totalPrice = $basePrice + $addonsTotal;
-            $advancePayment = $totalPrice * 0.3;
+            $payPlan = $data['payment_plan'] ?? 'enterprise';
+            $advFrac = \App\Support\PackagePricing::advanceFractionForPlan($payPlan);
+            $advPct = \App\Support\PackagePricing::advancePercentForPlan($payPlan);
+            $advancePayment = $totalPrice * $advFrac;
           @endphp
           
           @if($addonsTotal > 0)
@@ -382,23 +552,28 @@
           @endif
           
           <div class="summary-total">
-            <span>Total</span>
+            <span>Project total</span>
             <span style="color: var(--accent);">TZS {{ number_format($totalPrice, 0) }}</span>
           </div>
           <div class="summary-advance">
-            <strong>30% Advance Required:</strong> TZS {{ number_format($advancePayment, 0) }}
+            <strong>{{ $advPct }}% deposit due at checkout:</strong> TZS {{ number_format($advancePayment, 0) }}
+            <div style="font-size:0.88rem;color:#555;margin-top:10px;line-height:1.55;">Later payments follow the milestones in your <strong>{{ \App\Support\PackagePricing::paymentPlanLabel($payPlan) }}</strong>.</div>
           </div>
         </div>
 
+        <div class="review-card">
+          @include('partials.ict-project-payment-plans')
+        </div>
+
         <!-- Navigation Buttons -->
-        <div style="display: flex; gap: 15px; margin-top: 30px;">
-          <button type="button" onclick="history.back()" class="btn-secondary" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+        <div class="review-actions">
+          <button type="button" onclick="history.back()" class="btn-secondary" style="display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
           </button>
-          <button type="button" onclick="generateInvoice()" class="btn-secondary" style="flex: 1; display: flex; align-items: center; justify-content: center; border-color: var(--accent); color: var(--accent);">
+          <button type="button" onclick="generateInvoice()" class="btn-secondary" style="display: flex; align-items: center; justify-content: center; border-color: var(--accent); color: var(--accent);">
             <i class="fas fa-file-invoice" style="margin-right: 8px;"></i> Generate Invoice
           </button>
-          <button type="submit" class="btn-primary" style="flex: 2; display: flex; align-items: center; justify-content: center;">
+          <button type="submit" class="btn-primary" style="display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Proceed to Payment
           </button>
         </div>

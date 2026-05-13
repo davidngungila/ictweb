@@ -402,21 +402,7 @@
           @endif
           
           @php
-            // Addon prices
-            $addonPrices = [
-                'travel_blog_5_posts' => 150000,
-                'advanced_seo' => 300000,
-                'social_auto_posting' => 150000,
-                'email_marketing' => 200000,
-                'google_automation' => 100000,
-                'ai_chatbot' => 250000,
-                'bulk_sms_system' => 200000,
-                'online_payment' => 200000,
-                'api_integration' => 150000,
-                'admin_dashboard' => 300000,
-                'booking_system' => 250000,
-                'ecommerce' => 350000,
-            ];
+            $addonPrices = \App\Support\PackagePricing::addonPrices();
             
             $basePrice = $package ? $package['price'] : 0;
             $addonsTotal = 0;
@@ -426,7 +412,10 @@
                 }
             }
             $totalPrice = $basePrice + $addonsTotal;
-            $advancePayment = $totalPrice * 0.3;
+            $payPlan = old('payment_plan', (session('package_order_data', [])['payment_plan'] ?? 'enterprise'));
+            $advFrac = \App\Support\PackagePricing::advanceFractionForPlan($payPlan);
+            $advPct = \App\Support\PackagePricing::advancePercentForPlan($payPlan);
+            $advancePayment = $totalPrice * $advFrac;
           @endphp
           
           @if($addonsTotal > 0)
@@ -441,7 +430,7 @@
             <span style="color: var(--accent);">TZS {{ number_format($totalPrice, 0) }}</span>
           </div>
           <div class="summary-advance">
-            <strong>30% Advance Required:</strong> TZS {{ number_format($advancePayment, 0) }}
+            <strong>{{ $advPct }}% deposit (checkout estimate):</strong> TZS {{ number_format($advancePayment, 0) }}
           </div>
         </div>
 

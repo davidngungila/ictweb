@@ -237,7 +237,51 @@
   
   .addon-name {
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    padding-right: 28px;
+  }
+
+  .addon-desc {
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+
+  .addon-category {
+    grid-column: 1 / -1;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy, #1a2744);
+    margin: 28px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eef4ff;
+  }
+
+  .addon-category:first-of-type {
+    margin-top: 6px;
+  }
+
+  .addon-super {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--navy, #1a2744);
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .addon-lead {
+    color: #555;
+    margin: 0 0 10px;
+    line-height: 1.55;
+    font-size: 0.98rem;
+  }
+
+  .addon-note {
+    font-size: 0.82rem;
+    color: #777;
+    margin: 0 0 8px;
+    line-height: 1.5;
   }
   
   .addon-price {
@@ -512,53 +556,34 @@
           <div id="package-picker-root" class="service-grid"></div>
         </div>
 
+        @php
+          $addonCatalog = \App\Support\PackagePricing::addonCatalog();
+          $addonOld = old('selected_addons', []);
+        @endphp
+
         <!-- Add-ons -->
         <div class="form-section">
           <h3 class="section-title">
-            <i class="fas fa-rocket"></i> Add-ons (Optional)
+            <i class="fas fa-rocket"></i> Extra Add-On Services
           </h3>
-          <div class="addon-grid">
-            <label class="addon-card {{ in_array('travel_blog_5_posts', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="Travel Blog + 5 Posts" data-price="150000">
-              <input type="checkbox" name="selected_addons[]" value="travel_blog_5_posts" {{ in_array('travel_blog_5_posts', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">Travel Blog + 5 Posts</div>
-              <div class="addon-price">TZS 150,000</div>
-            </label>
-            <label class="addon-card {{ in_array('advanced_seo', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="Advanced SEO Package" data-price="300000">
-              <input type="checkbox" name="selected_addons[]" value="advanced_seo" {{ in_array('advanced_seo', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">Advanced SEO Package</div>
-              <div class="addon-price">TZS 300,000</div>
-            </label>
-            <label class="addon-card {{ in_array('social_auto_posting', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="Social Media Auto-Posting" data-price="150000">
-              <input type="checkbox" name="selected_addons[]" value="social_auto_posting" {{ in_array('social_auto_posting', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">Social Media Auto-Posting</div>
-              <div class="addon-price">TZS 150,000</div>
-            </label>
-            <label class="addon-card {{ in_array('email_marketing', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="Email Marketing Setup" data-price="200000">
-              <input type="checkbox" name="selected_addons[]" value="email_marketing" {{ in_array('email_marketing', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">Email Marketing Setup</div>
-              <div class="addon-price">TZS 200,000</div>
-            </label>
-            <label class="addon-card {{ in_array('online_payment', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="Online Payment Integration" data-price="200000">
-              <input type="checkbox" name="selected_addons[]" value="online_payment" {{ in_array('online_payment', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">Online Payment Integration</div>
-              <div class="addon-price">TZS 200,000</div>
-            </label>
-            <label class="addon-card {{ in_array('ai_chatbot', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="AI Chatbot Integration" data-price="250000">
-              <input type="checkbox" name="selected_addons[]" value="ai_chatbot" {{ in_array('ai_chatbot', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">AI Chatbot Integration</div>
-              <div class="addon-price">TZS 250,000</div>
-            </label>
-            <label class="addon-card {{ in_array('admin_dashboard', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="Admin Dashboard System" data-price="300000">
-              <input type="checkbox" name="selected_addons[]" value="admin_dashboard" {{ in_array('admin_dashboard', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">Admin Dashboard System</div>
-              <div class="addon-price">TZS 300,000</div>
-            </label>
-            <label class="addon-card {{ in_array('ecommerce', old('selected_addons', [])) ? 'selected' : '' }}" data-addon="E-commerce Store Setup" data-price="350000">
-              <input type="checkbox" name="selected_addons[]" value="ecommerce" {{ in_array('ecommerce', old('selected_addons', [])) ? 'checked' : '' }}>
-              <div class="addon-name">E-commerce Store Setup</div>
-              <div class="addon-price">TZS 350,000</div>
-            </label>
-          </div>
+          <p class="addon-super">Supercharge Your Project</p>
+          <p class="addon-lead">Enhance any package with these additional features tailored to your business needs.</p>
+          <p class="addon-note">Where a price is shown as a range, per month, or &ldquo;+&rdquo;, your live estimate uses the <strong>starting quote</strong>; we confirm the exact scope before invoicing.</p>
+
+          @foreach($addonCatalog as $group)
+            <h4 class="addon-category">{{ $group['heading'] }}</h4>
+            <div class="addon-grid">
+              @foreach($group['items'] as $item)
+                @php $addonSelected = in_array($item['slug'], $addonOld, true); @endphp
+                <label class="addon-card {{ $addonSelected ? 'selected' : '' }}" data-addon="{{ $item['name'] }}" data-price="{{ $item['price'] }}">
+                  <input type="checkbox" name="selected_addons[]" value="{{ $item['slug'] }}" {{ $addonSelected ? 'checked' : '' }}>
+                  <div class="addon-name">{{ $item['name'] }}</div>
+                  <div class="addon-desc">{{ $item['desc'] }}</div>
+                  <div class="addon-price">{{ $item['price_label'] }}</div>
+                </label>
+              @endforeach
+            </div>
+          @endforeach
         </div>
 
         <!-- Project Preferences -->
@@ -576,12 +601,13 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Preferred Payment Plan</label>
-              <select name="payment_plan" class="form-input">
-                <option value="one_time" {{ old('payment_plan') == 'one_time' ? 'selected' : '' }}>One Time Payment</option>
-                <option value="milestone" {{ old('payment_plan') == 'milestone' ? 'selected' : '' }}>Milestone Payments</option>
-                <option value="monthly" {{ old('payment_plan') == 'monthly' ? 'selected' : '' }}>Monthly Installments</option>
+              <label class="form-label">Preferred Payment Plan (ICT)</label>
+              <select name="payment_plan" class="form-input" id="payment_plan_select">
+                <option value="startup" {{ old('payment_plan', 'enterprise') == 'startup' ? 'selected' : '' }}>Startup / Small — 50% deposit to start</option>
+                <option value="standard" {{ old('payment_plan', 'enterprise') == 'standard' ? 'selected' : '' }}>Standard — 40% deposit to start</option>
+                <option value="enterprise" {{ old('payment_plan', 'enterprise') == 'enterprise' ? 'selected' : '' }}>Enterprise / Large — 30% initial (default)</option>
               </select>
+              <p class="form-hint" style="font-size: 0.82rem; color: #666; margin-top: 8px; line-height: 1.45;">The amount due on this checkout is your <strong>first deposit</strong> only. Later milestones follow the plan shown on the review step.</p>
             </div>
           </div>
         </div>

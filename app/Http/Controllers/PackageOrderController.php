@@ -10,6 +10,7 @@ use App\Support\PackagePricing;
 use App\Services\SnippePaymentService;
 use App\Services\SmsService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
@@ -57,9 +58,9 @@ class PackageOrderController extends Controller
                 },
             ],
             'selected_addons' => 'nullable|array',
-            'selected_addons.*' => 'string',
+            'selected_addons.*' => ['string', Rule::in(array_keys(PackagePricing::addonPrices()))],
             'timeline_priority' => 'nullable|string|in:standard,fast_track,urgent',
-            'payment_plan' => 'nullable|string|in:one_time,milestone,monthly',
+            'payment_plan' => 'nullable|string|in:startup,standard,enterprise,one_time,milestone,monthly',
             'estimated_total' => 'nullable|numeric|min:0',
             'notes' => 'nullable|string',
         ]);
@@ -116,20 +117,7 @@ class PackageOrderController extends Controller
             6 => ['name' => 'ICT Consultancy', 'base_price' => 500000],
         ];
 
-        $addonPrices = [
-            'travel_blog_5_posts' => 150000,
-            'advanced_seo' => 300000,
-            'social_auto_posting' => 150000,
-            'email_marketing' => 200000,
-            'google_automation' => 100000,
-            'ai_chatbot' => 250000,
-            'bulk_sms_system' => 200000,
-            'online_payment' => 200000,
-            'api_integration' => 150000,
-            'admin_dashboard' => 300000,
-            'booking_system' => 250000,
-            'ecommerce' => 350000,
-        ];
+        $addonPrices = PackagePricing::addonPrices();
 
         $pkg = PackagePricing::package((int) $orderData['service_id'], (int) $orderData['package_id']);
         $basePrice = $pkg['price'] ?? 0;
@@ -141,8 +129,9 @@ class PackageOrderController extends Controller
             }
         }
         $totalPrice = $basePrice + $addonsTotal;
-        $advancePayment = $totalPrice * 0.3;
-        $remainingBalance = $totalPrice - $advancePayment;
+        $advFrac = PackagePricing::advanceFractionForPlan($orderData['payment_plan'] ?? null);
+        $advancePayment = round($totalPrice * $advFrac, 2);
+        $remainingBalance = round($totalPrice - $advancePayment, 2);
 
         // Create temporary order object for invoice
         $tempOrder = (object)[
@@ -230,20 +219,7 @@ class PackageOrderController extends Controller
         $totalPrice = $basePrice;
 
         // Add addon prices
-        $addonPrices = [
-            'travel_blog_5_posts' => 150000,
-            'advanced_seo' => 300000,
-            'social_auto_posting' => 150000,
-            'email_marketing' => 200000,
-            'google_automation' => 100000,
-            'ai_chatbot' => 250000,
-            'bulk_sms_system' => 200000,
-            'online_payment' => 200000,
-            'api_integration' => 150000,
-            'admin_dashboard' => 300000,
-            'booking_system' => 250000,
-            'ecommerce' => 350000,
-        ];
+        $addonPrices = PackagePricing::addonPrices();
 
         if (isset($validated['selected_addons'])) {
             foreach ($validated['selected_addons'] as $addon) {
@@ -251,9 +227,10 @@ class PackageOrderController extends Controller
             }
         }
 
-        // Calculate 30% advance payment
-        $advancePayment = $totalPrice * 0.30;
-        $remainingBalance = $totalPrice - $advancePayment;
+        // Deposit due now (Snippe checkout) follows selected ICT payment plan
+        $advanceFraction = PackagePricing::advanceFractionForPlan($validated['payment_plan'] ?? null);
+        $advancePayment = round($totalPrice * $advanceFraction, 2);
+        $remainingBalance = round($totalPrice - $advancePayment, 2);
 
         if (! $package) {
             Log::warning('Package order blocked: invalid service/package pair', [
@@ -274,13 +251,20 @@ class PackageOrderController extends Controller
                 'client_phone' => $validated['client_phone'],
                 'service_id' => $validated['service_id'],
                 'package_id' => $validated['package_id'],
-                'selected_features' => [],
+                'selected_features' => $package['features'] ?? [],
                 'total_price' => $totalPrice,
                 'advance_payment' => $advancePayment,
                 'remaining_balance' => $remainingBalance,
                 'status' => 'pending',
-                'notes' => trim(($validated['notes'] ?? '') . PHP_EOL . PHP_EOL . 'Timeline Priority: ' . ($validated['timeline_priority'] ?? 'standard') . PHP_EOL . 'Payment Plan: ' . ($validated['payment_plan'] ?? 'one_time') . PHP_EOL . 'Estimated Total (Client Side): ' . number_format((float) ($validated['estimated_total'] ?? 0), 0)),
+                'notes' => trim(($validated['notes'] ?? '') . PHP_EOL . PHP_EOL . 'Timeline Priority: ' . ($validated['timeline_priority'] ?? 'standard') . PHP_EOL . 'Payment Plan: ' . ($validated['payment_plan'] ?? 'enterprise') . PHP_EOL . 'Estimated Total (Client Side): ' . number_format((float) ($validated['estimated_total'] ?? 0), 0)),
             ];
+
+            if (Schema::hasColumn('package_orders', 'payment_plan')) {
+                $orderPayload['payment_plan'] = $validated['payment_plan'] ?? 'enterprise';
+            }
+            if (Schema::hasColumn('package_orders', 'timeline_priority')) {
+                $orderPayload['timeline_priority'] = $validated['timeline_priority'] ?? 'standard';
+            }
 
             if (Schema::hasColumn('package_orders', 'company_name')) {
                 $orderPayload['company_name'] = $validated['company_name'];
@@ -308,7 +292,12 @@ class PackageOrderController extends Controller
                 'due_date' => now()->addDays(7),
                 'status' => 'pending',
                 'payment_method' => 'mobile_money',
-                'notes' => "30% advance payment for package order. Remaining balance: TZS " . number_format($remainingBalance, 2),
+                'notes' => sprintf(
+                    '%d%% advance payment for package order (%s). Remaining balance: TZS %s',
+                    PackagePricing::advancePercentForPlan($validated['payment_plan'] ?? null),
+                    PackagePricing::paymentPlanLabel($validated['payment_plan'] ?? null),
+                    number_format($remainingBalance, 2)
+                ),
             ];
             if (Schema::hasColumn('invoices', 'order_id')) {
                 $invoicePayload['order_id'] = $order->id;

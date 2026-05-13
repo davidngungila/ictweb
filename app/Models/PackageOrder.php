@@ -25,6 +25,8 @@ class PackageOrder extends Model
         'payment_status',
         'failure_reason',
         'notes',
+        'payment_plan',
+        'timeline_priority',
     ];
 
     protected $casts = [
