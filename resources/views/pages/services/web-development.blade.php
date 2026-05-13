@@ -9,7 +9,7 @@
   <meta property="og:description" content="Get modern, responsive and SEO-friendly websites in Tanzania. We design business websites that attract customers and grow your brand.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

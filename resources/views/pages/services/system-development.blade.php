@@ -9,7 +9,7 @@
   <meta property="og:description" content="Custom system development in Tanzania. We build tailored software solutions, management systems and business applications.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

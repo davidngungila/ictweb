@@ -9,7 +9,7 @@
   <meta property="og:description" content="View our portfolio of ICT projects in Tanzania including websites, mobile apps, network installations and cybersecurity solutions.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

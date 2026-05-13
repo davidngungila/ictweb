@@ -9,7 +9,7 @@
   <meta property="og:description" content="Explore our affordable ICT service packages in Tanzania including web development, apps, networks and IT support solutions.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

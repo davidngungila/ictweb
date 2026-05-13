@@ -3,14 +3,87 @@
 @section('title', 'ICT Company in Tanzania | Web, Apps, Network & IT Support')
 
 @section('meta_tags')
-  <meta name="description" content="Leading ICT company in Tanzania offering web development, mobile apps, network installation, cybersecurity and IT support services.">
-  <meta name="keywords" content="ICT Tanzania, web development Tanzania, IT services Dar es Salaam, software company Tanzania">
-  <meta property="og:title" content="ICT Company in Tanzania">
-  <meta property="og:description" content="Professional ICT services including web, apps, networks and IT support.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+
+    <!-- Primary SEO -->
+    <meta name="title" content="Jezdan Technology | Web Development, Mobile Apps & ICT Solutions Tanzania">
+
+    <meta name="description"
+        content="Jezdan Technology is a leading ICT company in Tanzania offering professional web development, mobile app development, cybersecurity, network installation, CCTV systems, IT support, cloud services, payment integration, and digital transformation solutions for businesses across Tanzania and East Africa.">
+
+    <meta name="keywords"
+        content="ICT Company Tanzania, Web Development Tanzania, Website Design Tanzania, Mobile App Development Tanzania, Cybersecurity Tanzania, CCTV Installation Tanzania, Network Installation Tanzania, IT Support Tanzania, Software Company Tanzania, SEO Tanzania, ICT Consultancy Tanzania, Business Website Tanzania, Safari Website Development, Tour Operator Website Tanzania, Moshi ICT Company, Kilimanjaro Web Design">
+
+    <meta name="author" content="Jezdan Technology">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="language" content="English">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title"
+        content="Jezdan Technology | Web Development & ICT Solutions Tanzania">
+
+    <meta property="og:description"
+        content="Professional ICT services in Tanzania including websites, mobile apps, cybersecurity, CCTV systems, networking, cloud solutions, and business automation.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url" content="{{ url()->current() }}">
+
+    <meta property="og:image" content="{{ asset('logo.png') }}">
+
+    <meta property="og:site_name" content="Jezdan Technology">
+
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="Jezdan Technology | ICT Solutions Tanzania">
+
+    <meta name="twitter:description"
+        content="Leading ICT company in Tanzania offering web development, mobile apps, networking, cybersecurity, CCTV systems, and IT support services.">
+
+    <meta name="twitter:image" content="{{ asset('logo.png') }}">
+
+    <!-- Local SEO -->
+    <meta name="geo.region" content="TZ">
+
+    <meta name="geo.placename" content="Moshi, Kilimanjaro, Tanzania">
+
+    <meta name="geo.position" content="-3.3349;37.3404">
+
+    <meta name="ICBM" content="-3.3349, 37.3404">
+
+    <!-- Contact SEO -->
+    <meta name="telephone" content="+255685847002">
+
+    <meta name="email" content="info@jezdantech.com">
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
 
 @section('content')
 

@@ -9,7 +9,7 @@
   <meta property="og:description" content="Contact our ICT company in Tanzania for web development, mobile apps, network installation and IT support services.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

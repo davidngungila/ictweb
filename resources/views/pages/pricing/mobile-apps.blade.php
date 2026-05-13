@@ -9,7 +9,7 @@
   <meta property="og:description" content="Professional mobile app development pricing packages in Tanzania. Android and iOS apps for businesses, booking systems, and custom applications.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

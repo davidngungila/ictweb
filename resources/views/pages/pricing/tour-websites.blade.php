@@ -9,7 +9,7 @@
   <meta property="og:description" content="Affordable tour website pricing packages in Tanzania. Perfect for safari operators, tour guides, and travel businesses.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

@@ -9,7 +9,7 @@
   <meta property="og:description" content="Professional network installation in Tanzania. We set up secure and fast office networks, Wi-Fi systems and structured cabling.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

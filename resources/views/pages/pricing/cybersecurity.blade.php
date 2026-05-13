@@ -9,7 +9,7 @@
   <meta property="og:description" content="Professional cybersecurity services pricing packages in Tanzania. Security audits, penetration testing, and ongoing protection.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')

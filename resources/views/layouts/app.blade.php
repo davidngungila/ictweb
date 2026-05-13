@@ -43,7 +43,7 @@
 <meta property="og:url" content="@yield('og_url', url()->current())">
 <meta property="og:title" content="@yield('og_title', 'Jezdan Technology | ICT Solutions & Digital Services – Tanzania')">
 <meta property="og:description" content="@yield('og_description', 'Jezdan Technology is a leading ICT company in Moshi, Kilimanjaro, Tanzania. We provide web development, mobile apps, network installation, cybersecurity, IT support, cloud services, and system development solutions for businesses across Tanzania.')">
-<meta property="og:image" content="@yield('og_image', asset('jezdan-logo.png'))">
+<meta property="og:image" content="@yield('og_image', asset('logo.png'))">
 <meta property="og:site_name" content="Jezdan Technology">
 <meta property="og:locale" content="en_TZ">
 
@@ -52,7 +52,7 @@
 <meta property="twitter:url" content="@yield('twitter_url', url()->current())">
 <meta property="twitter:title" content="@yield('twitter_title', 'Jezdan Technology | ICT Solutions & Digital Services – Tanzania')">
 <meta property="twitter:description" content="@yield('twitter_description', 'Jezdan Technology is a leading ICT company in Moshi, Kilimanjaro, Tanzania. We provide web development, mobile apps, network installation, cybersecurity, IT support, cloud services, and system development solutions for businesses across Tanzania.')">
-<meta property="twitter:image" content="@yield('twitter_image', asset('jezdan-logo.png'))">
+<meta property="twitter:image" content="@yield('twitter_image', asset('logo.png'))">
 
 <!-- Canonical URL -->
 <link rel="canonical" href="@yield('canonical', url()->current())">

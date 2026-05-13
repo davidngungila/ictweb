@@ -9,7 +9,7 @@
   <meta property="og:description" content="Professional web development pricing packages in Tanzania. Affordable website solutions for businesses, e-commerce, and custom projects.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <meta property="og:image" content="{{ asset('logo.png') }}">
 @endsection
 
 @section('content')
