@@ -1,50 +1,6 @@
-@extends('layouts.app')
+@extends('pages.pricing')
 
-@section('title', 'Web Development Pricing Packages in Tanzania')
-
-@section('meta_tags')
-  <meta name="description" content="Professional web development pricing packages in Tanzania. Affordable website solutions for businesses, e-commerce, and custom projects.">
-  <meta name="keywords" content="web development pricing Tanzania, website cost Tanzania, custom web development packages">
-  <meta property="og:title" content="Web Development Pricing Packages in Tanzania">
-  <meta property="og:description" content="Professional web development pricing packages in Tanzania. Affordable website solutions for businesses, e-commerce, and custom projects.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('logo.png') }}">
-@endsection
-
-@section('content')
-<!-- HERO -->
-<section class="hero" style="min-height: 50vh;">
-  <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left" style="max-width: 800px;">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Web Development
-      </div>
-      <h1 class="hero-title">
-        Web Development <span>Pricing</span>
-      </h1>
-      <p class="hero-subtitle">
-        Professional website development services including business websites, e-commerce stores, and custom web applications.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING PACKAGES -->
-<section class="tour-packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-laptop-code"></i> Web Development</div>
-      <h2 class="section-title">Web Development <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include a free domain + hosting for the first year (worth TZS 150,000), SSL certificate, and 1 month of free support.</p>
-    </div>
-    
-    <div class="pricing-grid">
+@section('pricing_content')
       <!-- STARTER -->
       <div class="pricing-card">
         <div class="pricing-tier">Starter</div>
@@ -112,58 +68,4 @@
         </ul>
         <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Get Started</a>
       </div>
-    </div>
-    
-    <!-- FEATURES SECTION -->
-    <div style="margin-top: 60px;">
-      <h3 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem;">What's Included in Our Web Development</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-          <div style="font-size: 2.5rem; margin-bottom: 20px;">📱</div>
-          <h4 style="margin-bottom: 15px; font-size: 1.2rem;">Mobile Responsive</h4>
-          <p style="color: #666;">Websites that look great on all devices - desktop, tablet, and mobile.</p>
-        </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-          <div style="font-size: 2.5rem; margin-bottom: 20px;">🔒</div>
-          <h4 style="margin-bottom: 15px; font-size: 1.2rem;">SSL Security</h4>
-          <p style="color: #666;">Free SSL certificate for secure HTTPS connections and customer trust.</p>
-        </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-          <div style="font-size: 2.5rem; margin-bottom: 20px;">⚡</div>
-          <h4 style="margin-bottom: 15px; font-size: 1.2rem;">Fast Loading</h4>
-          <p style="color: #666;">Optimized for speed with quick load times for better user experience and SEO.</p>
-        </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-          <div style="font-size: 2.5rem; margin-bottom: 20px;">🔍</div>
-          <h4 style="margin-bottom: 15px; font-size: 1.2rem;">SEO Optimized</h4>
-          <p style="color: #666;">Built with SEO best practices to help your website rank higher on Google.</p>
-        </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-          <div style="font-size: 2.5rem; margin-bottom: 20px;">🛠️</div>
-          <h4 style="margin-bottom: 15px; font-size: 1.2rem;">Easy CMS</h4>
-          <p style="color: #666;">Content management system that lets you easily update your website content.</p>
-        </div>
-        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-          <div style="font-size: 2.5rem; margin-bottom: 20px;">📊</div>
-          <h4 style="margin-bottom: 15px; font-size: 1.2rem;">Analytics</h4>
-          <p style="color: #666;">Google Analytics integration to track visitors and measure performance.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <div class="cta-inner">
-    <h2>Need a <span>Custom Website</span>?</h2>
-    <p>Not sure which package is right for you? Get a free consultation and detailed quote within 24 hours.</p>
-    <div class="cta-actions">
-      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20web%20development%20services." class="btn-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-      </a>
-      <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
-    </div>
-  </div>
-</div>
 @endsection

@@ -21,131 +21,185 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
-  <div class="hero-bg-img"></div>
+<section class="hero" id="home" style="min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div class="hero-bg-img" style="opacity: 0.15; background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80');"></div>
   <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left" style="max-width: 800px;">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Pricing
-      </div>
-      <h1 class="hero-title">
-        Transparent <span>Pricing Packages</span>
-      </h1>
-      <p class="hero-subtitle">
-        All packages include a free domain + hosting for the first year (worth TZS 150,000), SSL certificate, and 1 month of free support.
-      </p>
+  <div class="hero-content" style="max-width: 900px;">
+    <div class="hero-badge" style="margin: 0 auto 24px;">
+      <span class="dot"></span>
+      Flexible Plans
     </div>
+    <h1 class="hero-title">
+      Value-Driven <span>Pricing</span>
+    </h1>
+    <p class="hero-subtitle" style="margin: 0 auto 40px; max-width: 650px;">
+      Premium ICT solutions with transparent, competitive pricing. All annual plans include free domain registration, SSL, and enterprise-grade hosting.
+    </p>
   </div>
 </section>
 
-@if(session('success'))
-<div class="container" style="padding-top: 20px;">
-  <div style="background:#d4edda;border:1px solid #c3e6cb;color:#155724;padding:14px 18px;border-radius:12px;font-weight:600;">
-    <i class="fas fa-check-circle" style="margin-right:8px;"></i>{{ session('success') }}
-  </div>
-</div>
-@endif
-@if(session('error'))
-<div class="container" style="padding-top: 20px;">
-  <div style="background:#f8d7da;border:1px solid #f5c6cb;color:#721c24;padding:14px 18px;border-radius:12px;font-weight:600;">
-    <i class="fas fa-exclamation-circle" style="margin-right:8px;"></i>{{ session('error') }}
-  </div>
+@if(session('success') || session('error'))
+<div class="container" style="padding-top: 30px;">
+  @if(session('success'))
+    <div style="background:#d4edda; border-left: 5px solid #28a745; color:#155724; padding:20px; border-radius:12px; font-weight:600; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <i class="fas fa-check-circle" style="margin-right:12px; font-size: 1.2rem;"></i>{{ session('success') }}
+    </div>
+  @endif
+  @if(session('error'))
+    <div style="background:#f8d7da; border-left: 5px solid #dc3545; color:#721c24; padding:20px; border-radius:12px; font-weight:600; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <i class="fas fa-exclamation-circle" style="margin-right:12px; font-size: 1.2rem;"></i>{{ session('error') }}
+    </div>
+  @endif
 </div>
 @endif
 
 <!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
+<section class="pricing-section" style="padding: 80px 5%; background: var(--off-white);">
   <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Transparent <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include a free domain + hosting for the first year (worth TZS 150,000), SSL certificate, and 1 month of free support.</p>
-    </div>
-    <div class="packages-tabs">
-      <a href="{{ route('pricing.tour-websites') }}" class="tab-btn {{ request()->routeIs('pricing.tour-websites') ? 'active' : '' }}" style="text-decoration: none; display: inline-block;">🌍 Tour Websites</a>
-      <a href="{{ route('pricing.web-development') }}" class="tab-btn {{ request()->routeIs('pricing.web-development') ? 'active' : '' }}" style="text-decoration: none; display: inline-block;">💻 Web Development</a>
-      <a href="{{ route('pricing.mobile-apps') }}" class="tab-btn {{ request()->routeIs('pricing.mobile-apps') ? 'active' : '' }}" style="text-decoration: none; display: inline-block;">📱 Mobile Apps</a>
-      <a href="{{ route('pricing.networking') }}" class="tab-btn {{ request()->routeIs('pricing.networking') ? 'active' : '' }}" style="text-decoration: none; display: inline-block;">🔌 Networking</a>
-      <a href="{{ route('pricing.cybersecurity') }}" class="tab-btn {{ request()->routeIs('pricing.cybersecurity') ? 'active' : '' }}" style="text-decoration: none; display: inline-block;">🔒 Cybersecurity</a>
-      <a href="{{ route('pricing.it-support') }}" class="tab-btn {{ request()->routeIs('pricing.it-support') ? 'active' : '' }}" style="text-decoration: none; display: inline-block;">🛠️ IT Support</a>
+    <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+      <div class="section-label" style="margin: 0 auto 16px;"><i class="fas fa-tags"></i> Investment</div>
+      <h2 class="section-title">Select Your <span>Package</span></h2>
+      <p class="section-sub" style="margin: 0 auto;">Tailored solutions for every stage of your business growth.</p>
     </div>
 
-    <!-- TOUR WEBSITES -->
-    <div class="tab-panel active" id="tab-tour">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Starter</div>
-          <div class="pricing-name">Tour Starter</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Best for solo guides & new startups</p>
-          <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">400K</span>
-            <span class="pricing-period">– 700K</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 1–5 Pages (Home, About, Tours, Contact)</li>
-            <li><i class="fas fa-check"></i> Basic tour listing with descriptions & pricing</li>
-            <li><i class="fas fa-check"></i> Photo gallery (up to 20 photos)</li>
-            <li><i class="fas fa-check"></i> WhatsApp & phone call-to-action booking</li>
-            <li><i class="fas fa-check"></i> 50 SMS credits included</li>
-            <li><i class="fas fa-check"></i> Basic Google Analytics</li>
-            <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
-            <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1, 'tour') }}" class="btn-package">Get Started</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-tier">Business</div>
-          <div class="pricing-name">Tour Business</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing safari operators</p>
-          <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">800K</span>
-            <span class="pricing-period">– 1.5M</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 8–15 Pages with blog & testimonials</li>
-            <li><i class="fas fa-check"></i> Calendar-based booking engine</li>
-            <li><i class="fas fa-check"></i> M-Pesa, TigoPesa & AzamPesa payments</li>
-            <li><i class="fas fa-check"></i> Safari package management panel</li>
-            <li><i class="fas fa-check"></i> Video embedding (safari footage)</li>
-            <li><i class="fas fa-check"></i> 200 SMS credits included</li>
-            <li><i class="fas fa-check"></i> Advanced Analytics &amp; conversion funnels</li>
-            <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2, 'tour') }}" class="btn-package">Get Started</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">Tour Enterprise</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Kilimanjaro specialists & large operators</p>
-          <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">1.8M</span>
-            <span class="pricing-period">– 3.5M</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Unlimited pages — fully custom</li>
-            <li><i class="fas fa-check"></i> Full tour management admin panel</li>
-            <li><i class="fas fa-check"></i> Multi-currency & multi-language (EN/DE/FR)</li>
-            <li><i class="fas fa-check"></i> Customer CRM with trip history</li>
-            <li><i class="fas fa-check"></i> Auto-generated invoices, itineraries & vouchers</li>
-            <li><i class="fas fa-check"></i> Email marketing newsletter system</li>
-            <li><i class="fas fa-check"></i> 500 SMS credits + bulk SMS campaigns</li>
-            <li><i class="fas fa-check"></i> 6 months priority support</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3, 'tour') }}" class="btn-package">Get Started</a>
-        </div>
+    <div class="pricing-nav-wrapper">
+      <div class="pricing-tabs-new">
+        <a href="{{ route('pricing.tour-websites') }}" class="p-tab {{ request()->routeIs('pricing.tour-websites') ? 'active' : '' }}">
+          <i class="fas fa-globe-africa"></i> <span>Tour Websites</span>
+        </a>
+        <a href="{{ route('pricing.web-development') }}" class="p-tab {{ request()->routeIs('pricing.web-development') ? 'active' : '' }}">
+          <i class="fas fa-laptop-code"></i> <span>Web Dev</span>
+        </a>
+        <a href="{{ route('pricing.mobile-apps') }}" class="p-tab {{ request()->routeIs('pricing.mobile-apps') ? 'active' : '' }}">
+          <i class="fas fa-mobile-alt"></i> <span>Mobile Apps</span>
+        </a>
+        <a href="{{ route('pricing.networking') }}" class="p-tab {{ request()->routeIs('pricing.networking') ? 'active' : '' }}">
+          <i class="fas fa-network-wired"></i> <span>Networking</span>
+        </a>
+        <a href="{{ route('pricing.cybersecurity') }}" class="p-tab {{ request()->routeIs('pricing.cybersecurity') ? 'active' : '' }}">
+          <i class="fas fa-shield-alt"></i> <span>Security</span>
+        </a>
+        <a href="{{ route('pricing.it-support') }}" class="p-tab {{ request()->routeIs('pricing.it-support') ? 'active' : '' }}">
+          <i class="fas fa-headset"></i> <span>IT Support</span>
+        </a>
       </div>
     </div>
+
+    <div class="pricing-grid-new">
+      @yield('pricing_content')
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-nav-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pricing-tabs-new {
+    display: flex;
+    background: white;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid var(--light-gray);
+  }
+  .p-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: var(--text-mid);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .p-tab i {
+    font-size: 1.1rem;
+    color: var(--text-light);
+  }
+  .p-tab:hover {
+    color: var(--accent);
+  }
+  .p-tab.active {
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 4px 15px rgba(11,31,58,0.2);
+  }
+  .p-tab.active i {
+    color: var(--gold);
+  }
+
+  .pricing-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  
+  /* Shared pricing card styles override */
+  .pricing-card {
+    border-radius: 24px !important;
+    padding: 45px 35px !important;
+    border: 1px solid var(--light-gray) !important;
+    background: white !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .pricing-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(11,31,58,0.12) !important;
+    border-color: var(--accent) !important;
+  }
+  .pricing-card.featured {
+    background: var(--navy) !important;
+    border-color: var(--navy) !important;
+    color: white !important;
+    transform: scale(1.05);
+    z-index: 2;
+  }
+  .pricing-card.featured .pricing-name, 
+  .pricing-card.featured .pricing-amount,
+  .pricing-card.featured .pricing-currency {
+    color: white !important;
+  }
+  .pricing-card.featured .pricing-features li {
+    color: rgba(255,255,255,0.8) !important;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-grid-new {
+      grid-template-columns: 1fr;
+    }
+    .pricing-card.featured {
+      transform: scale(1);
+    }
+    .pricing-tabs-new {
+      border-radius: 15px;
+      padding: 10px;
+    }
+    .p-tab {
+      padding: 10px 15px;
+      font-size: 0.8rem;
+    }
+    .p-tab span {
+      display: none;
+    }
+    .p-tab.active span {
+      display: inline;
+    }
+  }
+</style>
 
     <!-- WEB DEVELOPMENT -->
     <div class="tab-panel" id="tab-web">
