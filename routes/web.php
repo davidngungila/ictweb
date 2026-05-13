@@ -388,8 +388,13 @@ Route::get('/pricing/networking', function() { return view('pages.pricing.networ
 Route::get('/pricing/cybersecurity', function() { return view('pages.pricing.cybersecurity'); })->name('pricing.cybersecurity');
 Route::get('/pricing/it-support', function() { return view('pages.pricing.it-support'); })->name('pricing.it-support');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
+Route::get('/portfolio/project/{slug}', [PageController::class, 'portfolioShow'])->name('portfolio.show')->where('slug', '[a-z0-9\-]+');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/blog', function() { return view('pages.blog'); })->name('blog');
+Route::get('/thank-you', function () {
+    return view('pages.thank-you');
+})->name('thank.you');
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+Route::get('/blog/{slug}', [PageController::class, 'blogShow'])->name('blog.show')->where('slug', '[a-z0-9\-]+');
 Route::get('/careers', function() { return view('pages.careers'); })->name('careers');
 
 // Package Selection & Payment

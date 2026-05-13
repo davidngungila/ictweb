@@ -6,11 +6,13 @@ use App\Models\PackageOrder;
 use App\Models\Service;
 use App\Models\Package;
 use App\Models\Invoice;
+use App\Support\PackagePricing;
 use App\Services\SnippePaymentService;
 use App\Services\SmsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class PackageOrderController extends Controller
 {
@@ -42,9 +44,23 @@ class PackageOrderController extends Controller
             'client_phone' => 'required|string|max:20',
             'company_name' => 'nullable|string|max:255',
             'service_id' => 'required|integer|in:1,2,3,4,5,6',
-            'package_id' => 'required|integer|in:1,2,3',
+            'package_id' => [
+                'required',
+                'integer',
+                'in:1,2,3',
+                function ($attribute, $value, $fail) use ($request) {
+                    $sid = (int) $request->input('service_id');
+                    $pid = (int) $value;
+                    if (! PackagePricing::package($sid, $pid)) {
+                        $fail('The selected package is not valid for this service.');
+                    }
+                },
+            ],
             'selected_addons' => 'nullable|array',
             'selected_addons.*' => 'string',
+            'timeline_priority' => 'nullable|string|in:standard,fast_track,urgent',
+            'payment_plan' => 'nullable|string|in:one_time,milestone,monthly',
+            'estimated_total' => 'nullable|numeric|min:0',
             'notes' => 'nullable|string',
         ]);
 
@@ -100,12 +116,6 @@ class PackageOrderController extends Controller
             6 => ['name' => 'ICT Consultancy', 'base_price' => 500000],
         ];
 
-        $packages = [
-            1 => ['name' => 'Starter Package', 'price' => 400000],
-            2 => ['name' => 'Business Package', 'price' => 800000],
-            3 => ['name' => 'Enterprise Package', 'price' => 1500000],
-        ];
-
         $addonPrices = [
             'travel_blog_5_posts' => 150000,
             'advanced_seo' => 300000,
@@ -121,7 +131,9 @@ class PackageOrderController extends Controller
             'ecommerce' => 350000,
         ];
 
-        $basePrice = $packages[$orderData['package_id']]['price'] ?? 0;
+        $pkg = PackagePricing::package((int) $orderData['service_id'], (int) $orderData['package_id']);
+        $basePrice = $pkg['price'] ?? 0;
+        $packageLabel = $pkg['name'] ?? 'Package';
         $addonsTotal = 0;
         if($orderData['selected_addons'] ?? []) {
             foreach($orderData['selected_addons'] as $addon) {
@@ -157,7 +169,7 @@ class PackageOrderController extends Controller
             'client_name' => $orderData['client_name'],
             'client_email' => $orderData['client_email'],
             'client_phone' => $orderData['client_phone'],
-            'description' => 'Package Order - ' . $services[$orderData['service_id']]['name'] . ' - ' . $packages[$orderData['package_id']]['name'],
+            'description' => 'Package Order - ' . $services[$orderData['service_id']]['name'] . ' - ' . $packageLabel,
             'amount' => $advancePayment,
             'tax' => 0,
             'total' => $advancePayment,
@@ -181,13 +193,22 @@ class PackageOrderController extends Controller
         // Get data from session (new 3-step wizard)
         $orderData = session('package_order_data', []);
 
+        if (empty($orderData) || ! isset($orderData['service_id'], $orderData['package_id'], $orderData['client_name'], $orderData['client_email'], $orderData['client_phone'])) {
+            return redirect()->route('package.selection.step1')
+                ->with('error', 'Your checkout session expired or is incomplete. Please fill in step 1 again.');
+        }
+
         $validated = [
             'client_name' => $orderData['client_name'] ?? '',
             'client_email' => $orderData['client_email'] ?? '',
             'client_phone' => $orderData['client_phone'] ?? '',
+            'company_name' => $orderData['company_name'] ?? null,
             'service_id' => $orderData['service_id'] ?? null,
             'package_id' => $orderData['package_id'] ?? null,
             'selected_addons' => $orderData['selected_addons'] ?? [],
+            'timeline_priority' => $orderData['timeline_priority'] ?? null,
+            'payment_plan' => $orderData['payment_plan'] ?? null,
+            'estimated_total' => $orderData['estimated_total'] ?? null,
             'notes' => $orderData['notes'] ?? null,
         ];
 
@@ -201,14 +222,8 @@ class PackageOrderController extends Controller
             6 => ['name' => 'ICT Consultancy', 'base_price' => 500000],
         ];
 
-        $packages = [
-            1 => ['name' => 'Starter Package', 'price' => 400000],
-            2 => ['name' => 'Business Package', 'price' => 800000],
-            3 => ['name' => 'Enterprise Package', 'price' => 1500000],
-        ];
-
         $service = $services[$validated['service_id']] ?? null;
-        $package = $packages[$validated['package_id']] ?? null;
+        $package = PackagePricing::package((int) $validated['service_id'], (int) $validated['package_id']);
 
         // Calculate total price
         $basePrice = $package ? $package['price'] : ($service ? $service['base_price'] : 0);
@@ -240,10 +255,19 @@ class PackageOrderController extends Controller
         $advancePayment = $totalPrice * 0.30;
         $remainingBalance = $totalPrice - $advancePayment;
 
+        if (! $package) {
+            Log::warning('Package order blocked: invalid service/package pair', [
+                'service_id' => $validated['service_id'],
+                'package_id' => $validated['package_id'],
+            ]);
+
+            return redirect()->route('package.selection.step2')
+                ->with('error', 'Your package selection is no longer valid. Please go back to step 1 and choose your service and tier again.');
+        }
+
         DB::beginTransaction();
         try {
-            // Create package order
-            $order = PackageOrder::create([
+            $orderPayload = [
                 'order_number' => PackageOrder::generateOrderNumber(),
                 'client_name' => $validated['client_name'],
                 'client_email' => $validated['client_email'],
@@ -251,17 +275,28 @@ class PackageOrderController extends Controller
                 'service_id' => $validated['service_id'],
                 'package_id' => $validated['package_id'],
                 'selected_features' => [],
-                'selected_addons' => $validated['selected_addons'] ?? [],
                 'total_price' => $totalPrice,
                 'advance_payment' => $advancePayment,
                 'remaining_balance' => $remainingBalance,
                 'status' => 'pending',
-                'notes' => $validated['notes'],
-            ]);
+                'notes' => trim(($validated['notes'] ?? '') . PHP_EOL . PHP_EOL . 'Timeline Priority: ' . ($validated['timeline_priority'] ?? 'standard') . PHP_EOL . 'Payment Plan: ' . ($validated['payment_plan'] ?? 'one_time') . PHP_EOL . 'Estimated Total (Client Side): ' . number_format((float) ($validated['estimated_total'] ?? 0), 0)),
+            ];
+
+            if (Schema::hasColumn('package_orders', 'company_name')) {
+                $orderPayload['company_name'] = $validated['company_name'];
+            }
+            if (Schema::hasColumn('package_orders', 'selected_addons')) {
+                $orderPayload['selected_addons'] = $validated['selected_addons'] ?? [];
+            }
+            if (Schema::hasColumn('package_orders', 'payment_status')) {
+                $orderPayload['payment_status'] = 'not_started';
+            }
+
+            $order = PackageOrder::create($orderPayload);
 
             // Generate invoice
             $invoiceNumber = Invoice::generateInvoiceNumber();
-            $invoice = Invoice::create([
+            $invoicePayload = [
                 'invoice_number' => $invoiceNumber,
                 'client_name' => $validated['client_name'],
                 'client_email' => $validated['client_email'],
@@ -274,7 +309,12 @@ class PackageOrderController extends Controller
                 'status' => 'pending',
                 'payment_method' => 'mobile_money',
                 'notes' => "30% advance payment for package order. Remaining balance: TZS " . number_format($remainingBalance, 2),
-            ]);
+            ];
+            if (Schema::hasColumn('invoices', 'order_id')) {
+                $invoicePayload['order_id'] = $order->id;
+            }
+
+            $invoice = Invoice::create($invoicePayload);
 
             // Clear session data (new 3-step wizard)
             session()->forget('package_order_data');
@@ -286,8 +326,16 @@ class PackageOrderController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('Order creation failed', ['error' => $e->getMessage()]);
-            return back()->with('error', 'Failed to create order. Please try again.');
+            Log::error('Order creation failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            $hint = str_contains($e->getMessage(), 'Unknown column') || str_contains($e->getMessage(), 'does not exist')
+                ? ' Run database migrations (php artisan migrate) or contact support.'
+                : '';
+
+            return redirect()->route('package.selection.step2')
+                ->with('error', 'Failed to create order.' . $hint . (config('app.debug') ? ' ' . $e->getMessage() : ''));
         }
     }
 
@@ -300,7 +348,9 @@ class PackageOrderController extends Controller
     public function initiatePayment(Request $request, $orderId)
     {
         $order = PackageOrder::findOrFail($orderId);
-        $paymentMethod = $request->input('payment_method', 'mobile');
+        $paymentMethod = $request->validate([
+            'payment_method' => 'required|in:mobile,card',
+        ])['payment_method'];
         
         Log::info('Initiating payment', [
             'order_id' => $orderId,
@@ -319,6 +369,11 @@ class PackageOrderController extends Controller
 
             // Redirect to card payment URL
             if (isset($checkout['payment_url'])) {
+                $order->update([
+                    'payment_reference' => $checkout['reference'] ?? null,
+                    'payment_token' => $checkout['payment_token'] ?? null,
+                    'payment_status' => 'initiated',
+                ]);
                 Log::info('Redirecting to payment_url', ['url' => $checkout['payment_url']]);
                 return redirect($checkout['payment_url']);
             }

@@ -12,6 +12,7 @@ class Invoice extends Model
     protected $fillable = [
         'invoice_number',
         'demo_request_id',
+        'order_id',
         'client_name',
         'client_email',
         'client_phone',
@@ -66,6 +67,11 @@ class Invoice extends Model
     public function demoRequest()
     {
         return $this->belongsTo(DemoRequest::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(PackageOrder::class, 'order_id');
     }
 
     public function getFormattedAmountAttribute()

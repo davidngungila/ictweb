@@ -24,6 +24,7 @@ class ContactController extends Controller
             'budget' => 'nullable|string',
             'message' => 'required|string|min:10',
             'privacy' => 'required|accepted',
+            'redirect_to' => 'nullable|string|in:pricing',
         ], [
             'first_name.required' => 'Please enter your first name.',
             'last_name.required' => 'Please enter your last name.',
@@ -43,11 +44,19 @@ class ContactController extends Controller
             // Store in database if you have a contacts table
             // Contact::create($validated);
 
-            return redirect()->route('contact')
-                ->with('success', 'Thank you for contacting us! We will get back to you within 2 business hours.');
+            $successMessage = 'Thank you for contacting us! We will get back to you within 2 business hours.';
+            if (($validated['redirect_to'] ?? null) === 'pricing') {
+                return redirect()->route('pricing')->with('success', $successMessage);
+            }
+
+            return redirect()->route('contact')->with('success', $successMessage);
 
         } catch (\Exception $e) {
-            return redirect()->route('contact')
+            $failureRedirect = $request->input('redirect_to') === 'pricing'
+                ? redirect()->route('pricing')
+                : redirect()->route('contact');
+
+            return $failureRedirect
                 ->with('error', 'Sorry, there was an error sending your message. Please try again or call us directly.')
                 ->withInput();
         }

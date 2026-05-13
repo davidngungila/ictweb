@@ -10,9 +10,20 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:image" content="{{ asset('jezdan-logo.png') }}">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N2F56W4HPN');
+  </script>
 @endsection
 
 @section('content')
+@php
+  $projects = $projects ?? config('site_content.portfolio_projects', []);
+  $portfolioTags = collect($projects)->pluck('tag')->unique()->values();
+@endphp
 <!-- HERO -->
 <section class="hero" id="home" style="min-height: 60vh;">
   <div class="hero-bg-img"></div>
@@ -36,62 +47,35 @@
 </section>
 
 <!-- PORTFOLIO GRID -->
-<section class="services" style="background: var(--off-white);">
+<section class="services" style="background: var(--off-white); padding-bottom: 48px;">
   <div class="container">
     <div class="section-header">
       <div class="section-label"><i class="fas fa-briefcase"></i> Projects</div>
       <h2 class="section-title">Featured <span>Projects</span></h2>
-      <p class="section-sub">A selection of our recent work showcasing our expertise in web development, mobile apps, and ICT solutions.</p>
+      <p class="section-sub">Deep dives across safari tech, commerce, mobility, secure networks, and regulated industries—all engineered for East African realities.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Safari Website" style="width: 100%; height: 200px; object-fit: cover;" />
-        <div style="padding: 24px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Kilimanjaro Summit Tours</h3>
-          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Complete tour operator website with booking engine, M-Pesa integration, and multi-language support for international visitors.</p>
-          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Tour Website</span>
+
+    <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 26px;" id="portfolio-filters">
+      <button type="button" class="tab-btn active" data-tag="all">All work</button>
+      @foreach($portfolioTags as $tag)
+        <button type="button" class="tab-btn" data-tag="{{ $tag }}">{{ $tag }}</button>
+      @endforeach
+    </div>
+
+    <div class="services-grid" id="portfolio-grid">
+      @foreach($projects as $project)
+      <article class="service-card portfolio-item" data-tag="{{ $project['tag'] }}" style="padding: 0; overflow: hidden; display:flex; flex-direction:column;">
+        <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}" style="width: 100%; height: 200px; object-fit: cover;" />
+        <div style="padding: 24px; flex:1; display:flex; flex-direction:column;">
+          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">{{ $project['title'] }}</h3>
+          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex:1;">{{ $project['excerpt'] }}</p>
+          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">{{ $project['tag'] }}</span>
+          <a href="{{ route('portfolio.show', $project['slug']) }}" style="margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--accent); text-decoration: none;">
+            View case study <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-      </div>
-      <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="E-Commerce" style="width: 100%; height: 200px; object-fit: cover;" />
-        <div style="padding: 24px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Tanzania Crafts Store</h3>
-          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Full-featured e-commerce platform with product catalog, shopping cart, and M-Pesa payment integration for local artisans.</p>
-          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">E-Commerce</span>
-        </div>
-      </div>
-      <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/showing-cart-trolley-shopping-online-sign-graphic_j4fy9u.jpg" alt="Mobile App" style="width: 100%; height: 200px; object-fit: cover;" />
-        <div style="padding: 24px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">SwiftDeliver App</h3>
-          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Cross-platform delivery app with real-time GPS tracking, driver management, and TigoPesa payment integration.</p>
-          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Mobile App</span>
-        </div>
-      </div>
-      <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/beautiful-optical-fiber-detail_wck3wq.jpg" alt="Network Installation" style="width: 100%; height: 200px; object-fit: cover;" />
-        <div style="padding: 24px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Serengeti Lodge Network</h3>
-          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Enterprise-grade network installation with multi-AP deployment, guest Wi-Fi, and 24/7 monitoring for luxury safari lodge.</p>
-          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Networking</span>
-        </div>
-      </div>
-      <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 200px; object-fit: cover;" />
-        <div style="padding: 24px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Hotel Security Audit</h3>
-          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Comprehensive cybersecurity assessment for hotel chain, including vulnerability scanning, penetration testing, and TCRA compliance.</p>
-          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Cybersecurity</span>
-        </div>
-      </div>
-      <div class="service-card" style="padding: 0; overflow: hidden;">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600082/modern-data-center-providing-cloud-services-enabling-businesses-access-computing-resources-storage-demand-internet-server-room-infrastructure-3d-render-animation_lljtml.jpg" alt="Corporate Website" style="width: 100%; height: 200px; object-fit: cover;" />
-        <div style="padding: 24px;">
-          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Precision Air Supplier</h3>
-          <p style="font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px;">Professional corporate website with CMS, blog, and advanced analytics dashboard for aviation supplier company.</p>
-          <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Web Development</span>
-        </div>
-      </div>
+      </article>
+      @endforeach
     </div>
   </div>
 </section>
@@ -128,7 +112,7 @@
     <h2>Ready to Start <span>Your Project</span>?</h2>
     <p>Let's build something amazing together. Get a free consultation and detailed quote within 24 hours.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/255700000000?text=Hello%20TechNova%20Africa!%20I'm%20interested%20in%20starting%20a%20project." class="btn-whatsapp" target="_blank">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20starting%20a%20project." class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
       <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
@@ -137,19 +121,20 @@
 </div>
 @endsection
 
-@section('meta_tags')
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N2F56W4HPN');
-    </script>
-@endsection
-
 @section('additional_scripts')
 <script>
+  document.querySelectorAll('#portfolio-filters .tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('#portfolio-filters .tab-btn').forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      var tag = this.getAttribute('data-tag');
+      document.querySelectorAll('#portfolio-grid .portfolio-item').forEach(function (card) {
+        var matches = tag === 'all' || card.getAttribute('data-tag') === tag;
+        card.style.display = matches ? '' : 'none';
+      });
+    });
+  });
+
   // Intersection Observer for count-up animation
   const statNums = document.querySelectorAll('.stat-num');
   const observer = new IntersectionObserver((entries) => {

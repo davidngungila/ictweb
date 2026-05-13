@@ -12,12 +12,16 @@ class SnippePaymentService
 {
     protected $snippeKey;
     protected $webhookSecret;
+    protected $postPaymentRedirectUrl;
+    protected $webhookUrl;
     protected $baseUrl = 'https://api.snippe.sh';
 
     public function __construct()
     {
-        $this->snippeKey = 'snp_3237bfe6ff9bc8592d84438d511d2f9613ee85521561e03584762138b6f027e3';
-        $this->webhookSecret = 'whsec_f49fd8c6730db5eae37648fcb059194b6a7b8529b19be5937de5c33e4527f519';
+        $this->snippeKey = env('SNIPPE_API_KEY', '');
+        $this->webhookSecret = env('SNIPPE_WEBHOOK_SECRET', '');
+        $this->postPaymentRedirectUrl = env('SNIPPE_POST_PAYMENT_REDIRECT_URL', 'https://jezdantech.com/thank-you');
+        $this->webhookUrl = env('SNIPPE_WEBHOOK_URL', 'https://example.com/webhooks');
     }
 
     /**
@@ -40,8 +44,8 @@ class SnippePaymentService
                     'email' => $order->client_email,
                 ],
                 'description' => "Order #{$order->order_number} - 30% Advance Payment",
-                'redirect_url' => route('payment.confirmation', ['order' => $order->id]),
-                // 'webhook_url' => route('webhook.snippe'), // Commented out for localhost testing (requires HTTPS)
+                'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
+                'webhook_url' => $this->webhookUrl,
                 'metadata' => [
                     'order_id' => $order->id,
                     'order_number' => $order->order_number,
@@ -79,8 +83,11 @@ class SnippePaymentService
     /**
      * Verify webhook signature
      */
-    public function verifyWebhookSignature($payload, $signature)
+    public function verifyWebhookSignature($payload, $signature, $timestamp = null)
     {
+        if (!$signature) {
+            return false;
+        }
         $expectedSignature = hash_hmac('sha256', $payload, $this->webhookSecret);
         return hash_equals($expectedSignature, $signature);
     }
@@ -123,10 +130,16 @@ class SnippePaymentService
         }
 
         // Update order status
-        $order->update(['status' => 'paid_advance']);
+        $order->update([
+            'status' => 'paid_advance',
+            'payment_status' => 'completed',
+        ]);
 
         // Update invoice status
-        $invoice = \App\Models\Invoice::where('description', 'like', "%{$order->order_number}%")->first();
+        $invoice = \App\Models\Invoice::where('order_id', $order->id)->first();
+        if (!$invoice) {
+            $invoice = \App\Models\Invoice::where('description', 'like', "%{$order->order_number}%")->first();
+        }
         if ($invoice) {
             $invoice->update([
                 'status' => 'paid',
@@ -157,7 +170,7 @@ class SnippePaymentService
                     'amount' => (int) $order->advance_payment,
                     'currency' => 'TZS',
                     'phone_number' => $this->formatPhoneNumber($order->client_phone),
-                    'redirect_url' => route('payment.confirmation', ['order' => $order->id]),
+                    'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
                 ],
                 'phone_number' => $this->formatPhoneNumber($order->client_phone),
                 'customer' => [
@@ -170,7 +183,7 @@ class SnippePaymentService
                     'postcode' => $order->client_postcode ?? '14101',
                     'country' => 'TZ',
                 ],
-                // 'webhook_url' => route('webhook.snippe'), // Commented out for localhost testing (requires HTTPS)
+                'webhook_url' => $this->webhookUrl,
                 'metadata' => [
                     'order_id' => $order->id,
                     'order_number' => $order->order_number,
@@ -217,7 +230,7 @@ class SnippePaymentService
                 'details' => [
                     'amount' => (int) $order->advance_payment,
                     'currency' => 'TZS',
-                    'redirect_url' => route('payment.confirmation', ['order' => $order->id]),
+                    'redirect_url' => $this->buildPostPaymentRedirectUrl($order),
                     'cancel_url' => route('payment.show', ['order' => $order->id]),
                 ],
                 'phone_number' => $this->formatPhoneNumber($order->client_phone),
@@ -231,7 +244,7 @@ class SnippePaymentService
                     'postcode' => $order->client_postcode ?? '14101',
                     'country' => 'TZ',
                 ],
-                // 'webhook_url' => route('webhook.snippe'), // Commented out for localhost testing (requires HTTPS)
+                'webhook_url' => $this->webhookUrl,
                 'metadata' => [
                     'order_id' => $order->id,
                     'order_number' => $order->order_number,
@@ -278,6 +291,7 @@ class SnippePaymentService
         if ($order) {
             $order->update([
                 'status' => 'payment_failed',
+                'payment_status' => 'failed',
                 'failure_reason' => $data['failure_reason'] ?? 'Unknown',
             ]);
             Log::info('Payment failed recorded', ['order_id' => $orderId]);
@@ -390,5 +404,17 @@ class SnippePaymentService
             return implode(' ', $parts);
         }
         return '';
+    }
+
+    /**
+     * Build post-payment redirect URL and attach order context.
+     */
+    protected function buildPostPaymentRedirectUrl($order)
+    {
+        $separator = str_contains($this->postPaymentRedirectUrl, '?') ? '&' : '?';
+        return $this->postPaymentRedirectUrl . $separator . http_build_query([
+            'order' => $order->id,
+            'order_number' => $order->order_number,
+        ]);
     }
 }

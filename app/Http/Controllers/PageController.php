@@ -39,11 +39,56 @@ class PageController extends Controller
     }
 
     /**
+     * Blog index with pagination.
+     */
+    public function blog(Request $request)
+    {
+        $all = collect(config('site_content.blog_posts', []));
+        $perPage = 6;
+        $total = $all->count();
+        $lastPage = max(1, (int) ceil($total / $perPage));
+        $page = min(max(1, (int) $request->query('page', 1)), $lastPage);
+        $posts = $all->slice(($page - 1) * $perPage, $perPage)->values();
+
+        return view('pages.blog', [
+            'posts' => $posts,
+            'page' => $page,
+            'lastPage' => $lastPage,
+            'total' => $total,
+            'perPage' => $perPage,
+        ]);
+    }
+
+    /**
+     * Single blog article.
+     */
+    public function blogShow(string $slug)
+    {
+        $posts = collect(config('site_content.blog_posts', []))->keyBy('slug');
+        abort_unless($posts->has($slug), 404);
+
+        return view('pages.blog-post', ['post' => $posts->get($slug)]);
+    }
+
+    /**
      * Display portfolio page.
      */
     public function portfolio()
     {
-        return view('pages.portfolio');
+        return view('pages.portfolio', [
+            'projects' => config('site_content.portfolio_projects', []),
+        ]);
+    }
+
+    /**
+     * Portfolio case study detail.
+     */
+    public function portfolioShow(string $slug)
+    {
+        $projects = collect(config('site_content.portfolio_projects', []))->keyBy('slug');
+        abort_unless($projects->has($slug), 404);
+
+        return view('pages.portfolio-detail', ['project' => $projects->get($slug)]);
     }
 
     /**

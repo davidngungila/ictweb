@@ -27,8 +27,8 @@
   <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left" style="max-width: 800px;">
+  <div class="hero-content" style="justify-content: center; text-align: center;">
+    <div class="hero-left" style="max-width: 800px; margin: 0 auto; text-align: center;">
       <div class="hero-badge">
         <span class="dot"></span>
         What We Offer

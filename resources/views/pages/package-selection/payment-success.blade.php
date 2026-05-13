@@ -132,14 +132,9 @@
             6 => 'ICT Consultancy',
         ];
         
-        $packages = [
-            1 => 'Starter Package',
-            2 => 'Business Package',
-            3 => 'Enterprise Package',
-        ];
-        
+        $pkg = \App\Support\PackagePricing::package((int) $order->service_id, (int) $order->package_id);
         $serviceName = $services[$order->service_id] ?? 'N/A';
-        $packageName = $packages[$order->package_id] ?? 'N/A';
+        $packageName = $pkg['name'] ?? 'N/A';
       @endphp
       <div class="order-details">
         <h3 style="margin-bottom: 25px; font-size: 1.5rem; color: var(--accent); border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;">📋 Order Details</h3>

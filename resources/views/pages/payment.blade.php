@@ -52,11 +52,11 @@
     </div>
     @endif
 
-    @if($order->payment_status === 'pending')
+    @if(in_array($order->payment_status, ['pending', 'initiated']))
     <div style="background: #fff3cd; border: 1px solid #ffc107; color: #856404; padding: 15px 20px; border-radius: 8px; margin-bottom: 30px; display: flex; align-items: center;">
       <i class="fas fa-clock" style="margin-right: 15px; font-size: 1.2rem;"></i>
       <div>
-        <strong>Payment Pending</strong> - Reference: {{ $order->payment_reference }}<br>
+        <strong>Payment Pending</strong>@if($order->payment_reference) - Reference: {{ $order->payment_reference }}@endif<br>
         <small>Please check your phone for the USSD prompt to complete payment.</small>
       </div>
     </div>
@@ -69,7 +69,6 @@
         <h2 style="margin-bottom: 25px; font-size: 1.5rem;">Order Summary</h2>
         
         @php
-          // Hardcoded services and packages
           $services = [
               1 => 'Web Development',
               2 => 'Mobile App Development',
@@ -78,15 +77,9 @@
               5 => 'IT Support',
               6 => 'ICT Consultancy',
           ];
-          
-          $packages = [
-              1 => 'Starter Package',
-              2 => 'Business Package',
-              3 => 'Enterprise Package',
-          ];
-          
+          $pkg = \App\Support\PackagePricing::package((int) $order->service_id, (int) $order->package_id);
           $serviceName = $services[$order->service_id] ?? 'N/A';
-          $packageName = $packages[$order->package_id] ?? 'N/A';
+          $packageName = $pkg['name'] ?? 'N/A';
         @endphp
         
         <div style="margin-bottom: 20px;">
@@ -139,7 +132,7 @@
       <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2 style="margin-bottom: 25px; font-size: 1.5rem;">Payment Method</h2>
         
-        <form action="{{ route('payment.initiate', ['order' => $order->id]) }}" method="POST">
+        <form id="paymentForm" action="{{ route('payment.initiate', ['order' => $order->id]) }}" method="POST">
           @csrf
 
           <div style="margin-bottom: 30px;">
@@ -180,8 +173,8 @@
             </ul>
           </div>
 
-          <button type="button" onclick="initiatePayment()" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 50px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; cursor: pointer; transition: transform 0.2s;">
-            <i class="fas fa-lock"></i> Pay TZS {{ number_format($order->advance_payment, 0) }} Now
+          <button id="payNowButton" type="button" onclick="initiatePayment()" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 50px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; cursor: pointer; transition: transform 0.2s;">
+            <i class="fas fa-lock"></i> <span id="payButtonText">Pay TZS {{ number_format($order->advance_payment, 0) }} Now</span>
           </button>
         </form>
       </div>
@@ -249,81 +242,47 @@ function closeSuccessModal() {
 }
 
 function initiatePayment() {
-  const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-  
-  // Show modal
+  const form = document.getElementById('paymentForm');
+  const button = document.getElementById('payNowButton');
+  const buttonText = document.getElementById('payButtonText');
+
+  if (!form || !button || !buttonText) {
+    return;
+  }
+
+  button.disabled = true;
+  button.style.opacity = '0.8';
+  button.style.cursor = 'not-allowed';
+  buttonText.textContent = 'Initializing secure payment...';
+
   const modal = document.getElementById('paymentModal');
   modal.style.display = 'flex';
-  
-  // Animate progress bar from 0 to 100%
+
   let progress = 0;
   const progressBar = document.getElementById('progressBar');
   const progressText = document.getElementById('progressText');
-  
+
   const interval = setInterval(() => {
-    progress += 2; // Increment by 2 for smooth animation
-    if (progress >= 100) {
-      progress = 100;
+    progress += 4;
+    if (progress >= 92) {
+      progress = 92;
       clearInterval(interval);
     }
     progressBar.style.width = progress + '%';
     progressText.textContent = Math.round(progress) + '%';
-  }, 50); // Update every 50ms for smooth animation
-  
-  if (paymentMethod === 'mobile') {
-    // Initiate mobile money payment (USSD push) - no redirect
-    setTimeout(() => {
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = '{{ route('payment.initiate', ['order' => $order->id]) }}';
-      
-      const csrfToken = document.createElement('input');
-      csrfToken.type = 'hidden';
-      csrfToken.name = '_token';
-      csrfToken.value = '{{ csrf_token() }}';
-      form.appendChild(csrfToken);
-      
-      const paymentMethodInput = document.createElement('input');
-      paymentMethodInput.type = 'hidden';
-      paymentMethodInput.name = 'payment_method';
-      paymentMethodInput.value = 'mobile';
-      form.appendChild(paymentMethodInput);
-      
-      document.body.appendChild(form);
-      form.submit();
-    }, 3000); // Wait 3 seconds for animation to complete
-  } else if (paymentMethod === 'card') {
-    // Initiate card payment - will redirect to secure checkout
-    setTimeout(() => {
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = '{{ route('payment.initiate', ['order' => $order->id]) }}';
-      
-      const csrfToken = document.createElement('input');
-      csrfToken.type = 'hidden';
-      csrfToken.name = '_token';
-      csrfToken.value = '{{ csrf_token() }}';
-      form.appendChild(csrfToken);
-      
-      const paymentMethodInput = document.createElement('input');
-      paymentMethodInput.type = 'hidden';
-      paymentMethodInput.name = 'payment_method';
-      paymentMethodInput.value = 'card';
-      form.appendChild(paymentMethodInput);
-      
-      document.body.appendChild(form);
-      form.submit();
-    }, 3000); // Wait 3 seconds for animation to complete
-  }
+  }, 120);
+
+  setTimeout(() => form.submit(), 450);
 }
 
 // Check payment status every 10 seconds if pending
-@if($order->payment_status === 'pending')
-setInterval(() => {
+@if(in_array($order->payment_status, ['pending', 'initiated']))
+const pollInterval = setInterval(() => {
   fetch('{{ route('payment.check.status', ['order' => $order->id]) }}')
     .then(response => response.json())
     .then(data => {
       if (data.status === 'completed') {
+        clearInterval(pollInterval);
         // Show success modal instead of redirecting
         const paymentModal = document.getElementById('paymentModal');
         paymentModal.style.display = 'none';

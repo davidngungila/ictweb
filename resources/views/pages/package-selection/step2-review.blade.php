@@ -194,9 +194,28 @@
 <!-- REVIEW FORM -->
 <section class="services" style="padding: 70px 0;">
   <div class="container">
+    @if(session('success'))
+    <div style="background:#d4edda;border:1px solid #c3e6cb;color:#155724;padding:14px 18px;border-radius:12px;margin-bottom:22px;display:flex;align-items:center;gap:10px;">
+      <i class="fas fa-check-circle"></i><span>{{ session('success') }}</span>
+    </div>
+    @endif
+    @if(session('error'))
+    <div style="background:#f8d7da;border:1px solid #f5c6cb;color:#721c24;padding:14px 18px;border-radius:12px;margin-bottom:22px;display:flex;align-items:flex-start;gap:10px;">
+      <i class="fas fa-exclamation-circle" style="margin-top:2px;"></i>
+      <div>
+        <strong>Could not continue to payment.</strong>
+        <div style="margin-top:6px;font-size:0.95rem;">{{ session('error') }}</div>
+      </div>
+    </div>
+    @endif
     @php
       $data = session('package_order_data', []);
     @endphp
+    @if(empty($data))
+    <div style="background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:14px 18px;border-radius:12px;margin-bottom:22px;">
+      <i class="fas fa-info-circle"></i> Your session expired. Please <a href="{{ route('package.selection.step1') }}" style="color:var(--accent);font-weight:700;">start again from step 1</a>.
+    </div>
+    @endif
     <form action="{{ route('package.selection.step2.process') }}" method="POST">
       @csrf
       
@@ -207,6 +226,9 @@
       <input type="hidden" name="company_name" value="{{ $data['company_name'] ?? '' }}">
       <input type="hidden" name="service_id" value="{{ $data['service_id'] ?? '' }}">
       <input type="hidden" name="package_id" value="{{ $data['package_id'] ?? '' }}">
+      <input type="hidden" name="timeline_priority" value="{{ $data['timeline_priority'] ?? 'standard' }}">
+      <input type="hidden" name="payment_plan" value="{{ $data['payment_plan'] ?? 'one_time' }}">
+      <input type="hidden" name="estimated_total" value="{{ $data['estimated_total'] ?? 0 }}">
       @foreach($data['selected_addons'] ?? [] as $addon)
       <input type="hidden" name="selected_addons[]" value="{{ $addon }}">
       @endforeach
@@ -253,14 +275,8 @@
                 6 => 'ICT Consultancy',
             ];
             
-            $packages = [
-                1 => ['name' => 'Starter Package', 'price' => 400000],
-                2 => ['name' => 'Business Package', 'price' => 800000],
-                3 => ['name' => 'Enterprise Package', 'price' => 1500000],
-            ];
-            
             $serviceName = $services[$data['service_id'] ?? 0] ?? 'N/A';
-            $package = $packages[$data['package_id'] ?? 0] ?? null;
+            $package = \App\Support\PackagePricing::package((int) ($data['service_id'] ?? 0), (int) ($data['package_id'] ?? 0));
           @endphp
           <div class="review-item">
             <span class="review-label">Service</span>
@@ -302,6 +318,21 @@
             <i class="fas fa-edit"></i> Additional Notes
           </h3>
           <p style="color: #666;">{{ $data['notes'] ?? 'No additional notes provided' }}</p>
+        </div>
+
+        <!-- Project Preferences -->
+        <div class="review-card">
+          <h3 class="section-title">
+            <i class="fas fa-sliders"></i> Project Preferences
+          </h3>
+          <div class="review-item">
+            <span class="review-label">Timeline Priority</span>
+            <span class="review-value">{{ ucfirst(str_replace('_', ' ', $data['timeline_priority'] ?? 'standard')) }}</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Payment Plan</span>
+            <span class="review-value">{{ ucfirst(str_replace('_', ' ', $data['payment_plan'] ?? 'one_time')) }}</span>
+          </div>
         </div>
 
         <!-- Price Summary -->
