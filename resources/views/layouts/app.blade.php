@@ -99,49 +99,55 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(11,31,58,0.97);
-    backdrop-filter: blur(12px);
+    width: 100%;
+    background: #ffffff;
+    backdrop-filter: none;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 5%;
     height: 70px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 0 rgba(11, 31, 58, 0.08), 0 4px 24px rgba(11, 31, 58, 0.06);
+    border-bottom: 1px solid var(--light-gray);
   }
   .nav-logo {
     display: flex; align-items: center; gap: 10px;
     text-decoration: none;
   }
-  .nav-logo-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; color: white;
-    font-weight: 700;
+  .nav-logo-img {
+    display: block;
+    height: 40px;
+    width: auto;
+    max-width: min(200px, 52vw);
+    object-fit: contain;
+  }
+  @media (max-width: 480px) {
+    .nav-logo-img { height: 34px; }
   }
   .nav-logo-text {
     font-family: var(--font-display);
-    color: var(--white);
-    font-size: 1.3rem;
+    color: var(--navy);
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    white-space: nowrap;
   }
-  .nav-logo-text span { color: var(--gold); }
+  .nav-logo-text span { color: var(--accent); }
   .nav-links {
     display: flex; gap: 28px; list-style: none;
   }
   .nav-links a {
-    color: rgba(255,255,255,0.8);
+    color: var(--text-mid);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.3px;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover { color: var(--accent); }
   .nav-links a.active { 
-    color: var(--gold); 
+    color: var(--accent); 
     font-weight: 600;
-    background: rgba(255,255,255,0.1);
+    background: rgba(26, 111, 196, 0.1);
     padding: 8px 16px;
     border-radius: 20px;
   }
@@ -157,7 +163,7 @@
   .hamburger {
     display: none;
     background: none; border: none;
-    color: white; font-size: 1.4rem; cursor: pointer;
+    color: var(--navy); font-size: 1.4rem; cursor: pointer;
   }
 
   /* ── HERO ── */
@@ -826,6 +832,17 @@
   .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
   .footer-bottom a { color: var(--gold); text-decoration: none; }
 
+  footer .nav-logo-img {
+    height: 44px;
+    max-width: min(220px, 70vw);
+  }
+  footer .nav-logo-text {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  footer .nav-logo-text span {
+    color: var(--gold);
+  }
+
   /* ── WHATSAPP FLOAT ── */
   .wa-float {
     position: fixed; bottom: 28px; right: 28px; z-index: 999;
@@ -862,8 +879,12 @@
     .nav-links.open {
       display: flex; flex-direction: column;
       position: fixed; top: 70px; left: 0; right: 0;
-      background: var(--navy); padding: 24px 5%;
-      gap: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      width: 100%;
+      background: #ffffff;
+      padding: 24px 5%;
+      gap: 20px;
+      box-shadow: 0 12px 40px rgba(11, 31, 58, 0.12);
+      border-bottom: 1px solid var(--light-gray);
     }
     .hamburger { display: block; }
     .hero-content { grid-template-columns: 1fr; gap: 40px; }
@@ -889,9 +910,9 @@
 
 <!-- NAV -->
 <nav>
-  <a href="{{ route('home') }}" class="nav-logo">
-    <div class="nav-logo-icon"><i class="fas fa-microchip"></i></div>
-    <span class="nav-logo-text">Jezdan<span>Technology</span></span>
+  <a href="{{ route('home') }}" class="nav-logo" title="Jezdan Technology">
+    <img src="{{ asset('Jezdantech_Main.png') }}" alt="" class="nav-logo-img" width="200" height="48" decoding="async" role="presentation">
+    <span class="nav-logo-text">Jezdan <span>Technology</span></span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
@@ -913,9 +934,9 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="{{ route('home') }}" class="nav-logo" style="margin-bottom:4px;">
-        <div class="nav-logo-icon"><i class="fas fa-microchip"></i></div>
-        <span class="nav-logo-text">Jezdan<span>Technology</span></span>
+      <a href="{{ route('home') }}" class="nav-logo" style="margin-bottom:4px;" title="Jezdan Technology">
+        <img src="{{ asset('Jezdantech-02.png') }}" alt="" class="nav-logo-img" width="200" height="48" decoding="async" role="presentation">
+        <span class="nav-logo-text">Jezdan <span>Technology</span></span>
       </a>
       <p>Jezdan Technology is a leading ICT company based in Moshi, Kilimanjaro, Tanzania. We deliver world-class digital services with a deep understanding of Tanzania's unique business landscape.</p>
       <div class="footer-social">
