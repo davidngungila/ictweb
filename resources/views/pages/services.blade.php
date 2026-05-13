@@ -22,248 +22,104 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;">
-  <div class="hero-bg-img" style="opacity: 0.15; background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80');"></div>
+<section class="hero" id="home" style="min-height: 60vh;">
+  <div class="hero-bg-img"></div>
   <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content" style="max-width: 900px;">
-    <div class="hero-badge" style="margin: 0 auto 24px;">
-      <span class="dot"></span>
-      Expertise & Innovation
-    </div>
-    <h1 class="hero-title">
-      Advanced <span>ICT Solutions</span><br/>
-      Engineered for Growth
-    </h1>
-    <p class="hero-subtitle" style="margin: 0 auto 40px; max-width: 650px;">
-      Empowering Tanzanian enterprises with robust infrastructure, custom software, and strategic technology consulting that drives measurable results.
-    </p>
-    <div class="hero-actions" style="justify-content: center;">
-      <a href="{{ route('contact') }}" class="btn-primary">
-        <i class="fas fa-calendar-check"></i> Free Consultation
-      </a>
-      <a href="#services-grid" class="btn-outline">
-        <i class="fas fa-th-list"></i> Explore Services
-      </a>
+  <div class="hero-content" style="justify-content: center; text-align: center;">
+    <div class="hero-left" style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        What We Offer
+      </div>
+      <h1 class="hero-title">
+        Comprehensive <span>ICT Services</span><br/>
+        Built for East Africa
+      </h1>
+      <p class="hero-subtitle">
+        We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.
+      </p>
     </div>
   </div>
 </section>
 
 <!-- TRUST STRIP -->
-<div class="trust-strip" style="background: white; border-bottom: 1px solid var(--light-gray);">
-  <div class="trust-strip-inner" style="justify-content: center; gap: 40px;">
-    <div class="trust-item" style="color: var(--text-mid);"><i class="fas fa-shield-alt"></i> Secure Systems</div>
+<div class="trust-strip">
+  <div class="trust-strip-inner">
     <div class="trust-divider"></div>
-    <div class="trust-item" style="color: var(--text-mid);"><i class="fas fa-bolt"></i> High Performance</div>
+    <div class="trust-item"><i class="fas fa-mobile-alt"></i> Online Payment Integrated</div>
     <div class="trust-divider"></div>
-    <div class="trust-item" style="color: var(--text-mid);"><i class="fas fa-sync"></i> 99.9% Uptime</div>
+    <div class="trust-item"><i class="fab fa-whatsapp"></i> WhatsApp Business Support</div>
     <div class="trust-divider"></div>
-    <div class="trust-item" style="color: var(--text-mid);"><i class="fas fa-headset"></i> Expert Support</div>
+    <div class="trust-item"><i class="fas fa-globe-africa"></i> Serving All Tanzania</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><i class="fas fa-headset"></i> 24/7 Technical Support</div>
+    <div class="trust-divider"></div>
   </div>
 </div>
 
-<!-- SERVICES SECTION -->
-<section class="services-section" style="background: var(--off-white); padding: 100px 5%;">
+<!-- SERVICES -->
+<section class="services" id="services">
   <div class="container">
-    <div class="section-header" style="text-align: center; margin-bottom: 80px;">
-      <div class="section-label" style="margin: 0 auto 16px;"><i class="fas fa-layer-group"></i> Our Capabilities</div>
-      <h2 class="section-title">Specialized <span>ICT Pillars</span></h2>
-      <p class="section-sub" style="margin: 0 auto;">From foundational networking to cutting-edge AI integration, we cover the full spectrum of digital needs.</p>
+    <div class="section-header">
+      <div class="section-label"><i class="fas fa-layer-group"></i> What We Offer</div>
+      <h2 class="section-title">Comprehensive <span>ICT Services</span><br/>Built for East Africa</h2>
+      <p class="section-sub">We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.</p>
     </div>
-
-    <div class="services-grid" id="services-grid">
-      @php
-        $services = [
-          [
-            'id' => 'web-development',
-            'title' => 'Web Development',
-            'desc' => 'High-performance websites and e-commerce platforms integrated with Tanzanian payment gateways.',
-            'icon' => 'fas fa-code',
-            'price' => '400,000',
-            'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg',
-            'route' => 'services.web-development'
-          ],
-          [
-            'id' => 'mobile-apps',
-            'title' => 'Mobile Applications',
-            'desc' => 'Custom iOS & Android apps built for performance and seamless user experience in the local market.',
-            'icon' => 'fas fa-mobile-alt',
-            'price' => '3,000,000',
-            'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg',
-            'route' => 'services.mobile-app-development'
-          ],
-          [
-            'id' => 'networking',
-            'title' => 'Network Infrastructure',
-            'desc' => 'Enterprise-grade networking for lodges, offices, and campuses with guaranteed coverage.',
-            'icon' => 'fas fa-network-wired',
-            'price' => '300,000',
-            'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg',
-            'route' => 'services.network-installation'
-          ],
-          [
-            'id' => 'cybersecurity',
-            'title' => 'Cybersecurity',
-            'desc' => 'Comprehensive protection against evolving threats with 24/7 monitoring and audit services.',
-            'icon' => 'fas fa-user-shield',
-            'price' => '300,000',
-            'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg',
-            'route' => 'services.cybersecurity'
-          ],
-          [
-            'id' => 'it-support',
-            'title' => 'Managed IT Support',
-            'desc' => 'Proactive maintenance and rapid-response troubleshooting for distributed teams.',
-            'icon' => 'fas fa-tools',
-            'price' => '150,000/mo',
-            'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg',
-            'route' => 'services.it-support'
-          ],
-          [
-            'id' => 'consultancy',
-            'title' => 'ICT Consultancy',
-            'desc' => 'Strategic advisory and digital transformation roadmaps for forward-thinking organizations.',
-            'icon' => 'fas fa-lightbulb',
-            'price' => '500,000',
-            'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg',
-            'route' => 'services.ict-consultancy'
-          ]
-        ];
-      @endphp
-
-      @foreach($services as $svc)
-      <article class="service-card-new" id="{{ $svc['id'] }}">
-        <div class="service-img-wrap">
-          <img src="{{ $svc['image'] }}" alt="{{ $svc['title'] }}">
-          <div class="service-icon-floating"><i class="{{ $svc['icon'] }}"></i></div>
-        </div>
-        <div class="service-body-new">
-          <h3>{{ $svc['title'] }}</h3>
-          <p>{{ $svc['desc'] }}</p>
-          <div class="service-footer-new">
-            <span class="price-tag">From TZS {{ $svc['price'] }}</span>
-            <a href="{{ route($svc['route']) }}" class="link-btn">Details <i class="fas fa-chevron-right"></i></a>
-          </div>
-        </div>
-      </article>
-      @endforeach
+    <div class="services-grid">
+      <div class="service-card" id="web-development">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>Web Development</h3>
+        <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 400,000</span>
+        <a href="{{ route('services.web-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="mobile-apps">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>Mobile App Development</h3>
+        <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 3,000,000</span>
+        <a href="{{ route('services.mobile-app-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="networking">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>Network Installation</h3>
+        <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
+        <a href="{{ route('services.network-installation') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="cybersecurity">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>Cybersecurity</h3>
+        <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
+        <a href="{{ route('services.cybersecurity') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="it-support">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>IT Support</h3>
+        <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 150,000/mo</span>
+        <a href="{{ route('services.it-support') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" id="consultancy">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>ICT Consultancy</h3>
+        <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 500,000</span>
+        <a href="{{ route('services.ict-consultancy') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/male-electrician-works-switchboard-overalls-against-backdrop-emergency-lighting_xpsb7u.jpg" alt="CCTV & Security Systems" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
+        <h3>CCTV &amp; Security Systems</h3>
+        <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
+        <span class="service-price"><i class="fas fa-tag"></i> From TZS 2,000,000</span>
+        <a href="{{ route('package.selection') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-  }
-  .service-card-new {
-    background: white;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(11,31,58,0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid var(--light-gray);
-    display: flex;
-    flex-direction: column;
-  }
-  .service-card-new:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 50px rgba(11,31,58,0.12);
-    border-color: var(--accent);
-  }
-  .service-img-wrap {
-    height: 220px;
-    position: relative;
-    overflow: hidden;
-  }
-  .service-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-  .service-card-new:hover .service-img-wrap img {
-    transform: scale(1.1);
-  }
-  .service-icon-floating {
-    position: absolute;
-    bottom: -25px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: var(--navy);
-    color: var(--gold);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    z-index: 2;
-  }
-  .service-body-new {
-    padding: 40px 30px 30px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .service-body-new h3 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--navy);
-    margin-bottom: 12px;
-  }
-  .service-body-new p {
-    color: var(--text-mid);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 25px;
-    flex: 1;
-  }
-  .service-footer-new {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid var(--light-gray);
-  }
-  .price-tag {
-    font-weight: 700;
-    color: var(--accent);
-    font-size: 0.9rem;
-  }
-  .link-btn {
-    text-decoration: none;
-    font-weight: 700;
-    color: var(--navy);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: gap 0.3s;
-  }
-  .service-card-new:hover .link-btn {
-    gap: 12px;
-    color: var(--accent);
-  }
-
-  @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-    .trust-strip-inner {
-      gap: 15px;
-      padding: 20px;
-    }
-    .trust-divider {
-      display: none;
-    }
-  }
-</style>
-
 
 <!-- EXTRA ADD-ON SERVICES -->
 <section class="extra-addons">
