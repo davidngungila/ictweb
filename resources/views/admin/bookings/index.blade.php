@@ -134,7 +134,7 @@
                         </td>
                         <td class="px-6 py-4">
                             @php
-                                $service = \App\Models\Service::find($booking->service_id);
+                                $service = $booking->service_id ? \App\Models\Service::find($booking->service_id) : null;
                                 $package = \App\Support\PackagePricing::package($booking->service_id, $booking->package_id);
                             @endphp
                             <div class="text-sm font-medium text-gray-900">{{ $service->name ?? 'Unknown Service' }}</div>

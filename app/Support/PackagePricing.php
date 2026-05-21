@@ -262,8 +262,12 @@ class PackagePricing
     /**
      * @return array{name:string, price:int}|null
      */
-    public static function package(int $serviceId, int $packageId): ?array
+    public static function package(?int $serviceId, ?int $packageId): ?array
     {
+        if (!$serviceId || !$packageId) {
+            return null;
+        }
+
         $tier = self::packagesForService($serviceId);
 
         return $tier[$packageId] ?? null;
