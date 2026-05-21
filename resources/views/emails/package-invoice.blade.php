@@ -6,10 +6,10 @@ Thank you for choosing Jezdan Technology. We have received your request for our 
 Please find the attached invoice for your order **{{ $order->order_number }}**.
 
 ## Order Summary
-- **Service:** {{ \App\Models\Service::find($order->service_id)->name ?? 'Service' }}
-- **Package:** {{ \App\Support\PackagePricing::package($order->service_id, $order->package_id)['name'] ?? 'Package' }}
+- **Service:** {{ \App\Support\PackagePricing::serviceName($order->service_id) }}
+- **Package:** {{ \App\Support\PackagePricing::package($order->service_id, $order->package_id)['name'] ?? 'Custom Package' }}
 - **Total Price:** TZS {{ number_format($order->total_price, 0) }}
-- **Advance Payment (50%):** TZS {{ number_format($order->advance_payment, 0) }}
+- **Advance Payment ({{ \App\Support\PackagePricing::advancePercentForPlan($order->payment_plan) }}%):** TZS {{ number_format($order->advance_payment, 0) }}
 
 <x-mail::button :url="route('payment.show', ['checkout' => $order->payment_page_token])">
 Proceed to Payment

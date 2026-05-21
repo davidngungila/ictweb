@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Queue\SerializesModels;
 
 class DemoRequestSubmitted extends Mailable
 {
