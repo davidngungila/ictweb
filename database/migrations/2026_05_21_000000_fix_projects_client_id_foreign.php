@@ -13,6 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
+            // Ensure client_id column exists before adding foreign key
+            if (!Schema::hasColumn('projects', 'client_id')) {
+                $table->foreignId('client_id')->after('id')->nullable();
+            }
+
             // Drop foreign key if it exists using native Laravel 11+ method
             $foreignKeys = array_map(function ($key) {
                 return $key['name'];
@@ -40,7 +45,10 @@ return new class extends Migration
             if (in_array('projects_client_id_foreign', $foreignKeys)) {
                 $table->dropForeign('projects_client_id_foreign');
             }
-            $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
+            
+            if (Schema::hasTable('users')) {
+                $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
+            }
         });
     }
 };
