@@ -152,6 +152,11 @@
                                     <i class="fas fa-calendar-check mr-3 text-xs"></i>
                                     Demos
                                 </a>
+                                <a href="{{ route('admin.bookings.index') }}" 
+                                   class="{{ request()->is('admin/bookings*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                    <i class="fas fa-shopping-cart mr-3 text-xs"></i>
+                                    Bookings
+                                </a>
                                 <a href="{{ route('admin.contacts.advanced') }}" 
                                    class="{{ request()->is('admin/contacts*') ? 'sidebar-active' : 'text-gray-300 hover:bg-gray-700' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md">
                                     <i class="fas fa-envelope mr-3 text-xs"></i>

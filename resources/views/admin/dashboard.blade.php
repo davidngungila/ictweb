@@ -228,13 +228,13 @@
         <div class="bg-white shadow rounded-lg overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-bold text-gray-900">Recent Bookings</h3>
-                <a href="{{ route('admin.packages.index') }}" class="text-sm text-blue-600 hover:text-blue-500 font-semibold">
-                    Manage Bookings
+                <a href="{{ route('admin.bookings.index') }}" class="text-sm text-blue-600 hover:text-blue-500 font-semibold">
+                    View All
                 </a>
             </div>
             <div class="divide-y divide-gray-200">
                 @forelse($recentBookings as $booking)
-                    <div class="p-4 hover:bg-gray-50 transition-colors">
+                    <div class="p-4 hover:bg-gray-50 transition-colors cursor-pointer" onclick="window.location.href='{{ route('admin.bookings.show', $booking) }}'">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-bold text-gray-900">{{ $booking->client_name }}</p>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PricingPlanController;
 use App\Http\Controllers\Admin\OfferController;
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\PackageOrderController;
 use App\Models\PackageOrder;
 
@@ -180,6 +181,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/offers/{offer}/toggle-active', [OfferController::class, 'toggleActive'])->name('offers.toggle-active');
         Route::get('/offers/stats', [OfferController::class, 'stats'])->name('offers.stats');
         Route::get('/offers/export', [OfferController::class, 'export'])->name('offers.export');
+        
+        // Bookings (Package Orders)
+        Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+        Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+        Route::post('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('bookings.update-status');
+        Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
         
         // Payments
         Route::get('/payments', [InvoiceController::class, 'payments'])->name('payments.index');
