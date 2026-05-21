@@ -12,27 +12,35 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
+            // Handle 'title' column (renaming from 'name' if necessary)
             if (Schema::hasColumn('projects', 'name') && !Schema::hasColumn('projects', 'title')) {
                 $table->renameColumn('name', 'title');
             } elseif (!Schema::hasColumn('projects', 'title')) {
                 $table->string('title')->after('id')->nullable();
             }
 
+            // Handle 'project_number' column
             if (!Schema::hasColumn('projects', 'project_number')) {
                 $table->string('project_number')->unique()->after('id')->nullable();
             }
 
-            if (!Schema::hasColumn('projects', 'service_type')) {
-                $table->string('service_type')->after('client_id')->nullable();
+            // Handle 'status' column - ensure it exists before we try to use it in 'after'
+            if (!Schema::hasColumn('projects', 'status')) {
+                $table->string('status')->default('pending');
             }
 
+            // Handle 'service_type' column
+            if (!Schema::hasColumn('projects', 'service_type')) {
+                $table->string('service_type')->nullable();
+            }
+
+            // Handle 'progress_percentage' column
             if (!Schema::hasColumn('projects', 'progress_percentage')) {
-                $table->integer('progress_percentage')->default(0)->after('status');
+                $table->integer('progress_percentage')->default(0);
             }
 
             // Clean up old columns if they exist and are not in the new model
             if (Schema::hasColumn('projects', 'service_id')) {
-                // We keep it for now but make it nullable
                 $table->unsignedBigInteger('service_id')->nullable()->change();
             }
         });
