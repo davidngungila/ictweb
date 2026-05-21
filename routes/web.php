@@ -185,6 +185,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Bookings (Package Orders)
         Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
         Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+        Route::get('/bookings/{booking}/download', [BookingController::class, 'downloadPdf'])->name('bookings.download');
         Route::post('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('bookings.update-status');
         Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
         

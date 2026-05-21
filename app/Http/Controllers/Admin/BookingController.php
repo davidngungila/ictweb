@@ -7,6 +7,7 @@ use App\Models\PackageOrder;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BookingController extends Controller
 {
@@ -58,6 +59,23 @@ class BookingController extends Controller
     public function show(PackageOrder $booking)
     {
         return view('admin.bookings.show', compact('booking'));
+    }
+
+    /**
+     * Download the booking as a PDF document.
+     */
+    public function downloadPdf(PackageOrder $booking)
+    {
+        $service = $booking->service_id ? Service::find($booking->service_id) : null;
+        $package = \App\Support\PackagePricing::package($booking->service_id, $booking->package_id);
+        
+        $pdf = Pdf::loadView('admin.bookings.pdf', [
+            'booking' => $booking,
+            'service' => $service,
+            'package' => $package
+        ]);
+
+        return $pdf->download("Booking-{$booking->order_number}.pdf");
     }
 
     /**
