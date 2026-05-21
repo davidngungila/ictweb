@@ -12,19 +12,19 @@
 
     <!-- Quick Actions -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <a href="{{ route('projects.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+        <a href="{{ route('admin.projects.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
             <i class="fas fa-plus mr-2"></i>
             New Project
         </a>
-        <a href="{{ route('projects.index') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+        <a href="{{ route('admin.projects.index') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
             <i class="fas fa-users mr-2"></i>
             Assign Team
         </a>
-        <a href="{{ route('projects.index') }}?view=timeline" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
+        <a href="{{ route('admin.projects.index') }}?view=timeline" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center">
             <i class="fas fa-chart-gantt mr-2"></i>
             Timeline View
         </a>
-        <a href="{{ route('dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
+        <a href="{{ route('admin.dashboard') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
             <i class="fas fa-tachometer-alt mr-2"></i>
             Dashboard
         </a>

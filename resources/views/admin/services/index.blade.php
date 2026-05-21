@@ -12,15 +12,11 @@
             <p class="text-gray-600 mt-1">Comprehensive service catalog and pricing management system</p>
         </div>
         <div class="flex space-x-3">
-            <a href="{{ route('services.create') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+            <a href="{{ route('admin.services.create') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
                 <i class="fas fa-plus mr-2"></i>
                 New Service
             </a>
-            <a href="{{ route('services.export') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
-                <i class="fas fa-download mr-2"></i>
-                Export
-            </a>
-            <a href="{{ route('dashboard.mother') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center">
+            <a href="{{ route('admin.dashboard') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center">
                 <i class="fas fa-tachometer-alt mr-2"></i>
                 Dashboard
             </a>
