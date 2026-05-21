@@ -103,9 +103,53 @@
   ::-webkit-scrollbar-track { background: var(--light-gray); }
   ::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 3px; }
 
+  /* ── TOP HEADER ── */
+  .top-header {
+    background: var(--navy);
+    color: white;
+    padding: 8px 5%;
+    font-size: 0.82rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+    position: relative;
+  }
+  .top-header-info {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .top-header-info a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .top-header-info a:hover {
+    color: var(--gold);
+  }
+  .top-header-info i {
+    color: var(--accent-bright);
+    font-size: 0.9rem;
+  }
+  .top-header-social {
+    display: flex;
+    gap: 16px;
+  }
+  .top-header-social a {
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s;
+  }
+  .top-header-social a:hover {
+    color: white;
+  }
+
   /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
     width: 100%;
     background: #ffffff;
     backdrop-filter: none;
@@ -180,7 +224,6 @@
     position: relative;
     display: flex; align-items: center;
     overflow: hidden;
-    padding-top: 70px;
   }
   .hero-bg-img {
     position: absolute; inset: 0;
@@ -882,6 +925,9 @@
 
   /* ── MOBILE ── */
   @media (max-width: 900px) {
+    .d-none-mobile { display: none !important; }
+    .top-header { justify-content: center; }
+    .top-header-social { display: none; }
     .nav-links { display: none; }
     .nav-links.open {
       display: flex; flex-direction: column;
@@ -914,6 +960,21 @@
 @yield('additional_styles')
 </head>
 <body>
+
+<!-- TOP HEADER -->
+<div class="top-header">
+  <div class="top-header-info">
+    <a href="tel:+255685847002"><i class="fas fa-phone"></i> +255 685 847 002</a>
+    <a href="mailto:info@jezdantech.com"><i class="fas fa-envelope"></i> info@jezdantech.com</a>
+    <span class="d-none-mobile" style="color: rgba(255,255,255,0.5);"><i class="fas fa-map-marker-alt"></i> Moshi, Kilimanjaro</span>
+  </div>
+  <div class="top-header-social">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>

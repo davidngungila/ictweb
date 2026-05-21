@@ -61,14 +61,7 @@
       <p class="section-sub" style="margin: 0 auto;">Explore our track record of delivering robust, scalable, and user-centric digital products that drive business growth.</p>
     </div>
 
-    <div class="portfolio-filters-wrapper" style="margin-bottom: 50px; display: flex; justify-content: center;">
-      <div style="display:flex; flex-wrap:wrap; gap:12px; background: white; padding: 8px; border-radius: 50px; box-shadow: var(--shadow);" id="portfolio-filters">
-        <button type="button" class="tab-btn active" data-tag="all" style="border:none;">All Projects</button>
-        @foreach($portfolioTags as $tag)
-          <button type="button" class="tab-btn" data-tag="{{ $tag }}" style="border:none;">{{ $tag }}</button>
-        @endforeach
-      </div>
-    </div>
+
 
     <div class="services-grid" id="portfolio-grid">
       @foreach($projects as $project)
