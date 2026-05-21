@@ -13,12 +13,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            // Check if the foreign key exists and drop it
-            // We'll use a try-catch or check if it's there
-            try {
-                $table->dropForeign(['client_id']);
-            } catch (\Exception $e) {
-                // Ignore if it doesn't exist
+            // Drop foreign key if it exists
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $fks = array_map(function($fk) { return $fk->getName(); }, $sm->listTableForeignKeys('projects'));
+            
+            if (in_array('projects_client_id_foreign', $fks)) {
+                $table->dropForeign('projects_client_id_foreign');
             }
             
             // Re-add the foreign key pointing to clients table
@@ -32,9 +32,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            try {
-                $table->dropForeign(['client_id']);
-            } catch (\Exception $e) {
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $fks = array_map(function($fk) { return $fk->getName(); }, $sm->listTableForeignKeys('projects'));
+            
+            if (in_array('projects_client_id_foreign', $fks)) {
+                $table->dropForeign('projects_client_id_foreign');
             }
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
         });

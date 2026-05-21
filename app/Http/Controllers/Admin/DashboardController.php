@@ -34,7 +34,7 @@ class DashboardController extends Controller
             'messages_this_month' => Message::whereMonth('created_at', Carbon::now()->month)->count(),
             
             'total_projects' => Project::count(),
-            'projects_active' => Project::where('status', 'active')->count(),
+            'projects_active' => Project::where('status', 'in_progress')->count(),
             
             'total_services' => Service::count(),
             
