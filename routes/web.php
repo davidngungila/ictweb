@@ -306,7 +306,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Advanced Management Pages
         Route::get('/demo-requests', [DemoRequestController::class, 'index'])->name('demo-requests.advanced');
         
-        Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.advanced');
+        Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.advanced');
         
         Route::get('/projects', [ProjectController::class, 'index'])->name('projects.advanced');
         
