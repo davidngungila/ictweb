@@ -10,9 +10,35 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.services.index');
+        $query = Service::query();
+
+        // Search
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('category', 'like', "%{$search}%");
+            });
+        }
+
+        // Category filter
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+
+        $services = $query->orderBy('created_at', 'desc')->paginate(15);
+
+        // Stats
+        $stats = [
+            'total' => Service::count(),
+            'active' => Service::where('status', 'active')->count(),
+            'categories' => Service::distinct('category')->count(),
+            'new_this_month' => Service::whereMonth('created_at', now()->month)->count(),
+        ];
+
+        return view('admin.services.advanced', compact('services', 'stats'));
     }
 
     public function data(Request $request)

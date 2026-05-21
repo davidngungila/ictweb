@@ -9,7 +9,10 @@ use App\Models\Invoice;
 use App\Support\PackagePricing;
 use App\Services\SnippePaymentService;
 use App\Services\SmsService;
+use App\Mail\PackageInvoiceMail;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -32,9 +35,13 @@ class PackageOrderController extends Controller
     }
 
     // New 3-step wizard methods
-    public function showStep1()
+    public function showStep1(Request $request)
     {
-        return view('pages.package-selection.step1-combined');
+        $prefillService = $request->query('service_id');
+        $prefillPackage = $request->query('package_id');
+        $prefillAddon = $request->query('addon');
+        
+        return view('pages.package-selection.step1-combined', compact('prefillService', 'prefillPackage', 'prefillAddon'));
     }
 
     public function processStep1(Request $request)
@@ -66,6 +73,7 @@ class PackageOrderController extends Controller
         ]);
 
         session()->put('package_order_data', $validated);
+        // Direct to review step to allow adjusting deposit (30-100%)
         return redirect()->route('package.selection.step2');
     }
 
@@ -102,79 +110,73 @@ class PackageOrderController extends Controller
         // Get data from session
         $orderData = session('package_order_data', []);
         
-        // Redirect to step1 if no data exists or required fields are missing
-        if (empty($orderData) || !isset($orderData['package_id']) || !isset($orderData['service_id'])) {
-            return redirect()->route('package.selection.step1')->with('error', 'Please complete step 1 first to generate invoice.');
+        if (empty($orderData)) {
+            return redirect()->route('package.selection.step1')->with('error', 'Please complete step 1 first.');
         }
 
-        // Calculate prices
-        $services = [
-            1 => ['name' => 'Web Development', 'base_price' => 400000],
-            2 => ['name' => 'Mobile App Development', 'base_price' => 3000000],
-            3 => ['name' => 'Network Installation', 'base_price' => 300000],
-            4 => ['name' => 'Cybersecurity', 'base_price' => 300000],
-            5 => ['name' => 'IT Support', 'base_price' => 150000],
-            6 => ['name' => 'ICT Consultancy', 'base_price' => 500000],
-        ];
-
-        $addonPrices = PackagePricing::addonPrices();
-
-        $pkg = PackagePricing::package((int) $orderData['service_id'], (int) $orderData['package_id']);
-        $basePrice = $pkg['price'] ?? 0;
-        $packageLabel = $pkg['name'] ?? 'Package';
-        $addonsTotal = 0;
-        if($orderData['selected_addons'] ?? []) {
-            foreach($orderData['selected_addons'] as $addon) {
+        // We need an actual order in the DB to have a payment link
+        DB::beginTransaction();
+        try {
+            // Re-calculate prices to be sure
+            $pkg = PackagePricing::package((int) $orderData['service_id'], (int) $orderData['package_id']);
+            $basePrice = $pkg['price'] ?? 0;
+            $addonPrices = PackagePricing::addonPrices();
+            $addonsTotal = 0;
+            foreach($orderData['selected_addons'] ?? [] as $addon) {
                 $addonsTotal += $addonPrices[$addon] ?? 0;
             }
+            $totalPrice = $basePrice + $addonsTotal;
+            $advFrac = PackagePricing::advanceFractionForPlan($orderData['payment_plan'] ?? null);
+            $advancePayment = round($totalPrice * $advFrac, 2);
+            $remainingBalance = round($totalPrice - $advancePayment, 2);
+
+            $orderPayload = [
+                'order_number' => PackageOrder::generateOrderNumber(),
+                'client_name' => $orderData['client_name'],
+                'client_email' => $orderData['client_email'],
+                'client_phone' => $orderData['client_phone'],
+                'service_id' => $orderData['service_id'],
+                'package_id' => $orderData['package_id'],
+                'selected_features' => $pkg['features'] ?? [],
+                'selected_addons' => $orderData['selected_addons'] ?? [],
+                'total_price' => $totalPrice,
+                'advance_payment' => $advancePayment,
+                'remaining_balance' => $remainingBalance,
+                'status' => 'pending',
+                'payment_plan' => $orderData['payment_plan'] ?? 'startup',
+                'timeline_priority' => $orderData['timeline_priority'] ?? 'standard',
+                'notes' => $orderData['notes'] ?? null,
+                'payment_page_token' => PackageOrder::generateUniquePaymentPageToken(),
+                'payment_status' => 'not_started',
+            ];
+
+            $order = PackageOrder::create($orderPayload);
+
+            $invoice = Invoice::create([
+                'invoice_number' => Invoice::generateInvoiceNumber(),
+                'client_name' => $order->client_name,
+                'client_email' => $order->client_email,
+                'client_phone' => $order->client_phone,
+                'description' => "Package Order - {$order->order_number}",
+                'amount' => $order->advance_payment,
+                'total' => $order->advance_payment,
+                'due_date' => now()->addDays(7),
+                'status' => 'pending',
+                'order_id' => $order->id,
+            ]);
+
+            DB::commit();
+
+            // Generate PDF invoice
+            $pdf = Pdf::loadView('receipts.invoice', ['order' => $order, 'invoice' => $invoice]);
+            
+            return $pdf->download('invoice-' . $invoice->invoice_number . '.pdf');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Invoice generation failed', ['error' => $e->getMessage()]);
+            return back()->with('error', 'Failed to generate invoice: ' . $e->getMessage());
         }
-        $totalPrice = $basePrice + $addonsTotal;
-        $advFrac = PackagePricing::advanceFractionForPlan($orderData['payment_plan'] ?? null);
-        $advancePayment = round($totalPrice * $advFrac, 2);
-        $remainingBalance = round($totalPrice - $advancePayment, 2);
-
-        // Create temporary order object for invoice
-        $tempOrder = (object)[
-            'order_number' => 'INV-' . time(),
-            'client_name' => $orderData['client_name'],
-            'client_email' => $orderData['client_email'],
-            'client_phone' => $orderData['client_phone'],
-            'total_price' => $totalPrice,
-            'advance_payment' => $advancePayment,
-            'remaining_balance' => $remainingBalance,
-        ];
-
-        // Get image data for header
-        $headerImagePath = public_path('header_pdf.png');
-        $headerImageBase64 = '';
-        if (file_exists($headerImagePath)) {
-            $headerImageBase64 = base64_encode(file_get_contents($headerImagePath));
-            $headerImageBase64 = 'data:image/png;base64,' . $headerImageBase64;
-        }
-
-        // Create temporary invoice object
-        $tempInvoice = (object)[
-            'invoice_number' => 'INV-' . time(),
-            'client_name' => $orderData['client_name'],
-            'client_email' => $orderData['client_email'],
-            'client_phone' => $orderData['client_phone'],
-            'description' => 'Package Order - ' . $services[$orderData['service_id']]['name'] . ' - ' . $packageLabel,
-            'amount' => $advancePayment,
-            'tax' => 0,
-            'total' => $advancePayment,
-            'due_date' => now()->addDays(7),
-            'status' => 'pending',
-            'created_at' => now(),
-            'header_image' => $headerImageBase64,
-        ];
-
-        // Generate PDF invoice
-        $pdf = \PDF::loadView('receipts.invoice', ['order' => $tempOrder, 'invoice' => $tempInvoice])
-            ->setOption('enable-local-file-access', true)
-            ->setOption('images', true);
-        
-        // Download the PDF
-        return $pdf->download('invoice-' . $tempInvoice->invoice_number . '.pdf');
     }
 
     public function processOrder(Request $request)
@@ -256,11 +258,11 @@ class PackageOrderController extends Controller
                 'advance_payment' => $advancePayment,
                 'remaining_balance' => $remainingBalance,
                 'status' => 'pending',
-                'notes' => trim(($validated['notes'] ?? '') . PHP_EOL . PHP_EOL . 'Timeline Priority: ' . ($validated['timeline_priority'] ?? 'standard') . PHP_EOL . 'Payment Plan: ' . ($validated['payment_plan'] ?? 'enterprise') . PHP_EOL . 'Estimated Total (Client Side): ' . number_format((float) ($validated['estimated_total'] ?? 0), 0)),
+                'notes' => $validated['notes'] ?? null,
             ];
 
             if (Schema::hasColumn('package_orders', 'payment_plan')) {
-                $orderPayload['payment_plan'] = $validated['payment_plan'] ?? 'enterprise';
+                $orderPayload['payment_plan'] = $validated['payment_plan'] ?? 'startup';
             }
             if (Schema::hasColumn('package_orders', 'timeline_priority')) {
                 $orderPayload['timeline_priority'] = $validated['timeline_priority'] ?? 'standard';
@@ -301,10 +303,8 @@ class PackageOrderController extends Controller
                     PackagePricing::paymentPlanLabel($validated['payment_plan'] ?? null),
                     number_format($remainingBalance, 2)
                 ),
+                'order_id' => $order->id,
             ];
-            if (Schema::hasColumn('invoices', 'order_id')) {
-                $invoicePayload['order_id'] = $order->id;
-            }
 
             $invoice = Invoice::create($invoicePayload);
 
@@ -315,6 +315,36 @@ class PackageOrderController extends Controller
 
             $order->refresh();
             $order->ensurePaymentPageToken();
+
+            // Generate invoice PDF for attachment
+            try {
+                $tempInvoice = (object)[
+                    'invoice_number' => $invoice->invoice_number,
+                    'client_name' => $invoice->client_name,
+                    'client_email' => $invoice->client_email,
+                    'client_phone' => $invoice->client_phone,
+                    'description' => $invoice->description,
+                    'amount' => $invoice->amount,
+                    'due_date' => $invoice->due_date,
+                    'created_at' => $invoice->created_at,
+                ];
+
+                $pdf = Pdf::loadView('receipts.invoice', [
+                    'order' => $order, 
+                    'invoice' => $tempInvoice
+                ]);
+                
+                $pdfContent = $pdf->output();
+
+                // Send email with invoice
+                Mail::to($order->client_email)->send(new PackageInvoiceMail($order, $invoice, $pdfContent));
+                Log::info('Invoice email sent', ['order' => $order->order_number, 'email' => $order->client_email]);
+            } catch (\Exception $e) {
+                Log::error('Failed to send invoice email', [
+                    'order' => $order->order_number,
+                    'error' => $e->getMessage()
+                ]);
+            }
 
             if ($order->payment_page_token) {
                 return redirect()->route('payment.show', ['checkout' => $order->payment_page_token])
@@ -510,7 +540,7 @@ class PackageOrderController extends Controller
         }
 
         // Generate receipt PDF
-        $pdf = \PDF::loadView('receipts.payment', compact('order'));
+        $pdf = Pdf::loadView('receipts.payment', compact('order'));
         
         return $pdf->download("receipt_{$order->order_number}.pdf");
     }

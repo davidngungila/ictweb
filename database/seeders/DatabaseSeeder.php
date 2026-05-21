@@ -30,5 +30,8 @@ class DatabaseSeeder extends Seeder
         
         // Seed clients
         $this->call(ClientSeeder::class);
+        
+        // Seed services and packages
+        $this->call(ServiceAndPackageSeeder::class);
     }
 }

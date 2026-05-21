@@ -9,31 +9,30 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Project extends Model
 {
     protected $fillable = [
-        'name',
+        'project_number',
+        'title',
         'description',
         'client_id',
-        'service_id',
+        'demo_request_id',
+        'service_type',
         'price',
+        'currency',
         'start_date',
         'end_date',
         'status',
         'progress_percentage',
-        'requirements',
-        'deliverables',
+        'current_stage',
+        'stages_completed',
         'notes',
-        'project_manager',
-        'priority',
+        'assigned_to',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
         'start_date' => 'date',
         'end_date' => 'date',
-        'status' => 'string',
         'progress_percentage' => 'integer',
-        'requirements' => 'array',
-        'deliverables' => 'array',
-        'priority' => 'string',
+        'stages_completed' => 'array',
     ];
 
     public function client(): BelongsTo
@@ -41,9 +40,9 @@ class Project extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function service(): BelongsTo
+    public function assignedUser(): BelongsTo
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 
     public function tasks(): HasMany

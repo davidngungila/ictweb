@@ -119,6 +119,16 @@ class InvoiceController extends Controller
             ->with('success', 'Invoice deleted successfully.');
     }
 
+    public function payments()
+    {
+        $payments = PackageOrder::whereNotNull('payment_status')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+            
+        return view('admin.payments.index', compact('payments'));
+    }
+}
+
     public function markAsPaid(Invoice $invoice)
     {
         $invoice->update([

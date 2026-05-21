@@ -31,7 +31,6 @@ class DemoRequest extends Model
 
     protected $casts = [
         'preferred_date' => 'date',
-        'preferred_time' => 'time',
         'estimated_value' => 'decimal:2',
         'urgency' => 'string',
         'status' => 'string',

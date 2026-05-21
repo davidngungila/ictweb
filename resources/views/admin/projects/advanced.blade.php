@@ -172,7 +172,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    <!-- Project 1 -->
+                    @forelse($projects as $project)
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <input type="checkbox" class="rounded border-gray-300">
@@ -180,391 +180,81 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fas fa-globe text-blue-600"></i>
+                                    <i class="fas fa-project-diagram text-blue-600"></i>
                                 </div>
                                 <div>
-                                    <div class="text-sm font-medium text-gray-900">E-commerce Platform</div>
-                                    <div class="text-sm text-gray-500">Web Development</div>
-                                    <div class="text-sm text-gray-500">Project ID: PRJ-001</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $project->title }}</div>
+                                    <div class="text-sm text-gray-500">{{ $project->service_type }}</div>
+                                    <div class="text-sm text-gray-500">ID: {{ $project->project_number }}</div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=TechCorp&background=3B82F6&color=fff" alt="TechCorp" class="w-8 h-8 rounded-full mr-3">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($project->client->name ?? 'Client') }}&background=3B82F6&color=fff" alt="Client" class="w-8 h-8 rounded-full mr-3">
                                 <div>
-                                    <div class="text-sm font-medium text-gray-900">TechCorp Inc.</div>
-                                    <div class="text-sm text-gray-500">Enterprise Client</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $project->client->name ?? 'Unknown Client' }}</div>
+                                    <div class="text-sm text-gray-500">{{ $project->client->company ?? 'No Company' }}</div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex -space-x-2">
-                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=10B981&color=fff" alt="John" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Sarah+Smith&background=F59E0B&color=fff" alt="Sarah" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=EF4444&color=fff" alt="Alex" class="w-6 h-6 rounded-full border-2 border-white">
-                                <div class="w-6 h-6 bg-gray-300 rounded-full border-2 border-white flex items-center justify-center">
-                                    <span class="text-xs text-gray-600">+2</span>
-                                </div>
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($project->assignedUser->name ?? 'User') }}&background=8B5CF6&color=fff" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="flex-1 mr-2">
                                     <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-600 h-2 rounded-full" style="width: 78%"></div>
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: {{ $project->progress_percentage }}%"></div>
                                     </div>
                                 </div>
-                                <span class="text-sm text-gray-900">78%</span>
+                                <span class="text-sm text-gray-900">{{ $project->progress_percentage }}%</span>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">$125,000</div>
-                            <div class="text-sm text-gray-500">$97,500 spent</div>
+                            <div class="text-sm text-gray-900">{{ $project->currency }} {{ number_format($project->price, 0) }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Jan 15 - Jun 30</div>
-                            <div class="text-sm text-green-600">On track</div>
+                            <div class="text-sm text-gray-900">
+                                @if($project->start_date) {{ $project->start_date->format('M d') }} @endif
+                                @if($project->end_date) - {{ $project->end_date->format('M d, Y') }} @endif
+                            </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                                In Progress
+                            @php
+                                $statusClasses = [
+                                    'pending' => 'bg-gray-100 text-gray-800',
+                                    'in_progress' => 'bg-blue-100 text-blue-800',
+                                    'completed' => 'bg-green-100 text-green-800',
+                                    'cancelled' => 'bg-red-100 text-red-800',
+                                ];
+                                $class = $statusClasses[$project->status] ?? 'bg-yellow-100 text-yellow-800';
+                            @endphp
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $class }}">
+                                {{ ucfirst(str_replace('_', ' ', $project->status)) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-blue-600 hover:text-blue-900 mr-2">View</button>
-                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                            <a href="{{ route('admin.projects.show', $project) }}" class="text-blue-600 hover:text-blue-900 mr-2">View</a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="text-gray-600 hover:text-gray-900">Edit</a>
                         </td>
                     </tr>
-
-                    <!-- Project 2 -->
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="rounded border-gray-300">
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fas fa-mobile-alt text-green-600"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">Mobile Banking App</div>
-                                    <div class="text-sm text-gray-500">Mobile Development</div>
-                                    <div class="text-sm text-gray-500">Project ID: PRJ-002</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=FinanceBank&background=10B981&color=fff" alt="FinanceBank" class="w-8 h-8 rounded-full mr-3">
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">Finance Bank</div>
-                                    <div class="text-sm text-gray-500">Financial Services</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex -space-x-2">
-                                <img src="https://ui-avatars.com/api/?name=Mike+Wilson&background=8B5CF6&color=fff" alt="Mike" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Emma+Davis&background=EC4899&color=fff" alt="Emma" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Chris+Lee&background=06B6D4&color=fff" alt="Chris" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-1 mr-2">
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 45%"></div>
-                                    </div>
-                                </div>
-                                <span class="text-sm text-gray-900">45%</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">$180,000</div>
-                            <div class="text-sm text-gray-500">$81,000 spent</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Feb 1 - Aug 15</div>
-                            <div class="text-sm text-orange-600">2 weeks behind</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
-                                At Risk
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-blue-600 hover:text-blue-900 mr-2">View</button>
-                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                    @empty
+                    <tr>
+                        <td colspan="9" class="px-6 py-10 text-center text-gray-500">
+                            No projects found.
                         </td>
                     </tr>
-
-                    <!-- Project 3 -->
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="rounded border-gray-300">
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fas fa-paint-brush text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">Brand Redesign</div>
-                                    <div class="text-sm text-gray-500">Design Project</div>
-                                    <div class="text-sm text-gray-500">Project ID: PRJ-003</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=StartupCo&background=8B5CF6&color=fff" alt="StartupCo" class="w-8 h-8 rounded-full mr-3">
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">StartupCo</div>
-                                    <div class="text-sm text-gray-500">Tech Startup</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex -space-x-2">
-                                <img src="https://ui-avatars.com/api/?name=Lisa+Anderson&background=EC4899&color=fff" alt="Lisa" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Tom+Brown&background=F59E0B&color=fff" alt="Tom" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-1 mr-2">
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-600 h-2 rounded-full" style="width: 92%"></div>
-                                    </div>
-                                </div>
-                                <span class="text-sm text-gray-900">92%</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">$45,000</div>
-                            <div class="text-sm text-gray-500">$41,400 spent</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Feb 1 - Mar 31</div>
-                            <div class="text-sm text-green-600">1 week ahead</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                On Track
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-blue-600 hover:text-blue-900 mr-2">View</button>
-                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
-                        </td>
-                    </tr>
-
-                    <!-- Project 4 -->
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="rounded border-gray-300">
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fas fa-check-circle text-gray-600"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">CRM System</div>
-                                    <div class="text-sm text-gray-500">Software Development</div>
-                                    <div class="text-sm text-gray-500">Project ID: PRJ-004</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=SalesPro&background=6B7280&color=fff" alt="SalesPro" class="w-8 h-8 rounded-full mr-3">
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">SalesPro Ltd.</div>
-                                    <div class="text-sm text-gray-500">SaaS Company</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex -space-x-2">
-                                <img src="https://ui-avatars.com/api/?name=David+Kim&background=059669&color=fff" alt="David" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Anna+White&background=DC2626&color=fff" alt="Anna" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=James+Chen&background=7C3AED&color=fff" alt="James" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Nina+Patel&background=DB2777&color=fff" alt="Nina" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-1 mr-2">
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-600 h-2 rounded-full" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                                <span class="text-sm text-gray-900">100%</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">$95,000</div>
-                            <div class="text-sm text-gray-500">$92,000 spent</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Jan 1 - Feb 28</div>
-                            <div class="text-sm text-green-600">Completed</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-                                Completed
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-blue-600 hover:text-blue-900 mr-2">View</button>
-                            <button class="text-gray-600 hover:text-gray-900">Archive</button>
-                        </td>
-                    </tr>
-
-                    <!-- Project 5 -->
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="rounded border-gray-300">
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fas fa-chart-line text-orange-600"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">Analytics Dashboard</div>
-                                    <div class="text-sm text-gray-500">Data Visualization</div>
-                                    <div class="text-sm text-gray-500">Project ID: PRJ-005</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=DataCorp&background=F59E0B&color=fff" alt="DataCorp" class="w-8 h-8 rounded-full mr-3">
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">DataCorp</div>
-                                    <div class="text-sm text-gray-500">Analytics Company</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex -space-x-2">
-                                <img src="https://ui-avatars.com/api/?name=Ryan+Moore&background=84CC16&color=fff" alt="Ryan" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Sophie+Turner&background=A855F7&color=fff" alt="Sophie" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-1 mr-2">
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-orange-600 h-2 rounded-full" style="width: 25%"></div>
-                                    </div>
-                                </div>
-                                <span class="text-sm text-gray-900">25%</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">$75,000</div>
-                            <div class="text-sm text-gray-500">$18,750 spent</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">May 1 - Jul 31</div>
-                            <div class="text-sm text-gray-500">On schedule</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                On Hold
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-blue-600 hover:text-blue-900 mr-2">View</button>
-                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
-                        </td>
-                    </tr>
-
-                    <!-- Project 6 -->
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="rounded border-gray-300">
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-10 w-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
-                                    <i class="fas fa-exclamation-triangle text-red-600"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">API Integration</div>
-                                    <div class="text-sm text-gray-500">Backend Development</div>
-                                    <div class="text-sm text-gray-500">Project ID: PRJ-006</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <img src="https://ui-avatars.com/api/?name=CloudTech&background=DC2626&color=fff" alt="CloudTech" class="w-8 h-8 rounded-full mr-3">
-                                <div>
-                                    <div class="text-sm font-medium text-gray-900">CloudTech Solutions</div>
-                                    <div class="text-sm text-gray-500">Cloud Services</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex -space-x-2">
-                                <img src="https://ui-avatars.com/api/?name=Kevin+Lee&background=059669&color=fff" alt="Kevin" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Rachel+Green&background=7C3AED&color=fff" alt="Rachel" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://ui-avatars.com/api/?name=Mark+Johnson&background=DB2777&color=fff" alt="Mark" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-1 mr-2">
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 15%"></div>
-                                    </div>
-                                </div>
-                                <span class="text-sm text-gray-900">15%</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">$110,000</div>
-                            <div class="text-sm text-gray-500">$16,500 spent</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Mar 15 - Jun 30</div>
-                            <div class="text-sm text-red-600">3 weeks behind</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                Critical
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-red-600 hover:text-red-900 mr-2">Urgent</button>
-                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
-                        </td>
-                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
 
         <!-- Pagination -->
         <div class="px-6 py-4 border-t border-gray-200">
-            <div class="flex items-center justify-between">
-                <div class="text-sm text-gray-700">
-                    Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">47</span> results
-                </div>
-                <div class="flex items-center space-x-2">
-                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50">Previous</button>
-                    <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded-md">1</button>
-                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50">2</button>
-                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50">3</button>
-                    <span class="px-3 py-1 text-sm text-gray-500">...</span>
-                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50">5</button>
-                    <button class="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50">Next</button>
-                </div>
-            </div>
+            {{ $projects->links() }}
         </div>
     </div>
 

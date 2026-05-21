@@ -69,287 +69,414 @@
     </div>
     <div class="services-grid">
       <div class="service-card" id="web-development">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Web Development</h3>
-        <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 400,000</span>
-        <a href="{{ route('services.web-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-card-image">
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" />
+          <div class="service-badge">Popular</div>
+        </div>
+        <div class="service-card-content">
+          <h3>Web Development</h3>
+          <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS and integrated mobile money payments.</p>
+          <div class="service-meta">
+            <span class="service-price">From TZS 400,000</span>
+            <div class="service-tags">
+              <span>E-commerce</span>
+              <span>CMS</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="{{ route('services.web-development') }}" class="btn-outline">Learn More</a>
+            <a href="{{ \App\Support\PackagePricing::wizardUrl(1) }}" class="btn-primary">Book Now</a>
+          </div>
+        </div>
       </div>
+
       <div class="service-card" id="mobile-apps">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Mobile App Development</h3>
-        <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 3,000,000</span>
-        <a href="{{ route('services.mobile-app-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-card-image">
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" />
+        </div>
+        <div class="service-card-content">
+          <h3>Mobile App Development</h3>
+          <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking platforms.</p>
+          <div class="service-meta">
+            <span class="service-price">From TZS 3,000,000</span>
+            <div class="service-tags">
+              <span>Android</span>
+              <span>iOS</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="{{ route('services.mobile-app-development') }}" class="btn-outline">Learn More</a>
+            <a href="{{ \App\Support\PackagePricing::wizardUrl(2) }}" class="btn-primary">Book Now</a>
+          </div>
+        </div>
       </div>
+
       <div class="service-card" id="networking">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Network Installation</h3>
-        <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
-        <a href="{{ route('services.network-installation') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-card-image">
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" />
+        </div>
+        <div class="service-card-content">
+          <h3>Network Installation</h3>
+          <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, and security configuration.</p>
+          <div class="service-meta">
+            <span class="service-price">From TZS 300,000</span>
+            <div class="service-tags">
+              <span>Wi-Fi</span>
+              <span>Infrastructure</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="{{ route('services.network-installation') }}" class="btn-outline">Learn More</a>
+            <a href="{{ \App\Support\PackagePricing::wizardUrl(3) }}" class="btn-primary">Book Now</a>
+          </div>
+        </div>
       </div>
+
       <div class="service-card" id="cybersecurity">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Cybersecurity</h3>
-        <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
-        <a href="{{ route('services.cybersecurity') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-card-image">
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" />
+        </div>
+        <div class="service-card-content">
+          <h3>Cybersecurity</h3>
+          <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, and TCRA & GDPR compliance support.</p>
+          <div class="service-meta">
+            <span class="service-price">From TZS 300,000</span>
+            <div class="service-tags">
+              <span>Security</span>
+              <span>Compliance</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="{{ route('services.cybersecurity') }}" class="btn-outline">Learn More</a>
+            <a href="{{ \App\Support\PackagePricing::wizardUrl(4) }}" class="btn-primary">Book Now</a>
+          </div>
+        </div>
       </div>
+
       <div class="service-card" id="it-support">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>IT Support</h3>
-        <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 150,000/mo</span>
-        <a href="{{ route('services.it-support') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-card-image">
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" />
+        </div>
+        <div class="service-card-content">
+          <h3>IT Support</h3>
+          <p>Reliable ongoing IT support from remote troubleshooting to on-site service. Monthly retainer plans with guaranteed SLAs.</p>
+          <div class="service-meta">
+            <span class="service-price">From TZS 150,000/mo</span>
+            <div class="service-tags">
+              <span>24/7 Support</span>
+              <span>Maintenance</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="{{ route('services.it-support') }}" class="btn-outline">Learn More</a>
+            <a href="{{ \App\Support\PackagePricing::wizardUrl(5) }}" class="btn-primary">Book Now</a>
+          </div>
+        </div>
       </div>
+
       <div class="service-card" id="consultancy">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>ICT Consultancy</h3>
-        <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 500,000</span>
-        <a href="{{ route('services.ict-consultancy') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/male-electrician-works-switchboard-overalls-against-backdrop-emergency-lighting_xpsb7u.jpg" alt="CCTV & Security Systems" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>CCTV &amp; Security Systems</h3>
-        <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 2,000,000</span>
-        <a href="{{ route('package.selection') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
+        <div class="service-card-image">
+          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" />
+        </div>
+        <div class="service-card-content">
+          <h3>ICT Consultancy</h3>
+          <p>Strategic digital transformation guidance. We audit your existing infrastructure and build technology roadmaps.</p>
+          <div class="service-meta">
+            <span class="service-price">From TZS 500,000</span>
+            <div class="service-tags">
+              <span>Strategy</span>
+              <span>Audit</span>
+            </div>
+          </div>
+          <div class="service-actions">
+            <a href="{{ route('services.ict-consultancy') }}" class="btn-outline">Learn More</a>
+            <a href="{{ \App\Support\PackagePricing::wizardUrl(6) }}" class="btn-primary">Book Now</a>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+  }
+
+  .service-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-card-image img {
+    transform: scale(1.1);
+  }
+
+  .service-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .service-card-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--navy);
+  }
+
+  .service-card-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .service-meta {
+    margin-bottom: 25px;
+  }
+
+  .service-price {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .service-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .service-tags span {
+    background: #f0f7ff;
+    color: #3182ce;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .service-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .btn-outline {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 2px solid var(--accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-bright);
+    border-color: var(--accent-bright);
+    transform: translateY(-2px);
+  }
+</style>
   </div>
 </section>
 
 <!-- EXTRA ADD-ON SERVICES -->
-<section class="extra-addons">
+<section class="extra-addons" style="padding: 80px 0; background: #f8fafc;">
   <div class="container">
-    <div class="section-header" style="text-align:center;max-width:700px;margin:0 auto 50px;">
+    <div class="section-header" style="text-align:center; max-width:800px; margin:0 auto 60px;">
       <div class="section-label"><i class="fas fa-rocket"></i> Extra Add-On Services</div>
-      <h2 style="font-size:2.2rem;margin-bottom:15px;">Supercharge Your Project</h2>
-      <p style="color:var(--text-light);">Enhance any package with these additional features tailored to your business needs.</p>
+      <h2 style="font-size:2.5rem; margin-bottom:20px; color: var(--navy);">Supercharge Your <span>Project</span></h2>
+      <p style="color: #666; font-size: 1.1rem;">Enhance any package with these additional features tailored to your business needs.</p>
     </div>
 
-    <!-- Marketing & Growth -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">🚀 Marketing & Growth</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Travel Blog + 5 Posts</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">High-quality content to boost SEO and attract visitors</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+    <div class="addons-container">
+      @foreach(\App\Support\PackagePricing::addonCatalog() as $group)
+        <div class="addon-group">
+          <h3 class="addon-group-title">{{ $group['heading'] }}</h3>
+          <div class="addon-grid-new">
+            @foreach($group['items'] as $item)
+              <div class="addon-card-new">
+                <div class="addon-icon-circle">
+                  <i class="fas fa-check"></i>
+                </div>
+                <div class="addon-info-new">
+                  <h4>{{ $item['name'] }}</h4>
+                  <p>{{ $item['desc'] }}</p>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                    <span class="addon-price-new">{{ $item['price_label'] }}</span>
+                    <a href="{{ route('package.selection', ['addon' => $item['slug']]) }}" class="btn-primary" style="padding: 6px 15px; font-size: 0.85rem; border-radius: 8px;">Book Now</a>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          </div>
         </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Advanced SEO Package</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Deep keyword optimization, technical SEO, and ranking strategy</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 – 600,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Social Media Auto-Posting</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automatically publish content to Facebook, Instagram, and more</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Email Marketing Setup</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Campaign setup, templates, and automation</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Analytics & Tracking Setup (Advanced)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Google Analytics, Facebook Pixel, and conversion tracking</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000</div>
-        </div>
-      </div>
+      @endforeach
     </div>
 
-    <!-- Automation & AI -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">🤖 Automation & AI</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Google Services Automation</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automate reports, invoices, dashboards, and workflows (Sheets, Docs, Slides, Drive)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">AI Chatbot Integration</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automated customer support and smart replies (Website + WhatsApp)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Bulk SMS System Setup</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Send SMS campaigns directly from your system (Admin Panel)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Extra SMS Credits (100 Pack)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Additional SMS bundles for campaigns and notifications</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 50,000</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Payments & Integrations -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">💳 Payments & Integrations</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Online Payment Integration</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Integrate M-Pesa, Airtel Money, cards, and APIs like Snippe</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">API Integration (Any System)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Connect your system with external services (SMS, CRM, payments)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000 – 400,000</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Systems & Features -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">🖥️ Systems & Features</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Admin Dashboard System</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Manage users, reports, payments, and operations (Custom CMS)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 – 700,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Booking & Reservation System</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Online booking with calendar and notifications</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">E-commerce Store Setup</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Sell products/services with cart and checkout</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 350,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Custom Tour Map & Itinerary Builder</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Interactive travel/tour planning system</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Communication & Support -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">💬 Communication & Support</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">WhatsApp Business API Integration</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automated messaging and customer engagement</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Live Chat Support System</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Real-time website chat support</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 180,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Push Notifications (Web + Mobile)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Instant alerts for offers and updates</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 120,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Emergency 24/7 Support</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Priority technical support anytime</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000/month</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Localization & Branding -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">🌍 Localization & Branding</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Multi-Language (DE / FR / IT)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Reach international customers</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 per language</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Logo Design + Brand Kit</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Professional branding package</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Domain + Professional Email Setup</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Custom business emails (e.g. info@yourdomain.com)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 80,000</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Security & Performance -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">⚙️ Security, Performance & Infrastructure</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Website Speed Optimization</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Improve performance and loading speed</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 120,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Security Hardening & Firewall Setup</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Protect against hacking and vulnerabilities</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Cloud Backup & Disaster Recovery</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automatic backups and restore solutions</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000/month</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Monthly Performance Report</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Detailed insights on system performance</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 80,000/month</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- System Auditing -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">🔍 System Auditing (Premium)</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">System Audit & Performance Review</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Full inspection: security, performance, code, APIs. Includes vulnerability check, payment & API audit, SEO review</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000 – 500,000</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Monthly System Monitoring & Audit</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Continuous monitoring, alerts, and optimization</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000/month</div>
-        </div>
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Penetration Testing (Advanced Security)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Simulated real-world attacks to test system security</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 400,000+</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile & Advanced -->
-    <div style="margin-bottom: 40px;">
-      <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.3rem;">📱 Mobile & Advanced</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
-          <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Mobile App (Android – Basic)</div>
-          <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Convert your system into a mobile app</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 800,000+</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 50px;">
-      <a href="{{ route('package.selection') }}" class="btn-primary" style="padding: 15px 40px; font-size: 1.1rem; border-radius: 50px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; cursor: pointer; transition: transform 0.2s; text-decoration: none; display: inline-block;">
-        <i class="fas fa-arrow-right"></i> Select Add-Ons & Get Started
+    <div style="text-align: center; margin-top: 60px;">
+      <a href="{{ route('package.selection') }}" class="btn-primary-large">
+        Get Started & Choose Add-Ons <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  .addons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .addon-group-title {
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+  }
+
+  .addon-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .addon-card-new {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #edf2f7;
+    display: flex;
+    gap: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .addon-card-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+  }
+
+  .addon-icon-circle {
+    width: 40px;
+    height: 40px;
+    background: #f0f7ff;
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .addon-info-new h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--navy);
+  }
+
+  .addon-info-new p {
+    font-size: 0.9rem;
+    color: #718096;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .addon-price-new {
+    display: block;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+
+  .btn-primary-large {
+    background: var(--accent);
+    color: white;
+    padding: 20px 45px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 10px 25px rgba(0,102,204,0.3);
+    transition: all 0.3s;
+  }
+
+  .btn-primary-large:hover {
+    background: var(--accent-bright);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,102,204,0.4);
+  }
+</style>
 
 <!-- CTA BANNER -->
 <div class="cta-banner">

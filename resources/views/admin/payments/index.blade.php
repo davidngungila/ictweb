@@ -229,27 +229,19 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    <!-- Advanced Payment 1 -->
+                    @forelse($payments as $payment)
                     <tr class="hover:bg-gray-50 transition-colors">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <input type="checkbox" class="rounded border-gray-300">
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <div class="h-12 w-12 flex-shrink-0 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-check-circle text-green-600 text-lg"></i>
+                                <div class="h-12 w-12 flex-shrink-0 {{ $payment->payment_status == 'paid' ? 'bg-green-100' : 'bg-yellow-100' }} rounded-lg flex items-center justify-center">
+                                    <i class="fas {{ $payment->payment_status == 'paid' ? 'fa-check-circle text-green-600' : 'fa-clock text-yellow-600' }} text-lg"></i>
                                 </div>
                                 <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">#TRX-2024-0892</div>
-                                    <div class="text-sm text-gray-500">Professional Plus Plan</div>
-                                    <div class="flex items-center mt-1">
-                                        <span class="text-xs text-gray-500">
-                                            <i class="fas fa-shield-alt text-green-400"></i> Verified
-                                        </span>
-                                        <span class="text-xs text-gray-500 ml-2">
-                                            <i class="fas fa-receipt text-blue-400"></i> Invoiced
-                                        </span>
-                                    </div>
+                                    <div class="text-sm font-medium text-gray-900">#{{ $payment->order_number }}</div>
+                                    <div class="text-sm text-gray-500">{{ \App\Models\Service::find($payment->service_id)->name ?? 'Service' }}</div>
                                 </div>
                             </div>
                         </td>
@@ -259,149 +251,45 @@
                                     <i class="fas fa-user text-gray-500 text-xs"></i>
                                 </div>
                                 <div class="ml-3">
-                                    <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
-                                    <div class="text-xs text-gray-500">sarah@company.com</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $payment->client_name }}</div>
+                                    <div class="text-xs text-gray-500">{{ $payment->client_email }}</div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm font-bold text-gray-900">$599.00</div>
-                            <div class="text-xs text-gray-500">USD</div>
+                            <div class="text-sm font-bold text-gray-900">TZS {{ number_format($payment->advance_payment, 0) }}</div>
+                            <div class="text-xs text-gray-500">Deposit</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="text-sm text-gray-900">Credit Card</div>
-                                <div class="ml-2 flex items-center">
-                                    <i class="fab fa-cc-visa text-blue-600"></i>
-                                </div>
-                            </div>
-                            <div class="text-xs text-gray-500">•••• 4242</div>
+                            <div class="text-sm text-gray-900">{{ ucfirst($payment->payment_method ?? 'Snippe') }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Mar 29, 2024</div>
-                            <div class="text-xs text-gray-500">2:34 PM</div>
+                            <div class="text-sm text-gray-900">{{ $payment->created_at->format('M d, Y') }}</div>
+                            <div class="text-xs text-gray-500">{{ $payment->created_at->format('h:i A') }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                Completed
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $payment->payment_status == 'paid' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                {{ ucfirst($payment->payment_status) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="text-sm text-gray-900">2.1s</div>
-                                <div class="ml-2 w-16 bg-gray-200 rounded-full h-2">
-                                    <div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="text-xs text-green-600">Fast</div>
+                            <div class="text-sm text-gray-900">{{ $payment->payment_reference ?? 'N/A' }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex space-x-1">
-                                <button class="text-blue-600 hover:text-blue-900 p-1" title="View Details">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="text-green-600 hover:text-green-900 p-1" title="Receipt">
-                                    <i class="fas fa-receipt"></i>
-                                </button>
-                                <button class="text-purple-600 hover:text-purple-900 p-1" title="Refund">
-                                    <i class="fas fa-undo"></i>
-                                </button>
-                                <button class="text-yellow-600 hover:text-yellow-900 p-1" title="Dispute">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </button>
-                                <button class="text-red-600 hover:text-red-900 p-1" title="Void">
-                                    <i class="fas fa-ban"></i>
-                                </button>
+                                <a href="{{ route('payment.show', $payment->payment_page_token) }}" target="_blank" class="text-blue-600 hover:text-blue-900 p-1" title="View Checkout">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
-                    
-                    <!-- Advanced Payment 2 -->
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="rounded border-gray-300">
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-12 w-12 flex-shrink-0 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-clock text-yellow-600 text-lg"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">#TRX-2024-0891</div>
-                                    <div class="text-sm text-gray-500">Standard Business Plan</div>
-                                    <div class="flex items-center mt-1">
-                                        <span class="text-xs text-gray-500">
-                                            <i class="fas fa-hourglass-half text-yellow-400"></i> Processing
-                                        </span>
-                                        <span class="text-xs text-gray-500 ml-2">
-                                            <i class="fas fa-sync text-blue-400"></i> Auto-retry
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="h-8 w-8 flex-shrink-0 bg-gray-200 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-user text-gray-500 text-xs"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <div class="text-sm font-medium text-gray-900">Michael Chen</div>
-                                    <div class="text-xs text-gray-500">m.chen@techcorp.io</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm font-bold text-gray-900">$299.00</div>
-                            <div class="text-xs text-gray-500">USD</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="text-sm text-gray-900">Bank Transfer</div>
-                                <div class="ml-2 flex items-center">
-                                    <i class="fas fa-university text-gray-600"></i>
-                                </div>
-                            </div>
-                            <div class="text-xs text-gray-500">ACH-1234</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Mar 29, 2024</div>
-                            <div class="text-xs text-gray-500">1:15 PM</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                Pending
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="text-sm text-gray-900">4.8s</div>
-                                <div class="ml-2 w-16 bg-gray-200 rounded-full h-2">
-                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 60%"></div>
-                                </div>
-                            </div>
-                            <div class="text-xs text-yellow-600">Slow</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div class="flex space-x-1">
-                                <button class="text-blue-600 hover:text-blue-900 p-1" title="View Details">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="text-green-600 hover:text-green-900 p-1" title="Verify">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                                <button class="text-purple-600 hover:text-purple-900 p-1" title="Retry">
-                                    <i class="fas fa-redo"></i>
-                                </button>
-                                <button class="text-yellow-600 hover:text-yellow-900 p-1" title="Cancel">
-                                    <i class="fas fa-times-circle"></i>
-                                </button>
-                                <button class="text-red-600 hover:text-red-900 p-1" title="Delete">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
+                    @empty
+                    <tr>
+                        <td colspan="9" class="px-6 py-10 text-center text-gray-500">
+                            No payments found.
                         </td>
                     </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

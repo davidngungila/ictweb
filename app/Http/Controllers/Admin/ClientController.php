@@ -10,9 +10,27 @@ use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.clients.index');
+        $query = Client::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('company_name', 'like', "%{$search}%");
+            });
+        }
+
+        $clients = $query->orderBy('created_at', 'desc')->paginate(15);
+        
+        $stats = [
+            'total' => Client::count(),
+            'new_this_month' => Client::whereMonth('created_at', now()->month)->count(),
+        ];
+
+        return view('admin.clients.index', compact('clients', 'stats'));
     }
 
     public function data(Request $request)

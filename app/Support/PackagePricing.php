@@ -220,6 +220,37 @@ class PackagePricing
      */
     public static function matrixForJs(): array
     {
+        // Try to pull from database first for "database direct" behavior
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('packages')) {
+                $dbPackages = \App\Models\Package::where('status', 'active')
+                    ->orderBy('service_id')
+                    ->orderBy('sort_order')
+                    ->get()
+                    ->groupBy('service_id');
+
+                if ($dbPackages->isNotEmpty()) {
+                    $out = [];
+                    foreach ($dbPackages as $sid => $packages) {
+                        $serviceTiers = [];
+                        foreach ($packages as $p) {
+                            $serviceTiers[(int) $p->sort_order ?: $p->id] = [
+                                'name' => $p->name,
+                                'price' => (int) $p->price,
+                                'desc' => $p->description,
+                                'features' => is_array($p->features) ? $p->features : json_decode($p->features, true) ?? [],
+                                'popular' => (bool) $p->is_popular,
+                            ];
+                        }
+                        $out[(string) $sid] = $serviceTiers;
+                    }
+                    return $out;
+                }
+            }
+        } catch (\Exception $e) {
+            // Fallback to static data if DB fails
+        }
+
         $out = [];
         foreach ([1, 2, 3, 4, 5, 6] as $sid) {
             $out[(string) $sid] = self::packagesForService($sid);
@@ -361,10 +392,11 @@ class PackagePricing
     public static function advanceFractionForPlan(?string $plan): float
     {
         return match ($plan) {
-            'startup' => 0.50,
-            'standard' => 0.40,
-            'enterprise', 'one_time', 'milestone', 'monthly', null, '' => 0.30,
-            default => 0.30,
+            'startup'    => 0.50,
+            'standard'   => 0.40,
+            'enterprise' => 0.30,
+            'full'       => 1.00,
+            default      => 0.50,
         };
     }
 

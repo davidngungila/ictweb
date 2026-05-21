@@ -1,187 +1,323 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <title>Invoice - Jezdan Technology</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f5f5f5;
+            color: #333;
+            background: #fff;
+            line-height: 1.5;
         }
-        .invoice {
-            background: white;
+        .invoice-box {
             max-width: 800px;
-            margin: 0 auto;
+            margin: auto;
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
         }
         .header-image {
             width: 100%;
             display: block;
         }
-        .header-content {
-            padding: 30px 40px;
+        .content {
+            padding: 40px;
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+        .invoice-header {
+            display: table;
+            width: 100%;
+            margin-bottom: 40px;
         }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #0066cc;
+        .header-left {
+            display: table-cell;
+            vertical-align: top;
         }
-        .invoice-details {
+        .header-right {
+            display: table-cell;
+            vertical-align: top;
             text-align: right;
         }
-        .invoice-number {
-            font-size: 18px;
+        .title {
+            font-size: 32px;
             font-weight: bold;
+            color: #0066cc;
+            margin: 0;
+            text-transform: uppercase;
         }
-        .invoice-date {
+        .invoice-meta {
+            margin-top: 10px;
+            font-size: 14px;
             color: #666;
-            margin-top: 5px;
         }
-        .section {
-            margin-bottom: 30px;
-            padding: 0 40px;
+        .invoice-meta b {
+            color: #333;
         }
-        .section-title {
+        .billing-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .billing-col {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+        }
+        .billing-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
+            display: inline-block;
+        }
+        .billing-info {
+            font-size: 15px;
+        }
+        .billing-info b {
             font-size: 16px;
-            font-weight: bold;
+        }
+        table.items {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        table.items th {
+            background: #f8fafc;
             color: #333;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
+            text-align: left;
+            padding: 12px 15px;
+            font-size: 14px;
+            border-bottom: 2px solid #eee;
         }
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
+        table.items td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
         }
-        .info-label {
-            color: #666;
-            font-weight: 500;
-        }
-        .info-value {
-            font-weight: 600;
-            color: #333;
+        .totals-section {
+            margin-left: auto;
+            width: 300px;
         }
         .total-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 40px;
-            background: #f0f8ff;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
+            display: table;
+            width: 100%;
+            margin-bottom: 10px;
         }
         .total-label {
-            color: #0066cc;
-        }
-        .total-value {
-            color: #0066cc;
-        }
-        .footer {
-            margin-top: 40px;
-            padding: 20px 40px;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
+            display: table-cell;
+            text-align: right;
+            padding-right: 20px;
             color: #666;
             font-size: 14px;
         }
-        .note-box {
-            margin: 20px 40px;
+        .total-value {
+            display: table-cell;
+            text-align: right;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .grand-total {
+            background: #0066cc;
+            color: white;
             padding: 15px;
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #856404;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .grand-total .total-label {
+            color: white;
+            font-weight: bold;
+        }
+        .grand-total .total-value {
+            font-size: 20px;
+        }
+        .payment-link-box {
+            margin-top: 40px;
+            text-align: center;
+            background: #f0f7ff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px dashed #0066cc;
+        }
+        .btn-pay {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        .note {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div class="invoice">
+    <div class="invoice-box">
         <!-- Header Image -->
-        @if(isset($invoice->header_image) && $invoice->header_image)
-            <img src="{{ $invoice->header_image }}" alt="Jezdan Technology Header" class="header-image" style="display: block;">
-        @else
-            <img src="{{ url('header_pdf.png') }}" alt="Jezdan Technology Header" class="header-image" style="display: block;">
-        @endif
+        @php
+            $headerImage = public_path('header_pdf.png');
+            $headerBase64 = '';
+            if (file_exists($headerImage)) {
+                $headerBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($headerImage));
+            }
+        @endphp
         
-        <div class="header-content">
-            <div class="header">
-                <div style="width: 100%; border-bottom: 2px solid #0066cc; padding-bottom: 20px;">
-                    <!-- Horizontal line instead of logo -->
+        @if($headerBase64)
+            <img src="{{ $headerBase64 }}" alt="Jezdan Technology Header" class="header-image">
+        @else
+            <div style="padding: 20px; background: #0066cc; color: white; text-align: center; font-weight: bold;">
+                JEZDAN TECHNOLOGY
+            </div>
+        @endif
+
+        <div class="content">
+            <div class="invoice-header">
+                <div class="header-left">
+                    <h1 class="title">Invoice</h1>
+                    <div class="invoice-meta">
+                        Order #: <b>{{ $order->order_number }}</b><br>
+                        Invoice #: <b>{{ $invoice->invoice_number }}</b>
+                    </div>
                 </div>
-                <div class="invoice-details" style="text-align: right;">
-                    <div class="invoice-number">Invoice #{{ $invoice->invoice_number }}</div>
-                    <div class="invoice-date">Date: {{ $invoice->created_at->format('d M Y') }}</div>
-                    <div class="invoice-date">Due: {{ $invoice->due_date->format('d M Y') }}</div>
+                <div class="header-right">
+                    <div class="invoice-meta">
+                        Date: <b>{{ \Carbon\Carbon::parse($invoice->created_at)->format('d M Y') }}</b><br>
+                        Due Date: <b>{{ \Carbon\Carbon::parse($invoice->due_date)->format('d M Y') }}</b>
+                    </div>
                 </div>
             </div>
 
-            <div class="section">
-                <div class="section-title">Bill To</div>
-                <div class="info-row">
-                    <span class="info-label">Name</span>
-                    <span class="info-value">{{ $invoice->client_name }}</span>
+            <div class="billing-grid">
+                <div class="billing-col">
+                    <div class="billing-title">Bill To</div>
+                    <div class="billing-info">
+                        <b>{{ $invoice->client_name }}</b><br>
+                        {{ $invoice->client_email }}<br>
+                        {{ $invoice->client_phone }}
+                    </div>
                 </div>
-                <div class="info-row">
-                    <span class="info-label">Email</span>
-                    <span class="info-value">{{ $invoice->client_email }}</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Phone</span>
-                    <span class="info-value">{{ $invoice->client_phone }}</span>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Order Details</div>
-                <div class="info-row">
-                    <span class="info-label">Order Number</span>
-                    <span class="info-value">{{ $order->order_number }}</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Service</span>
-                    <span class="info-value">{{ $invoice->description }}</span>
+                <div class="billing-col" style="text-align: right;">
+                    <div class="billing-title">From</div>
+                    <div class="billing-info">
+                        <b>Jezdan Technology</b><br>
+                        Dar es Salaam, Tanzania<br>
+                        info@jezdantech.com<br>
+                        +255 685 847 002
+                    </div>
                 </div>
             </div>
 
-            <div class="section">
-                <div class="section-title">Payment Summary</div>
-                <div class="info-row">
-                    <span class="info-label">Total Package Amount</span>
-                    <span class="info-value">TZS {{ number_format($order->total_price, 0) }}</span>
+            <table class="items">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th style="text-align: right;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style="font-weight: bold; font-size: 16px; color: #0066cc; margin-bottom: 5px;">
+                                {{ \App\Models\Service::find($order->service_id)->name ?? 'Service' }} - 
+                                {{ \App\Support\PackagePricing::package($order->service_id, $order->package_id)['name'] ?? 'Package' }}
+                            </div>
+                            
+                            <div style="margin-top: 10px;">
+                                <div style="font-weight: bold; font-size: 13px; color: #666; text-transform: uppercase;">Included Features:</div>
+                                <ul style="margin: 5px 0; padding-left: 20px; font-size: 13px; color: #555;">
+                                    @foreach($order->selected_features ?? [] as $feature)
+                                        <li>{{ $feature }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            @if(!empty($order->selected_addons))
+                            <div style="margin-top: 10px;">
+                                <div style="font-weight: bold; font-size: 13px; color: #666; text-transform: uppercase;">Extra Add-Ons:</div>
+                                <ul style="margin: 5px 0; padding-left: 20px; font-size: 13px; color: #555;">
+                                    @php $addonCatalog = \App\Support\PackagePricing::addonPrices(); @endphp
+                                    @foreach($order->selected_addons as $addonSlug)
+                                        <li>{{ ucwords(str_replace('_', ' ', $addonSlug)) }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+
+                            @if($order->notes)
+                            <div style="margin-top: 10px; padding: 10px; background: #f9f9f9; border-left: 3px solid #ddd; font-size: 13px;">
+                                <strong>Client Notes:</strong> {{ $order->notes }}
+                            </div>
+                            @endif
+                            
+                            <div style="margin-top: 15px; font-size: 12px; color: #999; border-top: 1px dashed #eee; padding-top: 5px;">
+                                Full Project Amount: TZS {{ number_format($order->total_price, 0) }}
+                            </div>
+                        </td>
+                        <td style="text-align: right; font-weight: bold; vertical-align: top;">TZS {{ number_format($order->total_price, 0) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="totals-section">
+                <div class="total-row">
+                    <div class="total-label">Subtotal</div>
+                    <div class="total-value">TZS {{ number_format($order->total_price, 0) }}</div>
                 </div>
-                <div class="info-row" style="background: #f0f8ff; padding: 10px; border-radius: 5px; margin: 5px -40px; padding-left: 40px; padding-right: 40px;">
-                    <span class="info-label" style="color: #0066cc; font-weight: bold;">Advance Payment (30%)</span>
-                    <span class="info-value" style="color: #0066cc; font-weight: bold;">TZS {{ number_format($order->advance_payment, 0) }}</span>
+                <div class="total-row">
+                    <div class="total-label">Tax (0%)</div>
+                    <div class="total-value">TZS 0</div>
                 </div>
-                <div class="info-row">
-                    <span class="info-label">Remaining Balance (70%)</span>
-                    <span class="info-value">TZS {{ number_format($order->remaining_balance, 0) }}</span>
+                <div class="total-row">
+                    <div class="total-label">Total Amount</div>
+                    <div class="total-value">TZS {{ number_format($order->total_price, 0) }}</div>
+                </div>
+                <div class="total-row" style="color: #0066cc; margin-top: 10px;">
+                    @php
+                        $advancePercent = $order->total_price > 0 ? round(($order->advance_payment / $order->total_price) * 100) : 0;
+                    @endphp
+                    <div class="total-label" style="color: #0066cc;">Advance Payment ({{ $advancePercent }}%)</div>
+                    <div class="total-value">TZS {{ number_format($order->advance_payment, 0) }}</div>
+                </div>
+                
+                <div class="total-row grand-total">
+                    <div class="total-label">Amount Due Now</div>
+                    <div class="total-value">TZS {{ number_format($invoice->amount, 0) }}</div>
                 </div>
             </div>
 
-            <div class="total-row">
-                <span class="total-label">Amount Due Now (30% Advance)</span>
-                <span class="total-value">TZS {{ number_format($invoice->amount, 0) }}</span>
+            @if(isset($order->payment_page_token))
+            <div class="payment-link-box">
+                <div style="font-weight: bold; color: #0066cc; margin-bottom: 5px;">Ready to start your project?</div>
+                <div style="font-size: 14px; color: #666;">Click the button below to pay your deposit securely via Mobile Money or Card.</div>
+                <a href="{{ route('payment.show', ['checkout' => $order->payment_page_token]) }}" class="btn-pay">PAY DEPOSIT NOW</a>
             </div>
+            @endif
 
-            <div class="note-box">
-                <strong>Note:</strong> This is a 30% advance payment invoice. The remaining balance of TZS {{ number_format($order->remaining_balance, 0) }} will be due upon project completion.
+            <div class="note">
+                <b>Note:</b> Work on your project will begin immediately after the advance payment is received. The remaining balance of TZS {{ number_format($order->remaining_balance, 0) }} will be due according to the agreed payment schedule.
             </div>
 
             <div class="footer">
-                <p>Thank you for choosing Jezdan Technology!</p>
-                <p>Contact: info@jezdantech.com | Phone: +255 XXX XXX XXX</p>
-                <p>Dar es Salaam, Tanzania</p>
+                <p>This is a computer-generated document. No signature is required.</p>
+                <p>&copy; {{ date('Y') }} Jezdan Technology. All rights reserved.</p>
             </div>
         </div>
     </div>

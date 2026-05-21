@@ -9,9 +9,32 @@ use Illuminate\Support\Facades\Validator;
 
 class DemoRequestController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.demo-requests.index');
+        $query = DemoRequest::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('company_name', 'like', "%{$search}%")
+                  ->orWhere('contact_person', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $demoRequests = $query->orderBy('created_at', 'desc')->paginate(15);
+        
+        $stats = [
+            'total' => DemoRequest::count(),
+            'pending' => DemoRequest::where('status', 'pending')->count(),
+            'completed' => DemoRequest::where('status', 'completed')->count(),
+        ];
+
+        return view('admin.demo-requests.advanced', compact('demoRequests', 'stats'));
     }
 
     public function data(Request $request)

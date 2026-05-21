@@ -13,9 +13,29 @@ use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.projects.index');
+        $query = Project::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $projects = $query->orderBy('created_at', 'desc')->paginate(15);
+        
+        $stats = [
+            'total' => Project::count(),
+            'active' => Project::where('status', 'active')->count(),
+            'completed' => Project::where('status', 'completed')->count(),
+        ];
+
+        return view('admin.projects.advanced', compact('projects', 'stats'));
     }
 
     public function data(Request $request)
@@ -25,7 +45,7 @@ class ProjectController extends Controller
         // Search
         if ($request->has('search')) {
             $search = $request->get('search');
-            $query->where('name', 'LIKE', "%{$search}%")
+            $query->where('title', 'LIKE', "%{$search}%")
                   ->orWhere('description', 'LIKE', "%{$search}%")
                   ->orWhereHas('client', function($q) use ($search) {
                       $q->where('name', 'LIKE', "%{$search}%");

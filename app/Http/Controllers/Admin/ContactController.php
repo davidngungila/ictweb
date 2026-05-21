@@ -12,12 +12,6 @@ class ContactController extends Controller
     {
         $query = ContactSubmission::query();
 
-        // Filter by status
-        if ($request->filled('status')) {
-            $query->byStatus($request->status);
-        }
-
-        // Search
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
@@ -27,9 +21,18 @@ class ContactController extends Controller
             });
         }
 
-        $contacts = $query->orderBy('created_at', 'desc')->paginate(15);
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
 
-        return view('admin.contacts.index', compact('contacts'));
+        $contacts = $query->orderBy('created_at', 'desc')->paginate(15);
+        
+        $stats = [
+            'total' => ContactSubmission::count(),
+            'unread' => ContactSubmission::where('status', 'new')->count(),
+        ];
+
+        return view('admin.contacts.advanced', compact('contacts', 'stats'));
     }
 
     public function show(ContactSubmission $contact)

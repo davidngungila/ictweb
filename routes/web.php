@@ -182,9 +182,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/offers/export', [OfferController::class, 'export'])->name('offers.export');
         
         // Payments
-        Route::get('/payments', function() {
-            return view('admin.payments.index');
-        })->name('payments.index');
+        Route::get('/payments', [InvoiceController::class, 'payments'])->name('payments.index');
         
         // Roles
         Route::get('/roles', function() {
@@ -298,21 +296,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('tasks.deadlines');
         
         // Advanced Management Pages
-        Route::get('/demo-requests', function() {
-            return view('admin.demo-requests.advanced');
-        })->name('demo-requests.advanced');
+        Route::get('/demo-requests', [DemoRequestController::class, 'index'])->name('demo-requests.advanced');
         
-        Route::get('/contacts', function() {
-            return view('admin.contacts.advanced');
-        })->name('contacts.advanced');
+        Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.advanced');
         
-        Route::get('/projects', function() {
-            return view('admin.projects.advanced');
-        })->name('projects.advanced');
+        Route::get('/projects', [ProjectController::class, 'index'])->name('projects.advanced');
         
-        Route::get('/services', function() {
-            return view('admin.services.advanced');
-        })->name('services.advanced');
+        Route::get('/services', [ServiceController::class, 'index'])->name('services.advanced');
         
         // Advanced Tasks Management
         Route::get('/tasks/advanced', function() {
@@ -341,9 +331,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('settings.sms');
         
         // Financial
-        Route::get('/finances/overview', function() {
-            return view('admin.finances.overview');
-        })->name('finances.overview');
+        Route::get('/finances/overview', [DashboardController::class, 'financeOverview'])->name('finances.overview');
         
         Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
         Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');

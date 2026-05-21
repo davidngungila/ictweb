@@ -508,127 +508,460 @@
           <h3 class="section-title">
             <i class="fas fa-cog"></i> Select Service *
           </h3>
-          <div class="service-grid">
-            <label class="service-card {{ (string) old('service_id', request('service_id')) === '1' ? 'selected' : '' }}">
-              <input type="radio" name="service_id" value="1" {{ (string) old('service_id', request('service_id')) === '1' ? 'checked' : '' }} required>
-              <div class="service-icon"><i class="fas fa-code"></i></div>
-              <div class="service-name">Web Development</div>
-              <div class="service-desc">Custom websites for all businesses</div>
-            </label>
-            <label class="service-card {{ (string) old('service_id', request('service_id')) === '2' ? 'selected' : '' }}">
-              <input type="radio" name="service_id" value="2" {{ (string) old('service_id', request('service_id')) === '2' ? 'checked' : '' }}>
-              <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
-              <div class="service-name">Mobile App Development</div>
-              <div class="service-desc">Cross-platform Android & iOS apps</div>
-            </label>
-            <label class="service-card {{ (string) old('service_id', request('service_id')) === '3' ? 'selected' : '' }}">
-              <input type="radio" name="service_id" value="3" {{ (string) old('service_id', request('service_id')) === '3' ? 'checked' : '' }}>
-              <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-              <div class="service-name">Network Installation</div>
-              <div class="service-desc">Professional network infrastructure</div>
-            </label>
-            <label class="service-card {{ (string) old('service_id', request('service_id')) === '4' ? 'selected' : '' }}">
-              <input type="radio" name="service_id" value="4" {{ (string) old('service_id', request('service_id')) === '4' ? 'checked' : '' }}>
-              <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
-              <div class="service-name">Cybersecurity</div>
-              <div class="service-desc">Comprehensive security solutions</div>
-            </label>
-            <label class="service-card {{ (string) old('service_id', request('service_id')) === '5' ? 'selected' : '' }}">
-              <input type="radio" name="service_id" value="5" {{ (string) old('service_id', request('service_id')) === '5' ? 'checked' : '' }}>
-              <div class="service-icon"><i class="fas fa-screwdriver-wrench"></i></div>
-              <div class="service-name">IT Support</div>
-              <div class="service-desc">Reliable ongoing IT support</div>
-            </label>
-            <label class="service-card {{ (string) old('service_id', request('service_id')) === '6' ? 'selected' : '' }}">
-              <input type="radio" name="service_id" value="6" {{ (string) old('service_id', request('service_id')) === '6' ? 'checked' : '' }}>
-              <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-              <div class="service-name">ICT Consultancy</div>
-              <div class="service-desc">Strategic digital transformation guidance</div>
-            </label>
+          <div class="custom-dropdown-container">
+            <div class="custom-dropdown-header" onclick="toggleCustomDropdown('service-dropdown')">
+              <span id="selected-service-label">-- Select a Service --</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="service-dropdown" class="custom-dropdown-options">
+              <div class="dropdown-option-item" onclick="selectServiceItem(1, 'Web Development')">
+                <i class="fas fa-code mr-2"></i> Web Development
+              </div>
+              <div class="dropdown-option-item" onclick="selectServiceItem(2, 'Mobile App Development')">
+                <i class="fas fa-mobile-alt mr-2"></i> Mobile App Development
+              </div>
+              <div class="dropdown-option-item" onclick="selectServiceItem(3, 'Network Installation')">
+                <i class="fas fa-network-wired mr-2"></i> Network Installation
+              </div>
+              <div class="dropdown-option-item" onclick="selectServiceItem(4, 'Cybersecurity')">
+                <i class="fas fa-shield-alt mr-2"></i> Cybersecurity
+              </div>
+              <div class="dropdown-option-item" onclick="selectServiceItem(5, 'IT Support')">
+                <i class="fas fa-headset mr-2"></i> IT Support
+              </div>
+              <div class="dropdown-option-item" onclick="selectServiceItem(6, 'ICT Consultancy')">
+                <i class="fas fa-lightbulb mr-2"></i> ICT Consultancy
+              </div>
+            </div>
+            <input type="hidden" name="service_id" id="service_id_hidden" value="{{ old('service_id', request('service_id')) }}" required>
           </div>
         </div>
 
+        <style>
+          .custom-dropdown-container {
+            position: relative;
+            width: 100%;
+          }
+          .custom-dropdown-header {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: var(--navy);
+          }
+          .custom-dropdown-header:hover {
+            border-color: var(--accent);
+          }
+          .custom-dropdown-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            z-index: 50;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+          }
+          .dropdown-option-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+            color: #4a5568;
+          }
+          .dropdown-option-item:hover {
+            background: #f7fafc;
+            color: var(--accent);
+          }
+          .dropdown-option-item i {
+            width: 20px;
+            text-align: center;
+            color: #718096;
+          }
+          .dropdown-option-item:hover i {
+            color: var(--accent);
+          }
+        </style>
+
+        <script>
+          // These will be defined in the IIFE below
+          function toggleCustomDropdown(id) {
+            if (window.toggleCustomDropdownGlobal) {
+              window.toggleCustomDropdownGlobal(id);
+            }
+          }
+          
+          function selectServiceItem(id, label) {
+            if (window.selectServiceItemGlobal) {
+              window.selectServiceItemGlobal(id, label);
+            }
+          }
+
+          // Close dropdowns on outside click
+          window.addEventListener('click', function(e) {
+            if (!e.target.closest('.custom-dropdown-container')) {
+              document.querySelectorAll('.custom-dropdown-options').forEach(d => d.style.display = 'none');
+            }
+          });
+        </script>
+
         <!-- Package Selection (dynamic per service) -->
-        <div class="form-section">
+        <div id="package-section-container" class="form-section" style="display: none;">
           <h3 class="section-title">
             <i class="fas fa-box"></i> Select Package *
           </h3>
-          <p class="package-hint" id="package-hint">Select a service above to load the correct tiers and anchor pricing.</p>
-          <div id="package-picker-root" class="service-grid"></div>
+          <div class="addon-category-dropdown open">
+            <div class="dropdown-header">
+              <span>Choose your tier</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" style="display: block;">
+              <div id="package-picker-root" class="package-dropdown-grid"></div>
+            </div>
+          </div>
         </div>
+
+        <style>
+          .package-dropdown-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          .package-option-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .package-option-card:hover {
+            border-color: var(--accent);
+            background: #f0f7ff;
+          }
+          .package-option-card.selected {
+            border-color: var(--accent);
+            background: #f0f7ff;
+            border-width: 2px;
+          }
+          .package-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.05rem;
+            color: var(--navy);
+          }
+          .package-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+          }
+          .package-price-tag {
+            font-weight: 700;
+            color: var(--accent);
+            white-space: nowrap;
+          }
+          .package-features-list {
+            margin: 10px 0 0;
+            padding-left: 20px;
+            font-size: 0.82rem;
+            color: #555;
+            display: none;
+          }
+          .package-option-card.selected .package-features-list {
+            display: block;
+          }
+        </style>
 
         @php
           $addonCatalog = \App\Support\PackagePricing::addonCatalog();
           $addonOld = old('selected_addons', []);
         @endphp
 
-        <!-- Add-ons -->
+        <!-- Add-ons Toggle -->
         <div class="form-section">
-          <h3 class="section-title">
-            <i class="fas fa-rocket"></i> Extra Add-On Services
-          </h3>
-          <p class="addon-super">Supercharge Your Project</p>
-          <p class="addon-lead">Enhance any package with these additional features tailored to your business needs.</p>
-          <p class="addon-note">Where a price is shown as a range, per month, or &ldquo;+&rdquo;, your live estimate uses the <strong>starting quote</strong>; we confirm the exact scope before invoicing.</p>
-
-          @foreach($addonCatalog as $group)
-            <h4 class="addon-category">{{ $group['heading'] }}</h4>
-            <div class="addon-grid">
-              @foreach($group['items'] as $item)
-                @php $addonSelected = in_array($item['slug'], $addonOld, true); @endphp
-                <label class="addon-card {{ $addonSelected ? 'selected' : '' }}" data-addon="{{ $item['name'] }}" data-price="{{ $item['price'] }}">
-                  <input type="checkbox" name="selected_addons[]" value="{{ $item['slug'] }}" {{ $addonSelected ? 'checked' : '' }}>
-                  <div class="addon-name">{{ $item['name'] }}</div>
-                  <div class="addon-desc">{{ $item['desc'] }}</div>
-                  <div class="addon-price">{{ $item['price_label'] }}</div>
-                </label>
-              @endforeach
-            </div>
-          @endforeach
-        </div>
-
-        <!-- Project Preferences -->
-        <div class="form-section">
-          <h3 class="section-title">
-            <i class="fas fa-sliders"></i> Project Preferences
-          </h3>
-          <div class="inline-grid">
-            <div class="form-group">
-              <label class="form-label">Timeline Priority</label>
-              <select name="timeline_priority" class="form-input">
-                <option value="standard" {{ old('timeline_priority') == 'standard' ? 'selected' : '' }}>Standard Delivery</option>
-                <option value="fast_track" {{ old('timeline_priority') == 'fast_track' ? 'selected' : '' }}>Fast Track</option>
-                <option value="urgent" {{ old('timeline_priority') == 'urgent' ? 'selected' : '' }}>Urgent Project</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Preferred Payment Plan (ICT)</label>
-              <select name="payment_plan" class="form-input" id="payment_plan_select">
-                <option value="startup" {{ old('payment_plan', 'enterprise') == 'startup' ? 'selected' : '' }}>Startup / Small — 50% deposit to start</option>
-                <option value="standard" {{ old('payment_plan', 'enterprise') == 'standard' ? 'selected' : '' }}>Standard — 40% deposit to start</option>
-                <option value="enterprise" {{ old('payment_plan', 'enterprise') == 'enterprise' ? 'selected' : '' }}>Enterprise / Large — 30% initial (default)</option>
-              </select>
-              <p class="form-hint" style="font-size: 0.82rem; color: #666; margin-top: 8px; line-height: 1.45;">The amount due on this checkout is your <strong>first deposit</strong> only. Later milestones follow the plan shown on the review step.</p>
+          <div style="text-align: center; margin-bottom: 20px;">
+            <button type="button" class="btn-addons-toggle" id="toggle-addons-btn" onclick="toggleAddonsSection()">
+              <span class="btn-content">
+                <i class="fas fa-plus-circle"></i> 
+                <span>Do you need Extra Add-On Services?</span>
+              </span>
+              <span class="btn-shine"></span>
+            </button>
+          </div>
+          
+          <div id="extra-addons-section" style="display: none; animation: slideDown 0.4s ease-out forwards;">
+            <div class="addons-inner-card">
+              <h3 class="section-title">
+                <i class="fas fa-rocket"></i> Extra Add-On Services
+              </h3>
+              <p class="addon-super">Supercharge Your Project</p>
+              <p class="addon-lead">Enhance any package with these additional features tailored to your business needs.</p>
+              
+              <div class="addon-categories-dropdowns">
+                @foreach($addonCatalog as $index => $group)
+                  <div class="addon-category-dropdown" id="dropdown-{{ $index }}">
+                    <div class="dropdown-header" onclick="toggleDropdown({{ $index }})">
+                      <span>{{ $group['heading'] }}</span>
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-content" id="content-{{ $index }}">
+                      <div class="addon-grid-compact">
+                        @foreach($group['items'] as $item)
+                          @php $addonSelected = in_array($item['slug'], $addonOld, true); @endphp
+                          <label class="addon-option {{ $addonSelected ? 'selected' : '' }}" data-price="{{ $item['price'] }}" data-name="{{ $item['name'] }}">
+                            <div class="addon-option-info">
+                              <input type="checkbox" name="selected_addons[]" value="{{ $item['slug'] }}" {{ $addonSelected ? 'checked' : '' }} onchange="updateAddonSelection(this)">
+                              <div class="addon-option-name">{{ $item['name'] }}</div>
+                              <div class="addon-option-desc">{{ $item['desc'] }}</div>
+                            </div>
+                            <div class="addon-option-price">{{ $item['price_label'] }}</div>
+                          </label>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Notes -->
-        <div class="form-section">
-          <h3 class="section-title">
-            <i class="fas fa-edit"></i> Additional Notes
-          </h3>
-          <textarea name="notes" rows="4" class="form-input" placeholder="Any additional requirements or special requests...">{{ old('notes') }}</textarea>
+        <style>
+          .btn-addons-toggle {
+            position: relative;
+            background: white;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
+          }
+          .btn-addons-toggle:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
+          }
+          .btn-addons-toggle .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+          }
+          .btn-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              120deg,
+              transparent,
+              rgba(255, 255, 255, 0.3),
+              transparent
+            );
+            transition: all 0.6s;
+          }
+          .btn-addons-toggle:hover .btn-shine {
+            left: 100%;
+          }
+          .addons-inner-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            margin-top: 10px;
+          }
+          @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        </style>
+
+        <!-- Project Preferences (Hidden from UI, handled by system) -->
+        <div style="display: none;">
+          <input type="hidden" name="timeline_priority" value="standard">
+          <input type="hidden" name="payment_plan" value="startup">
         </div>
 
         <!-- Submit Button -->
         <div style="text-align: center; margin-top: 30px;">
           <input type="hidden" name="estimated_total" id="estimated_total" value="0">
           <button type="submit" class="btn-primary">
-            <i class="fas fa-arrow-right" style="margin-right: 10px;"></i> Continue to Review
+            <i class="fas fa-credit-card" style="margin-right: 10px;"></i> Continue with payment
           </button>
+          <p class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 12px;">
+            <i class="fas fa-info-circle"></i> A 50% deposit is required to start. You can adjust this to 30%-100% in the review step.
+          </p>
         </div>
       </div> <!-- left column -->
+
+<style>
+  .addon-categories-dropdowns {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .addon-category-dropdown {
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .dropdown-header {
+    padding: 18px 25px;
+    background: #f8fafc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--navy);
+    transition: background 0.3s;
+  }
+
+  .dropdown-header:hover {
+    background: #f1f5f9;
+  }
+
+  .dropdown-header i {
+    transition: transform 0.3s;
+  }
+
+  .addon-category-dropdown.open .dropdown-header i {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-content {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .addon-category-dropdown.open .dropdown-content {
+    display: block;
+  }
+
+  .addon-grid-compact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .addon-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .addon-option:hover {
+    border-color: var(--accent);
+    background: #f0f7ff;
+  }
+
+  .addon-option.selected {
+    border-color: var(--accent);
+    background: #f0f7ff;
+    border-width: 2px;
+  }
+
+  .addon-option-info {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .addon-option-info input[type="checkbox"] {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .addon-option-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+  }
+
+  .addon-option-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .addon-option-price {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+</style>
+
+<script>
+  function toggleDropdown(index) {
+    const dropdown = document.getElementById('dropdown-' + index);
+    dropdown.classList.toggle('open');
+  }
+
+  function toggleAddonsSection() {
+    const section = document.getElementById('extra-addons-section');
+    const btn = document.getElementById('toggle-addons-btn');
+    const btnText = btn.querySelector('.btn-content span');
+    const btnIcon = btn.querySelector('.btn-content i');
+    
+    if (section.style.display === 'none') {
+      section.style.display = 'block';
+      btnText.textContent = 'Hide Extra Add-On Services';
+      btnIcon.className = 'fas fa-minus-circle';
+      btn.style.background = 'var(--accent)';
+      btn.style.color = 'white';
+    } else {
+      section.style.display = 'none';
+      btnText.textContent = 'Do you need Extra Add-On Services?';
+      btnIcon.className = 'fas fa-plus-circle';
+      btn.style.background = 'white';
+      btn.style.color = 'var(--accent)';
+    }
+  }
+
+  function updateAddonSelection(checkbox) {
+    const option = checkbox.closest('.addon-option');
+    if (checkbox.checked) {
+      option.classList.add('selected');
+    } else {
+      option.classList.remove('selected');
+    }
+    // The main updateSummary logic will handle the price update
+  }
+</script>
 
       <!-- Right Summary Column -->
       <aside class="summary-panel">
@@ -664,13 +997,14 @@
     var tourOverridesEl = document.getElementById('tour-vertical-overrides');
     var tourOverrides = tourOverridesEl ? JSON.parse(tourOverridesEl.textContent) : {};
     var verticalTour = @json(request('vertical') === 'tour');
-    var prefillService = @json($prefillService !== null && $prefillService !== '' ? (string) $prefillService : null);
-    var prefillPackage = @json($prefillPackage !== null && $prefillPackage !== '' ? (string) $prefillPackage : null);
+    var prefillService = @json($prefillService ?? null);
+    var prefillPackage = @json($prefillPackage ?? null);
+    var prefillAddon = @json($prefillAddon ?? null);
 
-    var serviceCards = document.querySelectorAll('.service-card');
-    var addonCards = document.querySelectorAll('.addon-card');
+    var serviceSelect = document.getElementById('service_id_hidden');
+    var packageContainer = document.getElementById('package-section-container');
+    var addonOptions = document.querySelectorAll('.addon-option');
     var packageRoot = document.getElementById('package-picker-root');
-    var packageHint = document.getElementById('package-hint');
     var summaryPackage = document.getElementById('summary_package');
     var summaryAddonCount = document.getElementById('summary_addon_count');
     var summaryAddonsTotal = document.getElementById('summary_addons_total');
@@ -681,17 +1015,8 @@
       return 'TZS ' + amount.toLocaleString('en-US');
     }
 
-    function refreshServiceStyles() {
-      serviceCards.forEach(function (card) {
-        var input = card.querySelector('input[name="service_id"]');
-        if (input) {
-          card.classList.toggle('selected', input.checked);
-        }
-      });
-    }
-
     function refreshPackageStyles() {
-      document.querySelectorAll('#package-picker-root .package-card').forEach(function (card) {
+      document.querySelectorAll('#package-picker-root .package-option-card').forEach(function (card) {
         var input = card.querySelector('input[type="radio"]');
         if (input) {
           card.classList.toggle('selected', input.checked);
@@ -700,7 +1025,7 @@
     }
 
     function refreshAddonStyles() {
-      addonCards.forEach(function (card) {
+      addonOptions.forEach(function (card) {
         var input = card.querySelector('input[type="checkbox"]');
         if (input) {
           card.classList.toggle('selected', input.checked);
@@ -709,20 +1034,20 @@
     }
 
     function updateSummary() {
-      var selectedPackage = document.querySelector('#package-picker-root .package-card input[type="radio"]:checked');
+      var selectedPackage = document.querySelector('#package-picker-root .package-option-card input[type="radio"]:checked');
       var packagePrice = 0;
       var packageName = 'Not selected';
 
       if (selectedPackage) {
-        var packageCard = selectedPackage.closest('.package-card');
+        var packageCard = selectedPackage.closest('.package-option-card');
         packagePrice = parseInt(packageCard.getAttribute('data-price') || '0', 10);
         packageName = packageCard.getAttribute('data-package') || 'Selected';
       }
 
-      var checkedAddons = document.querySelectorAll('.addon-card input[type="checkbox"]:checked');
+      var checkedAddons = document.querySelectorAll('.addon-option input[type="checkbox"]:checked');
       var addonsTotal = 0;
       checkedAddons.forEach(function (addon) {
-        var addonCard = addon.closest('.addon-card');
+        var addonCard = addon.closest('.addon-option');
         addonsTotal += parseInt(addonCard.getAttribute('data-price') || '0', 10);
       });
 
@@ -753,22 +1078,19 @@
     function renderPackages(serviceId, options) {
       options = options || {};
       var usePrefill = !!options.usePrefill;
-      if (!packageRoot) {
+      if (!packageRoot || !serviceId) {
+        if (packageContainer) packageContainer.style.display = 'none';
         return;
       }
-      var tiers = serviceId ? matrix[String(serviceId)] : null;
+      var tiers = matrix[String(serviceId)];
       if (!tiers || !Object.keys(tiers).length) {
         packageRoot.innerHTML = '';
-        if (packageHint) {
-          packageHint.style.display = 'block';
-          packageHint.textContent = 'Select a service above to load tier packages aligned with our public pricing.';
-        }
+        if (packageContainer) packageContainer.style.display = 'none';
         updateSummary();
         return;
       }
-      if (packageHint) {
-        packageHint.style.display = 'none';
-      }
+      
+      if (packageContainer) packageContainer.style.display = 'block';
 
       var ids = Object.keys(tiers).map(Number).sort(function (a, b) { return a - b; });
       var html = '';
@@ -784,7 +1106,7 @@
             p = Object.assign({}, pRaw, ov);
           }
         }
-        var popularClass = p.popular ? ' popular' : '';
+        
         var checked = '';
         if (usePrefill && prefillPackage && String(prefillPackage) === String(tierId) &&
             prefillService && String(prefillService) === String(serviceId)) {
@@ -793,13 +1115,18 @@
         var feats = (p.features || []).map(function (f) {
           return '<li>' + escapeHtml(f) + '</li>';
         }).join('');
+
         html +=
-          '<label class="package-card' + popularClass + '" data-package="' + escapeAttr(p.name) + '" data-price="' + Number(p.price) + '">' +
-          '<input type="radio" name="package_id" value="' + tierId + '"' + checked + ' required>' +
-          '<div class="package-name">' + escapeHtml(p.name) + '</div>' +
-          '<div class="package-price">' + formatTZS(Number(p.price)) + '</div>' +
-          '<div class="package-desc">' + escapeHtml(p.desc || '') + '</div>' +
-          '<ul class="feature-list">' + feats + '</ul>' +
+          '<label class="package-option-card' + (checked ? ' selected' : '') + '" data-package="' + escapeAttr(p.name) + '" data-price="' + Number(p.price) + '">' +
+          '<div class="package-info">' +
+          '<div style="display: flex; align-items: center; gap: 10px;">' +
+          '<input type="radio" name="package_id" value="' + tierId + '"' + checked + ' required style="width: 18px; height: 18px;">' +
+          '<h4>' + escapeHtml(p.name) + (p.popular ? ' <span style="font-size: 0.7rem; background: var(--accent); color: white; padding: 2px 8px; border-radius: 10px;">POPULAR</span>' : '') + '</h4>' +
+          '</div>' +
+          '<p>' + escapeHtml(p.desc || '') + '</p>' +
+          '<ul class="package-features-list">' + feats + '</ul>' +
+          '</div>' +
+          '<div class="package-price-tag">' + formatTZS(Number(p.price)) + '</div>' +
           '</label>';
       });
       packageRoot.innerHTML = html;
@@ -808,10 +1135,11 @@
         var firstRadio = packageRoot.querySelector('input[name="package_id"]');
         if (firstRadio) {
           firstRadio.checked = true;
+          firstRadio.closest('.package-option-card').classList.add('selected');
         }
       }
 
-      packageRoot.querySelectorAll('.package-card input[type="radio"]').forEach(function (input) {
+      packageRoot.querySelectorAll('.package-option-card input[type="radio"]').forEach(function (input) {
         input.addEventListener('change', function () {
           refreshPackageStyles();
           updateSummary();
@@ -822,16 +1150,45 @@
       updateSummary();
     }
 
-    document.querySelectorAll('input[name="service_id"]').forEach(function (radio) {
-      radio.addEventListener('change', function () {
-        renderPackages(this.value, { usePrefill: false });
-        refreshServiceStyles();
-      });
-    });
+    function toggleCustomDropdown(id) {
+      const el = document.getElementById(id);
+      const all = document.querySelectorAll('.custom-dropdown-options');
+      all.forEach(function(d) { if(d.id !== id) d.style.display = 'none'; });
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function selectServiceItem(id, label) {
+      document.getElementById('service_id_hidden').value = id;
+      document.getElementById('selected-service-label').textContent = label;
+      document.getElementById('service-dropdown').style.display = 'none';
+      renderPackages(id, { usePrefill: false });
+    }
+
+    // Export to window
+    window.renderPackages = renderPackages;
+    window.toggleCustomDropdownGlobal = toggleCustomDropdown;
+    window.selectServiceItemGlobal = selectServiceItem;
+
+    // Set initial label if service_id is prefilled
+    if (serviceSelect && serviceSelect.value) {
+      var sid = serviceSelect.value;
+      var label = '';
+      if(sid == '1') label = 'Web Development';
+      else if(sid == '2') label = 'Mobile App Development';
+      else if(sid == '3') label = 'Network Installation';
+      else if(sid == '4') label = 'Cybersecurity';
+      else if(sid == '5') label = 'IT Support';
+      else if(sid == '6') label = 'ICT Consultancy';
+      
+      if(label) {
+        document.getElementById('selected-service-label').textContent = label;
+      }
+      renderPackages(sid, { usePrefill: true });
+    }
 
     if (packageRoot) {
       packageRoot.addEventListener('click', function (e) {
-        var label = e.target.closest('.package-card');
+        var label = e.target.closest('.package-option-card');
         if (!label) {
           return;
         }
@@ -842,13 +1199,7 @@
       });
     }
 
-    serviceCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        setTimeout(refreshServiceStyles, 0);
-      });
-    });
-
-    addonCards.forEach(function (card) {
+    addonOptions.forEach(function (card) {
       card.addEventListener('click', function () {
         setTimeout(function () {
           refreshAddonStyles();
@@ -857,14 +1208,36 @@
       });
     });
 
-    var initialService = document.querySelector('input[name="service_id"]:checked');
-    if (initialService) {
-      renderPackages(initialService.value, { usePrefill: true });
-    } else if (packageHint) {
-      packageHint.style.display = 'block';
+    var initialServiceValue = serviceSelect ? serviceSelect.value : null;
+    if (initialServiceValue) {
+      renderPackages(initialServiceValue, { usePrefill: true });
     }
 
-    refreshServiceStyles();
+    if (prefillAddon) {
+      var addonSection = document.getElementById('extra-addons-section');
+      var toggleBtn = document.getElementById('toggle-addons-btn');
+      if (addonSection) {
+        addonSection.style.display = 'block';
+        if (toggleBtn) {
+          var btnText = toggleBtn.querySelector('.btn-content span');
+          var btnIcon = toggleBtn.querySelector('.btn-content i');
+          if (btnText) btnText.textContent = 'Hide Extra Add-On Services';
+          if (btnIcon) btnIcon.className = 'fas fa-minus-circle';
+          toggleBtn.style.background = 'var(--accent)';
+          toggleBtn.style.color = 'white';
+        }
+      }
+      var targetCheckbox = document.querySelector('input[name="selected_addons[]"][value="' + prefillAddon + '"]');
+      if (targetCheckbox) {
+        targetCheckbox.checked = true;
+        var opt = targetCheckbox.closest('.addon-option');
+        if (opt) opt.classList.add('selected');
+        // Expand the parent dropdown
+        var dropdown = targetCheckbox.closest('.addon-category-dropdown');
+        if (dropdown) dropdown.classList.add('open');
+      }
+    }
+
     refreshAddonStyles();
     updateSummary();
   })();

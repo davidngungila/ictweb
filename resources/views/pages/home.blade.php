@@ -790,101 +790,45 @@
 </div>
 
 <!-- ADD-ONS -->
-<section class="addons">
+<section class="extras" id="extras" style="padding: 100px 0; background: #f8fafc;">
   <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-puzzle-piece"></i> Extras</div>
-      <h2 class="section-title">Optional <span>Add-On Services</span></h2>
-      <p class="section-sub">Supercharge any package with these additional features tailored to your business needs.</p>
+    <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+      <div class="section-label"><i class="fas fa-rocket"></i> Optional Add-On Services</div>
+      <h2 class="section-title">Supercharge Your <span>Project</span></h2>
+      <p class="section-sub">Enhance any package with these additional features tailored to your business needs.</p>
     </div>
-    <div class="addons-grid">
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-blog"></i></div>
-        <div>
-          <h5>Travel Blog + 5 Posts</h5>
-          <div class="addon-price">TZS 150,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
-        <div>
-          <h5>Advanced SEO Package</h5>
-          <div class="addon-price">TZS 300,000 – 600,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fab fa-whatsapp"></i></div>
-        <div>
-          <h5>WhatsApp Business API</h5>
-          <div class="addon-price">TZS 200,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-share-nodes"></i></div>
-        <div>
-          <h5>Social Media Auto-Posting</h5>
-          <div class="addon-price">TZS 150,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-headset"></i></div>
-        <div>
-          <h5>Emergency 24/7 Support</h5>
-          <div class="addon-price">TZS 100,000/month</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-map-location-dot"></i></div>
-        <div>
-          <h5>Custom Tour Map & Itinerary Builder</h5>
-          <div class="addon-price">TZS 250,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-comment-sms"></i></div>
-        <div>
-          <h5>Extra SMS Credits (100 pack)</h5>
-          <div class="addon-price">TZS 50,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-message"></i></div>
-        <div>
-          <h5>Live Chat Support System</h5>
-          <div class="addon-price">TZS 180,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-envelope-open-text"></i></div>
-        <div>
-          <h5>Email Marketing Setup</h5>
-          <div class="addon-price">TZS 200,000</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-language"></i></div>
-        <div>
-          <h5>Multi-Language (DE/FR/IT)</h5>
-          <div class="addon-price">TZS 300,000/language</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-cloud-arrow-up"></i></div>
-        <div>
-          <h5>Cloud Backup & Disaster Recovery</h5>
-          <div class="addon-price">TZS 150,000/month</div>
-        </div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon"><i class="fas fa-chart-line"></i></div>
-        <div>
-          <h5>Monthly Performance Report</h5>
-          <div class="addon-price">TZS 80,000/month</div>
-        </div>
-      </div>
+    
+    <div class="addons-grid-home" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+      @foreach(\App\Support\PackagePricing::addonCatalog() as $group)
+        @foreach(array_slice($group['items'], 0, 2) as $item)
+          <div class="addon-card-home" style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #edf2f7; transition: all 0.3s;">
+            <div style="width: 50px; height: 50px; background: #f0f7ff; color: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.2rem;">
+              <i class="fas fa-plus"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 12px; color: var(--navy);">{{ $item['name'] }}</h3>
+            <p style="font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 20px;">{{ $item['desc'] }}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 700; color: var(--accent);">{{ $item['price_label'] }}</span>
+              <a href="{{ route('package.selection', ['addon' => $item['slug']]) }}" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem; border-radius: 10px;">Book Now</a>
+            </div>
+          </div>
+        @endforeach
+      @endforeach
+    </div>
+    
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="{{ route('package.selection') }}" class="btn-outline">View All Add-Ons <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
     </div>
   </div>
 </section>
+
+<style>
+  .addon-card-home:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+  }
+</style>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
@@ -973,7 +917,7 @@
     <h2>Ready to <span>Transform</span> Your Business?</h2>
     <p>Get a free consultation and detailed quote within 24 hours. No commitment required. We'll assess your needs and recommend the perfect package for your budget.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/255700000000?text=Hello%20TechNova%20Africa!%20I'm%20interested%20in%20your%20services." class="btn-whatsapp" target="_blank">
+      <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!" class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
       <a href="{{ route('package.selection') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
