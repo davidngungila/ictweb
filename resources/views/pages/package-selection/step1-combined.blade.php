@@ -458,8 +458,12 @@
     @endif
     
     @php
-      $prefillService = old('service_id', request('service_id'));
-      $prefillPackage = old('package_id', request('package_id'));
+      $prefillService = old('service_id', $prefillService ?? request('service_id'));
+      $prefillPackage = old('package_id', $prefillPackage ?? request('package_id'));
+      $prefillName = old('client_name', $prefillName ?? '');
+      $prefillEmail = old('client_email', $prefillEmail ?? '');
+      $prefillPhone = old('client_phone', $prefillPhone ?? '');
+      $prefillCompany = old('company_name', $prefillCompany ?? '');
     @endphp
     <script type="application/json" id="package-matrix-json">{!! json_encode(\App\Support\PackagePricing::matrixForJs()) !!}</script>
     <script type="application/json" id="tour-vertical-overrides">{!! json_encode(\App\Support\PackagePricing::tourVerticalTierOverlays()) !!}</script>
@@ -486,19 +490,19 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
             <div class="form-group">
               <label class="form-label">Full Name *</label>
-              <input type="text" name="client_name" class="form-input" value="{{ old('client_name') }}" placeholder="Enter your full name" required>
+              <input type="text" name="client_name" class="form-input" value="{{ $prefillName }}" placeholder="Enter your full name" required>
             </div>
             <div class="form-group">
               <label class="form-label">Email *</label>
-              <input type="email" name="client_email" class="form-input" value="{{ old('client_email') }}" placeholder="Enter your email" required>
+              <input type="email" name="client_email" class="form-input" value="{{ $prefillEmail }}" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
               <label class="form-label">Phone *</label>
-              <input type="text" name="client_phone" class="form-input" value="{{ old('client_phone') }}" placeholder="Enter your phone number" pattern="[0-9+\-\s]{8,20}" required>
+              <input type="text" name="client_phone" class="form-input" value="{{ $prefillPhone }}" placeholder="Enter your phone number" pattern="[0-9+\-\s]{8,20}" required>
             </div>
             <div class="form-group">
               <label class="form-label">Company (Optional)</label>
-              <input type="text" name="company_name" class="form-input" value="{{ old('company_name') }}" placeholder="Enter company name">
+              <input type="text" name="company_name" class="form-input" value="{{ $prefillCompany }}" placeholder="Enter company name">
             </div>
           </div>
         </div>
@@ -533,7 +537,7 @@
                 <i class="fas fa-lightbulb mr-2"></i> ICT Consultancy
               </div>
             </div>
-            <input type="hidden" name="service_id" id="service_id_hidden" value="{{ old('service_id', request('service_id')) }}" required>
+            <input type="hidden" name="service_id" id="service_id_hidden" value="{{ $prefillService }}">
           </div>
         </div>
 
@@ -1120,7 +1124,7 @@
           '<label class="package-option-card' + (checked ? ' selected' : '') + '" data-package="' + escapeAttr(p.name) + '" data-price="' + Number(p.price) + '">' +
           '<div class="package-info">' +
           '<div style="display: flex; align-items: center; gap: 10px;">' +
-          '<input type="radio" name="package_id" value="' + tierId + '"' + checked + ' required style="width: 18px; height: 18px;">' +
+          '<input type="radio" name="package_id" value="' + tierId + '"' + checked + ' style="width: 18px; height: 18px;">' +
           '<h4>' + escapeHtml(p.name) + (p.popular ? ' <span style="font-size: 0.7rem; background: var(--accent); color: white; padding: 2px 8px; border-radius: 10px;">POPULAR</span>' : '') + '</h4>' +
           '</div>' +
           '<p>' + escapeHtml(p.desc || '') + '</p>' +
@@ -1131,7 +1135,9 @@
       });
       packageRoot.innerHTML = html;
 
-      if (!packageRoot.querySelector('input[name="package_id"]:checked')) {
+      // Only auto-select first package if no package is pre-selected AND no addon is pre-selected
+      var hasAddonSelected = !!document.querySelector('.addon-option input[type="checkbox"]:checked');
+      if (!packageRoot.querySelector('input[name="package_id"]:checked') && !hasAddonSelected) {
         var firstRadio = packageRoot.querySelector('input[name="package_id"]');
         if (firstRadio) {
           firstRadio.checked = true;
@@ -1184,6 +1190,13 @@
         document.getElementById('selected-service-label').textContent = label;
       }
       renderPackages(sid, { usePrefill: true });
+    } else if (prefillAddon) {
+      // If we have an addon but no service, we don't necessarily need to select a service/package
+      // but let's scroll to contact details to make it "direct pay" style
+      var contactSection = document.querySelector('.form-section'); // First section is contact info
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     if (packageRoot) {

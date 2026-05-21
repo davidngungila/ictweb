@@ -41,7 +41,21 @@ class PackageOrderController extends Controller
         $prefillPackage = $request->query('package_id');
         $prefillAddon = $request->query('addon');
         
-        return view('pages.package-selection.step1-combined', compact('prefillService', 'prefillPackage', 'prefillAddon'));
+        // New: allow prefilling client details via URL
+        $prefillName = $request->query('client_name') ?? $request->query('name');
+        $prefillEmail = $request->query('client_email') ?? $request->query('email');
+        $prefillPhone = $request->query('client_phone') ?? $request->query('phone');
+        $prefillCompany = $request->query('company_name') ?? $request->query('company');
+        
+        return view('pages.package-selection.step1-combined', compact(
+            'prefillService', 
+            'prefillPackage', 
+            'prefillAddon',
+            'prefillName',
+            'prefillEmail',
+            'prefillPhone',
+            'prefillCompany'
+        ));
     }
 
     public function processStep1(Request $request)
@@ -51,16 +65,17 @@ class PackageOrderController extends Controller
             'client_email' => 'required|email|max:255',
             'client_phone' => 'required|string|max:20',
             'company_name' => 'nullable|string|max:255',
-            'service_id' => 'required|integer|in:1,2,3,4,5,6',
+            'service_id' => 'nullable|integer|in:1,2,3,4,5,6',
             'package_id' => [
-                'required',
+                'nullable',
                 'integer',
                 'in:1,2,3',
                 function ($attribute, $value, $fail) use ($request) {
-                    $sid = (int) $request->input('service_id');
-                    $pid = (int) $value;
-                    if (! PackagePricing::package($sid, $pid)) {
-                        $fail('The selected package is not valid for this service.');
+                    $sid = $request->input('service_id');
+                    if ($value && $sid) {
+                        if (! PackagePricing::package((int)$sid, (int)$value)) {
+                            $fail('The selected package is not valid for this service.');
+                        }
                     }
                 },
             ],
@@ -71,6 +86,11 @@ class PackageOrderController extends Controller
             'estimated_total' => 'nullable|numeric|min:0',
             'notes' => 'nullable|string',
         ]);
+
+        // Validation: Must have either a package OR at least one addon
+        if (empty($validated['package_id']) && empty($validated['selected_addons'])) {
+            return back()->withErrors(['package_id' => 'Please select either a package or at least one add-on service.'])->withInput();
+        }
 
         session()->put('package_order_data', $validated);
         // Direct to review step to allow adjusting deposit (30-100%)
@@ -118,8 +138,14 @@ class PackageOrderController extends Controller
         DB::beginTransaction();
         try {
             // Re-calculate prices to be sure
-            $pkg = PackagePricing::package((int) $orderData['service_id'], (int) $orderData['package_id']);
-            $basePrice = $pkg['price'] ?? 0;
+            $basePrice = 0;
+            $selectedFeatures = [];
+            if (!empty($orderData['service_id']) && !empty($orderData['package_id'])) {
+                $pkg = PackagePricing::package((int) $orderData['service_id'], (int) $orderData['package_id']);
+                $basePrice = $pkg['price'] ?? 0;
+                $selectedFeatures = $pkg['features'] ?? [];
+            }
+            
             $addonPrices = PackagePricing::addonPrices();
             $addonsTotal = 0;
             foreach($orderData['selected_addons'] ?? [] as $addon) {
@@ -135,9 +161,9 @@ class PackageOrderController extends Controller
                 'client_name' => $orderData['client_name'],
                 'client_email' => $orderData['client_email'],
                 'client_phone' => $orderData['client_phone'],
-                'service_id' => $orderData['service_id'],
-                'package_id' => $orderData['package_id'],
-                'selected_features' => $pkg['features'] ?? [],
+                'service_id' => $orderData['service_id'] ?? null,
+                'package_id' => $orderData['package_id'] ?? null,
+                'selected_features' => $selectedFeatures,
                 'selected_addons' => $orderData['selected_addons'] ?? [],
                 'total_price' => $totalPrice,
                 'advance_payment' => $advancePayment,
