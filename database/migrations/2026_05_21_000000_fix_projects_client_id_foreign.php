@@ -13,11 +13,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            // Drop foreign key if it exists
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
-            $fks = array_map(function($fk) { return $fk->getName(); }, $sm->listTableForeignKeys('projects'));
-            
-            if (in_array('projects_client_id_foreign', $fks)) {
+            // Drop foreign key if it exists using native Laravel 11+ method
+            $foreignKeys = array_map(function ($key) {
+                return $key['name'];
+            }, Schema::getForeignKeys('projects'));
+
+            if (in_array('projects_client_id_foreign', $foreignKeys)) {
                 $table->dropForeign('projects_client_id_foreign');
             }
             
@@ -32,10 +33,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
-            $fks = array_map(function($fk) { return $fk->getName(); }, $sm->listTableForeignKeys('projects'));
-            
-            if (in_array('projects_client_id_foreign', $fks)) {
+            $foreignKeys = array_map(function ($key) {
+                return $key['name'];
+            }, Schema::getForeignKeys('projects'));
+
+            if (in_array('projects_client_id_foreign', $foreignKeys)) {
                 $table->dropForeign('projects_client_id_foreign');
             }
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
