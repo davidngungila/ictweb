@@ -274,6 +274,39 @@ class PackagePricing
     }
 
     /**
+     * @return string
+     */
+    public static function serviceName(?int $serviceId): string
+    {
+        if (!$serviceId) {
+            return 'Unknown Service';
+        }
+
+        // Try DB first
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('services')) {
+                $service = \Illuminate\Support\Facades\DB::table('services')->find($serviceId);
+                if ($service) {
+                    return $service->name;
+                }
+            }
+        } catch (\Exception $e) {
+            // Ignore DB error
+        }
+
+        // Fallback to static mapping
+        return match ($serviceId) {
+            1 => 'Web Development',
+            2 => 'Mobile App Development',
+            3 => 'Network Installation',
+            4 => 'Cybersecurity',
+            5 => 'IT Support',
+            6 => 'ICT Consultancy',
+            default => 'Unknown Service',
+        };
+    }
+
+    /**
      * Grouped add-ons for package step 1 UI. `price` is the amount used in the live calculator
      * (minimum of any published range); `price_label` is what the customer sees.
      *

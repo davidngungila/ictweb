@@ -155,7 +155,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <strong>{{ $service->name ?? 'Unknown Service' }}</strong><br>
+                        <strong>{{ \App\Support\PackagePricing::serviceName($booking->service_id) }}</strong><br>
                         <span style="font-size: 12px; color: #666;">Package: {{ $package['name'] ?? 'Custom Package' }}</span>
                         <p style="font-size: 11px; color: #777; margin-top: 5px;">{{ $package['desc'] ?? '' }}</p>
                     </td>

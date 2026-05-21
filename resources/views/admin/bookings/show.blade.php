@@ -64,12 +64,12 @@
                 </div>
                 <div class="p-6">
                     @php
-                        $service = $booking->service_id ? \App\Models\Service::find($booking->service_id) : null;
+                        $serviceName = \App\Support\PackagePricing::serviceName($booking->service_id);
                         $package = \App\Support\PackagePricing::package($booking->service_id, $booking->package_id);
                     @endphp
                     <div class="flex items-start justify-between border-b border-gray-100 pb-4 mb-4">
                         <div>
-                            <h3 class="text-lg font-bold text-blue-600">{{ $service->name ?? 'Unknown Service' }}</h3>
+                            <h3 class="text-lg font-bold text-blue-600">{{ $serviceName }}</h3>
                             <p class="text-gray-900 font-semibold">{{ $package['name'] ?? 'Custom Package' }}</p>
                             <p class="text-sm text-gray-500 mt-1">{{ $package['desc'] ?? '' }}</p>
                         </div>

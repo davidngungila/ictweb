@@ -134,10 +134,10 @@
                         </td>
                         <td class="px-6 py-4">
                             @php
-                                $service = $booking->service_id ? \App\Models\Service::find($booking->service_id) : null;
+                                $serviceName = \App\Support\PackagePricing::serviceName($booking->service_id);
                                 $package = \App\Support\PackagePricing::package($booking->service_id, $booking->package_id);
                             @endphp
-                            <div class="text-sm font-medium text-gray-900">{{ $service->name ?? 'Unknown Service' }}</div>
+                            <div class="text-sm font-medium text-gray-900">{{ $serviceName }}</div>
                             <div class="text-xs text-blue-600 font-semibold">{{ $package['name'] ?? 'Custom Package' }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
