@@ -51,9 +51,7 @@
         <div class="pricing-name">App Basic</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Android + iOS informational apps</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">3M</span>
-          <span class="pricing-period">– 6M</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -64,7 +62,7 @@
           <li><i class="fas fa-check"></i> Analytics dashboard</li>
           <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
         </ul>
-        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 1) }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 1) }}" class="btn-package">Request Quote</a>
       </div>
       
       <!-- STANDARD -->
@@ -74,9 +72,7 @@
         <div class="pricing-name">App Standard</div>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Full-featured booking & payments</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">6M</span>
-          <span class="pricing-period">– 12M</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -87,7 +83,7 @@
           <li><i class="fas fa-check"></i> Push notifications</li>
           <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
         </ul>
-        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 2) }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 2) }}" class="btn-package">Request Quote</a>
       </div>
       
       <!-- ENTERPRISE -->
@@ -96,9 +92,7 @@
         <div class="pricing-name">App Enterprise</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Custom multi-role platforms</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">12M</span>
-          <span class="pricing-period">– 25M+</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -109,7 +103,7 @@
           <li><i class="fas fa-check"></i> Full white-label branding</li>
           <li><i class="fas fa-check"></i> Delivered in 10–14 weeks</li>
         </ul>
-        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 3) }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 3) }}" class="btn-package">Request Quote</a>
       </div>
     </div>
     

@@ -112,9 +112,7 @@
         <div class="pricing-name">Cloud Basic</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">500K</span>
-          <span class="pricing-period">– 1M/mo</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -124,7 +122,7 @@
           <li><i class="fas fa-check"></i> Email support</li>
           <li><i class="fas fa-check"></i> 99.9% uptime SLA</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
@@ -132,9 +130,7 @@
         <div class="pricing-name">Cloud Standard</div>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">1M</span>
-          <span class="pricing-period">– 3M/mo</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -144,16 +140,14 @@
           <li><i class="fas fa-check"></i> Priority support</li>
           <li><i class="fas fa-check"></i> Auto-scaling</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Enterprise</div>
         <div class="pricing-name">Cloud Enterprise</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">3M</span>
-          <span class="pricing-period">– 10M/mo</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -163,7 +157,7 @@
           <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
           <li><i class="fas fa-check"></i> Custom architecture</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
       </div>
     </div>
   </div>
@@ -218,27 +212,27 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Travel Blog + 5 Posts</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">High-quality content to boost SEO and attract visitors</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Advanced SEO Package</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Deep keyword optimization, technical SEO, and ranking strategy</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 – 600,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Social Media Auto-Posting</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automatically publish content to Facebook, Instagram, and more</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Email Marketing Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Campaign setup, templates, and automation</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Analytics & Tracking Setup (Advanced)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Google Analytics, Facebook Pixel, and conversion tracking</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -250,22 +244,22 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Google Services Automation</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automate reports, invoices, dashboards, and workflows (Sheets, Docs, Slides, Drive)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">AI Chatbot Integration</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automated customer support and smart replies (Website + WhatsApp)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Bulk SMS System Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Send SMS campaigns directly from your system (Admin Panel)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Extra SMS Credits (100 Pack)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Additional SMS bundles for campaigns and notifications</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 50,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -277,12 +271,12 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Online Payment Integration</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Integrate M-Pesa, Airtel Money, cards, and APIs like Snippe</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">API Integration (Any System)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Connect your system with external services (SMS, CRM, payments)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000 – 400,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -294,22 +288,22 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Admin Dashboard System</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Manage users, reports, payments, and operations (Custom CMS)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 – 700,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Booking & Reservation System</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Online booking with calendar and notifications</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">E-commerce Store Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Sell products/services with cart and checkout</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 350,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Custom Tour Map & Itinerary Builder</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Interactive travel/tour planning system</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -321,22 +315,22 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">WhatsApp Business API Integration</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automated messaging and customer engagement</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Live Chat Support System</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Real-time website chat support</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 180,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Push Notifications (Web + Mobile)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Instant alerts for offers and updates</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 120,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Emergency 24/7 Support</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Priority technical support anytime</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000/month</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -348,17 +342,17 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Multi-Language (DE / FR / IT)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Reach international customers</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 per language</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Logo Design + Brand Kit</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Professional branding package</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Domain + Professional Email Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Custom business emails (e.g. info@yourdomain.com)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 80,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -370,22 +364,22 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Website Speed Optimization</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Improve performance and loading speed</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 120,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Security Hardening & Firewall Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Protect against hacking and vulnerabilities</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Cloud Backup & Disaster Recovery</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automatic backups and restore solutions</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000/month</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Monthly Performance Report</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Detailed insights on system performance</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 80,000/month</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -397,17 +391,17 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">System Audit & Performance Review</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Full inspection: security, performance, code, APIs. Includes vulnerability check, payment & API audit, SEO review</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000 – 500,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Monthly System Monitoring & Audit</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Continuous monitoring, alerts, and optimization</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000/month</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Penetration Testing (Advanced Security)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Simulated real-world attacks to test system security</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 400,000+</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -419,7 +413,7 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Mobile App (Android – Basic)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Convert your system into a mobile app</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 800,000+</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>

@@ -174,49 +174,49 @@
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Web Development</h3>
         <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 400,000</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('services.web-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Mobile App Development</h3>
         <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 3,000,000</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('services.mobile-app-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Network Installation</h3>
         <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('services.network-installation') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>Cybersecurity</h3>
         <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 300,000</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('services.cybersecurity') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>IT Support</h3>
         <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 150,000/mo</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('services.it-support') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>ICT Consultancy</h3>
         <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 500,000</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('services.ict-consultancy') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/male-electrician-works-switchboard-overalls-against-backdrop-emergency-lighting_xpsb7u.jpg" alt="CCTV & Security Systems" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
         <h3>CCTV &amp; Security Systems</h3>
         <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> From TZS 2,000,000</span>
+        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
         <a href="{{ route('package.selection') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
@@ -229,7 +229,7 @@
     <div class="section-header">
       <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
       <h2 class="section-title">Transparent <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include a free domain + hosting for the first year (worth TZS 150,000), SSL certificate, and 1 month of free support.</p>
+      <p class="section-sub">All packages include a free domain + hosting for the first year, SSL certificate, and 1 month of free support.</p>
     </div>
     <div class="packages-tabs">
       <button class="tab-btn active" onclick="switchTab('tour')">🌍 Tour Websites</button>
@@ -248,14 +248,12 @@
           <div class="pricing-name">Tour Starter</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Best for solo guides & new startups</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">400K</span>
-            <span class="pricing-period">– 700K</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><i class="fas fa-check"></i> 1–5 Pages (Home, About, Tours, Contact)</li>
-            <li><i class="fas fa-check"></i> Basic tour listing with descriptions & pricing</li>
+            <li><i class="fas fa-check"></i> Basic tour listing with descriptions</li>
             <li><i class="fas fa-check"></i> Photo gallery (up to 20 photos)</li>
             <li><i class="fas fa-check"></i> WhatsApp & phone call-to-action booking</li>
             <li><i class="fas fa-check"></i> 50 SMS credits included</li>
@@ -263,7 +261,7 @@
             <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
             <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1, 'tour') }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1, 'tour') }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -271,9 +269,7 @@
           <div class="pricing-name">Tour Business</div>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing safari operators</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">800K</span>
-            <span class="pricing-period">– 1.5M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -286,16 +282,14 @@
             <li><i class="fas fa-check"></i> Advanced Analytics &amp; conversion funnels</li>
             <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2, 'tour') }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2, 'tour') }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-name">Tour Enterprise</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Kilimanjaro specialists & large operators</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">1.8M</span>
-            <span class="pricing-period">– 3.5M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -308,7 +302,7 @@
             <li><i class="fas fa-check"></i> 500 SMS credits + bulk SMS campaigns</li>
             <li><i class="fas fa-check"></i> 6 months priority support</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3, 'tour') }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3, 'tour') }}" class="btn-package">Request Quote</a>
         </div>
       </div>
     </div>
@@ -321,9 +315,7 @@
           <div class="pricing-name">Web Starter</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Individuals & small businesses</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">400K</span>
-            <span class="pricing-period">– 700K</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -335,7 +327,7 @@
             <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
             <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -343,9 +335,7 @@
           <div class="pricing-name">Web Business</div>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing companies</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">800K</span>
-            <span class="pricing-period">– 1.5M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -356,16 +346,14 @@
             <li><i class="fas fa-check"></i> SSL + full security setup</li>
             <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">E-Commerce</div>
           <div class="pricing-name">Online Store</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Selling online in Tanzania</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">1.5M</span>
-            <span class="pricing-period">– 2.5M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -376,7 +364,7 @@
             <li><i class="fas fa-check"></i> SMS order confirmations</li>
             <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Request Quote</a>
         </div>
       </div>
     </div>
@@ -389,9 +377,7 @@
           <div class="pricing-name">App Basic</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Android + iOS informational apps</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">3M</span>
-            <span class="pricing-period">– 6M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -402,7 +388,7 @@
             <li><i class="fas fa-check"></i> Analytics dashboard</li>
             <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 1) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 1) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -410,9 +396,7 @@
           <div class="pricing-name">App Standard</div>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Full-featured booking & payments</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">6M</span>
-            <span class="pricing-period">– 12M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -423,16 +407,14 @@
             <li><i class="fas fa-check"></i> Push notifications</li>
             <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 2) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 2) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-name">App Enterprise</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Custom multi-role platforms</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">12M</span>
-            <span class="pricing-period">– 25M+</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -443,7 +425,7 @@
             <li><i class="fas fa-check"></i> Full white-label branding</li>
             <li><i class="fas fa-check"></i> Delivered in 10–14 weeks</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 3) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 3) }}" class="btn-package">Request Quote</a>
         </div>
       </div>
     </div>
@@ -456,9 +438,7 @@
           <div class="pricing-name">Home / Small Office</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Single router / access point</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">300K</span>
-            <span class="pricing-period">– 700K</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -469,7 +449,7 @@
             <li><i class="fas fa-check"></i> Network credentials documentation</li>
             <li><i class="fas fa-check"></i> Delivered in 1–3 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 1) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 1) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Best Value</div>
@@ -477,9 +457,7 @@
           <div class="pricing-name">Small Business</div>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Multi-AP with security</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">700K</span>
-            <span class="pricing-period">– 1.5M</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -490,16 +468,14 @@
             <li><i class="fas fa-check"></i> SMS maintenance alerts</li>
             <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 2) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 2) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-name">Hotel / Lodge / Office</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Multi-location enterprise grade</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">1.5M</span>
-            <span class="pricing-period">– 4M+</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -510,7 +486,7 @@
             <li><i class="fas fa-check"></i> Optional CCTV integration</li>
             <li><i class="fas fa-check"></i> Delivered in 5–10 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 3) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 3) }}" class="btn-package">Request Quote</a>
         </div>
       </div>
     </div>
@@ -523,9 +499,7 @@
           <div class="pricing-name">Basic Protection</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">One-off security setup</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">300K</span>
-            <span class="pricing-period">– 600K</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -536,7 +510,7 @@
             <li><i class="fas fa-check"></i> Security report delivered</li>
             <li><i class="fas fa-check"></i> Completed in 2–5 days</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 1) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 1) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Recommended</div>
@@ -544,9 +518,7 @@
           <div class="pricing-name">Monthly Retainer</div>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Ongoing business protection</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">600K</span>
-            <span class="pricing-period">– 1.2M/mo</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -557,7 +529,7 @@
             <li><i class="fas fa-check"></i> Analytics security dashboard</li>
             <li><i class="fas fa-check"></i> Monthly security reports</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 2) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 2) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
@@ -589,9 +561,7 @@
           <div class="pricing-name">Remote Support</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small teams, weekday coverage</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">150K</span>
-            <span class="pricing-period">– 300K/mo</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -601,7 +571,7 @@
             <li><i class="fas fa-check"></i> SMS ticket system</li>
             <li><i class="fas fa-check"></i> Up to 5 devices supported</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 1) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 1) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card featured">
           <div class="pricing-badge">Most Popular</div>
@@ -609,9 +579,7 @@
           <div class="pricing-name">Remote + On-site</div>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">300K</span>
-            <span class="pricing-period">– 600K/mo</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -621,16 +589,14 @@
             <li><i class="fas fa-check"></i> Monthly analytics reports</li>
             <li><i class="fas fa-check"></i> Unlimited devices</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 2) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 2) }}" class="btn-package">Request Quote</a>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-name">24/7 Enterprise</div>
           <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Hotels, NGOs, large offices</p>
           <div class="pricing-price">
-            <span class="pricing-currency">TZS</span>
-            <span class="pricing-amount">600K</span>
-            <span class="pricing-period">– 1.2M/mo</span>
+            <span class="pricing-amount">Request Quote</span>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
@@ -640,7 +606,7 @@
             <li><i class="fas fa-check"></i> Dedicated account manager</li>
             <li><i class="fas fa-check"></i> Priority escalation path</li>
           </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 3) }}" class="btn-package">Get Started</a>
+          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 3) }}" class="btn-package">Request Quote</a>
         </div>
       </div>
     </div>
@@ -754,7 +720,7 @@
             <div class="why-point-icon"><i class="fas fa-coins"></i></div>
             <div>
               <h5>Transparent, Competitive Pricing</h5>
-              <p>No surprise fees. Our packages are clearly priced in TZS with everything spelled out upfront. We work within Tanzanian budgets.</p>
+              <p>No surprise fees. We provide detailed, itemized quotes upfront with everything spelled out clearly. We work within Tanzanian budgets.</p>
             </div>
           </div>
         </div>

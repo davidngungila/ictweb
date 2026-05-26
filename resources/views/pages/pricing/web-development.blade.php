@@ -41,7 +41,7 @@
     <div class="section-header">
       <div class="section-label"><i class="fas fa-laptop-code"></i> Web Development</div>
       <h2 class="section-title">Web Development <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include a free domain + hosting for the first year (worth TZS 150,000), SSL certificate, and 1 month of free support.</p>
+      <p class="section-sub">All packages include a free domain + hosting for the first year, SSL certificate, and 1 month of free support.</p>
     </div>
     
     <div class="pricing-grid">
@@ -51,9 +51,7 @@
         <div class="pricing-name">Web Starter</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Individuals & small businesses</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">400K</span>
-          <span class="pricing-period">– 700K</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -65,7 +63,7 @@
           <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
           <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
         </ul>
-        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1) }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1) }}" class="btn-package">Request Quote</a>
       </div>
       
       <!-- BUSINESS -->
@@ -75,9 +73,7 @@
         <div class="pricing-name">Web Business</div>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing companies</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">800K</span>
-          <span class="pricing-period">– 1.5M</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -88,7 +84,7 @@
           <li><i class="fas fa-check"></i> SSL + full security setup</li>
           <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
         </ul>
-        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2) }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2) }}" class="btn-package">Request Quote</a>
       </div>
       
       <!-- E-COMMERCE -->
@@ -97,9 +93,7 @@
         <div class="pricing-name">Online Store</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Selling online in Tanzania</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">1.5M</span>
-          <span class="pricing-period">– 2.5M</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -110,7 +104,7 @@
           <li><i class="fas fa-check"></i> SMS order confirmations</li>
           <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
         </ul>
-        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Get Started</a>
+        <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Request Quote</a>
       </div>
     </div>
     

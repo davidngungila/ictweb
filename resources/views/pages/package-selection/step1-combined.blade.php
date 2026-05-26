@@ -474,11 +474,10 @@
       <div style="max-width: 1150px; margin: 0 auto;" class="advanced-grid">
         <div>
         <div class="highlight-box">
-          <strong>Advanced Package Planner:</strong> Select a service, compare package capability, and get a live cost estimate before moving to review.
+          <strong>Advanced Package Planner:</strong> Select a service and compare package capabilities before requesting an official quote.
           <div>
-            <span class="quick-chip"><i class="fas fa-check-circle" style="margin-right: 6px;"></i>Instant estimate</span>
-            <span class="quick-chip"><i class="fas fa-check-circle" style="margin-right: 6px;"></i>Flexible add-ons</span>
-            <span class="quick-chip"><i class="fas fa-check-circle" style="margin-right: 6px;"></i>Priority options</span>
+            <span class="quick-chip"><i class="fas fa-check-circle" style="margin-right: 6px;"></i>Customized Proposal</span>
+            <span class="quick-chip"><i class="fas fa-check-circle" style="margin-right: 6px;"></i>Fast Response</span>
           </div>
         </div>
         
@@ -969,7 +968,7 @@
 
       <!-- Right Summary Column -->
       <aside class="summary-panel">
-        <div class="summary-title"><i class="fas fa-receipt" style="margin-right: 8px;"></i>Live Order Summary</div>
+        <div class="summary-title"><i class="fas fa-receipt" style="margin-right: 8px;"></i>Order Summary</div>
         <div class="summary-line">
           <span>Selected Package:</span>
           <span id="summary_package">Not selected</span>
@@ -978,16 +977,8 @@
           <span>Add-ons:</span>
           <span id="summary_addon_count">0 item(s)</span>
         </div>
-        <div class="summary-line">
-          <span>Add-ons Total:</span>
-          <span id="summary_addons_total">TZS 0</span>
-        </div>
-        <div class="summary-total summary-line">
-          <span>Estimated Total:</span>
-          <span id="summary_total">TZS 0</span>
-        </div>
         <p style="margin-top: 14px; color: #666; font-size: 0.85rem; line-height: 1.6;">
-          This estimate updates instantly based on your selections. Final total is confirmed in review.
+          Your selections will be summarized here. Final pricing will be provided as a detailed quote.
         </p>
       </aside>
       </div>
@@ -1039,29 +1030,17 @@
 
     function updateSummary() {
       var selectedPackage = document.querySelector('#package-picker-root .package-option-card input[type="radio"]:checked');
-      var packagePrice = 0;
       var packageName = 'Not selected';
 
       if (selectedPackage) {
         var packageCard = selectedPackage.closest('.package-option-card');
-        packagePrice = parseInt(packageCard.getAttribute('data-price') || '0', 10);
         packageName = packageCard.getAttribute('data-package') || 'Selected';
       }
 
       var checkedAddons = document.querySelectorAll('.addon-option input[type="checkbox"]:checked');
-      var addonsTotal = 0;
-      checkedAddons.forEach(function (addon) {
-        var addonCard = addon.closest('.addon-option');
-        addonsTotal += parseInt(addonCard.getAttribute('data-price') || '0', 10);
-      });
-
-      var total = packagePrice + addonsTotal;
 
       summaryPackage.textContent = packageName;
       summaryAddonCount.textContent = checkedAddons.length + ' item(s)';
-      summaryAddonsTotal.textContent = formatTZS(addonsTotal);
-      summaryTotal.textContent = formatTZS(total);
-      estimatedTotalInput.value = total;
     }
 
     function escapeHtml(text) {
@@ -1121,16 +1100,16 @@
         }).join('');
 
         html +=
-          '<label class="package-option-card' + (checked ? ' selected' : '') + '" data-package="' + escapeAttr(p.name) + '" data-price="' + Number(p.price) + '">' +
+          '<label class="package-option-card' + (checked ? ' selected' : '') + '" data-package="' + escapeAttr(p.name) + '">' +
           '<div class="package-info">' +
           '<div style="display: flex; align-items: center; gap: 10px;">' +
           '<input type="radio" name="package_id" value="' + tierId + '"' + checked + ' style="width: 18px; height: 18px;">' +
           '<h4>' + escapeHtml(p.name) + (p.popular ? ' <span style="font-size: 0.7rem; background: var(--accent); color: white; padding: 2px 8px; border-radius: 10px;">POPULAR</span>' : '') + '</h4>' +
           '</div>' +
+          '<div class="package-price-tag" style="color: var(--accent); font-weight: 800; margin: 8px 0 12px 28px;">Request Quote</div>' +
           '<p>' + escapeHtml(p.desc || '') + '</p>' +
           '<ul class="package-features-list">' + feats + '</ul>' +
           '</div>' +
-          '<div class="package-price-tag">' + formatTZS(Number(p.price)) + '</div>' +
           '</label>';
       });
       packageRoot.innerHTML = html;

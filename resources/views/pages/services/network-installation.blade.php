@@ -113,9 +113,7 @@
         <div class="pricing-name">Network Basic</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small office / home networks</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">500K</span>
-          <span class="pricing-period">– 1.5M</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -125,7 +123,7 @@
           <li><i class="fas fa-check"></i> Guest WiFi network</li>
           <li><i class="fas fa-check"></i> Delivered in 1–2 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
@@ -133,9 +131,7 @@
         <div class="pricing-name">Network Standard</div>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Small to medium businesses</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">1.5M</span>
-          <span class="pricing-period">– 5M</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -145,16 +141,14 @@
           <li><i class="fas fa-check"></i> 24/7 remote monitoring (1 month)</li>
           <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Enterprise</div>
         <div class="pricing-name">Network Enterprise</div>
         <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Multi-site / campus networks</p>
         <div class="pricing-price">
-          <span class="pricing-currency">TZS</span>
-          <span class="pricing-amount">5M</span>
-          <span class="pricing-period">– 15M+</span>
+          <span class="pricing-amount">Request Quote</span>
         </div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
@@ -164,7 +158,7 @@
           <li><i class="fas fa-check"></i> Full security audit + hardening</li>
           <li><i class="fas fa-check"></i> Delivered in 1–2 weeks</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Get Started</a>
+        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
       </div>
     </div>
   </div>
@@ -219,27 +213,27 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Travel Blog + 5 Posts</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">High-quality content to boost SEO and attract visitors</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Advanced SEO Package</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Deep keyword optimization, technical SEO, and ranking strategy</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 300,000 – 600,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Social Media Auto-Posting</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automatically publish content to Facebook, Instagram, and more</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Email Marketing Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Campaign setup, templates, and automation</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Analytics & Tracking Setup (Advanced)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Google Analytics, Facebook Pixel, and conversion tracking</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -251,22 +245,22 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Google Services Automation</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automate reports, invoices, dashboards, and workflows (Sheets, Docs, Slides, Drive)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 100,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">AI Chatbot Integration</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Automated customer support and smart replies (Website + WhatsApp)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 250,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Bulk SMS System Setup</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Send SMS campaigns directly from your system (Admin Panel)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Extra SMS Credits (100 Pack)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Additional SMS bundles for campaigns and notifications</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 50,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>
@@ -278,12 +272,12 @@
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Online Payment Integration</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Integrate M-Pesa, Airtel Money, cards, and APIs like Snippe</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 200,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
         <div class="addon-card" style="display: block; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background: white;">
           <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">API Integration (Any System)</div>
           <div style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">Connect your system with external services (SMS, CRM, payments)</div>
-          <div style="color: var(--accent); font-weight: 700;">TZS 150,000 – 400,000</div>
+          <div style="color: var(--accent); font-weight: 700;">Request Quote</div>
         </div>
       </div>
     </div>

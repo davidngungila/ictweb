@@ -312,35 +312,35 @@
             </h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="travel_blog_5_posts" data-price="150000" {{ old('selected_addons') && in_array('travel_blog_5_posts', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="travel_blog_5_posts" {{ old('selected_addons') && in_array('travel_blog_5_posts', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Travel Blog + 5 Posts</div>
                   <div class="addon-desc">High-quality content to boost SEO</div>
-                  <div class="addon-price">TZS 150,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="advanced_seo" data-price="300000" {{ old('selected_addons') && in_array('advanced_seo', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="advanced_seo" {{ old('selected_addons') && in_array('advanced_seo', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Advanced SEO Package</div>
                   <div class="addon-desc">Deep keyword optimization & ranking strategy</div>
-                  <div class="addon-price">TZS 300,000 – 600,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="social_auto_posting" data-price="150000" {{ old('selected_addons') && in_array('social_auto_posting', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="social_auto_posting" {{ old('selected_addons') && in_array('social_auto_posting', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Social Media Auto-Posting</div>
                   <div class="addon-desc">Auto-publish to Facebook, Instagram, etc.</div>
-                  <div class="addon-price">TZS 150,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="email_marketing" data-price="200000" {{ old('selected_addons') && in_array('email_marketing', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="email_marketing" {{ old('selected_addons') && in_array('email_marketing', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Email Marketing Setup</div>
                   <div class="addon-desc">Campaign setup, templates, automation</div>
-                  <div class="addon-price">TZS 200,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
             </div>
@@ -353,27 +353,27 @@
             </h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="google_automation" data-price="100000" {{ old('selected_addons') && in_array('google_automation', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="google_automation" {{ old('selected_addons') && in_array('google_automation', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Google Services Automation</div>
                   <div class="addon-desc">Automate reports, invoices, workflows</div>
-                  <div class="addon-price">TZS 100,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="ai_chatbot" data-price="250000" {{ old('selected_addons') && in_array('ai_chatbot', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="ai_chatbot" {{ old('selected_addons') && in_array('ai_chatbot', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">AI Chatbot Integration</div>
                   <div class="addon-desc">Automated customer support (Website + WhatsApp)</div>
-                  <div class="addon-price">TZS 250,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="bulk_sms_system" data-price="200000" {{ old('selected_addons') && in_array('bulk_sms_system', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="bulk_sms_system" {{ old('selected_addons') && in_array('bulk_sms_system', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Bulk SMS System Setup</div>
                   <div class="addon-desc">Send SMS campaigns from Admin Panel</div>
-                  <div class="addon-price">TZS 200,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
             </div>
@@ -386,19 +386,19 @@
             </h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="online_payment" data-price="200000" {{ old('selected_addons') && in_array('online_payment', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="online_payment" {{ old('selected_addons') && in_array('online_payment', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Online Payment Integration</div>
                   <div class="addon-desc">M-Pesa, Airtel Money, cards, Snippe API</div>
-                  <div class="addon-price">TZS 200,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="api_integration" data-price="150000" {{ old('selected_addons') && in_array('api_integration', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="api_integration" {{ old('selected_addons') && in_array('api_integration', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">API Integration (Any System)</div>
                   <div class="addon-desc">Connect with external services (SMS, CRM)</div>
-                  <div class="addon-price">TZS 150,000 – 400,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
             </div>
@@ -411,27 +411,27 @@
             </h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="admin_dashboard" data-price="300000" {{ old('selected_addons') && in_array('admin_dashboard', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="admin_dashboard" {{ old('selected_addons') && in_array('admin_dashboard', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Admin Dashboard System</div>
                   <div class="addon-desc">Manage users, reports, payments (Custom CMS)</div>
-                  <div class="addon-price">TZS 300,000 – 700,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="booking_system" data-price="250000" {{ old('selected_addons') && in_array('booking_system', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="booking_system" {{ old('selected_addons') && in_array('booking_system', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">Booking & Reservation System</div>
                   <div class="addon-desc">Online booking with calendar & notifications</div>
-                  <div class="addon-price">TZS 250,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
               <label class="addon-item">
-                <input type="checkbox" name="selected_addons[]" value="ecommerce" data-price="350000" {{ old('selected_addons') && in_array('ecommerce', old('selected_addons')) ? 'checked' : '' }}>
+                <input type="checkbox" name="selected_addons[]" value="ecommerce" {{ old('selected_addons') && in_array('ecommerce', old('selected_addons')) ? 'checked' : '' }}>
                 <div style="position: relative; z-index: 2;">
                   <div class="addon-name">E-commerce Store Setup</div>
                   <div class="addon-desc">Sell products/services with cart & checkout</div>
-                  <div class="addon-price">TZS 350,000</div>
+                  <div class="addon-price">Request Quote</div>
                 </div>
               </label>
             </div>
@@ -442,7 +442,7 @@
               <i class="fas fa-lightbulb" style="margin-right: 10px;"></i> Optional
             </h4>
             <p style="margin: 0; color: #666; font-size: 0.95rem; line-height: 1.6;">
-              These add-ons are optional and will be added to your total price. You can skip this step if you don't need any extra services.
+              These add-ons are optional and will be included in your official quote. You can skip this step if you don't need any extra services.
             </p>
           </div>
         </div>

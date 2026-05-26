@@ -3,10 +3,10 @@
 @section('title', 'Step 5: Review - Package Selection')
 
 @section('meta_tags')
-  <meta name="description" content="Review your package selection before proceeding to payment.">
+  <meta name="description" content="Review your package selection before submitting for a quote.">
   <meta name="keywords" content="ICT review, package summary Tanzania, Jezdan Technology">
   <meta property="og:title" content="Step 5: Review">
-  <meta property="og:description" content="Review your package selection before proceeding to payment.">
+  <meta property="og:description" content="Review your package selection before submitting for a quote.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:image" content="{{ asset('logo.png') }}">
@@ -221,7 +221,7 @@
         Review Your <span>Selection</span>
       </h1>
       <p class="hero-subtitle">
-        Review your package details before proceeding to payment.
+        Review your package details before submitting for an official quote.
       </p>
     </div>
   </div>
@@ -319,9 +319,9 @@
             
             // Hardcoded packages
             $packages = [
-                1 => ['name' => 'Starter Package', 'price' => 400000],
-                2 => ['name' => 'Business Package', 'price' => 800000],
-                3 => ['name' => 'Enterprise Package', 'price' => 1500000],
+                1 => ['name' => 'Starter Package'],
+                2 => ['name' => 'Business Package'],
+                3 => ['name' => 'Enterprise Package'],
             ];
             
             $service = $services[old('service_id')] ?? null;
@@ -337,10 +337,6 @@
           <div class="review-item">
             <span class="review-label">Package</span>
             <span class="review-value">{{ $package['name'] }}</span>
-          </div>
-          <div class="review-item">
-            <span class="review-label">Package Price</span>
-            <span class="review-value" style="color: var(--accent); font-weight: 700;">TZS {{ number_format($package['price'], 0) }}</span>
           </div>
           @endif
         </div>
@@ -389,58 +385,13 @@
           <textarea name="notes" rows="4" style="width: 100%; padding: 16px; border: 2px solid #e8e8e8; border-radius: 12px; resize: vertical; font-size: 1rem; transition: border-color 0.3s;" placeholder="Any additional requirements or special requests..." onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='#e8e8e8'">{{ old('notes') }}</textarea>
         </div>
 
-        <!-- Price Summary -->
-        <div class="review-card">
-          <h3 class="section-title">
-            <i class="fas fa-calculator"></i> Price Summary
-          </h3>
-          @if($package)
-          <div class="review-item">
-            <span class="review-label">Package Price</span>
-            <span class="review-value">TZS {{ number_format($package['price'], 0) }}</span>
-          </div>
-          @endif
-          
-          @php
-            $addonPrices = \App\Support\PackagePricing::addonPrices();
-            
-            $basePrice = $package ? $package['price'] : 0;
-            $addonsTotal = 0;
-            if(old('selected_addons')) {
-                foreach(old('selected_addons') as $addon) {
-                    $addonsTotal += $addonPrices[$addon] ?? 0;
-                }
-            }
-            $totalPrice = $basePrice + $addonsTotal;
-            $payPlan = old('payment_plan', (session('package_order_data', [])['payment_plan'] ?? 'enterprise'));
-            $advFrac = \App\Support\PackagePricing::advanceFractionForPlan($payPlan);
-            $advPct = \App\Support\PackagePricing::advancePercentForPlan($payPlan);
-            $advancePayment = $totalPrice * $advFrac;
-          @endphp
-          
-          @if($addonsTotal > 0)
-          <div class="review-item">
-            <span class="review-label">Add-ons Total</span>
-            <span class="review-value">TZS {{ number_format($addonsTotal, 0) }}</span>
-          </div>
-          @endif
-          
-          <div class="summary-total">
-            <span>Total</span>
-            <span style="color: var(--accent);">TZS {{ number_format($totalPrice, 0) }}</span>
-          </div>
-          <div class="summary-advance">
-            <strong>{{ $advPct }}% deposit (checkout estimate):</strong> TZS {{ number_format($advancePayment, 0) }}
-          </div>
-        </div>
-
         <!-- Navigation Buttons -->
         <div style="display: flex; gap: 15px; margin-top: 30px;">
           <button type="button" onclick="history.back()" class="btn-secondary" style="flex: 1; display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
           </button>
           <button type="submit" class="btn-primary" style="flex: 2; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-check" style="margin-right: 8px;"></i> Generate Invoice & Proceed to Payment
+            <i class="fas fa-check" style="margin-right: 8px;"></i> Submit for Official Quote
           </button>
         </div>
       </div>

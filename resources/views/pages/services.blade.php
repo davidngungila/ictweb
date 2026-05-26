@@ -68,131 +68,54 @@
       <p class="section-sub">We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card" id="web-development">
-        <div class="service-card-image">
-          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" />
-          <div class="service-badge">Popular</div>
-        </div>
-        <div class="service-card-content">
-          <h3>Web Development</h3>
-          <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS and integrated mobile money payments.</p>
-          <div class="service-meta">
-            <span class="service-price">From TZS 400,000</span>
-            <div class="service-tags">
-              <span>E-commerce</span>
-              <span>CMS</span>
-            </div>
-          </div>
-          <div class="service-actions">
-            <a href="{{ route('services.web-development') }}" class="btn-outline">Learn More</a>
-            <a href="{{ \App\Support\PackagePricing::wizardUrl(1) }}" class="btn-primary">Book Now</a>
-          </div>
-        </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-globe"></i></div>
+        <h3>Web Development</h3>
+        <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('services.web-development') }}" class="btn-service">Learn More</a>
       </div>
-
-      <div class="service-card" id="mobile-apps">
-        <div class="service-card-image">
-          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" />
-        </div>
-        <div class="service-card-content">
-          <h3>Mobile App Development</h3>
-          <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking platforms.</p>
-          <div class="service-meta">
-            <span class="service-price">From TZS 3,000,000</span>
-            <div class="service-tags">
-              <span>Android</span>
-              <span>iOS</span>
-            </div>
-          </div>
-          <div class="service-actions">
-            <a href="{{ route('services.mobile-app-development') }}" class="btn-outline">Learn More</a>
-            <a href="{{ \App\Support\PackagePricing::wizardUrl(2) }}" class="btn-primary">Book Now</a>
-          </div>
-        </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Mobile App Development</h3>
+        <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('services.mobile-app-development') }}" class="btn-service">Learn More</a>
       </div>
-
-      <div class="service-card" id="networking">
-        <div class="service-card-image">
-          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" />
-        </div>
-        <div class="service-card-content">
-          <h3>Network Installation</h3>
-          <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, and security configuration.</p>
-          <div class="service-meta">
-            <span class="service-price">From TZS 300,000</span>
-            <div class="service-tags">
-              <span>Wi-Fi</span>
-              <span>Infrastructure</span>
-            </div>
-          </div>
-          <div class="service-actions">
-            <a href="{{ route('services.network-installation') }}" class="btn-outline">Learn More</a>
-            <a href="{{ \App\Support\PackagePricing::wizardUrl(3) }}" class="btn-primary">Book Now</a>
-          </div>
-        </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+        <h3>Network Installation</h3>
+        <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('services.network-installation') }}" class="btn-service">Learn More</a>
       </div>
-
-      <div class="service-card" id="cybersecurity">
-        <div class="service-card-image">
-          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" />
-        </div>
-        <div class="service-card-content">
-          <h3>Cybersecurity</h3>
-          <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, and TCRA & GDPR compliance support.</p>
-          <div class="service-meta">
-            <span class="service-price">From TZS 300,000</span>
-            <div class="service-tags">
-              <span>Security</span>
-              <span>Compliance</span>
-            </div>
-          </div>
-          <div class="service-actions">
-            <a href="{{ route('services.cybersecurity') }}" class="btn-outline">Learn More</a>
-            <a href="{{ \App\Support\PackagePricing::wizardUrl(4) }}" class="btn-primary">Book Now</a>
-          </div>
-        </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cybersecurity</h3>
+        <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('services.cybersecurity') }}" class="btn-service">Learn More</a>
       </div>
-
-      <div class="service-card" id="it-support">
-        <div class="service-card-image">
-          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" />
-        </div>
-        <div class="service-card-content">
-          <h3>IT Support</h3>
-          <p>Reliable ongoing IT support from remote troubleshooting to on-site service. Monthly retainer plans with guaranteed SLAs.</p>
-          <div class="service-meta">
-            <span class="service-price">From TZS 150,000/mo</span>
-            <div class="service-tags">
-              <span>24/7 Support</span>
-              <span>Maintenance</span>
-            </div>
-          </div>
-          <div class="service-actions">
-            <a href="{{ route('services.it-support') }}" class="btn-outline">Learn More</a>
-            <a href="{{ \App\Support\PackagePricing::wizardUrl(5) }}" class="btn-primary">Book Now</a>
-          </div>
-        </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-headset"></i></div>
+        <h3>IT Support</h3>
+        <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('services.it-support') }}" class="btn-service">Learn More</a>
       </div>
-
-      <div class="service-card" id="consultancy">
-        <div class="service-card-image">
-          <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" />
-        </div>
-        <div class="service-card-content">
-          <h3>ICT Consultancy</h3>
-          <p>Strategic digital transformation guidance. We audit your existing infrastructure and build technology roadmaps.</p>
-          <div class="service-meta">
-            <span class="service-price">From TZS 500,000</span>
-            <div class="service-tags">
-              <span>Strategy</span>
-              <span>Audit</span>
-            </div>
-          </div>
-          <div class="service-actions">
-            <a href="{{ route('services.ict-consultancy') }}" class="btn-outline">Learn More</a>
-            <a href="{{ \App\Support\PackagePricing::wizardUrl(6) }}" class="btn-primary">Book Now</a>
-          </div>
-        </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>ICT Consultancy</h3>
+        <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('services.ict-consultancy') }}" class="btn-service">Learn More</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-video"></i></div>
+        <h3>CCTV & Security Systems</h3>
+        <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
+        <div class="service-price">Request Quote</div>
+        <a href="{{ route('package.selection') }}" class="btn-service">Get Custom Quote</a>
       </div>
     </div>
   </div>

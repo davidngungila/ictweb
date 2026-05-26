@@ -453,10 +453,6 @@
             <span class="review-label">Package</span>
             <span class="review-value">{{ $package['name'] }}</span>
           </div>
-          <div class="review-item">
-            <span class="review-label">Package Price</span>
-            <span class="review-value" style="color: var(--accent); font-weight: 700;">TZS {{ number_format($package['price'], 0) }}</span>
-          </div>
           @endif
         </div>
 
@@ -500,123 +496,19 @@
           <p style="color: #666;">{{ $data['notes'] ?? 'No additional notes provided' }}</p>
         </div>
 
-        <!-- Project Preferences & Payment Plan -->
+        <!-- Project Preferences -->
         <div class="review-card">
           <h3 class="section-title">
             <i class="fas fa-sliders"></i> Project Preferences
           </h3>
-          <div class="review-item" style="margin-bottom: 25px;">
+          <div class="review-item">
             <span class="review-label">Timeline Priority</span>
             <span class="review-value">{{ ucfirst(str_replace('_', ' ', $data['timeline_priority'] ?? 'standard')) }}</span>
           </div>
-
-          <h3 class="section-title">
-            <i class="fas fa-credit-card"></i> Payment Plan
-          </h3>
-          <div class="form-group" style="margin-bottom: 20px;">
-            <label class="form-label" style="display: block; margin-bottom: 8px; font-weight: 500; color: #666;">Adjust Deposit Percentage</label>
-            <select name="payment_plan" class="form-input" id="payment_plan_review" style="width: 100%; padding: 12px; border: 1px solid #e8e8e8; border-radius: 8px; font-size: 0.95rem;">
-              <option value="startup" {{ (old('payment_plan', $data['payment_plan'] ?? 'startup') == 'startup') ? 'selected' : '' }}>50% Deposit (Standard)</option>
-              <option value="standard" {{ (old('payment_plan', $data['payment_plan'] ?? '') == 'standard') ? 'selected' : '' }}>40% Deposit</option>
-              <option value="enterprise" {{ (old('payment_plan', $data['payment_plan'] ?? '') == 'enterprise') ? 'selected' : '' }}>30% Deposit (Large Projects)</option>
-              <option value="full" {{ (old('payment_plan', $data['payment_plan'] ?? '') == 'full') ? 'selected' : '' }}>100% Full Payment</option>
-            </select>
-          </div>
-          
-          <div class="summary-advance" id="deposit_summary_box">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span>Deposit Due Now:</span>
-              <strong id="deposit_amount_display">TZS 0</strong>
-            </div>
-            <p style="margin: 10px 0 0; font-size: 0.85rem; color: #666;">
-              <i class="fas fa-info-circle"></i> Work begins immediately after this deposit is cleared.
-            </p>
-          </div>
-        </div>
-
-        <!-- Hidden inputs for calculated values -->
-        <input type="hidden" id="total_price_hidden" value="{{ $package['price'] ?? 0 }}">
-        @php
-            $addonPrices = \App\Support\PackagePricing::addonPrices();
-            $addonsTotal = 0;
-            foreach($data['selected_addons'] ?? [] as $addon) {
-                $addonsTotal += $addonPrices[$addon] ?? 0;
-            }
-        @endphp
-        <input type="hidden" id="addons_total_hidden" value="{{ $addonsTotal }}">
-
-        <script>
-          (function() {
-            const planSelect = document.getElementById('payment_plan_review');
-            const depositDisplay = document.getElementById('deposit_amount_display');
-            const totalPrice = parseInt(document.getElementById('total_price_hidden').value);
-            const addonsTotal = parseInt(document.getElementById('addons_total_hidden').value);
-            const grandTotal = totalPrice + addonsTotal;
-
-            function updateDeposit() {
-              let fraction = 0.5;
-              const val = planSelect.value;
-              if (val === 'startup') fraction = 0.5;
-              else if (val === 'standard') fraction = 0.4;
-              else if (val === 'enterprise') fraction = 0.3;
-              else if (val === 'full') fraction = 1.0;
-
-              const deposit = Math.round(grandTotal * fraction);
-              depositDisplay.textContent = 'TZS ' + deposit.toLocaleString();
-            }
-
-            if (planSelect) {
-              planSelect.addEventListener('change', updateDeposit);
-              updateDeposit();
-            }
-          })();
-        </script>
-
-        <!-- Price Summary -->
-        <div class="review-card">
-          <h3 class="section-title">
-            <i class="fas fa-calculator"></i> Price Summary
-          </h3>
-          @if($package)
-          <div class="review-item">
-            <span class="review-label">Package Price</span>
-            <span class="review-value">TZS {{ number_format($package['price'], 0) }}</span>
-          </div>
-          @endif
-          
-          @php
-            $addonPrices = \App\Support\PackagePricing::addonPrices();
-            
-            $basePrice = $package ? $package['price'] : 0;
-            $addonsTotal = 0;
-            if($data['selected_addons'] ?? []) {
-                foreach($data['selected_addons'] as $addon) {
-                    $addonsTotal += $addonPrices[$addon] ?? 0;
-                }
-            }
-            $totalPrice = $basePrice + $addonsTotal;
-            $payPlan = $data['payment_plan'] ?? 'enterprise';
-            $advFrac = \App\Support\PackagePricing::advanceFractionForPlan($payPlan);
-            $advPct = \App\Support\PackagePricing::advancePercentForPlan($payPlan);
-            $advancePayment = $totalPrice * $advFrac;
-          @endphp
-          
-          @if($addonsTotal > 0)
-          <div class="review-item">
-            <span class="review-label">Add-ons Total</span>
-            <span class="review-value">TZS {{ number_format($addonsTotal, 0) }}</span>
-          </div>
-          @endif
-          
-          <div class="summary-total">
-            <span>Project total</span>
-            <span style="color: var(--accent);">TZS {{ number_format($totalPrice, 0) }}</span>
-          </div>
-
         </div>
 
         <div class="review-card" style="font-size:0.88rem;color:#555;line-height:1.55;">
-          {{ \App\Support\PackagePricing::paymentWorkLegalNote() }}
+          <p>After submission, our team will review your requirements and provide a detailed official quote within 24 hours.</p>
         </div>
 
         <!-- Navigation Buttons -->
@@ -624,11 +516,8 @@
           <button type="button" onclick="history.back()" class="btn-secondary" style="display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
           </button>
-          <button type="button" onclick="generateInvoice()" class="btn-secondary" style="display: flex; align-items: center; justify-content: center; border-color: var(--accent); color: var(--accent);">
-            <i class="fas fa-file-invoice" style="margin-right: 8px;"></i> Generate Invoice
-          </button>
           <button type="submit" class="btn-primary" style="display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Proceed to Payment
+            <i class="fas fa-check" style="margin-right: 8px;"></i> Submit for Official Quote
           </button>
         </div>
       </div>
