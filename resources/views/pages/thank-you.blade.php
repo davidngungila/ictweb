@@ -3,29 +3,19 @@
 @section('title', 'Thank You | Jezdan Technology')
 
 @section('meta_tags')
-  <meta name="description" content="Thank you for your payment. Jezdan Technology has received your order and our team will contact you shortly.">
-  <meta name="keywords" content="Jezdan Technology thank you, payment success Tanzania, ICT order confirmation">
-  <meta property="og:title" content="Thank You - Jezdan Technology">
-  <meta property="og:description" content="Your payment has been received. We are preparing the next steps for your project.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:image" content="{{ asset('logo.png') }}">
+  <meta name="description" content="Thank you for contacting Jezdan Technology. Our team will respond to your quote request shortly.">
+  <meta name="robots" content="noindex">
 @endsection
 
 @section('content')
 <style>
-  .thanks-wrap {
-    max-width: 980px;
-    margin: 0 auto;
-  }
-
+  .thanks-wrap { max-width: 980px; margin: 0 auto; }
   .thanks-card {
     background: #fff;
     border-radius: 18px;
     padding: 34px;
     box-shadow: 0 12px 34px rgba(0, 0, 0, 0.08);
   }
-
   .ok-badge {
     width: 92px;
     height: 92px;
@@ -38,33 +28,21 @@
     color: #fff;
     font-size: 2.1rem;
   }
-
   .detail-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 14px;
     margin: 22px 0 16px;
   }
-
   .detail-item {
     border: 1px solid #edf0f5;
     border-radius: 12px;
     padding: 13px 14px;
     background: #fafcff;
   }
-
-  .detail-key {
-    color: #6a7380;
-    font-size: 0.86rem;
-    margin-bottom: 6px;
-  }
-
-  .detail-value {
-    color: #222;
-    font-weight: 700;
-    word-break: break-word;
-  }
-
+  .detail-key { color: #6a7380; font-size: 0.86rem; margin-bottom: 6px; }
+  .detail-value { color: #222; font-weight: 700; word-break: break-word; }
+  .ref-mono { font-family: var(--font-mono); color: var(--accent); }
   .next-box {
     margin-top: 20px;
     background: #f4f9ff;
@@ -72,54 +50,22 @@
     border-radius: 10px;
     padding: 18px;
   }
-
-  .next-box ul {
-    margin: 10px 0 0;
-    padding-left: 20px;
-    color: #445066;
-    line-height: 1.75;
-  }
-
-  .cta-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 22px;
-  }
-
+  .next-box ul { margin: 10px 0 0; padding-left: 20px; color: #445066; line-height: 1.75; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
   .btn-solid {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-    color: #fff;
-    text-decoration: none;
-    border-radius: 999px;
-    padding: 12px 22px;
-    font-weight: 700;
+    color: #fff; text-decoration: none; border-radius: 999px; padding: 12px 22px; font-weight: 700;
   }
-
   .btn-soft {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #f0f3f8;
-    color: #263145;
-    text-decoration: none;
-    border-radius: 999px;
-    padding: 12px 22px;
-    font-weight: 700;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #f0f3f8; color: #263145; text-decoration: none; border-radius: 999px; padding: 12px 22px; font-weight: 700;
   }
 </style>
 
 @php
-  $ref = request('ref');
-  $orderId = request('order');
-  $orderNumber = request('order_number');
-  $orderFromRef = null;
-  if (is_string($ref) && preg_match('/^[a-f0-9]{32}$/', $ref)) {
-      $orderFromRef = \App\Models\PackageOrder::where('payment_page_token', $ref)->first();
-  }
+  $isQuote = request('type') === 'quote';
+  $reference = request('ref');
 @endphp
 
 <section class="hero" style="min-height: 36vh;">
@@ -130,8 +76,20 @@
   <div class="hero-content">
     <div class="hero-left" style="max-width: 840px; margin: 0 auto; text-align: center;">
       <div class="hero-badge"><span class="dot"></span>Jezdan Technology</div>
-      <h1 class="hero-title">Thank You for <span>Your Payment</span></h1>
-      <p class="hero-subtitle">Your project request is confirmed. Our team will reach out shortly to begin execution.</p>
+      <h1 class="hero-title">
+        @if($isQuote)
+          Quote Request <span>Received</span>
+        @else
+          Thank <span>You</span>
+        @endif
+      </h1>
+      <p class="hero-subtitle">
+        @if($isQuote)
+          Our team will review your project and send a tailored official quote within 24 business hours.
+        @else
+          We appreciate you reaching out to Jezdan Technology.
+        @endif
+      </p>
     </div>
   </div>
 </section>
@@ -141,27 +99,27 @@
     <div class="thanks-wrap">
       <div class="thanks-card">
         <div class="ok-badge"><i class="fas fa-check"></i></div>
-        <h2 style="text-align: center; margin-bottom: 8px;">Payment Received Successfully</h2>
+        <h2 style="text-align: center; margin-bottom: 8px;">
+          @if($isQuote) Your quote request is on its way @else Message received @endif
+        </h2>
         <p style="text-align: center; color: #596273; margin-bottom: 8px;">
-          We appreciate your trust in Jezdan Technology. We are preparing your onboarding and project kickoff.
+          @if($isQuote)
+            A confirmation email has been sent to you. Please save your reference number below.
+          @else
+            Our team will get back to you shortly.
+          @endif
         </p>
 
         <div class="detail-grid">
+          @if($isQuote && $reference)
           <div class="detail-item">
-            <div class="detail-key">Order number</div>
-            <div class="detail-value">{{ optional($orderFromRef)->order_number ?? $orderNumber ?? ($orderId ? 'ORD #' . $orderId : 'Will be shared by our team') }}</div>
+            <div class="detail-key">Quote reference</div>
+            <div class="detail-value ref-mono">{{ $reference }}</div>
           </div>
+          @endif
           <div class="detail-item">
-            <div class="detail-key">Payment reference</div>
-            <div class="detail-value">
-              @if($orderFromRef && $orderFromRef->payment_page_token)
-                {{ substr($orderFromRef->payment_page_token, 0, 8) }}…
-              @elseif(is_string($ref) && $ref !== '')
-                {{ strlen($ref) > 12 ? substr($ref, 0, 8).'…' : $ref }}
-              @else
-                —
-              @endif
-            </div>
+            <div class="detail-key">Response time</div>
+            <div class="detail-value">Within 24 business hours</div>
           </div>
           <div class="detail-item">
             <div class="detail-key">Support WhatsApp</div>
@@ -176,16 +134,22 @@
         <div class="next-box">
           <strong>What happens next:</strong>
           <ul>
-            <li>Our team reviews your order and payment confirmation.</li>
-            <li>You receive a follow-up call or WhatsApp message within 24 hours.</li>
-            <li>We align on scope, timeline, and immediate kickoff steps.</li>
+            @if($isQuote)
+              <li>Our specialists review your project scope and selected services.</li>
+              <li>You receive a custom official quote by email (and WhatsApp if needed).</li>
+              <li>We schedule a call to align on timeline, deliverables, and next steps.</li>
+              <li>Payment is arranged offline only — after you approve the quote.</li>
+            @else
+              <li>Our team reviews your message.</li>
+              <li>You receive a follow-up within 24 business hours.</li>
+            @endif
           </ul>
         </div>
 
         <div class="cta-row">
-          <a href="{{ route('home') }}" class="btn-soft"><i class="fas fa-home"></i>Back to Home</a>
-          <a href="{{ route('services') }}" class="btn-soft"><i class="fas fa-layer-group"></i>Explore Services</a>
-          <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology,%20I%20have%20completed%20payment%20for%20my%20order." class="btn-solid" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i>Chat on WhatsApp</a>
+          <a href="{{ route('home') }}" class="btn-soft"><i class="fas fa-home"></i> Back to Home</a>
+          <a href="{{ route('services') }}" class="btn-soft"><i class="fas fa-layer-group"></i> Explore Services</a>
+          <a href="https://wa.me/255685847002?text={{ urlencode($isQuote && $reference ? "Hello Jezdan Technology, I submitted quote request {$reference}." : 'Hello Jezdan Technology, I need assistance.') }}" class="btn-solid" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
       </div>
     </div>

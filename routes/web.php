@@ -20,7 +20,8 @@ use App\Http\Controllers\Admin\PricingPlanController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\PackageOrderController;
-use App\Models\PackageOrder;
+use App\Http\Controllers\QuoteRequestController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -394,84 +395,29 @@ Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [PageController::class, 'blogShow'])->name('blog.show')->where('slug', '[a-z0-9\-]+');
 Route::get('/careers', function() { return view('pages.careers'); })->name('careers');
 
-// Package Selection & Payment
-Route::get('/package-selection', [PackageOrderController::class, 'showSelectionForm'])->name('package.selection');
+// Request Quote (single page — no online payment)
+Route::get('/request-quote', [QuoteRequestController::class, 'show'])->name('request.quote');
+Route::post('/request-quote', [QuoteRequestController::class, 'submit'])->name('request.quote.submit');
 
-// Multi-step wizard routes (3-step flow)
-Route::get('/package-selection/step1', [PackageOrderController::class, 'showStep1'])->name('package.selection.step1');
-Route::post('/package-selection/step1/process', [PackageOrderController::class, 'processStep1'])->name('package.selection.step1.process');
-Route::get('/package-selection/step2', [PackageOrderController::class, 'showStep2'])->name('package.selection.step2');
-Route::post('/package-selection/step2/process', [PackageOrderController::class, 'processStep2'])->name('package.selection.step2.process');
-Route::post('/package/invoice/generate', [PackageOrderController::class, 'generateInvoice'])->name('package.invoice.generate');
+// Legacy package selection & payment URLs → quote page
+Route::redirect('/package-selection', '/request-quote', 301)->name('package.selection');
+Route::get('/package-selection/step1', function (Request $request) {
+    return redirect()->route('request.quote', $request->query(), 301);
+})->name('package.selection.step1');
+Route::post('/package-selection/step1/process', fn () => redirect()->route('request.quote', [], 301));
+Route::get('/package-selection/step2', fn () => redirect()->route('request.quote', [], 301))->name('package.selection.step2');
+Route::post('/package-selection/step2/process', fn () => redirect()->route('request.quote', [], 301));
+Route::post('/package/invoice/generate', fn () => redirect()->route('request.quote', [], 301))->name('package.invoice.generate');
+Route::post('/package/order', fn () => redirect()->route('request.quote', [], 301))->name('package.order.process');
 
-Route::post('/package/order', [PackageOrderController::class, 'processOrder'])->name('package.order.process');
-
-$paymentCheckoutToken = '[a-f0-9]{32}';
-Route::get('/payment/checkout/{checkout}', [PackageOrderController::class, 'showPaymentPage'])->name('payment.show')->where('checkout', $paymentCheckoutToken);
-Route::post('/payment/checkout/{checkout}/initiate', [PackageOrderController::class, 'initiatePayment'])->name('payment.initiate')->where('checkout', $paymentCheckoutToken);
-Route::get('/payment/checkout/{checkout}/check-status', [PackageOrderController::class, 'checkPaymentStatus'])->name('payment.check.status')->where('checkout', $paymentCheckoutToken);
-Route::get('/payment/checkout/{checkout}/confirmation', [PackageOrderController::class, 'paymentConfirmation'])->name('payment.confirmation')->where('checkout', $paymentCheckoutToken);
-Route::get('/payment/checkout/{checkout}/success', [PackageOrderController::class, 'showPaymentSuccess'])->name('payment.success')->where('checkout', $paymentCheckoutToken);
-Route::get('/payment/checkout/{checkout}/receipt', [PackageOrderController::class, 'downloadReceipt'])->name('payment.receipt')->where('checkout', $paymentCheckoutToken);
-
-Route::get('/payment/{order}', function (string $order) {
-    $o = PackageOrder::findOrFail((int) $order);
-    $o->ensurePaymentPageToken();
-    if (! $o->payment_page_token) {
-        abort(503, 'Payment checkout is not available until database migrations are applied.');
-    }
-
-    return redirect()->route('payment.show', ['checkout' => $o->payment_page_token], 301);
-})->whereNumber('order');
-Route::post('/webhook/snippe', [PackageOrderController::class, 'handleWebhook'])->name('webhook.snippe')->withoutMiddleware(['csrf']);
-
-// Test payment route
-Route::get('/test-payment', function() {
-    // Create a test order
-    $order = \App\Models\PackageOrder::create([
-        'order_number' => 'TEST-' . time(),
-        'client_name' => 'Test User',
-        'client_email' => 'test@example.com',
-        'client_phone' => '0622239304',
-        'service_id' => 1,
-        'package_id' => 1,
-        'selected_features' => [],
-        'selected_addons' => [],
-        'total_price' => 2000,
-        'advance_payment' => 2000,
-        'remaining_balance' => 0,
-        'status' => 'pending',
-        'notes' => 'Test payment',
-    ]);
-    
-    $order->refresh();
-    $order->ensurePaymentPageToken();
-
-    // Initiate payment
-    $snippeService = new \App\Services\SnippePaymentService();
-    $payment = $snippeService->createMobileMoneyPayment($order);
-
-    if (! isset($payment['error'])) {
-        $order->update([
-            'payment_reference' => $payment['reference'] ?? null,
-            'payment_token' => $payment['payment_token'] ?? null,
-            'payment_status' => 'pending',
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'order_id' => $order->id,
-            'payment_reference' => $payment['reference'] ?? null,
-            'payment_token' => $payment['payment_token'] ?? null,
-            'message' => 'Payment initiated. Check your phone for USSD prompt.',
-        ]);
-    }
-
-    return response()->json([
-        'success' => false,
-        'message' => $payment['error'] ?? 'Failed to initiate payment',
-    ]);
-})->name('test.payment');
+Route::redirect('/payment/checkout/{checkout}', '/request-quote', 301)->name('payment.show')->where('checkout', '[a-f0-9]{32}');
+Route::redirect('/payment/checkout/{checkout}/initiate', '/request-quote', 301)->name('payment.initiate')->where('checkout', '[a-f0-9]{32}');
+Route::redirect('/payment/checkout/{checkout}/check-status', '/request-quote', 301)->name('payment.check.status')->where('checkout', '[a-f0-9]{32}');
+Route::redirect('/payment/checkout/{checkout}/confirmation', '/request-quote', 301)->name('payment.confirmation')->where('checkout', '[a-f0-9]{32}');
+Route::redirect('/payment/checkout/{checkout}/success', '/request-quote', 301)->name('payment.success')->where('checkout', '[a-f0-9]{32}');
+Route::redirect('/payment/checkout/{checkout}/receipt', '/request-quote', 301)->name('payment.receipt')->where('checkout', '[a-f0-9]{32}');
+Route::redirect('/payment/{order}', '/request-quote', 301)->whereNumber('order');
+Route::redirect('/test-payment', '/request-quote', 301)->name('test.payment');
 
 // Service Pages
 Route::get('/services/web-development', [PageController::class, 'servicesWebDevelopment'])->name('services.web-development');

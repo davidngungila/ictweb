@@ -989,7 +989,7 @@
     <li><a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') ? 'active' : '' }}">Portfolio</a></li>
     <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a></li>
     <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a></li>
-    <li><a href="{{ route('package.selection') }}" class="nav-cta">Get a Quote</a></li>
+    <li><a href="{{ route('request.quote') }}" class="nav-cta">Get a Quote</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <i class="fas fa-bars"></i>

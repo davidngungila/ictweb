@@ -123,7 +123,7 @@
           <li><i class="fas fa-check"></i> Guest WiFi network</li>
           <li><i class="fas fa-check"></i> Delivered in 1–2 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
+        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
@@ -141,7 +141,7 @@
           <li><i class="fas fa-check"></i> 24/7 remote monitoring (1 month)</li>
           <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
+        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Enterprise</div>
@@ -158,7 +158,7 @@
           <li><i class="fas fa-check"></i> Full security audit + hardening</li>
           <li><i class="fas fa-check"></i> Delivered in 1–2 weeks</li>
         </ul>
-        <a href="{{ route('package.selection') }}" class="btn-package">Request Quote</a>
+        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
       </div>
     </div>
   </div>
@@ -420,7 +420,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 50px;">
-      <a href="{{ route('package.selection') }}" class="btn-primary" style="padding: 15px 40px; font-size: 1.1rem; border-radius: 50px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; cursor: pointer; transition: transform 0.2s; text-decoration: none; display: inline-block;">
+      <a href="{{ route('request.quote') }}" class="btn-primary" style="padding: 15px 40px; font-size: 1.1rem; border-radius: 50px; border: none; background: linear-gradient(135deg, var(--accent), var(--accent-bright)); color: white; cursor: pointer; transition: transform 0.2s; text-decoration: none; display: inline-block;">
         <i class="fas fa-arrow-right"></i> Select Add-Ons & Get Started
       </a>
     </div>
@@ -436,7 +436,7 @@
       <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20network%20installation." class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
-      <a href="{{ route('package.selection') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
+      <a href="{{ route('request.quote') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
   </div>
 </div>

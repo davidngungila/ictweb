@@ -127,7 +127,6 @@ class InvoiceController extends Controller
             
         return view('admin.payments.index', compact('payments'));
     }
-}
 
     public function markAsPaid(Invoice $invoice)
     {

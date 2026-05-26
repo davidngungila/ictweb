@@ -468,7 +468,7 @@ class PackagePricing
             $query['vertical'] = $vertical;
         }
 
-        return route('package.selection.step1', $query);
+        return route('request.quote', $query);
     }
 
     /**

@@ -155,7 +155,7 @@
       <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'm%20interested%20in%20cybersecurity%20services." class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
-      <a href="{{ route('package.selection') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
+      <a href="{{ route('request.quote') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
   </div>
 </div>

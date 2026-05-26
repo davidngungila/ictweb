@@ -108,7 +108,7 @@
       </p>
       <div class="hero-actions">
         <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Explore Packages</a>
-        <a href="{{ route('package.selection') }}" class="btn-outline"><i class="fas fa-phone"></i> Free Consultation</a>
+        <a href="{{ route('request.quote') }}" class="btn-outline"><i class="fas fa-phone"></i> Free Consultation</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -217,7 +217,7 @@
         <h3>CCTV &amp; Security Systems</h3>
         <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
         <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('package.selection') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('request.quote') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -775,7 +775,7 @@
             <p style="font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 20px;">{{ $item['desc'] }}</p>
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <span style="font-weight: 700; color: var(--accent);">{{ $item['price_label'] }}</span>
-              <a href="{{ route('package.selection', ['addon' => $item['slug']]) }}" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem; border-radius: 10px;">Book Now</a>
+              <a href="{{ route('request.quote', ['addon' => $item['slug']]) }}" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem; border-radius: 10px;">Book Now</a>
             </div>
           </div>
         @endforeach
@@ -783,7 +783,7 @@
     </div>
     
     <div style="text-align: center; margin-top: 50px;">
-      <a href="{{ route('package.selection') }}" class="btn-outline">View All Add-Ons <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+      <a href="{{ route('request.quote') }}" class="btn-outline">View All Add-Ons <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
     </div>
   </div>
 </section>
@@ -886,7 +886,7 @@
       <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!" class="btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i> Chat on WhatsApp
       </a>
-      <a href="{{ route('package.selection') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
+      <a href="{{ route('request.quote') }}" class="btn-primary"><i class="fas fa-envelope"></i> Send Us a Message</a>
     </div>
   </div>
 </div>

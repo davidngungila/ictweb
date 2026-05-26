@@ -249,7 +249,7 @@
           <div style="margin-top: 40px; background: var(--navy); padding: 30px; border-radius: 20px; color: white;">
             <h4 style="font-size: 1.2rem; margin-bottom: 15px; font-weight: 800;">Need a Tech Partner?</h4>
             <p style="font-size: 0.85rem; opacity: 0.8; line-height: 1.6; margin-bottom: 20px;">We help Tanzanian organizations build scalable digital infrastructure.</p>
-            <a href="{{ route('package.selection.step1') }}" class="btn-primary" style="width: 100%; text-align: center; background: white; color: var(--navy); padding: 12px; font-size: 0.85rem; border: none;">Get a Quote</a>
+            <a href="{{ route('request.quote') }}" class="btn-primary" style="width: 100%; text-align: center; background: white; color: var(--navy); padding: 12px; font-size: 0.85rem; border: none;">Get a Quote</a>
           </div>
         </div>
       </aside>

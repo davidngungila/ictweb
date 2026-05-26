@@ -379,7 +379,7 @@
     @endphp
     @if(empty($data))
     <div style="background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:14px 18px;border-radius:12px;margin-bottom:22px;">
-      <i class="fas fa-info-circle"></i> Your session expired. Please <a href="{{ route('package.selection.step1') }}" style="color:var(--accent);font-weight:700;">start again from step 1</a>.
+      <i class="fas fa-info-circle"></i> Your session expired. Please <a href="{{ route('request.quote') }}" style="color:var(--accent);font-weight:700;">start again from step 1</a>.
     </div>
     @endif
     <form action="{{ route('package.selection.step2.process') }}" method="POST">

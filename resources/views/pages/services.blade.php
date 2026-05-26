@@ -115,7 +115,7 @@
         <h3>CCTV & Security Systems</h3>
         <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
         <div class="service-price">Request Quote</div>
-        <a href="{{ route('package.selection') }}" class="btn-service">Get Custom Quote</a>
+        <a href="{{ route('request.quote') }}" class="btn-service">Get Custom Quote</a>
       </div>
     </div>
   </div>
@@ -291,7 +291,7 @@
                   <p>{{ $item['desc'] }}</p>
                   <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                     <span class="addon-price-new">{{ $item['price_label'] }}</span>
-                    <a href="{{ route('package.selection', ['addon' => $item['slug']]) }}" class="btn-primary" style="padding: 6px 15px; font-size: 0.85rem; border-radius: 8px;">Book Now</a>
+                    <a href="{{ route('request.quote', ['addon' => $item['slug']]) }}" class="btn-primary" style="padding: 6px 15px; font-size: 0.85rem; border-radius: 8px;">Book Now</a>
                   </div>
                 </div>
               </div>
@@ -302,7 +302,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 60px;">
-      <a href="{{ route('package.selection') }}" class="btn-primary-large">
+      <a href="{{ route('request.quote') }}" class="btn-primary-large">
         Get Started & Choose Add-Ons <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
       </a>
     </div>
