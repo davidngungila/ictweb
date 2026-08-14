@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', 'Careers at Jezdan Technology | Join Our Team in Tanzania')
 
@@ -25,7 +25,7 @@
   }
   @keyframes careerShine { to { background-position: 200% center; } }
 
-  /* ─── Why Join Us ─── */
+  /* â”€â”€â”€ Why Join Us â”€â”€â”€ */
   .career-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   @media (max-width: 992px) { .career-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .career-grid { grid-template-columns: 1fr; } }
@@ -63,21 +63,8 @@
   .career-card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; color: var(--dark); margin-bottom: 12px; }
   .career-card p { font-size: 0.92rem; color: var(--ink-muted); line-height: 1.7; }
 
-  /* ─── Job Listings ─── */
+  /* â”€â”€â”€ Job Listings â”€â”€â”€ */
   .jobs-wrap { max-width: 900px; margin: 0 auto; }
-  .jobs-filter {
-    display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-    margin-bottom: 42px;
-  }
-  .job-filter-btn {
-    background: #fff; border: 1px solid var(--line); color: var(--ink-muted);
-    padding: 9px 22px; border-radius: 50px;
-    font-size: 0.85rem; font-weight: 700;
-    cursor: pointer; letter-spacing: 0.3px;
-    transition: all 0.3s ease;
-  }
-  .job-filter-btn:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); box-shadow: 0 10px 22px rgba(6, 43, 77, 0.1); }
-  .job-filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 12px 26px rgba(12, 69, 128, 0.3); }
 
   .job-card {
     background: #fff;
@@ -149,10 +136,7 @@
   }
   .job-reqs ul li i { color: #10b981; font-size: 0.75rem; margin-top: 5px; flex-shrink: 0; }
 
-  .jobs-empty { display: none; text-align: center; padding: 70px 0; }
-  .jobs-empty.show { display: block; }
-
-  /* ─── Perks ─── */
+  /* â”€â”€â”€ Perks â”€â”€â”€ */
   .perks {
     position: relative; overflow: hidden;
     background: linear-gradient(135deg, #062B4D 0%, #0C4580 55%, #0F5FA8 100%);
@@ -202,7 +186,7 @@
   .perk-item h4 { color: #fff; font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; }
   .perk-item p { color: rgba(255, 255, 255, 0.68); font-size: 0.85rem; line-height: 1.6; }
 
-  /* ─── Hire us / CTA ─── */
+  /* â”€â”€â”€ Hire us / CTA â”€â”€â”€ */
   .hire-strip {
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;
@@ -315,7 +299,7 @@
         <div class="career-card">
           <div class="career-card-icon"><i class="fas fa-project-diagram"></i></div>
           <h3>Exciting Projects</h3>
-          <p>Work on diverse projects for clients across Tanzania and East Africa — from startups to large enterprises.</p>
+          <p>Work on diverse projects for clients across Tanzania and East Africa â€” from startups to large enterprises.</p>
         </div>
       </div>
       <div class="reveal career-reveal" style="--d:180ms;">
@@ -332,19 +316,7 @@
 <!-- OPEN POSITIONS -->
 <section class="services" id="open-positions" style="background: white; padding: 100px 0;">
   <div class="container">
-    <div class="section-header" style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-      <div class="section-label"><i class="fas fa-briefcase"></i> Open Positions</div>
-      <h2 class="section-title">Current <span>Job Openings</span></h2>
-      <p class="section-sub">Explore our available positions and find the perfect role to advance your career in technology.</p>
-    </div>
-
     <div class="jobs-wrap">
-      <div class="jobs-filter">
-        <button class="job-filter-btn active" data-filter="all">All Positions</button>
-        <button class="job-filter-btn" data-filter="development">Development</button>
-        <button class="job-filter-btn" data-filter="infrastructure">Infrastructure</button>
-        <button class="job-filter-btn" data-filter="support">Support</button>
-      </div>
 
       @php
         $jobs = [
@@ -354,8 +326,7 @@
             'type' => 'Full-time',
             'mode' => 'Remote/Hybrid',
             'location' => 'Moshi / Dar es Salaam',
-            'salary' => 'TZS 1.8M – 3.5M',
-            'filter' => 'development',
+            'salary' => 'TZS 1.8M â€“ 3.5M',
             'desc' => "We're looking for an experienced Web Developer to join our team. You'll build and maintain modern web applications using Laravel, React, and other cutting-edge technologies for clients across Tanzania and East Africa.",
             'reqs' => [
               '3+ years of experience in web development',
@@ -372,8 +343,7 @@
             'type' => 'Full-time',
             'mode' => 'Remote/Hybrid',
             'location' => 'Dar es Salaam',
-            'salary' => 'TZS 1.5M – 2.8M',
-            'filter' => 'development',
+            'salary' => 'TZS 1.5M â€“ 2.8M',
             'desc' => 'Join our mobile development team to create amazing cross-platform applications using Flutter and React Native. You\'ll work on projects for clients across various industries.',
             'reqs' => [
               '2+ years of mobile app development experience',
@@ -390,9 +360,8 @@
             'type' => 'Full-time',
             'mode' => 'On-site',
             'location' => 'Moshi',
-            'salary' => 'TZS 1.2M – 2.4M',
-            'filter' => 'infrastructure',
-            'desc' => "We're seeking a skilled Network Engineer to design, implement, and maintain network infrastructure for our clients — from small offices to large hotel and lodge installations.",
+            'salary' => 'TZS 1.2M â€“ 2.4M',
+            'desc' => "We're seeking a skilled Network Engineer to design, implement, and maintain network infrastructure for our clients â€” from small offices to large hotel and lodge installations.",
             'reqs' => [
               '2+ years of network engineering experience',
               'CCNA or equivalent certification preferred',
@@ -408,8 +377,7 @@
             'type' => 'Full-time',
             'mode' => 'Hybrid',
             'location' => 'Moshi / Remote',
-            'salary' => 'TZS 1.4M – 2.6M',
-            'filter' => 'infrastructure',
+            'salary' => 'TZS 1.4M â€“ 2.6M',
             'desc' => 'Protect our clients\' systems and data by conducting security audits, implementing firewalls and monitoring tools, and responding to security incidents.',
             'reqs' => [
               '2+ years of cybersecurity experience',
@@ -425,8 +393,7 @@
             'type' => 'Full-time',
             'mode' => 'Hybrid',
             'location' => 'Moshi',
-            'salary' => 'TZS 800K – 1.4M',
-            'filter' => 'support',
+            'salary' => 'TZS 800K â€“ 1.4M',
             'desc' => 'Join our IT support team to provide exceptional technical assistance to our clients. You\'ll handle troubleshooting, maintenance, and system administration tasks.',
             'reqs' => [
               '1+ years of IT support experience',
@@ -444,7 +411,6 @@
             'mode' => 'On-site',
             'location' => 'Moshi',
             'salary' => 'Stipend Provided',
-            'filter' => 'development',
             'desc' => 'A 6-month paid internship for recent graduates passionate about web development. Work alongside senior engineers on real client projects and graduate with a solid portfolio.',
             'reqs' => [
               'Degree or diploma in IT, CS, or related field',
@@ -458,7 +424,7 @@
       @endphp
 
       @foreach($jobs as $index => $job)
-      <div class="job-card reveal" style="--d:{{ ($index % 2) * 80 }}ms;" data-filter="{{ $job['filter'] }}">
+      <div class="job-card reveal" style="--d:{{ ($index % 2) * 80 }}ms;">
         <div class="job-card-top">
           <div style="display:flex; gap: 18px; align-items:flex-start; flex-wrap: wrap;">
             <div class="job-card-icon"><i class="fas {{ $job['icon'] }}"></i></div>
@@ -489,13 +455,6 @@
         </div>
       </div>
       @endforeach
-
-      <div class="jobs-empty" id="jobs-empty">
-        <i class="fas fa-folder-open" style="font-size: 2.8rem; color: #cbd5e1; margin-bottom: 18px; display: block;"></i>
-        <h3 style="color: var(--navy); margin-bottom: 8px;">No positions in this category</h3>
-        <p style="color: #718096;">We're always interested in great talent. Send us your CV anyway!</p>
-        <a href="mailto:careers@jezdantech.com" class="job-apply" style="margin-top: 24px;">Send Speculative Application</a>
-      </div>
     </div>
   </div>
 </section>
@@ -560,7 +519,7 @@
         <div class="perk-icon"><i class="fas fa-wifi"></i></div>
         <div>
           <h4>Work Equipment</h4>
-          <p>Modern laptop and tools provided — plus a remote-friendly setup stipend.</p>
+          <p>Modern laptop and tools provided â€” plus a remote-friendly setup stipend.</p>
         </div>
       </div>
       <div class="perk-item reveal" style="--d:80ms;">
@@ -632,29 +591,6 @@
 
 @section('additional_scripts')
 <script>
-  // Job category filter
-  const filterBtns = document.querySelectorAll('.job-filter-btn');
-  const jobCards = document.querySelectorAll('.job-card');
-  const emptyMsg = document.getElementById('jobs-empty');
-
-  filterBtns.forEach(btn => btn.addEventListener('click', function() {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    const filter = this.getAttribute('data-filter');
-    let visible = 0;
-
-    jobCards.forEach(card => {
-      const match = filter === 'all' || card.getAttribute('data-filter') === filter;
-      card.style.display = match ? '' : 'none';
-      if (match) {
-        visible++;
-        card.classList.add('in-view');
-      }
-    });
-
-    emptyMsg.classList.toggle('show', visible === 0);
-  }));
-
   // Expandable requirements
   function toggleReqs(btn) {
     const card = btn.closest('.job-card');
