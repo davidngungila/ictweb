@@ -378,6 +378,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/team', function() { return view('pages.team'); })->name('team');
 Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/solutions', [PageController::class, 'solutions'])->name('solutions');
 // Pricing Pages
 Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 Route::get('/pricing/tour-websites', function() { return view('pages.pricing.tour-websites'); })->name('pricing.tour-websites');

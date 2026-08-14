@@ -1460,7 +1460,7 @@
       </div>
     </li>
     <li class="dropdown mega">
-      <a href="{{ route('request.quote') }}" class="no-active">
+      <a href="{{ route('solutions') }}" class="{{ request()->routeIs('solutions') ? 'active' : '' }}">
         Solutions <i class="fas fa-chevron-down caret"></i>
       </a>
       <div class="mega-menu">

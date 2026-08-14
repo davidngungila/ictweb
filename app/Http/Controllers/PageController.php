@@ -194,4 +194,12 @@ class PageController extends Controller
     {
         return view('pages.technology');
     }
+
+    /**
+     * Display solutions page (all services & industry solutions).
+     */
+    public function solutions()
+    {
+        return view('pages.solutions');
+    }
 }
