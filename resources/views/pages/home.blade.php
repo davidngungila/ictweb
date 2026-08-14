@@ -66,7 +66,7 @@
     <meta name="email" content="info@jezdantech.com">
 
     <!-- Theme -->
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#062B4D">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
@@ -82,533 +82,206 @@
 
 
 
-
-
-
 @section('content')
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Tanzania's #1 ICT Solutions Provider
-      </div>
-      <h1 class="hero-title">
-        Powering <span>Digital Growth</span><br/>
-        Across East Africa
-      </h1>
-      <p class="hero-subtitle">
-        From safari tour websites and mobile apps to enterprise cybersecurity and network infrastructure — Jezdan Technology delivers cutting-edge ICT solutions tailored for Tanzanian businesses from Moshi, Kilimanjaro.
-      </p>
-      <div class="hero-actions">
-        <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Explore Packages</a>
-        <a href="{{ route('request.quote') }}" class="btn-outline"><i class="fas fa-phone"></i> Free Consultation</a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <span class="hero-stat-num">500+</span>
-          <span class="hero-stat-label">Projects Delivered</span>
-        </div>
-        <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
-        <div>
-          <span class="hero-stat-num">98%</span>
-          <span class="hero-stat-label">Client Satisfaction</span>
-        </div>
-        <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
-        <div>
-          <span class="hero-stat-num">7+</span>
-          <span class="hero-stat-label">Years Experience</span>
+<!-- JEZDAN GROUP HERO SLIDER -->
+<section class="jezdan-hero" id="home">
+  <div class="jezdan-hero-slider swiper">
+    <div class="swiper-wrapper">
+
+      <!-- SLIDE 1 — JEZDAN GROUP -->
+      <div class="swiper-slide">
+        <div class="hero-image" style="background-image:url('https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-9">
+              <div class="hero-content">
+                <div class="slide-tag">Jezdan Group</div>
+                <h1 class="slide-title">Building Businesses.<br/><span>Creating Value.</span><br/>Shaping the Future.</h1>
+                <p class="slide-desc">Jezdan Group brings together business, technology, accounting, investment, and strategic services to help organizations grow, operate efficiently, and create lasting value.</p>
+                <div class="slide-actions">
+                  <a href="{{ route('home') }}" class="btn-primary"><i class="fas fa-arrow-right"></i> Discover Jezdan Group</a>
+                  <a href="{{ route('companies') }}" class="btn-outline"><i class="fas fa-building"></i> Our Companies</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- SLIDE 2 — ACCOUNTING & FINANCIAL SERVICES -->
+      <div class="swiper-slide">
+        <div class="hero-image" style="background-image:url('https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-9">
+              <div class="hero-content">
+                <div class="slide-tag">Accounting &amp; Financial Services</div>
+                <h1 class="slide-title">Accurate Numbers.<br/><span>Better Decisions.</span><br/>Stronger Businesses.</h1>
+                <p class="slide-desc">Professional accounting and financial services that help businesses maintain accurate records, understand their financial position, improve compliance, and make informed decisions.</p>
+                <div class="slide-actions">
+                  <a href="{{ route('services.accounting') }}" class="btn-primary"><i class="fas fa-calculator"></i> Accounting Services</a>
+                  <a href="{{ route('contact') }}" class="btn-outline"><i class="fas fa-envelope"></i> Contact Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 — BUSINESS & INVESTMENT -->
+      <div class="swiper-slide">
+        <div class="hero-image" style="background-image:url('https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-9">
+              <div class="hero-content">
+                <div class="slide-tag">Business &amp; Investment</div>
+                <h1 class="slide-title">Growing Businesses.<br/>Unlocking <span>Opportunities.</span></h1>
+                <p class="slide-desc">We support businesses and investment opportunities through strategic thinking, responsible growth, and solutions designed to create sustainable long-term value.</p>
+                <div class="slide-actions">
+                  <a href="{{ route('companies') }}" class="btn-primary"><i class="fas fa-chart-line"></i> Explore Our Businesses</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 — TECHNOLOGY & INNOVATION -->
+      <div class="swiper-slide">
+        <div class="hero-image" style="background-image:url('https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-9">
+              <div class="hero-content">
+                <div class="slide-tag">Technology &amp; Innovation</div>
+                <h1 class="slide-title">Technology That<br/><span>Transforms</span> Business.</h1>
+                <p class="slide-desc">We leverage technology and digital innovation to improve business operations, automate processes, connect people, and create smarter ways of working.</p>
+                <div class="slide-actions">
+                  <a href="{{ route('technology') }}" class="btn-primary"><i class="fas fa-microchip"></i> Technology Solutions</a>
+                  <a href="{{ route('services') }}" class="btn-outline"><i class="fas fa-layer-group"></i> Our Services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 — BUSINESS ADVISORY & CONSULTING -->
+      <div class="swiper-slide">
+        <div class="hero-image" style="background-image:url('https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-9">
+              <div class="hero-content">
+                <div class="slide-tag">Business Advisory &amp; Consulting</div>
+                <h1 class="slide-title">From Strategy<br/>To <span>Sustainable</span> Growth.</h1>
+                <p class="slide-desc">Practical advisory and professional services helping organizations improve performance, manage resources, solve business challenges, and achieve sustainable growth.</p>
+                <div class="slide-actions">
+                  <a href="{{ route('services') }}" class="btn-primary"><i class="fas fa-compass"></i> Our Services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="hero-right">
-      <div class="hero-img-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg" alt="Tech Solutions Tanzania" />
-        <div class="hero-img-badge">
-          <div class="hero-img-badge-title">Uptime Guarantee</div>
-          <div class="hero-img-badge-val">99.9% SLA</div>
-        </div>
-      </div>
-      <div class="hero-float-card">
-        <div class="hero-float-icon"><i class="fas fa-shield-halved"></i></div>
-        <div class="hero-float-text">
-          <strong>Certified &amp; Secure</strong>
-          TCRA Compliant Systems
-        </div>
-      </div>
-    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
 </section>
-
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-strip-inner">
-    <div class="trust-divider"></div>
-    <div class="trust-item"><i class="fas fa-mobile-alt"></i> Online Payment Integrated</div>
-    <div class="trust-divider"></div>
-    <div class="trust-item"><i class="fab fa-whatsapp"></i> WhatsApp Business Support</div>
-    <div class="trust-divider"></div>
-    <div class="trust-item"><i class="fas fa-globe-africa"></i> Serving All Tanzania</div>
-    <div class="trust-divider"></div>
-    <div class="trust-item"><i class="fas fa-headset"></i> 24/7 Technical Support</div>
-    <div class="trust-divider"></div>
-  </div>
-</div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-layer-group"></i> What We Offer</div>
+    <div class="section-header svc-header">
+      <div class="svc-header-tag"><i class="fas fa-layer-group"></i> What We Offer</div>
       <h2 class="section-title">Comprehensive <span>ICT Services</span><br/>Built for East Africa</h2>
       <p class="section-sub">We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Web Development</h3>
-        <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('services.web-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+    <div class="svc-grid">
+      <div class="reveal svc-reveal" style="--d:0s;">
+        <article class="svc-card">
+          <div class="svc-card-media">
+            <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg" alt="Web Development" />
+            <span class="svc-card-num">01</span>
+            <div class="svc-card-icon"><i class="fas fa-code"></i></div>
+          </div>
+          <div class="svc-card-body">
+            <h3>Web Development</h3>
+            <p>Custom websites for all businesses — from simple starter sites to complex e-commerce platforms with full CMS, product management, and integrated mobile money payments.</p>
+            <a href="{{ route('services.web-development') }}" class="svc-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
       </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Mobile App Development</h3>
-        <p>Cross-platform Android & iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('services.mobile-app-development') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="reveal svc-reveal" style="--d:90ms;">
+        <article class="svc-card">
+          <div class="svc-card-media">
+            <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg" alt="Mobile App Development" />
+            <span class="svc-card-num">02</span>
+            <div class="svc-card-icon"><i class="fas fa-mobile-screen-button"></i></div>
+          </div>
+          <div class="svc-card-body">
+            <h3>Mobile App Development</h3>
+            <p>Cross-platform Android &amp; iOS apps built with Flutter and React Native. From informational apps to full-featured booking and payment platforms with real-time tracking.</p>
+            <a href="{{ route('services.mobile-app-development') }}" class="svc-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
       </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Network Installation</h3>
-        <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('services.network-installation') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg" alt="Cybersecurity" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>Cybersecurity</h3>
-        <p>Protect your business with comprehensive vulnerability assessments, 24/7 monitoring, penetration testing, firewall configuration, and TCRA & GDPR compliance support.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('services.cybersecurity') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/admin-data-center-typing-notebook-keyboard-using-automation-tools_lsc29m.jpg" alt="IT Support" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>IT Support</h3>
-        <p>Reliable ongoing IT support from remote troubleshooting to on-site 24/7 enterprise service. Monthly retainer plans with guaranteed SLAs, dedicated account managers, and SMS ticket updates.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('services.it-support') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/african-american-advisor-reviewing-legal-balance-desk-green-screen_qmcihs.jpg" alt="ICT Consultancy" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>ICT Consultancy</h3>
-        <p>Strategic digital transformation guidance. We audit your existing infrastructure, build technology roadmaps, manage vendors, and provide ongoing CTO-on-demand advisory services.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('services.ict-consultancy') }}" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
-        <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600079/male-electrician-works-switchboard-overalls-against-backdrop-emergency-lighting_xpsb7u.jpg" alt="CCTV & Security Systems" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;" />
-        <h3>CCTV &amp; Security Systems</h3>
-        <p>Complete CCTV installation integrated with your network infrastructure. Ideal for hotels, offices, lodges, and residential properties. Remote monitoring and cloud storage included.</p>
-        <span class="service-price"><i class="fas fa-tag"></i> Request Quote</span>
-        <a href="{{ route('request.quote') }}" class="service-link">Get Custom Quote <i class="fas fa-arrow-right"></i></a>
+      <div class="reveal svc-reveal" style="--d:180ms;">
+        <article class="svc-card">
+          <div class="svc-card-media">
+            <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg" alt="Network Installation" />
+            <span class="svc-card-num">03</span>
+            <div class="svc-card-icon"><i class="fas fa-network-wired"></i></div>
+          </div>
+          <div class="svc-card-body">
+            <h3>Network Installation</h3>
+            <p>Professional network infrastructure for offices, hotels, lodges, and camps. Includes site surveys, multi-AP setups, VLANs, guest Wi-Fi, security configuration, and performance optimisation.</p>
+            <a href="{{ route('services.network-installation') }}" class="svc-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
+
+<!-- PORTFOLIO -->
+<section class="portfolio-home" id="portfolio" style="background: #fff;">
   <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Transparent <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include a free domain + hosting for the first year, SSL certificate, and 1 month of free support.</p>
+    <div class="section-header svc-header">
+      <div class="svc-header-tag"><i class="fas fa-briefcase"></i> Our Work</div>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+      <p class="section-sub">Explore our track record of delivering robust, scalable, and user-centric digital products that drive business growth across Tanzania and beyond.</p>
     </div>
-    <div class="packages-tabs">
-      <button class="tab-btn active" onclick="switchTab('tour')">🌍 Tour Websites</button>
-      <button class="tab-btn" onclick="switchTab('web')">💻 Web Development</button>
-      <button class="tab-btn" onclick="switchTab('app')">📱 Mobile Apps</button>
-      <button class="tab-btn" onclick="switchTab('network')">🔌 Networking</button>
-      <button class="tab-btn" onclick="switchTab('cyber')">🔒 Cybersecurity</button>
-      <button class="tab-btn" onclick="switchTab('itsupport')">🛠️ IT Support</button>
-    </div>
-
-    <!-- TOUR WEBSITES -->
-    <div class="tab-panel active" id="tab-tour">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Starter</div>
-          <div class="pricing-name">Tour Starter</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Best for solo guides & new startups</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
+    <div class="svc-grid">
+      @foreach(array_slice(config('site_content.portfolio_projects', []), 0, 3) as $project)
+      <div class="reveal svc-reveal" style="--d:{{ $loop->index * 90 }}ms;">
+        <article class="svc-card">
+          <div class="svc-card-media">
+            <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}" />
+            <span class="svc-card-num" style="right: auto; left: 16px;">{{ $project['tag'] }}</span>
           </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 1–5 Pages (Home, About, Tours, Contact)</li>
-            <li><i class="fas fa-check"></i> Basic tour listing with descriptions</li>
-            <li><i class="fas fa-check"></i> Photo gallery (up to 20 photos)</li>
-            <li><i class="fas fa-check"></i> WhatsApp & phone call-to-action booking</li>
-            <li><i class="fas fa-check"></i> 50 SMS credits included</li>
-            <li><i class="fas fa-check"></i> Basic Google Analytics</li>
-            <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
-            <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1, 'tour') }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-tier">Business</div>
-          <div class="pricing-name">Tour Business</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing safari operators</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
+          <div class="svc-card-body">
+            <h3>{{ $project['title'] }}</h3>
+            <p>{{ $project['excerpt'] }}</p>
+            <a href="{{ route('portfolio.show', $project['slug']) }}" class="svc-link">View Case Study <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 8–15 Pages with blog & testimonials</li>
-            <li><i class="fas fa-check"></i> Calendar-based booking engine</li>
-            <li><i class="fas fa-check"></i> M-Pesa, TigoPesa & AzamPesa payments</li>
-            <li><i class="fas fa-check"></i> Safari package management panel</li>
-            <li><i class="fas fa-check"></i> Video embedding (safari footage)</li>
-            <li><i class="fas fa-check"></i> 200 SMS credits included</li>
-            <li><i class="fas fa-check"></i> Advanced Analytics &amp; conversion funnels</li>
-            <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2, 'tour') }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">Tour Enterprise</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Kilimanjaro specialists & large operators</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Unlimited pages — fully custom</li>
-            <li><i class="fas fa-check"></i> Full tour management admin panel</li>
-            <li><i class="fas fa-check"></i> Multi-currency & multi-language (EN/DE/FR)</li>
-            <li><i class="fas fa-check"></i> Customer CRM with trip history</li>
-            <li><i class="fas fa-check"></i> Auto-generated invoices, itineraries & vouchers</li>
-            <li><i class="fas fa-check"></i> Email marketing newsletter system</li>
-            <li><i class="fas fa-check"></i> 500 SMS credits + bulk SMS campaigns</li>
-            <li><i class="fas fa-check"></i> 6 months priority support</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3, 'tour') }}" class="btn-package">Request Quote</a>
-        </div>
+        </article>
       </div>
+      @endforeach
     </div>
-
-    <!-- WEB DEVELOPMENT -->
-    <div class="tab-panel" id="tab-web">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Starter</div>
-          <div class="pricing-name">Web Starter</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Individuals & small businesses</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 1–5 pages, mobile-responsive</li>
-            <li><i class="fas fa-check"></i> Contact form with spam protection</li>
-            <li><i class="fas fa-check"></i> WhatsApp button integration</li>
-            <li><i class="fas fa-check"></i> Social media links</li>
-            <li><i class="fas fa-check"></i> Google Maps location</li>
-            <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
-            <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 1) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-tier">Business</div>
-          <div class="pricing-name">Web Business</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing companies</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 8–15 pages with full CMS</li>
-            <li><i class="fas fa-check"></i> Blog with SEO-rich content</li>
-            <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
-            <li><i class="fas fa-check"></i> Professional email accounts</li>
-            <li><i class="fas fa-check"></i> SSL + full security setup</li>
-            <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 2) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">E-Commerce</div>
-          <div class="pricing-name">Online Store</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Selling online in Tanzania</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 10–20 pages with product catalogue</li>
-            <li><i class="fas fa-check"></i> Shopping cart & checkout</li>
-            <li><i class="fas fa-check"></i> M-Pesa, TigoPesa & AzamPesa</li>
-            <li><i class="fas fa-check"></i> Order management dashboard</li>
-            <li><i class="fas fa-check"></i> SMS order confirmations</li>
-            <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(1, 3) }}" class="btn-package">Request Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- MOBILE APPS -->
-    <div class="tab-panel" id="tab-app">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Basic</div>
-          <div class="pricing-name">App Basic</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Android + iOS informational apps</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Flutter / React Native (Android + iOS)</li>
-            <li><i class="fas fa-check"></i> Information, gallery, maps, contact</li>
-            <li><i class="fas fa-check"></i> SMS push notifications</li>
-            <li><i class="fas fa-check"></i> App Store & Google Play submission</li>
-            <li><i class="fas fa-check"></i> Analytics dashboard</li>
-            <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 1) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-tier">Standard</div>
-          <div class="pricing-name">App Standard</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Full-featured booking & payments</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> All Basic features included</li>
-            <li><i class="fas fa-check"></i> User accounts & profiles</li>
-            <li><i class="fas fa-check"></i> Booking & reservation system</li>
-            <li><i class="fas fa-check"></i> Mobile money payment integration</li>
-            <li><i class="fas fa-check"></i> Push notifications</li>
-            <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 2) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">App Enterprise</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Custom multi-role platforms</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Multi-role: admin, driver, customer</li>
-            <li><i class="fas fa-check"></i> Real-time GPS tracking</li>
-            <li><i class="fas fa-check"></i> API integrations (3rd party)</li>
-            <li><i class="fas fa-check"></i> Custom backend & dashboard</li>
-            <li><i class="fas fa-check"></i> Full white-label branding</li>
-            <li><i class="fas fa-check"></i> Delivered in 10–14 weeks</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(2, 3) }}" class="btn-package">Request Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- NETWORKING -->
-    <div class="tab-panel" id="tab-network">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Basic</div>
-          <div class="pricing-name">Home / Small Office</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Single router / access point</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Site survey & coverage planning</li>
-            <li><i class="fas fa-check"></i> Single router / AP installation</li>
-            <li><i class="fas fa-check"></i> Basic security configuration</li>
-            <li><i class="fas fa-check"></i> Performance testing report</li>
-            <li><i class="fas fa-check"></i> Network credentials documentation</li>
-            <li><i class="fas fa-check"></i> Delivered in 1–3 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 1) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Best Value</div>
-          <div class="pricing-tier">Standard</div>
-          <div class="pricing-name">Small Business</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Multi-AP with security</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Multi access-point deployment</li>
-            <li><i class="fas fa-check"></i> Separate guest Wi-Fi network</li>
-            <li><i class="fas fa-check"></i> Firewall & access control</li>
-            <li><i class="fas fa-check"></i> Bandwidth management</li>
-            <li><i class="fas fa-check"></i> SMS maintenance alerts</li>
-            <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 2) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">Hotel / Lodge / Office</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Multi-location enterprise grade</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Multi-location deployment</li>
-            <li><i class="fas fa-check"></i> VLANs & enterprise security</li>
-            <li><i class="fas fa-check"></i> 24/7 network monitoring</li>
-            <li><i class="fas fa-check"></i> SLA up to 99.9% uptime</li>
-            <li><i class="fas fa-check"></i> Optional CCTV integration</li>
-            <li><i class="fas fa-check"></i> Delivered in 5–10 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(3, 3) }}" class="btn-package">Request Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CYBERSECURITY -->
-    <div class="tab-panel" id="tab-cyber">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Basic</div>
-          <div class="pricing-name">Basic Protection</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">One-off security setup</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Full vulnerability scan</li>
-            <li><i class="fas fa-check"></i> Malware detection & removal</li>
-            <li><i class="fas fa-check"></i> Firewall configuration</li>
-            <li><i class="fas fa-check"></i> SMS threat alerts setup</li>
-            <li><i class="fas fa-check"></i> Security report delivered</li>
-            <li><i class="fas fa-check"></i> Completed in 2–5 days</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 1) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Recommended</div>
-          <div class="pricing-tier">Standard</div>
-          <div class="pricing-name">Monthly Retainer</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Ongoing business protection</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 24/7 security monitoring</li>
-            <li><i class="fas fa-check"></i> Weekly vulnerability scans</li>
-            <li><i class="fas fa-check"></i> Incident response team</li>
-            <li><i class="fas fa-check"></i> Email security protection</li>
-            <li><i class="fas fa-check"></i> Analytics security dashboard</li>
-            <li><i class="fas fa-check"></i> Monthly security reports</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 2) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">SOC &amp; Compliance</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Full compliance package</p>
-          <div class="pricing-price">
-            <span class="pricing-currency">Custom</span>
-            <span class="pricing-amount">Pricing</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Full Security Operations Center</li>
-            <li><i class="fas fa-check"></i> Penetration testing</li>
-            <li><i class="fas fa-check"></i> ISO 27001, TCRA & GDPR compliance</li>
-            <li><i class="fas fa-check"></i> Custom security reporting</li>
-            <li><i class="fas fa-check"></i> Dedicated security analyst</li>
-            <li><i class="fas fa-check"></i> Ongoing retainer</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(4, 3) }}" class="btn-package">Request Quote</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- IT SUPPORT -->
-    <div class="tab-panel" id="tab-itsupport">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Basic</div>
-          <div class="pricing-name">Remote Support</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small teams, weekday coverage</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Remote support only</li>
-            <li><i class="fas fa-check"></i> 9am–5pm, Mon–Fri</li>
-            <li><i class="fas fa-check"></i> 2-hour response time</li>
-            <li><i class="fas fa-check"></i> SMS ticket system</li>
-            <li><i class="fas fa-check"></i> Up to 5 devices supported</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 1) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-tier">Standard</div>
-          <div class="pricing-name">Remote + On-site</div>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Remote + on-site support</li>
-            <li><i class="fas fa-check"></i> 8am–6pm, Mon–Sat</li>
-            <li><i class="fas fa-check"></i> 1-hour response time</li>
-            <li><i class="fas fa-check"></i> Monthly analytics reports</li>
-            <li><i class="fas fa-check"></i> Unlimited devices</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 2) }}" class="btn-package">Request Quote</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-name">24/7 Enterprise</div>
-          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Hotels, NGOs, large offices</p>
-          <div class="pricing-price">
-            <span class="pricing-amount">Request Quote</span>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 24/7 on-site availability</li>
-            <li><i class="fas fa-check"></i> 30-minute response time</li>
-            <li><i class="fas fa-check"></i> 99.9% SLA uptime</li>
-            <li><i class="fas fa-check"></i> Dedicated account manager</li>
-            <li><i class="fas fa-check"></i> Priority escalation path</li>
-          </ul>
-          <a href="{{ \App\Support\PackagePricing::wizardUrl(5, 3) }}" class="btn-package">Request Quote</a>
-        </div>
-      </div>
+    <div style="text-align: center; margin-top: 52px;">
+      <a href="{{ route('portfolio') }}" class="btn-primary"><i class="fas fa-briefcase"></i> View All Projects</a>
     </div>
   </div>
 </section>
@@ -1000,13 +673,249 @@
 
 @endsection
 
-@section('meta_tags')
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N2F56W4HPN"></script>
+@section('additional_styles')
+<style>
+  /* ════════════════════════════════════════════════════════════
+     HERO SLIDER — lighter overlay so images stay visible
+  ════════════════════════════════════════════════════════════ */
+  .jezdan-hero .hero-overlay {
+    background:
+      linear-gradient(100deg, rgba(6, 43, 77, 0.78) 0%, rgba(6, 43, 77, 0.45) 45%, rgba(6, 43, 77, 0.1) 100%),
+      linear-gradient(180deg, rgba(6, 43, 77, 0.12) 0%, rgba(6, 43, 77, 0.05) 45%, rgba(6, 43, 77, 0.5) 100%);
+  }
+  .jezdan-hero { background: none; }
+  .jezdan-hero-slider { position: absolute; inset: 0; }
+  .jezdan-hero .swiper-slide { min-height: 100vh; height: 100%; }
+  .jezdan-hero .hero-image { inset: 0; background-size: cover; background-position: center; }
+
+  /* ════════════════════════════════════════════════════════════
+     SERVICES REDESIGN — Unique animated 3-per-row cards
+  ════════════════════════════════════════════════════════════ */
+  .services {
+    position: relative;
+    overflow: hidden;
+  }
+  .services::before,
+  .services::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+    animation: svcBlob 12s ease-in-out infinite;
+  }
+  .services::before {
+    width: 430px; height: 430px; top: -130px; right: -90px;
+    background: radial-gradient(circle, rgba(12, 69, 128, 0.35), transparent 70%);
+  }
+  .services::after {
+    width: 360px; height: 360px; bottom: -110px; left: -70px;
+    background: radial-gradient(circle, rgba(111, 177, 232, 0.4), transparent 70%);
+    animation-delay: -6s;
+  }
+  @keyframes svcBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(32px, 22px) scale(1.08); }
+  }
+
+  .svc-header { position: relative; z-index: 1; margin-bottom: 56px; }
+  .svc-header .section-title {
+    background: linear-gradient(90deg, #062B4D, #0C4580, #6FB1E8, #062B4D);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: svcGradientText 6s linear infinite;
+  }
+  .svc-header .section-title span { color: transparent; }
+  @keyframes svcGradientText {
+    to { background-position: 300% center; }
+  }
+  .svc-header .section-sub { max-width: 640px; }
+  .svc-header-tag {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-left: 44px;
+    color: var(--primary); font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 2.2px; text-transform: uppercase;
+  }
+  .svc-header-tag::before {
+    content: '';
+    position: absolute; left: 0; top: 50%;
+    width: 32px; height: 2px; margin-top: -1px;
+    background: linear-gradient(90deg, var(--primary), var(--sky-bright));
+    transform-origin: left;
+    animation: svcTagLine 2.4s ease-in-out infinite;
+  }
+  @keyframes svcTagLine {
+    0%, 100% { transform: scaleX(1); }
+    50%      { transform: scaleX(0.4); }
+  }
+
+  .svc-grid {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .svc-reveal { height: 100%; transition-delay: var(--d, 0s); }
+
+  .svc-card {
+    position: relative; height: 100%;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(6, 43, 77, 0.06);
+    transition: transform 0.45s cubic-bezier(.22, .61, .36, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+  }
+  .svc-card::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 2px rgba(12, 69, 128, 0);
+    transition: box-shadow 0.45s ease;
+  }
+  .svc-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(12, 69, 128, 0.25);
+    box-shadow: 0 26px 60px rgba(6, 43, 77, 0.16);
+  }
+  .svc-card:hover::after { box-shadow: inset 0 0 0 2px rgba(12, 69, 128, 0.12); }
+
+  .svc-card-media {
+    position: relative; height: 205px; overflow: hidden;
+  }
+  .svc-card-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transform: scale(1.01);
+    transition: transform 0.7s cubic-bezier(.22, .61, .36, 1);
+  }
+  .svc-card:hover .svc-card-media img { transform: scale(1.12); }
+  .svc-card-media::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(6, 43, 77, 0) 40%, rgba(6, 43, 77, 0.55) 100%);
+    opacity: 0.85;
+    transition: opacity 0.45s ease;
+  }
+  .svc-card:hover .svc-card-media::after { opacity: 1; }
+
+  .svc-card-num {
+    position: absolute; top: 14px; right: 16px; z-index: 2;
+    font-family: var(--font-mono); font-weight: 900; font-size: 1.02rem;
+    color: #fff; letter-spacing: 1.5px;
+    background: rgba(6, 43, 77, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 4px 13px; border-radius: 30px;
+  }
+  .svc-card-icon {
+    position: absolute; bottom: -25px; left: 22px; z-index: 4;
+    width: 54px; height: 54px; border-radius: 15px;
+    background: #fff; color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 10px 24px rgba(6, 43, 77, 0.25);
+    transition: transform 0.4s cubic-bezier(.34, 1.56, .64, 1), background 0.4s ease, color 0.4s ease;
+  }
+  .svc-card:hover .svc-card-icon {
+    transform: translateY(-6px) rotate(-8deg) scale(1.08);
+    background: var(--primary); color: #fff;
+  }
+
+  .svc-card-body { padding: 30px 26px 28px; position: relative; z-index: 2; }
+  .svc-card-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.32rem; font-weight: 900;
+    color: var(--dark); margin-bottom: 12px; letter-spacing: -0.3px;
+  }
+  .svc-card-body p { font-size: 0.92rem; color: var(--ink-muted); line-height: 1.7; margin-bottom: 20px; }
+
+  .svc-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--primary); font-weight: 800; font-size: 0.92rem;
+    text-decoration: none; position: relative;
+  }
+  .svc-link::after {
+    content: '';
+    position: absolute; left: 0; bottom: -3px; height: 2px; width: 0;
+    background: var(--primary);
+    transition: width 0.35s ease;
+  }
+  .svc-link i { transition: transform 0.35s ease; }
+  .svc-card:hover .svc-link::after { width: 100%; }
+  .svc-card:hover .svc-link i { transform: translateX(6px); }
+
+  .svc-cta-wrap { grid-column: 1 / -1; }
+  .svc-cta {
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;
+    background: linear-gradient(120deg, #062B4D, #0C4580 60%, #0F5FA8);
+    background-size: 200% auto;
+    border-radius: 22px; padding: 42px 46px;
+    color: #fff;
+    animation: svcCtaShift 8s linear infinite;
+  }
+  @keyframes svcCtaShift {
+    to { background-position: 200% center; }
+  }
+  .svc-cta::before {
+    content: '';
+    position: absolute; width: 280px; height: 280px; border-radius: 50%;
+    top: -90px; right: -70px;
+    background: radial-gradient(circle, rgba(245, 181, 60, 0.28), transparent 70%);
+    animation: svcCtaPulse 5s ease-in-out infinite;
+  }
+  @keyframes svcCtaPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50%      { transform: scale(1.15); opacity: 1; }
+  }
+  .svc-cta h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;
+  }
+  .svc-cta p { color: rgba(255, 255, 255, 0.8); font-size: 0.98rem; max-width: 560px; line-height: 1.65; }
+  .svc-cta-actions { display: flex; gap: 14px; flex-wrap: wrap; position: relative; z-index: 2; }
+  .svc-cta .btn-primary {
+    background: #fff; color: var(--primary);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  }
+  .svc-cta .btn-primary:hover { background: var(--sky-bright); color: #062B4D; }
+  .svc-cta .btn-outline { border-color: rgba(255, 255, 255, 0.55); color: #fff; }
+  .svc-cta .btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
+
+  @media (max-width: 992px) {
+    .svc-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .svc-grid { grid-template-columns: 1fr; }
+    .svc-cta { padding: 32px 26px; }
+    .svc-cta h3 { font-size: 1.35rem; }
+  }
+</style>
+@endsection
+
+@section('additional_scripts')
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-N2F56W4HPN');
+  if (document.querySelector('.jezdan-hero-slider')) {
+    new Swiper('.jezdan-hero-slider', {
+      loop: true,
+      speed: 900,
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      autoplay: { delay: 7000, disableOnInteraction: false },
+      observer: true,
+      observeParents: true,
+      pagination: { el: '.jezdan-hero .swiper-pagination', clickable: true },
+      navigation: {
+        nextEl: '.jezdan-hero .swiper-button-next',
+        prevEl: '.jezdan-hero .swiper-button-prev',
+      },
+    });
+  }
 </script>
 @endsection

@@ -22,13 +22,13 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
+<section class="hero" id="home" style="min-height: 60vh; text-align: center;">
   <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay"></div>
+  <div class="hero-grid-overlay" style="mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%);"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content" style="justify-content: center; text-align: center;">
-    <div class="hero-left" style="max-width: 800px; margin: 0 auto; text-align: center;">
+  <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div style="max-width: 840px;">
       <div class="hero-badge">
         <span class="dot"></span>
         What We Offer
@@ -37,7 +37,7 @@
         Comprehensive <span>ICT Services</span><br/>
         Built for East Africa
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" style="max-width: 720px; margin: 0 auto;">
         We combine world-class technology with deep local market knowledge to deliver solutions that truly work for Tanzanian businesses.
       </p>
     </div>

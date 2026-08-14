@@ -376,6 +376,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // Main Pages
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/team', function() { return view('pages.team'); })->name('team');
 Route::get('/services', [PageController::class, 'services'])->name('services');
 // Pricing Pages
 Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
@@ -429,6 +430,9 @@ Route::get('/services/it-support', [PageController::class, 'servicesItSupport'])
 Route::get('/services/ict-consultancy', [PageController::class, 'servicesIctConsultancy'])->name('services.ict-consultancy');
 Route::get('/services/cloud-services', [PageController::class, 'servicesCloudServices'])->name('services.cloud-services');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/companies', [PageController::class, 'companies'])->name('companies');
+Route::get('/services/accounting', [PageController::class, 'servicesAccounting'])->name('services.accounting');
+Route::get('/technology', [PageController::class, 'technology'])->name('technology');
 Route::get('/request-demo', [PageController::class, 'requestDemo'])->name('request-demo');
 Route::post('/request-demo', [DemoController::class, 'submit'])->name('demo.submit');
 

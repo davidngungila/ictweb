@@ -14,13 +14,13 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
+<section class="hero" id="home" style="min-height: 60vh; text-align: center;">
   <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay"></div>
+  <div class="hero-grid-overlay" style="mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%);"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left" style="max-width: 800px;">
+  <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div style="max-width: 820px;">
       <div class="hero-badge">
         <span class="dot"></span>
         Get In Touch
@@ -28,10 +28,10 @@
       <h1 class="hero-title">
         Let's Build Something <span>Great Together</span>
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" style="max-width: 720px; margin: 0 auto;">
         Whether you're starting from scratch or upgrading your existing systems, our team in Moshi, Kilimanjaro is ready to help. Reach out today for a free, no-obligation consultation.
       </p>
-      <div class="hero-actions">
+      <div class="hero-actions" style="justify-content: center;">
         <a href="https://wa.me/255685847002?text=Hello%20Jezdan%20Technology!%20I'd%20like%20a%20free%20consultation." class="btn-primary" target="_blank">
           <i class="fab fa-whatsapp"></i> WhatsApp Us Now
         </a>

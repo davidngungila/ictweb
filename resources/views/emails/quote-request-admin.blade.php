@@ -47,14 +47,6 @@
         </div>
         @endif
         <div class="field">
-            <strong>Budget range</strong>
-            {{ $quote->budget_range ?? '—' }}
-        </div>
-        <div class="field">
-            <strong>Timeline</strong>
-            {{ $quote->timeline ?? '—' }}
-        </div>
-        <div class="field">
             <strong>Project description</strong>
             {!! nl2br(e($quote->project_description)) !!}
         </div>

@@ -170,4 +170,28 @@ class PageController extends Controller
     {
         return view('pages.services.cloud-services');
     }
+
+    /**
+     * Display companies page (group companies).
+     */
+    public function companies()
+    {
+        return view('pages.companies');
+    }
+
+    /**
+     * Display accounting & financial services page.
+     */
+    public function servicesAccounting()
+    {
+        return view('pages.services.accounting');
+    }
+
+    /**
+     * Display technology & digital innovation page.
+     */
+    public function technology()
+    {
+        return view('pages.technology');
+    }
 }

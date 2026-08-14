@@ -460,27 +460,7 @@
           </div>
 
           <div class="rq-section">
-            <div class="rq-section-title"><i class="fas fa-file-lines"></i> Project details</div>
-            <div class="rq-grid-2">
-              <div class="rq-field">
-                <label>Estimated budget</label>
-                <select name="budget_range">
-                  <option value="">Select range (optional)</option>
-                  @foreach(['Under TZS 1M', 'TZS 1M – 3M', 'TZS 3M – 7M', 'TZS 7M – 15M', 'TZS 15M+', 'Not sure yet'] as $b)
-                    <option value="{{ $b }}" {{ old('budget_range') === $b ? 'selected' : '' }}>{{ $b }}</option>
-                  @endforeach
-                </select>
-              </div>
-              <div class="rq-field">
-                <label>Desired timeline</label>
-                <select name="timeline">
-                  <option value="">Select timeline (optional)</option>
-                  @foreach(['ASAP (rush)', 'Within 1 month', '1–3 months', '3–6 months', 'Flexible / planning phase'] as $t)
-                    <option value="{{ $t }}" {{ old('timeline') === $t ? 'selected' : '' }}>{{ $t }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
+            <div class="rq-section-title"><i class="fas fa-file-lines"></i> Your message</div>
             <div class="rq-field">
               <label>Describe your project <span class="req">*</span></label>
               <textarea name="project_description" required placeholder="Goals, features, target users, integrations, existing systems, deadlines…">{{ old('project_description') }}</textarea>
