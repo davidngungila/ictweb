@@ -14,13 +14,13 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
+<section class="hero" id="home" style="min-height: 60vh; text-align: center;">
   <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay"></div>
+  <div class="hero-grid-overlay" style="mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%);"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left" style="max-width: 800px;">
+  <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div class="hero-left" style="max-width: 840px;">
       <div class="hero-badge">
         <span class="dot"></span>
         Network Installation
@@ -29,7 +29,7 @@
         Professional <span>Network Setup</span><br/>
         for Tanzanian Businesses
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" style="max-width: 720px; margin: 0 auto;">
         Enterprise-grade network infrastructure using Cisco, Mikrotik, and Ubiquiti. From small office WiFi to multi-site campus networks with VPN, firewall, and 24/7 monitoring.
       </p>
     </div>

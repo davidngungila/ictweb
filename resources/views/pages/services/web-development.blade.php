@@ -14,13 +14,13 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
+<section class="hero" id="home" style="min-height: 60vh; text-align: center;">
   <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay"></div>
+  <div class="hero-grid-overlay" style="mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%);"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content">
-    <div class="hero-left" style="max-width: 800px;">
+  <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div class="hero-left" style="max-width: 840px;">
       <div class="hero-badge">
         <span class="dot"></span>
         Web Development
@@ -29,7 +29,7 @@
         Custom <span>Web Development</span><br/>
         for Tanzanian Businesses
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" style="max-width: 720px; margin: 0 auto;">
         Professional websites and web applications tailored to your business needs. From simple starter sites to complex e-commerce platforms with full CMS and mobile money payments.
       </p>
     </div>
