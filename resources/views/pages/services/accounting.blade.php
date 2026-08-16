@@ -14,7 +14,7 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
+<section class="hero" id="home" style="min-height: 46vh;">
   <div class="hero-bg-img"></div>
   <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>
@@ -36,67 +36,27 @@
 </section>
 
 <!-- SERVICES GRID -->
-<section class="services" style="background: var(--off-white);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-calculator"></i> What We Offer</div>
-      <h2 class="section-title">Financial Services Built for <span>Real Businesses</span></h2>
-      <p class="section-sub">Practical, professional accounting services that give you confidence in your numbers.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-book"></i></div>
-        <h3>Bookkeeping</h3>
-        <p>Accurate day-to-day recording of income and expenses so your records are always complete, organized, and up to date.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
-        <h3>Financial Reporting</h3>
-        <p>Clear monthly and annual financial statements — profit &amp; loss, balance sheet, and cash flow — that show the true health of your business.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-money-check-dollar"></i></div>
-        <h3>Payroll Services</h3>
-        <p>Reliable salary processing, statutory deductions, and payslips so your team is always paid correctly and on time.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-file-shield"></i></div>
-        <h3>Tax Support</h3>
-        <p>Assistance with tax computation, filing, and compliance so you stay on the right side of regulation without the stress.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-list-check"></i></div>
-        <h3>Accounts Preparation</h3>
-        <p>Professional preparation and review of your accounts, ready for management decisions, lenders, or statutory requirements.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
-        <h3>Financial Analysis</h3>
-        <p>Insight into profitability, cash flow, and performance so you can identify opportunities and address risks early.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-bullseye"></i></div>
-        <h3>Budgeting &amp; Planning</h3>
-        <p>Practical budgets and forecasts that turn business goals into a clear financial plan you can actually manage.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Management Accounting</h3>
-        <p>Regular, decision-ready management information that helps owners and managers run the business with confidence.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-hand-holding-dollar"></i></div>
-        <h3>Business Financial Advisory</h3>
-        <p>Independent advice on financing, structuring, and financial strategy to support growth and long-term value creation.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-gears"></i></div>
-        <h3>Accounting System Setup</h3>
-        <p>Selection and setup of accounting software and internal controls that fit the size and needs of your business.</p>
-      </div>
-    </div>
-  </div>
-</section>
+@php
+  $serviceOffers = [
+    ['icon' => 'fa-book', 'title' => 'Bookkeeping', 'desc' => 'Accurate day-to-day recording of income and expenses so your records are always complete, organized, and up to date.'],
+    ['icon' => 'fa-file-invoice', 'title' => 'Financial Reporting', 'desc' => 'Clear monthly and annual financial statements — profit & loss, balance sheet, and cash flow — that show the true health of your business.'],
+    ['icon' => 'fa-money-check-dollar', 'title' => 'Payroll Services', 'desc' => 'Reliable salary processing, statutory deductions, and payslips so your team is always paid correctly and on time.'],
+    ['icon' => 'fa-file-shield', 'title' => 'Tax Support', 'desc' => 'Assistance with tax computation, filing, and compliance so you stay on the right side of regulation without the stress.'],
+    ['icon' => 'fa-list-check', 'title' => 'Accounts Preparation', 'desc' => 'Professional preparation and review of your accounts, ready for management decisions, lenders, or statutory requirements.'],
+    ['icon' => 'fa-chart-pie', 'title' => 'Financial Analysis', 'desc' => 'Insight into profitability, cash flow, and performance so you can identify opportunities and address risks early.'],
+    ['icon' => 'fa-bullseye', 'title' => 'Budgeting & Planning', 'desc' => 'Practical budgets and forecasts that turn business goals into a clear financial plan you can actually manage.'],
+    ['icon' => 'fa-chart-line', 'title' => 'Management Accounting', 'desc' => 'Regular, decision-ready management information that helps owners and managers run the business with confidence.'],
+    ['icon' => 'fa-hand-holding-dollar', 'title' => 'Business Financial Advisory', 'desc' => 'Independent advice on financing, structuring, and financial strategy to support growth and long-term value creation.'],
+    ['icon' => 'fa-gears', 'title' => 'Accounting System Setup', 'desc' => 'Selection and setup of accounting software and internal controls that fit the size and needs of your business.'],
+  ];
+@endphp
+@include('partials.section-service-offers', [
+  'label'     => 'What We Offer',
+  'labelIcon' => 'fa-calculator',
+  'title'     => 'Financial Services Built for <span>Real Businesses</span>',
+  'sub'       => 'Practical, professional accounting services that give you confidence in your numbers.',
+  'offers'    => $serviceOffers,
+])
 
 <!-- CTA -->
 <section class="services" style="background: var(--white);">

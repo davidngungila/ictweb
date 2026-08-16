@@ -14,7 +14,7 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 60vh;">
+<section class="hero" id="home" style="min-height: 46vh;">
   <div class="hero-bg-img"></div>
   <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>

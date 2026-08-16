@@ -25,7 +25,7 @@
   $portfolioTags = collect($projects)->pluck('tag')->unique()->values();
 @endphp
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+<section class="hero" id="home" style="min-height: 46vh; display: flex; align-items: center; justify-content: center; text-align: center;">
   <div class="hero-bg-img" style="opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80');"></div>
   <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>
@@ -53,35 +53,37 @@
 </section>
 
 <!-- PORTFOLIO GRID -->
-<section class="portfolio-section" style="background: var(--off-white); padding: 100px 5%;">
+<section class="pf-section" style="background: var(--off-white); padding: 100px 5%;">
   <div class="container">
-    <div class="section-header" style="text-align: center; margin-bottom: 80px;">
+    <div class="section-header" style="text-align: center; margin-bottom: 56px;">
       <div class="section-label" style="margin: 0 auto 16px;"><i class="fas fa-briefcase"></i> Selected Works</div>
       <h2 class="section-title">Featured <span>Projects</span></h2>
       <p class="section-sub" style="margin: 0 auto;">Explore our track record of delivering robust, scalable, and user-centric digital products that drive business growth.</p>
     </div>
 
+    <div class="pf-filters" id="portfolio-filters">
+      <button type="button" class="tab-btn active" data-tag="all"><i class="fas fa-th-large"></i> All Projects</button>
+      @foreach($portfolioTags as $tag)
+      <button type="button" class="tab-btn" data-tag="{{ $tag }}">{{ $tag }}</button>
+      @endforeach
+    </div>
 
-
-    <div class="services-grid" id="portfolio-grid">
+    <div class="pf-grid" id="portfolio-grid">
       @foreach($projects as $project)
-      <article class="service-card portfolio-item" data-tag="{{ $project['tag'] }}" style="padding: 0; overflow: hidden; display:flex; flex-direction:column; border: none; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);">
-        <div class="portfolio-img-container" style="position: relative; overflow: hidden; height: 260px;">
-          <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" />
-          <div class="portfolio-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,31,58,0.9), transparent); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 24px;">
-             <span style="color: white; font-weight: 600; font-size: 0.9rem;">View Details <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></span>
+      <article class="pf-card portfolio-item" data-tag="{{ $project['tag'] }}" style="--d:{{ $loop->index * 70 }}ms;">
+        <a href="{{ route('portfolio.show', $project['slug']) }}" class="pf-link">
+          <div class="pf-media">
+            <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}" loading="lazy" />
+            <span class="pf-shade" aria-hidden="true"></span>
+            <span class="pf-chip">{{ $project['tag'] }}</span>
+            <span class="pf-view">View Case Study <i class="fas fa-arrow-right"></i></span>
           </div>
-        </div>
-        <div style="padding: 30px; flex:1; display:flex; flex-direction:column; background: white;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-            <span style="display: inline-block; background: rgba(26,111,196,0.1); color: var(--accent); padding: 4px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">{{ $project['tag'] }}</span>
+          <div class="pf-body">
+            <h3>{{ $project['title'] }}</h3>
+            <p>{{ $project['excerpt'] }}</p>
+            <span class="pf-go">Explore Case Study <i class="fas fa-chevron-right"></i></span>
           </div>
-          <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; line-height: 1.3;">{{ $project['title'] }}</h3>
-          <p style="font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; flex:1;">{{ $project['excerpt'] }}</p>
-          <a href="{{ route('portfolio.show', $project['slug']) }}" class="portfolio-link" style="display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--accent); text-decoration: none; font-size: 0.9rem; transition: gap 0.3s;">
-            Explore Case Study <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
-          </a>
-        </div>
+        </a>
       </article>
       @endforeach
     </div>
@@ -89,27 +91,162 @@
 </section>
 
 <style>
-  .portfolio-item:hover {
-    transform: translateY(-10px) !important;
-    box-shadow: 0 20px 40px rgba(11,31,58,0.15) !important;
+  /* ── Premium filter bar ── */
+  .pf-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 52px;
   }
-  .portfolio-item:hover img {
-    transform: scale(1.1);
-  }
-  .portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-  }
-  .portfolio-item:hover .portfolio-link {
-    gap: 15px !important;
-  }
-  
-  .tab-btn {
+  .pf-filters .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid rgba(26, 111, 196, 0.25);
+    color: var(--navy);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
     transition: all 0.3s ease;
   }
-  .tab-btn.active {
-    background: var(--accent) !important;
-    color: white !important;
-    box-shadow: 0 4px 12px rgba(26,111,196,0.3);
+  .pf-filters .tab-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(11, 31, 58, 0.12);
+  }
+  .pf-filters .tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(26, 111, 196, 0.35);
+  }
+
+  /* ── Premium project grid ── */
+  .pf-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .pf-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(11, 31, 58, 0.08);
+    transition: transform 0.4s cubic-bezier(.22, .61, .36, 1), box-shadow 0.4s ease, opacity 0.4s ease;
+  }
+  .pf-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 50px rgba(11, 31, 58, 0.18);
+  }
+  .pf-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  .pf-media {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+  }
+  .pf-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(.22, .61, .36, 1);
+  }
+  .pf-card:hover .pf-media img { transform: scale(1.08); }
+  .pf-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 31, 58, 0) 40%, rgba(11, 31, 58, 0.75) 100%);
+    opacity: 0.7;
+    transition: opacity 0.35s ease;
+  }
+  .pf-card:hover .pf-shade { opacity: 1; }
+  .pf-chip {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: rgba(11, 31, 58, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+  .pf-view {
+    position: absolute;
+    left: 50%; bottom: 18px;
+    transform: translateX(-50%) translateY(12px);
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    white-space: nowrap;
+  }
+  .pf-card:hover .pf-view {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  .pf-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+  }
+  .pf-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.3;
+    margin: 0 0 12px;
+  }
+  .pf-body p {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin: 0 0 22px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pf-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent);
+    transition: gap 0.3s ease;
+  }
+  .pf-card:hover .pf-go { gap: 15px; }
+
+  @media (max-width: 992px) {
+    .pf-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .pf-grid { grid-template-columns: 1fr; }
+    .pf-filters { gap: 10px; }
+    .pf-filters .tab-btn { padding: 9px 18px; font-size: 0.8rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pf-card, .pf-media img, .pf-shade, .pf-view, .pf-go, .pf-filters .tab-btn { transition: none !important; transform: none !important; }
   }
 </style>
 
@@ -216,18 +353,6 @@
     </div>
   </div>
 </div>
-
-<style>
-  .portfolio-item {
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  .portfolio-item.hidden {
-    opacity: 0;
-    transform: scale(0.9);
-    pointer-events: none;
-    position: absolute;
-  }
-</style>
 @endsection
 
 @section('additional_scripts')

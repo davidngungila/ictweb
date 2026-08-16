@@ -217,7 +217,7 @@
 </style>
 
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 62vh; text-align: center;">
+<section class="hero" id="home" style="min-height: 46vh; text-align: center;">
   <div class="hero-bg-img"></div>
   <div class="hero-grid-overlay" style="mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%);"></div>
   <div class="hero-glow"></div>

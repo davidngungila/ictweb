@@ -15,8 +15,16 @@
 @php
   $allProjects = config('site_content.portfolio_projects', []);
   $currentIndex = collect($allProjects)->search(fn($p) => $p['slug'] === $project['slug']);
-  $nextProject = $allProjects[($currentIndex + 1) % count($allProjects)] ?? null;
-  $prevProject = $allProjects[($currentIndex - 1 + count($allProjects)) % count($allProjects)] ?? null;
+  $nextProject = $allProjects[($currentIndex + 1) % max(count($allProjects), 1)] ?? null;
+  $prevProject = $allProjects[($currentIndex - 1 + count($allProjects)) % max(count($allProjects), 1)] ?? null;
+  $related = collect($allProjects)
+      ->filter(fn($p) => $p['slug'] !== $project['slug']
+          && (($p['categoryLabel'] ?? null) === ($project['categoryLabel'] ?? null) || ($p['tag'] ?? null) === ($project['tag'] ?? null)))
+      ->values();
+  if ($related->count() < 3) {
+      $related = collect($allProjects)->filter(fn($p) => $p['slug'] !== $project['slug'])->values();
+  }
+  $related = $related->take(3);
 @endphp
 
 <style>
@@ -132,6 +140,80 @@
   .nav-project-link:hover .nav-title {
     color: var(--accent);
   }
+  .related-section {
+    margin-top: 70px;
+    padding-top: 60px;
+    border-top: 1px solid var(--light-gray);
+  }
+  .related-head { margin-bottom: 36px; }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .related-card {
+    display: block;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid var(--light-gray);
+    box-shadow: 0 8px 24px rgba(11,31,58,0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .related-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 44px rgba(11,31,58,0.14);
+  }
+  .related-media {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+  .related-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .related-card:hover .related-media img { transform: scale(1.07); }
+  .related-chip {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: rgba(11, 31, 58, 0.6);
+    color: #fff;
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
+  .related-body { padding: 22px; }
+  .related-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.35;
+    margin: 0 0 14px;
+  }
+  .related-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    transition: gap 0.3s ease;
+  }
+  .related-card:hover .related-link { gap: 12px; }
+  @media (max-width: 768px) {
+    .related-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .related-card, .related-media img, .related-link { transition: none !important; transform: none !important; }
+  }
 </style>
 
 <!-- PROJECT HERO -->
@@ -153,11 +235,11 @@
       </div>
       <div class="meta-item">
         <div class="meta-item-label">Client Location</div>
-        <div class="meta-item-value">Tanzania / Regional</div>
+        <div class="meta-item-value">{{ $project['clientLocation'] ?? 'Tanzania / Regional' }}</div>
       </div>
       <div class="meta-item">
-        <div class="meta-item-label">Project Type</div>
-        <div class="meta-item-value">Digital Transformation</div>
+        <div class="meta-item-label">Duration</div>
+        <div class="meta-item-value">{{ $project['duration'] ?? 'Ongoing' }}</div>
       </div>
       <div class="meta-item">
         <div class="meta-item-label">Status</div>
@@ -197,17 +279,15 @@
             <span class="section-subtitle-small" style="color: var(--gold);">Key Results</span>
             <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 20px;">Measurable <span>Impact</span></h3>
             <p style="color: rgba(255,255,255,0.8); line-height: 1.7; font-size: 1.05rem;">
-              The implementation led to significant improvements in operational efficiency, cross-border data reliability, and a 28% reduction in cloud infrastructure burn. Our solution provided the NGO with a scalable foundation for future growth while ensuring donor compliance.
+              {{ $project['impactSummary'] ?? 'The implementation delivered measurable improvements in operational efficiency, reliability, and growth for the client.' }}
             </p>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+              @foreach($project['impact'] ?? [] as $metric)
               <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
-                <div style="color: var(--gold); font-size: 1.5rem; font-weight: 800; margin-bottom: 5px;">28%</div>
-                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Cost Savings</div>
+                <div style="color: var(--gold); font-size: 1.5rem; font-weight: 800; margin-bottom: 5px;">{{ $metric['value'] }}</div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">{{ $metric['label'] }}</div>
               </div>
-              <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
-                <div style="color: var(--gold); font-size: 1.5rem; font-weight: 800; margin-bottom: 5px;">100%</div>
-                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7;">Compliance Rate</div>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -264,6 +344,29 @@
         </a>
       @endif
     </div>
+
+    @if($related->isNotEmpty())
+    <div class="related-section">
+      <div class="related-head">
+        <span class="section-subtitle-small">Continue Exploring</span>
+        <h2 class="section-title" style="font-size: 2rem;">Related <span>Projects</span></h2>
+      </div>
+      <div class="related-grid">
+        @foreach($related as $rel)
+        <a href="{{ route('portfolio.show', $rel['slug']) }}" class="related-card">
+          <div class="related-media">
+            <img src="{{ $rel['image'] }}" alt="{{ $rel['title'] }}" loading="lazy" />
+            <span class="related-chip">{{ $rel['tag'] }}</span>
+          </div>
+          <div class="related-body">
+            <h3>{{ $rel['title'] }}</h3>
+            <span class="related-link">View Case Study <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+        @endforeach
+      </div>
+    </div>
+    @endif
   </div>
 </section>
 

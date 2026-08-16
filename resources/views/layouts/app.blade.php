@@ -871,37 +871,45 @@
     }
 
     /* ═══ TESTIMONIALS ═══ */
-    .testimonials { background: var(--grad-dark); position: relative; overflow: hidden; }
-    .testimonials::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 85% 15%, rgba(61,143,212,0.16), transparent 45%);
-    }
-    .testimonials > * { position: relative; z-index: 1; }
-    .testimonials .section-title { color: #fff; }
-    .testimonials .section-sub { color: rgba(255,255,255,0.6); }
-    .testimonials .section-label { background: rgba(111,177,232,0.14); border-color: rgba(111,177,232,0.3); color: var(--sky-bright); }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 26px;
-    }
+    .testimonials { background: #fff; position: relative; overflow: hidden; }
+    .testimonials .section-title { color: var(--navy); }
+    .testimonials .section-sub { color: var(--text-mid); }
+    .testimonials .section-label { background: var(--off-white); border-color: var(--line); color: var(--primary); }
+    .testimonials-slider { padding: 6px 6px 40px; }
+    .testimonials-slider .swiper-slide { height: auto; }
     .testimonial-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius); padding: 32px;
-      backdrop-filter: blur(8px);
+      background: #fff; border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 32px; height: 100%;
+      box-shadow: 0 8px 24px rgba(6, 43, 77, 0.06);
       transition: all 0.3s;
     }
-    .testimonial-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-6px); border-color: rgba(111,177,232,0.35); }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(6, 43, 77, 0.12); border-color: rgba(12, 69, 128, 0.35); }
     .testimonial-stars { color: var(--gold); margin-bottom: 16px; font-size: 0.9rem; letter-spacing: 2px; }
-    .testimonial-text { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.75; margin-bottom: 26px; font-weight: 500; }
+    .testimonial-text { color: var(--ink-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 26px; font-weight: 500; }
     .testimonial-author { display: flex; align-items: center; gap: 14px; }
     .testimonial-avatar {
       width: 48px; height: 48px; border-radius: 50%;
-      object-fit: cover; border: 2px solid var(--sky-bright);
-      box-shadow: 0 0 0 3px rgba(111,177,232,0.2);
+      object-fit: cover; border: 2px solid var(--primary);
+      box-shadow: 0 0 0 3px rgba(12, 69, 128, 0.12);
     }
-    .testimonial-name { font-weight: 800; color: #fff; font-size: 0.92rem; }
-    .testimonial-role { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 600; }
+    .testimonial-name { font-weight: 800; color: var(--dark); font-size: 0.92rem; }
+    .testimonial-role { font-size: 0.78rem; color: var(--ink-muted); font-weight: 600; }
+    .testimonials-nav { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+    .testimonials-btn {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid var(--line); background: #fff; color: var(--primary);
+      font-size: 0.95rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-sm); transition: all 0.25s;
+    }
+    .testimonials-btn:hover {
+      background: var(--grad-primary); color: #fff;
+      border-color: var(--primary); transform: scale(1.08);
+      box-shadow: 0 12px 26px rgba(12, 69, 128, 0.3);
+    }
+    .testimonials .swiper-pagination-bullet { background: #cbd5e1; opacity: 1; transition: all 0.25s; }
+    .testimonials .swiper-pagination-bullet-active { background: var(--primary); width: 26px; border-radius: 4px; }
+    .testimonials .swiper-pagination-bullets { bottom: 0; }
 
     /* ═══ ADD-ONS ═══ */
     .addons { background: var(--off-white); }
@@ -1062,84 +1070,128 @@
 
     /* ═══ FOOTER ═══ */
     footer {
-      background: #041A33;
-      padding: 76px 4% 30px;
-      position: relative;
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, #062B4D 0%, #041C33 55%, #031322 100%);
+      padding: 0;
     }
-    footer::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--grad-primary);
+    footer::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(760px 420px at 12% 4%, rgba(8,120,181,0.16), transparent 60%),
+        radial-gradient(760px 420px at 90% 8%, rgba(255,210,31,0.05), transparent 60%);
+    }
+    .footer-wave { position: absolute; top: 0; left: 0; right: 0; height: 120px; z-index: 1; }
+    .footer-wave svg { width: 100%; height: 100%; display: block; }
+    .footer-inner {
+      position: relative; z-index: 2;
+      max-width: 1440px; margin: 0 auto;
+      padding: 205px 4% 36px;
     }
     .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
-      gap: 44px; margin-bottom: 50px;
+      display: grid; grid-template-columns: 2fr 1.1fr 1fr 1.2fr;
+      gap: 48px;
     }
     .footer-brand p {
-      color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.8;
-      max-width: 320px; margin: 18px 0 26px;
+      color: rgba(255,255,255,0.58); font-size: 0.9rem; line-height: 1.85;
+      max-width: 340px; margin: 20px 0 28px;
     }
-    .footer-social { display: flex; gap: 10px; }
+    .footer-social { display: flex; gap: 12px; }
     .social-link {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: rgba(255,255,255,0.07);
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.22s;
+      color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.9rem;
+      transition: all 0.25s ease;
     }
-    .social-link:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: translateY(-3px); box-shadow: var(--shadow-primary); }
+    .social-link:hover {
+      background: #FFD21F; border-color: #FFD21F; color: #062B4D;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px -8px rgba(255,210,31,0.5);
+    }
     .footer-col h5 {
-      color: #fff; font-weight: 800; font-size: 0.9rem;
-      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+      position: relative;
+      color: #fff; font-weight: 800; font-size: 0.92rem;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      padding-bottom: 18px;
     }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col h5::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 56px; height: 14px;
+      background-image:
+        radial-gradient(circle, #FFD21F 3px, transparent 3.7px),
+        radial-gradient(circle, #FFD21F 3px, transparent 3.7px),
+        linear-gradient(90deg, #FFD21F, rgba(255,210,31,0.12));
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-size: 6px 6px, 6px 6px, 100% 3px;
+      background-position: 0 11px, 18px 11px, 0 0;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
     .footer-col ul a {
-      color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem;
-      transition: color 0.2s, padding 0.2s; font-weight: 600;
+      display: inline-block;
+      color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.22s ease, transform 0.22s ease;
+      font-weight: 600;
     }
-    .footer-col ul a:hover { color: var(--sky-bright); padding-left: 4px; }
+    .footer-col ul a:hover { color: #FFD21F; transform: translateX(5px); }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 26px;
+      margin-top: 54px;
+      padding: 22px 28px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-radius: 16px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 16px; flex-wrap: wrap;
     }
-    .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.84rem; }
-    .footer-bottom a { color: var(--sky-bright); text-decoration: none; }
+    .footer-bottom p { color: rgba(255,255,255,0.42); font-size: 0.84rem; }
+    .footer-bottom a { color: #8FCCEC; text-decoration: none; transition: color 0.2s ease; }
+    .footer-bottom a:hover { color: #FFD21F; }
 
     footer .nav-logo-img { height: 46px; max-width: min(220px, 70vw); }
     footer .nav-logo-text { color: rgba(255,255,255,0.95); }
-    footer .nav-logo-text span { color: var(--sky-bright); }
+    footer .nav-logo-text span { color: #8FCCEC; }
 
-    /* ═══ WHATSAPP FLOAT ═══ */
+    footer a:focus-visible { outline: 3px solid #FFD21F; outline-offset: 2px; border-radius: 8px; }
+
+    /* ═══ FLOATING ACTION BUTTONS ═══ */
     .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 60px; height: 60px; border-radius: 50%;
-      background: var(--whatsapp); color: #fff;
+      position: fixed; bottom: 26px; right: 26px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #1DA851); color: #fff;
       display: flex; align-items: center; justify-content: center;
       font-size: 27px; text-decoration: none;
-      box-shadow: 0 10px 30px rgba(37,211,102,0.45);
+      box-shadow: 0 12px 32px rgba(37,211,102,0.45);
       animation: waFloat 2.8s ease-in-out infinite;
-      transition: transform 0.2s;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .wa-float:hover { transform: scale(1.1); }
+    .wa-float:hover { transform: translateY(-4px) scale(1.06); box-shadow: 0 16px 40px rgba(37,211,102,0.6); }
     @keyframes waFloat {
-      0%,100% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 14px 44px rgba(37,211,102,0.75); }
+      0%,100% { box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 16px 44px rgba(37,211,102,0.75); }
     }
 
     /* ═══ BACK TO TOP ═══ */
     #back-top {
-      position: fixed; bottom: 100px; right: 28px; z-index: 999;
-      width: 46px; height: 46px; border-radius: 50%;
-      background: var(--grad-primary); color: #fff;
+      position: fixed; bottom: 98px; right: 26px; z-index: 999;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      color: #fff;
       display: flex; align-items: center; justify-content: center;
       text-decoration: none; font-size: 1rem;
-      box-shadow: var(--shadow-primary); transition: all 0.25s;
+      box-shadow: 0 12px 30px rgba(4,28,51,0.5);
+      transition: all 0.25s ease;
       opacity: 0; pointer-events: none;
     }
     #back-top.visible { opacity: 1; pointer-events: auto; }
-    #back-top:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(12,69,128,0.45); }
+    #back-top:hover {
+      transform: translateY(-4px);
+      background: #FFD21F; border-color: #FFD21F; color: #062B4D;
+      box-shadow: 0 16px 38px rgba(255,210,31,0.4);
+    }
 
     /* ═══ REVEAL ON SCROLL ═══ */
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -1154,6 +1206,7 @@
       .why-img-stack { height: 320px; max-width: 520px; margin: 0 auto; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-inner { padding: 196px 5% 32px; }
       .process-steps::before { display: none; }
     }
     @media (max-width: 1200px) {
@@ -1199,6 +1252,8 @@
       .hero-img-card img { height: 340px; }
       .hero-stats { gap: 22px; flex-wrap: wrap; }
       .footer-top { grid-template-columns: 1fr; }
+      .footer-inner { padding: 200px 6% 30px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
       .trust-divider { display: none; }
       .pricing-card.featured { transform: scale(1); }
       .cta-actions { flex-direction: column; align-items: stretch; }
@@ -1378,6 +1433,166 @@
       .jezdan-hero .slide-chip { padding: 6px 12px; font-size: 0.78rem; }
       .jezdan-hero .swiper-pagination { bottom: 18px; }
     }
+
+    /* ════════════════════════════════════════════════════════════
+       WAVE CARD COMPONENT (shared — services pages)
+       Blue #0878B5 · Dark #006FAE · Light #D9F0FA · Yellow #FFD21F
+    ════════════════════════════════════════════════════════════ */
+    .osc {
+      --os-blue: #0878B5;
+      --os-blue-dark: #006FAE;
+      --os-blue-light: #D9F0FA;
+      --os-yellow: #FFD21F;
+      --os-text: #333333;
+      --os-border: #1685C0;
+      --osc-media-h: 240px;
+    }
+    .osc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 54px;
+    }
+    @media (max-width: 992px) { .osc-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .osc-grid { grid-template-columns: 1fr; } }
+
+    .osc-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #fff;
+      border: 1px solid rgba(22, 133, 192, 0.25);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(0, 111, 174, 0.10);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .osc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 26px 54px rgba(0, 111, 174, 0.18);
+    }
+
+    .osc-media {
+      position: relative;
+      z-index: 2;
+      height: var(--osc-media-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(255, 255, 255, 0.16), transparent 42%),
+        radial-gradient(circle at 16% 82%, rgba(255, 255, 255, 0.10), transparent 38%),
+        linear-gradient(150deg, #0B7FBF 0%, var(--os-blue) 42%, var(--os-blue-dark) 100%);
+    }
+    .osc-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.4px, transparent 1.4px);
+      background-size: 22px 22px;
+      opacity: 0.18;
+    }
+    .osc-media-ring {
+      position: absolute;
+      width: 190px; height: 190px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+    .osc-media-chip {
+      position: relative;
+      z-index: 3;
+      width: 104px; height: 104px;
+      border-radius: 26px;
+      background: #fff;
+      color: var(--os-blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.7rem;
+      box-shadow: 0 18px 40px rgba(0, 45, 80, 0.35), 0 0 0 10px rgba(255, 255, 255, 0.14);
+      transition: transform 0.3s ease;
+    }
+    .osc-card:hover .osc-media-chip { transform: translateY(-6px) scale(1.05) rotate(-4deg); }
+    .osc-media-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transform: scale(1.01);
+      transition: transform 0.55s ease;
+    }
+    .osc-card:hover .osc-media-img { transform: scale(1.08); }
+    .osc-media-shade {
+      position: absolute; inset: 0;
+      z-index: 2;
+      background: linear-gradient(180deg, rgba(4,28,51,0.05) 30%, rgba(4,28,51,0.45) 100%);
+    }
+    .osc-media:has(.osc-media-img)::before { opacity: 0; }
+
+    .osc-waves {
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -34px;
+      height: 70px;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .osc-wave {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      display: block;
+    }
+
+    .osc-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      background: #fff;
+      padding: 48px 30px 30px;
+    }
+    .osc-title {
+      font-family: var(--font-display);
+      color: var(--os-blue);
+      font-size: 1.32rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 0 0 12px;
+    }
+    .osc-text {
+      color: var(--os-text);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin: 0 0 22px;
+      flex: 1;
+    }
+    .osc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--os-blue);
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .osc-link:hover { gap: 13px; }
+    .osc-link i { font-size: 0.8rem; }
+    .osc-link:focus-visible { outline: 3px solid var(--os-yellow); outline-offset: 2px; }
+
+    @media (max-width: 620px) {
+      .osc { --osc-media-h: 210px; }
+      .osc-media-chip { width: 92px; height: 92px; font-size: 2.3rem; border-radius: 22px; }
+      .osc-media-ring { width: 158px; height: 158px; }
+      .osc-body { padding: 44px 24px 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .osc-card,
+      .osc-card:hover,
+      .osc-media-chip,
+      .osc-link { transition: none !important; transform: none !important; }
+    }
   </style>
   @yield('additional_styles')
 </head>
@@ -1465,27 +1680,27 @@
       </a>
       <div class="mega-menu">
         <div class="mega-links">
-          <a href="{{ route('request.quote', ['service_id' => 9]) }}" class="mega-link">
+          <a href="{{ route('solutions') }}" class="mega-link">
             <i class="fas fa-earth-africa"></i>
             <span><strong>Safari & Tour Operator</strong><small>Booking engines & M-Pesa payments</small></span>
           </a>
-          <a href="{{ route('request.quote', ['service_id' => 1]) }}" class="mega-link">
+          <a href="{{ route('services.web-development') }}" class="mega-link">
             <i class="fas fa-cart-shopping"></i>
             <span><strong>E-Commerce & Online Stores</strong><small>Mobile money checkout & orders</small></span>
           </a>
-          <a href="{{ route('request.quote', ['service_id' => 8]) }}" class="mega-link">
+          <a href="{{ route('services.system-development') }}" class="mega-link">
             <i class="fas fa-diagram-project"></i>
             <span><strong>Business Automation</strong><small>CRM, inventory & HR systems</small></span>
           </a>
-          <a href="{{ route('request.quote', ['service_id' => 3]) }}" class="mega-link">
+          <a href="{{ route('services.network-installation') }}" class="mega-link">
             <i class="fas fa-video"></i>
             <span><strong>Network & CCTV Security</strong><small>Office networks & surveillance</small></span>
           </a>
-          <a href="{{ route('request.quote', ['service_id' => 2]) }}" class="mega-link">
+          <a href="{{ route('services.mobile-app-development') }}" class="mega-link">
             <i class="fas fa-truck-fast"></i>
             <span><strong>Delivery & Booking Apps</strong><small>Apps with real-time tracking</small></span>
           </a>
-          <a href="{{ route('request.quote', ['service_id' => 7]) }}" class="mega-link">
+          <a href="{{ route('services.cloud-services') }}" class="mega-link">
             <i class="fas fa-cloud-arrow-up"></i>
             <span><strong>Cloud & Data Protection</strong><small>Hosting, email & backups</small></span>
           </a>
@@ -1505,7 +1720,6 @@
       </div>
     </li>
     <li><a href="{{ route('team') }}" class="{{ request()->routeIs('team') ? 'active' : '' }}">Team</a></li>
-    <li><a href="{{ route('blog') }}" class="{{ request()->routeIs('blog', 'blog.*') ? 'active' : '' }}">Blog</a></li>
     <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a></li>
     <li><a href="{{ route('request.quote') }}" class="nav-cta"><i class="fas fa-paper-plane"></i> Get a Quote</a></li>
   </ul>
@@ -1518,60 +1732,68 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="{{ route('home') }}" class="nav-logo" style="margin-bottom:4px;" title="Jezdan Group">
-        <span class="nav-logo-text nav-brand">Jezdan <span>Group</span></span>
-      </a>
-      <p>Jezdan Technology is a leading ICT company based in Moshi, Kilimanjaro, Tanzania. We deliver world-class digital services with a deep understanding of Tanzania's unique business landscape.</p>
-      <div class="footer-social">
-        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" focusable="false">
+      <path d="M0,46 C220,88 460,10 720,28 C980,46 1240,88 1440,46 L1440,0 L0,0 Z" fill="#0E4C80" fill-opacity="0.9"/>
+      <path d="M0,84 C280,116 540,38 820,62 C1100,84 1280,108 1440,84 L1440,0 L0,0 Z" fill="#0A3A66"/>
+      <path d="M0,120 C300,102 620,124 900,112 C1180,100 1320,122 1440,116 L1440,0 L0,0 Z" fill="#062B4D"/>
+    </svg>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="{{ route('home') }}" class="nav-logo" style="margin-bottom:4px;" title="Jezdan Group">
+          <span class="nav-logo-text nav-brand">Jezdan <span>Group</span></span>
+        </a>
+        <p>Jezdan Technology is a leading ICT company based in Moshi, Kilimanjaro, Tanzania. We deliver world-class digital services with a deep understanding of Tanzania's unique business landscape.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="{{ route('services.web-development') }}">Web Development</a></li>
+          <li><a href="{{ route('services.mobile-app-development') }}">Mobile App Development</a></li>
+          <li><a href="{{ route('services.network-installation') }}">Network Installation</a></li>
+          <li><a href="{{ route('services.cybersecurity') }}">Cybersecurity</a></li>
+          <li><a href="{{ route('services.it-support') }}">IT Support</a></li>
+          <li><a href="{{ route('services.ict-consultancy') }}">ICT Consultancy</a></li>
+          <li><a href="{{ route('services.system-development') }}">System Development</a></li>
+          <li><a href="{{ route('services.cloud-services') }}">Cloud Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="{{ route('about') }}">About Us</a></li>
+          <li><a href="{{ route('team') }}">Our Team</a></li>
+          <li><a href="{{ route('home') }}#testimonials">Client Reviews</a></li>
+          <li><a href="{{ route('pricing') }}">Pricing</a></li>
+          <li><a href="{{ route('contact') }}">Contact Us</a></li>
+          <li><a href="{{ route('portfolio') }}">Our Portfolio</a></li>
+          <li><a href="{{ route('careers') }}">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+255685847002"><i class="fas fa-phone" style="width:16px;"></i> +255 685 847 002</a></li>
+          <li><a href="tel:+255622239304"><i class="fas fa-phone" style="width:16px;"></i> +255 622 239 304</a></li>
+          <li><a href="mailto:info@jezdantech.com"><i class="fas fa-envelope" style="width:16px;"></i> info@jezdantech.com</a></li>
+          <li><a href="https://maps.google.com/?q=Moshi,Kilimanjaro,Tanzania" target="_blank"><i class="fas fa-map-marker-alt" style="width:16px;"></i> Moshi, Kilimanjaro, Tanzania</a></li>
+          <li><a href="https://wa.me/255685847002" target="_blank"><i class="fab fa-whatsapp" style="width:16px;color:var(--whatsapp);"></i> WhatsApp Us</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer-col">
-      <h5>Services</h5>
-      <ul>
-        <li><a href="{{ route('services.web-development') }}">Web Development</a></li>
-        <li><a href="{{ route('services.mobile-app-development') }}">Mobile App Development</a></li>
-        <li><a href="{{ route('services.network-installation') }}">Network Installation</a></li>
-        <li><a href="{{ route('services.cybersecurity') }}">Cybersecurity</a></li>
-        <li><a href="{{ route('services.it-support') }}">IT Support</a></li>
-        <li><a href="{{ route('services.ict-consultancy') }}">ICT Consultancy</a></li>
-        <li><a href="{{ route('services.system-development') }}">System Development</a></li>
-        <li><a href="{{ route('services.cloud-services') }}">Cloud Services</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>© {{ date('Y') }} Jezdan Group. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      <p style="color:rgba(255,255,255,0.3);">Built with care in Moshi, Kilimanjaro, Tanzania</p>
     </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <ul>
-        <li><a href="{{ route('about') }}">About Us</a></li>
-        <li><a href="{{ route('team') }}">Our Team</a></li>
-        <li><a href="{{ route('home') }}#testimonials">Client Reviews</a></li>
-        <li><a href="{{ route('pricing') }}">Pricing</a></li>
-        <li><a href="{{ route('contact') }}">Contact Us</a></li>
-        <li><a href="{{ route('portfolio') }}">Our Portfolio</a></li>
-        <li><a href="{{ route('blog') }}">Blog</a></li>
-        <li><a href="{{ route('careers') }}">Careers</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="tel:+255685847002"><i class="fas fa-phone" style="width:16px;"></i> +255 685 847 002</a></li>
-        <li><a href="tel:+255622239304"><i class="fas fa-phone" style="width:16px;"></i> +255 622 239 304</a></li>
-        <li><a href="mailto:info@jezdantech.com"><i class="fas fa-envelope" style="width:16px;"></i> info@jezdantech.com</a></li>
-        <li><a href="https://maps.google.com/?q=Moshi,Kilimanjaro,Tanzania" target="_blank"><i class="fas fa-map-marker-alt" style="width:16px;"></i> Moshi, Kilimanjaro, Tanzania</a></li>
-        <li><a href="https://wa.me/255685847002" target="_blank"><i class="fab fa-whatsapp" style="width:16px;color:var(--whatsapp);"></i> WhatsApp Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© {{ date('Y') }} Jezdan Group. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-    <p style="color:rgba(255,255,255,0.3);">Built with care in Moshi, Kilimanjaro, Tanzania</p>
   </div>
 </footer>
 

@@ -187,27 +187,145 @@
   .sol-banner .btn-primary:hover { background: var(--sky-bright); color: #062B4D; }
   .sol-banner .btn-outline { border-color: rgba(255, 255, 255, 0.55); color: #fff; }
   .sol-banner .btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
+
+  /* ═══ Solutions hero — compact premium ═══ */
+  .solutions-hero {
+    min-height: 46vh;
+    text-align: center;
+  }
+  .solutions-hero .hero-grid-overlay {
+    mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 30%, transparent 75%);
+  }
+  .solutions-hero .hero-glow {
+    width: 500px; height: 500px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(61, 143, 212, 0.55) 0%, transparent 70%);
+    opacity: 0.16;
+    filter: blur(80px);
+    animation: solGlowFloat 9s ease-in-out infinite;
+  }
+  .solutions-hero .hero-glow-2 {
+    width: 250px; height: 250px;
+    bottom: -70px; left: auto; right: 14%;
+    background: radial-gradient(circle, rgba(255, 210, 31, 0.7) 0%, transparent 70%);
+    opacity: 0.10;
+    filter: blur(60px);
+    animation: solGlowFloatAlt 11s ease-in-out infinite;
+  }
+  @keyframes solGlowFloat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50%      { transform: translate(-50%, -50%) scale(1.08); }
+  }
+  @keyframes solGlowFloatAlt {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.18); }
+  }
+  .solutions-hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px 60px;
+  }
+  .solutions-hero .hero-badge {
+    gap: 8px;
+    padding: 7px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+    animation: solHeroUp 0.5s ease both;
+  }
+  .solutions-hero .hero-badge .dot {
+    width: 6px; height: 6px;
+  }
+  .solutions-hero .hero-title {
+    font-size: clamp(2.4rem, 4.2vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    max-width: 850px;
+    margin: 0 auto 18px;
+    animation: solHeroUp 0.6s 0.1s ease both;
+  }
+  .solutions-hero .hero-title.sol-hero-title {
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+  }
+  .solutions-hero .hero-title span {
+    background: linear-gradient(120deg, #FFD21F 0%, #F5B53C 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .solutions-hero .hero-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+    animation: solHeroUp 0.6s 0.2s ease both;
+  }
+  .hero-accent-line {
+    position: relative;
+    width: 170px;
+    height: 2px;
+    margin: 22px auto 0;
+    background: linear-gradient(90deg, transparent, rgba(111, 177, 232, 0.6) 42%, rgba(111, 177, 232, 0.6) 58%, transparent);
+    animation: solHeroUp 0.6s 0.3s ease both;
+  }
+  .hero-accent-line::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--os-yellow, #FFD21F);
+    box-shadow: 0 0 14px rgba(255, 210, 31, 0.8);
+  }
+  @keyframes solHeroUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 767px) {
+    .solutions-hero .hero-content { padding: 55px 18px 50px; }
+    .solutions-hero .hero-title { font-size: 32px; line-height: 1.1; }
+    .solutions-hero .hero-subtitle { font-size: 15px; line-height: 1.6; }
+    .hero-accent-line { margin-top: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .solutions-hero .hero-glow,
+    .solutions-hero .hero-glow-2,
+    .solutions-hero .hero-badge,
+    .solutions-hero .hero-title,
+    .solutions-hero .hero-subtitle,
+    .hero-accent-line { animation: none !important; }
+  }
 </style>
 
 <!-- HERO -->
-<section class="hero" id="home" style="min-height: 62vh; text-align: center;">
+<section class="hero solutions-hero" id="home">
   <div class="hero-bg-img"></div>
-  <div class="hero-grid-overlay" style="mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 25%, transparent 75%);"></div>
+  <div class="hero-grid-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-    <div style="max-width: 860px;">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Our Solutions
-      </div>
-      <h1 class="hero-title sol-hero-title">
-        Every Digital Solution Your Business Needs — <span>All In One Place</span>
-      </h1>
-      <p class="hero-subtitle" style="max-width: 720px; margin: 0 auto;">
-        From websites and mobile apps to networks, security, and cloud — Jezdan Technology delivers complete ICT solutions built for Tanzanian businesses.
-      </p>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Our Solutions
     </div>
+    <h1 class="hero-title sol-hero-title">
+      Every Digital Solution Your Business Needs — <span>All In One Place</span>
+    </h1>
+    <p class="hero-subtitle">
+      Complete ICT solutions for websites, mobile, cloud, networks and security.
+    </p>
+    <div class="hero-accent-line"></div>
   </div>
 </section>
 
