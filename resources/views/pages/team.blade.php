@@ -541,36 +541,6 @@
   </div>
 </section>
 
-<section class="tm-team" id="team">
-  <div class="container">
-    <div class="tm-head">
-      <span class="tm-tag"><i class="fas fa-users"></i> Team</span>
-      <h2 class="tm-title">Meet Our <span class="tm-gold">Team</span></h2>
-      <p class="tm-sub">Certified professionals with hands-on experience across web, mobile, networks, security, cloud and enterprise systems.</p>
-    </div>
-    <div class="tm-team-grid">
-      @foreach($teamMembers as $member)
-        <article class="tm-member reveal">
-          <div class="tm-photo">
-            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}, {{ $member['position'] }}" loading="lazy">
-            <div class="tm-overlay" aria-hidden="true"></div>
-            <div class="tm-socials tm-socials-overlay">
-              <a href="{{ $member['linkedin'] }}" target="_blank" rel="noopener" aria-label="{{ $member['name'] }} on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a href="{{ $member['email'] }}" aria-label="Email {{ $member['name'] }}"><i class="fas fa-envelope"></i></a>
-            </div>
-          </div>
-          <div class="tm-body">
-            <h3>{{ $member['name'] }}</h3>
-            <span class="tm-role">{{ $member['position'] }}</span>
-            <span class="tm-dept">{{ $member['department'] }}</span>
-            <p>{{ $member['bio'] }}</p>
-          </div>
-        </article>
-      @endforeach
-    </div>
-  </div>
-</section>
-
 <section class="tm-expert" id="expertise">
   <div class="container">
     <div class="tm-head">
