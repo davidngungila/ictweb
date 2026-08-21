@@ -3,7 +3,7 @@
 @section('title', 'Careers at Jezdan Technology | Join Our Team in Tanzania')
 
 @section('meta_tags')
-  <meta name="description" content="Build your career with Tanzania's leading ICT company. Explore open positions in web development, mobile apps, networking, cybersecurity, and IT support.">
+  <meta name="description" content="Build your career with Tanzania's leading ICT company. Send us your CV and join our team in web development, mobile apps, networking, cybersecurity, and IT support.">
   <meta name="keywords" content="ICT careers Tanzania, tech jobs Tanzania, developer jobs Moshi, IT jobs Dar es Salaam">
   <meta property="og:title" content="Careers at Jezdan Technology">
   <meta property="og:description" content="Join Tanzania's leading ICT company. Explore open positions and build your future in technology.">
@@ -76,8 +76,6 @@
     transition: transform 0.4s cubic-bezier(.22, .61, .36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .job-card:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(6, 43, 77, 0.12); border-color: rgba(12, 69, 128, 0.25); }
-  .job-card-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
-  .job-card-title { display: flex; align-items: center; gap: 14px; }
   .job-card-icon {
     width: 50px; height: 50px; border-radius: 14px;
     background: linear-gradient(135deg, var(--primary), #0F5FA8);
@@ -86,21 +84,8 @@
     flex-shrink: 0;
   }
   .job-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--dark); margin-bottom: 10px; }
-  .job-badges { display: flex; gap: 10px; flex-wrap: wrap; }
-  .job-badge {
-    padding: 5px 14px; border-radius: 50px;
-    font-size: 0.78rem; font-weight: 700;
-  }
-  .job-badge.type { background: rgba(26, 111, 196, 0.1); color: var(--accent); }
-  .job-badge.mode { background: rgba(16, 185, 129, 0.1); color: #10b981; }
-  .job-badge.location { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
-  .job-badge.salary { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
 
   .job-card-desc { color: var(--ink-muted); line-height: 1.7; margin: 20px 0 0; }
-  .job-card-foot {
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
-    margin-top: 24px; padding-top: 20px; border-top: 1px solid #f1f5f9;
-  }
   .job-apply {
     display: inline-flex; align-items: center; gap: 9px;
     background: var(--primary); color: #fff;
@@ -110,31 +95,6 @@
     transition: all 0.3s ease;
   }
   .job-apply:hover { transform: translateY(-3px); background: #0F5FA8; box-shadow: 0 16px 32px rgba(12, 69, 128, 0.36); }
-  .job-reqs-btn {
-    background: none; border: none;
-    color: var(--primary); font-weight: 700; font-size: 0.88rem;
-    cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 4px;
-    transition: color 0.3s ease;
-  }
-  .job-reqs-btn i { transition: transform 0.35s ease; }
-  .job-reqs-btn.open i { transform: rotate(180deg); }
-  .job-reqs-btn:hover { color: #0F5FA8; }
-  .job-reqs {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.45s cubic-bezier(.22, .61, .36, 1), margin 0.45s ease, padding 0.45s ease;
-    margin: 0;
-  }
-  .job-reqs.open { max-height: 600px; margin-top: 22px; padding-top: 22px; border-top: 1px dashed #e2e8f0; }
-  .job-reqs h4 { font-size: 0.95rem; font-weight: 800; color: var(--navy); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-  .job-reqs h4 i { color: var(--accent); }
-  .job-reqs ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
-  @media (max-width: 640px) { .job-reqs ul { grid-template-columns: 1fr; } }
-  .job-reqs ul li {
-    display: flex; align-items: flex-start; gap: 10px;
-    color: var(--ink-muted); font-size: 0.9rem; line-height: 1.6;
-  }
-  .job-reqs ul li i { color: #10b981; font-size: 0.75rem; margin-top: 5px; flex-shrink: 0; }
 
   /* â”€â”€â”€ Perks â”€â”€â”€ */
   .perks {
@@ -235,7 +195,7 @@
         Build your career with Tanzania's leading ICT company. We're looking for talented individuals passionate about technology, innovation, and making a real impact.
       </p>
       <div class="hero-actions" style="margin-top: 36px;">
-        <a href="#open-positions" class="btn-primary"><i class="fas fa-briefcase"></i> View Open Positions</a>
+        <a href="mailto:careers@jezdantech.com?subject=Speculative%20Application" class="btn-primary"><i class="fas fa-paper-plane"></i> Send Your CV</a>
         <a href="{{ route('contact') }}" class="btn-outline"><i class="fas fa-envelope"></i> Get in Touch</a>
       </div>
     </div>
@@ -318,143 +278,16 @@
   <div class="container">
     <div class="jobs-wrap">
 
-      @php
-        $jobs = [
-          [
-            'title' => 'Senior Web Developer',
-            'icon' => 'fa-code',
-            'type' => 'Full-time',
-            'mode' => 'Remote/Hybrid',
-            'location' => 'Moshi / Dar es Salaam',
-            'salary' => 'TZS 1.8M â€“ 3.5M',
-            'desc' => "We're looking for an experienced Web Developer to join our team. You'll build and maintain modern web applications using Laravel, React, and other cutting-edge technologies for clients across Tanzania and East Africa.",
-            'reqs' => [
-              '3+ years of experience in web development',
-              'Strong knowledge of PHP, Laravel, JavaScript, React',
-              'Experience with MySQL and database design',
-              'Understanding of responsive design and UI/UX principles',
-              'Experience with Git and agile workflows',
-              'Good communication and teamwork skills',
-            ],
-          ],
-          [
-            'title' => 'Mobile App Developer',
-            'icon' => 'fa-mobile-screen-button',
-            'type' => 'Full-time',
-            'mode' => 'Remote/Hybrid',
-            'location' => 'Dar es Salaam',
-            'salary' => 'TZS 1.5M â€“ 2.8M',
-            'desc' => 'Join our mobile development team to create amazing cross-platform applications using Flutter and React Native. You\'ll work on projects for clients across various industries.',
-            'reqs' => [
-              '2+ years of mobile app development experience',
-              'Proficiency in Flutter or React Native',
-              'Knowledge of Dart, JavaScript, or TypeScript',
-              'Experience with REST APIs and third-party integrations',
-              'Understanding of mobile payments (M-Pesa, TigoPesa)',
-              'Portfolio of published mobile applications',
-            ],
-          ],
-          [
-            'title' => 'Network Engineer',
-            'icon' => 'fa-network-wired',
-            'type' => 'Full-time',
-            'mode' => 'On-site',
-            'location' => 'Moshi',
-            'salary' => 'TZS 1.2M â€“ 2.4M',
-            'desc' => "We're seeking a skilled Network Engineer to design, implement, and maintain network infrastructure for our clients â€” from small offices to large hotel and lodge installations.",
-            'reqs' => [
-              '2+ years of network engineering experience',
-              'CCNA or equivalent certification preferred',
-              'Experience with routers, switches, and wireless networks',
-              'Knowledge of VLANs, VPNs, and network security',
-              'Familiarity with MikroTik and Ubiquiti equipment',
-              'Willingness to travel to client sites',
-            ],
-          ],
-          [
-            'title' => 'Cybersecurity Analyst',
-            'icon' => 'fa-shield-halved',
-            'type' => 'Full-time',
-            'mode' => 'Hybrid',
-            'location' => 'Moshi / Remote',
-            'salary' => 'TZS 1.4M â€“ 2.6M',
-            'desc' => 'Protect our clients\' systems and data by conducting security audits, implementing firewalls and monitoring tools, and responding to security incidents.',
-            'reqs' => [
-              '2+ years of cybersecurity experience',
-              'Knowledge of firewalls, SIEM, and vulnerability scanning',
-              'Experience with penetration testing tools',
-              'Understanding of TCRA and GDPR compliance',
-              'Security certifications are a strong plus',
-            ],
-          ],
-          [
-            'title' => 'IT Support Specialist',
-            'icon' => 'fa-headset',
-            'type' => 'Full-time',
-            'mode' => 'Hybrid',
-            'location' => 'Moshi',
-            'salary' => 'TZS 800K â€“ 1.4M',
-            'desc' => 'Join our IT support team to provide exceptional technical assistance to our clients. You\'ll handle troubleshooting, maintenance, and system administration tasks.',
-            'reqs' => [
-              '1+ years of IT support experience',
-              'Knowledge of Windows, Linux, and macOS',
-              'Experience with office networks and printers',
-              'Experience with business email and cloud tools',
-              'Strong problem-solving skills',
-              'Excellent customer service abilities',
-            ],
-          ],
-          [
-            'title' => 'Junior Web Developer (Internship)',
-            'icon' => 'fa-graduation-cap',
-            'type' => 'Internship',
-            'mode' => 'On-site',
-            'location' => 'Moshi',
-            'salary' => 'Stipend Provided',
-            'desc' => 'A 6-month paid internship for recent graduates passionate about web development. Work alongside senior engineers on real client projects and graduate with a solid portfolio.',
-            'reqs' => [
-              'Degree or diploma in IT, CS, or related field',
-              'Basic knowledge of HTML, CSS, and JavaScript',
-              'Familiarity with PHP or a modern framework',
-              'Eagerness to learn and work in a team',
-              'Portfolio or personal projects is a plus',
-            ],
-          ],
-        ];
-      @endphp
-
-      @foreach($jobs as $index => $job)
-      <div class="job-card reveal" style="--d:{{ ($index % 2) * 80 }}ms;">
-        <div class="job-card-top">
-          <div style="display:flex; gap: 18px; align-items:flex-start; flex-wrap: wrap;">
-            <div class="job-card-icon"><i class="fas {{ $job['icon'] }}"></i></div>
-            <div>
-              <h3>{{ $job['title'] }}</h3>
-              <div class="job-badges">
-                <span class="job-badge type">{{ $job['type'] }}</span>
-                <span class="job-badge mode">{{ $job['mode'] }}</span>
-                <span class="job-badge location"><i class="fas fa-map-marker-alt"></i> {{ $job['location'] }}</span>
-                <span class="job-badge salary"><i class="fas fa-coins"></i> {{ $job['salary'] }}</span>
-              </div>
-            </div>
-          </div>
-          <button class="job-reqs-btn" onclick="toggleReqs(this)"><i class="fas fa-chevron-down"></i> Requirements</button>
-        </div>
-        <p class="job-card-desc">{{ $job['desc'] }}</p>
-        <div class="job-reqs" id="job-reqs-{{ $index }}">
-          <h4><i class="fas fa-list-check"></i> Key Requirements</h4>
-          <ul>
-            @foreach($job['reqs'] as $req)
-              <li><i class="fas fa-check"></i> {{ $req }}</li>
-            @endforeach
-          </ul>
-        </div>
-        <div class="job-card-foot">
-          <span style="font-size: 0.85rem; color: var(--ink-muted);"><i class="fas fa-paper-plane"></i> Send CV + cover letter to <strong>careers@jezdantech.com</strong></span>
-          <a href="mailto:careers@jezdantech.com?subject=Application%3A%20{{ urlencode($job['title']) }}" class="job-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="job-card reveal" style="text-align:center; padding:70px 40px;">
+        <div class="job-card-icon" style="margin:0 auto 26px; width:72px; height:72px; font-size:1.7rem;"><i class="fas fa-briefcase"></i></div>
+        <h3 style="font-size:1.6rem;">No Open Positions Right Now</h3>
+        <p class="job-card-desc" style="max-width:560px; margin:16px auto 0;">
+          We don't have any vacancies at the moment, but we're always on the lookout for talented people.
+          Send us your CV and we'll keep you in mind when a role opens up.
+        </p>
+        <a href="mailto:careers@jezdantech.com?subject=Speculative%20Application" class="job-apply" style="margin-top:30px;">Send Your CV <i class="fas fa-arrow-right"></i></a>
       </div>
-      @endforeach
+
     </div>
   </div>
 </section>
@@ -589,15 +422,5 @@
   </div>
 </section>
 
-@section('additional_scripts')
-<script>
-  // Expandable requirements
-  function toggleReqs(btn) {
-    const card = btn.closest('.job-card');
-    const reqs = card.querySelector('.job-reqs');
-    btn.classList.toggle('open');
-    reqs.classList.toggle('open');
-  }
-</script>
 @endsection
 @endsection
