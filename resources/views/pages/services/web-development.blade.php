@@ -75,74 +75,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Web Development <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include a free domain + hosting for the first year, SSL certificate, and 1 month of free support.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Starter</div>
-        <div class="pricing-name">Web Starter</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Individuals & small businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 1–5 pages, mobile-responsive</li>
-          <li><i class="fas fa-check"></i> Contact form with spam protection</li>
-          <li><i class="fas fa-check"></i> WhatsApp button integration</li>
-          <li><i class="fas fa-check"></i> Social media links</li>
-          <li><i class="fas fa-check"></i> Google Maps location</li>
-          <li><i class="fas fa-check"></i> Free domain + hosting (1 year)</li>
-          <li><i class="fas fa-check"></i> Delivered in 4–7 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Business</div>
-        <div class="pricing-name">Web Business</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing companies</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 8–15 pages with full CMS</li>
-          <li><i class="fas fa-check"></i> Blog with SEO-rich content</li>
-          <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
-          <li><i class="fas fa-check"></i> Professional email accounts</li>
-          <li><i class="fas fa-check"></i> SSL + full security setup</li>
-          <li><i class="fas fa-check"></i> Delivered in 7–12 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">E-Commerce</div>
-        <div class="pricing-name">Online Store</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Selling online in Tanzania</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 10–20 pages with product catalogue</li>
-          <li><i class="fas fa-check"></i> Shopping cart & checkout</li>
-          <li><i class="fas fa-check"></i> M-Pesa, TigoPesa & AzamPesa</li>
-          <li><i class="fas fa-check"></i> Order management dashboard</li>
-          <li><i class="fas fa-check"></i> SMS order confirmations</li>
-          <li><i class="fas fa-check"></i> Delivered in 10–15 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-lightbulb', 'title' => 'Tailored to Your Business', 'desc' => 'No cookie-cutter templates. Every website is designed around your brand, your goals, and the customers you want to reach.'],
+    ['icon' => 'fa-mobile-screen-button', 'title' => 'Mobile-First & Fast', 'desc' => 'Responsive on every device and optimised for speed, so you never lose a visitor to slow loading pages.'],
+    ['icon' => 'fa-magnifying-glass-chart', 'title' => 'SEO-Ready from Day One', 'desc' => 'Clean code, proper meta structure, and Google-friendly architecture that help customers find you.'],
+    ['icon' => 'fa-headset', 'title' => 'Local Ongoing Support', 'desc' => 'Real support in Tanzania via phone, WhatsApp, and email — long after launch day.'],
+  ];
+  $included = [
+    'Free domain name + hosting for the first year',
+    'SSL certificate and full security setup',
+    'Mobile-responsive design tested on all devices',
+    'WhatsApp button & social media integration',
+    'Contact forms with spam protection',
+    'Google Maps and business location setup',
+    'Google Analytics installation',
+    'Training on managing your website + 1 month free support',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>Web Development</span>',
+  'whySub'    => 'We build websites that do more than look good — they load fast, rank well, and turn visitors into customers.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every Website Project</span>',
+  'incSub'     => 'Every project is quoted individually based on your pages and features — and always includes:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">

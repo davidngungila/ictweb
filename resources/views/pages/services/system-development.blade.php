@@ -74,70 +74,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">System Development <span>Pricing Packages</span></h2>
-      <p class="section-sub">Project-based pricing tailored to your system requirements.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-name">System Basic</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Single module system</li>
-          <li><i class="fas fa-check"></i> Basic features</li>
-          <li><i class="fas fa-check"></i> 1–2 user roles</li>
-          <li><i class="fas fa-check"></i> 3 months support</li>
-          <li><i class="fas fa-check"></i> Delivered in 4–6 weeks</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-name">System Standard</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Multi-module system</li>
-          <li><i class="fas fa-check"></i> Advanced features</li>
-          <li><i class="fas fa-check"></i> 3–5 user roles</li>
-          <li><i class="fas fa-check"></i> 6 months support</li>
-          <li><i class="fas fa-check"></i> Delivered in 6–10 weeks</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-name">System Enterprise</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Full ERP/CRM suite</li>
-          <li><i class="fas fa-check"></i> Custom integrations</li>
-          <li><i class="fas fa-check"></i> Unlimited user roles</li>
-          <li><i class="fas fa-check"></i> 12 months support</li>
-          <li><i class="fas fa-check"></i> Delivered in 3–6 months</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-puzzle-piece', 'title' => 'Built Around Your Workflow', 'desc' => 'Off-the-shelf software forces you to change how you work. We build systems that fit your exact processes.'],
+    ['icon' => 'fa-database', 'title' => 'Own Your Data', 'desc' => 'Centralised databases with reporting dashboards that turn daily operations into business insight.'],
+    ['icon' => 'fa-plug', 'title' => 'Integrates Everything', 'desc' => 'Connect payment gateways, SMS APIs, accounting tools, and legacy systems into one platform.'],
+    ['icon' => 'fa-user-shield', 'title' => 'Role-Based Access', 'desc' => 'Granular permissions for admins, staff, and clients keep your sensitive data secure.'],
+  ];
+  $included = [
+    'Requirements workshop & system documentation',
+    'Custom web-based system development',
+    'User roles & permission management',
+    'Reports & analytics dashboard',
+    'Third-party API integrations',
+    'Data migration from existing tools',
+    'Staff training & user manuals',
+    'Warranty period & ongoing support options',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>System Development</span>',
+  'whySub'    => 'From ERPs to CRMs and custom internal tools — we automate your operations with software made exactly for you.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every System Project</span>',
+  'incSub'     => 'Every system is scoped and quoted individually based on your modules and requirements — and always includes:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">

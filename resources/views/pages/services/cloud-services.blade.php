@@ -74,70 +74,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Cloud Services <span>Pricing Packages</span></h2>
-      <p class="section-sub">Monthly packages with scalable resources and 99.9% uptime guarantee.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-name">Cloud Basic</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 50GB storage</li>
-          <li><i class="fas fa-check"></i> Basic computing (2 vCPU)</li>
-          <li><i class="fas fa-check"></i> Standard backup</li>
-          <li><i class="fas fa-check"></i> Email support</li>
-          <li><i class="fas fa-check"></i> 99.9% uptime SLA</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-name">Cloud Standard</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 500GB storage</li>
-          <li><i class="fas fa-check"></i> Enhanced computing (4 vCPU)</li>
-          <li><i class="fas fa-check"></i> Daily backup + DR</li>
-          <li><i class="fas fa-check"></i> Priority support</li>
-          <li><i class="fas fa-check"></i> Auto-scaling</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-name">Cloud Enterprise</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Unlimited storage</li>
-          <li><i class="fas fa-check"></i> High-performance (8+ vCPU)</li>
-          <li><i class="fas fa-check"></i> Real-time backup + DR</li>
-          <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
-          <li><i class="fas fa-check"></i> Custom architecture</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-cloud-arrow-up', 'title' => 'Smooth Migration', 'desc' => 'Move email, files, and systems to the cloud with zero data loss and minimal downtime.'],
+    ['icon' => 'fa-arrows-down-to-line', 'title' => 'Pay As You Grow', 'desc' => 'Scale resources up or down as your business changes — you only pay for what you actually use.'],
+    ['icon' => 'fa-database', 'title' => 'Backup & Recovery', 'desc' => 'Automated backups and tested disaster-recovery plans keep your business data safe.'],
+    ['icon' => 'fa-globe', 'title' => 'Work From Anywhere', 'desc' => 'Give your team secure access to files and systems from the office, home, or on the road.'],
+  ];
+  $included = [
+    'Cloud readiness assessment',
+    'Migration planning & execution',
+    'Email & collaboration setup (Microsoft 365 / Google Workspace)',
+    'File storage & sharing configuration',
+    'Automated backup solutions',
+    'Security & access controls',
+    'Staff onboarding & training',
+    'Ongoing management & optimisation options',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>Cloud Services</span>',
+  'whySub'    => 'The cloud lets small teams work like big companies — we handle the migration, security, and management for you.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every Cloud Project</span>',
+  'incSub'     => 'Cloud solutions are tailored to your workloads and budget — and always include:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">

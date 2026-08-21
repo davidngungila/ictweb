@@ -82,70 +82,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Network <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include equipment configuration, security setup, and 1 month of free remote monitoring.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-name">Network Basic</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small office / home networks</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 5–15 devices, 1–2 access points</li>
-          <li><i class="fas fa-check"></i> Router + switch + WiFi setup</li>
-          <li><i class="fas fa-check"></i> Basic firewall configuration</li>
-          <li><i class="fas fa-check"></i> Guest WiFi network</li>
-          <li><i class="fas fa-check"></i> Delivered in 1–2 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-name">Network Standard</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Small to medium businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 20–50 devices, 3–8 access points</li>
-          <li><i class="fas fa-check"></i> Advanced firewall + VPN setup</li>
-          <li><i class="fas fa-check"></i> VLANs & network segmentation</li>
-          <li><i class="fas fa-check"></i> 24/7 remote monitoring (1 month)</li>
-          <li><i class="fas fa-check"></i> Delivered in 3–5 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-name">Network Enterprise</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Multi-site / campus networks</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 50+ devices, 10+ access points</li>
-          <li><i class="fas fa-check"></i> Site-to-site VPN + failover</li>
-          <li><i class="fas fa-check"></i> Load balancing & redundancy</li>
-          <li><i class="fas fa-check"></i> Full security audit + hardening</li>
-          <li><i class="fas fa-check"></i> Delivered in 1–2 weeks</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-certificate', 'title' => 'Certified Engineers', 'desc' => 'Experienced technicians trained on MikroTik, Ubiquiti, and Cisco equipment for every scale of deployment.'],
+    ['icon' => 'fa-gauge-high', 'title' => 'Fast, Stable Coverage', 'desc' => 'Proper site surveys and access-point placement eliminate dead zones and dropped connections.'],
+    ['icon' => 'fa-lock', 'title' => 'Secure by Default', 'desc' => 'Firewalls, VLAN segmentation, and guest networks configured on every single installation.'],
+    ['icon' => 'fa-screwdriver-wrench', 'title' => 'Local After-Sales Support', 'desc' => 'Based in Moshi — when something needs attention, we are on-site fast, not days away.'],
+  ];
+  $included = [
+    'Free site survey & network assessment',
+    'Professional structured cabling',
+    'Router, switch & access point configuration',
+    'Firewall & guest network setup',
+    'VPN & remote access configuration',
+    'Network documentation & diagrams',
+    'Performance testing & handover training',
+    '1 month of free remote monitoring',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>Network Installation</span>',
+  'whySub'    => 'Reliable connectivity is the backbone of your business — we design networks that stay fast, secure, and online.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every Network Project</span>',
+  'incSub'     => 'Every installation is quoted individually based on your site size and equipment — and always includes:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">

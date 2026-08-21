@@ -74,70 +74,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Cybersecurity <span>Pricing Packages</span></h2>
-      <p class="section-sub">All packages include security audit, firewall configuration, and 1 month of free monitoring.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-name">Cyber Basic</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Security audit (1-time)</li>
-          <li><i class="fas fa-check"></i> Firewall configuration</li>
-          <li><i class="fas fa-check"></i> Antivirus + malware protection</li>
-          <li><i class="fas fa-check"></i> Basic monitoring (1 month)</li>
-          <li><i class="fas fa-check"></i> Delivered in 2–3 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-name">Cyber Standard</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> All Basic features included</li>
-          <li><i class="fas fa-check"></i> VPN + remote access security</li>
-          <li><i class="fas fa-check"></i> SIEM implementation</li>
-          <li><i class="fas fa-check"></i> 24/7 monitoring (3 months)</li>
-          <li><i class="fas fa-check"></i> Delivered in 5–7 days</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-name">Cyber Enterprise</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Multi-layered security architecture</li>
-          <li><i class="fas fa-check"></i> Advanced threat detection (AI)</li>
-          <li><i class="fas fa-check"></i> Full compliance (GDPR, ISO 27001)</li>
-          <li><i class="fas fa-check"></i> 24/7 SOC + incident response</li>
-          <li><i class="fas fa-check"></i> Delivered in 2–3 weeks</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-magnifying-glass', 'title' => 'Proactive Threat Hunting', 'desc' => 'We don\'t wait for breaches — continuous monitoring catches threats before they cause damage.'],
+    ['icon' => 'fa-scale-balanced', 'title' => 'Compliance Ready', 'desc' => 'Security controls aligned with TCRA regulations, GDPR, and ISO 27001 best practices.'],
+    ['icon' => 'fa-user-secret', 'title' => 'Experienced Analysts', 'desc' => 'Certified security professionals with real penetration-testing and incident-response experience.'],
+    ['icon' => 'fa-clock-rotate-left', 'title' => 'Rapid Incident Response', 'desc' => 'When something goes wrong, our team contains, investigates, and recovers your systems — fast.'],
+  ];
+  $included = [
+    'Comprehensive security audit & risk report',
+    'Firewall configuration & hardening',
+    'Antivirus / anti-malware deployment',
+    'Email & web traffic filtering',
+    'Vulnerability scanning & patching',
+    'Staff security-awareness training',
+    'Backup & disaster-recovery planning',
+    'Ongoing monitoring options (24/7)',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>Cybersecurity</span>',
+  'whySub'    => 'One breach can cost you data, money, and customer trust. We protect your business with layered, managed security.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every Security Engagement</span>',
+  'incSub'     => 'Every engagement is scoped individually based on your environment and risk profile — and always includes:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">

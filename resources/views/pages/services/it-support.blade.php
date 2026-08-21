@@ -74,70 +74,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">IT Support <span>Pricing Packages</span></h2>
-      <p class="section-sub">Monthly retainer packages with guaranteed response times and SLAs.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-name">Support Basic</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Remote support (8am–6pm)</li>
-          <li><i class="fas fa-check"></i> 10 tickets/month</li>
-          <li><i class="fas fa-check"></i> 24h response time</li>
-          <li><i class="fas fa-check"></i> Basic maintenance</li>
-          <li><i class="fas fa-check"></i> Phone + email support</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-name">Support Standard</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Remote + on-site support</li>
-          <li><i class="fas fa-check"></i> Unlimited tickets</li>
-          <li><i class="fas fa-check"></i> 4h critical response</li>
-          <li><i class="fas fa-check"></i> Preventive maintenance</li>
-          <li><i class="fas fa-check"></i> 24/7 emergency line</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-name">Support Enterprise</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Dedicated IT manager</li>
-          <li><i class="fas fa-check"></i> 1h critical response SLA</li>
-          <li><i class="fas fa-check"></i> On-site 2–3 visits/week</li>
-          <li><i class="fas fa-check"></i> Full security + compliance</li>
-          <li><i class="fas fa-check"></i> Custom reporting</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-bolt', 'title' => 'Fast Response Times', 'desc' => 'Guaranteed response windows and a 24/7 emergency line keep your business moving when issues strike.'],
+    ['icon' => 'fa-building', 'title' => 'Remote + On-Site', 'desc' => 'Most issues fixed remotely in minutes — and a technician at your door whenever hands are needed.'],
+    ['icon' => 'fa-calendar-check', 'title' => 'Preventive Care', 'desc' => 'Scheduled maintenance stops problems before they start, instead of expensive fixes after.'],
+    ['icon' => 'fa-handshake', 'title' => 'Your IT Department', 'desc' => 'Enterprise-grade IT expertise without the cost of hiring a full in-house team.'],
+  ];
+  $included = [
+    'Helpdesk via phone, WhatsApp & email',
+    'Remote troubleshooting & fixes',
+    'On-site technician visits',
+    'Preventive maintenance schedule',
+    'Windows / Linux / macOS support',
+    'Printer, scanner & peripheral support',
+    'Microsoft 365 / Google Workspace management',
+    'Monthly system health reports',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>IT Support</span>',
+  'whySub'    => 'Downtime costs money. Our support plans keep your computers, network, and staff productive every day.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every Support Plan</span>',
+  'incSub'     => 'Support plans are tailored to your team size and needs — and always include:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">

@@ -74,70 +74,33 @@
   </div>
 </div>
 
-<!-- PRICING PACKAGES -->
-<section class="tour-packages" id="packages">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fas fa-boxes-stacked"></i> Pricing</div>
-      <h2 class="section-title">Consultancy <span>Pricing Packages</span></h2>
-      <p class="section-sub">Project-based and retainer options tailored to your needs.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-name">Consult Basic</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Small businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Technology assessment</li>
-          <li><i class="fas fa-check"></i> Basic digital roadmap</li>
-          <li><i class="fas fa-check"></i> 2 consulting sessions</li>
-          <li><i class="fas fa-check"></i> Written report</li>
-          <li><i class="fas fa-check"></i> Delivered in 1–2 weeks</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-name">Consult Standard</div>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:8px;">Growing businesses</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Full digital strategy</li>
-          <li><i class="fas fa-check"></i> Process optimization</li>
-          <li><i class="fas fa-check"></i> 5 consulting sessions</li>
-          <li><i class="fas fa-check"></i> Implementation roadmap</li>
-          <li><i class="fas fa-check"></i> Delivered in 3–4 weeks</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-name">Consult Enterprise</div>
-        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:8px;">Large organizations</p>
-        <div class="pricing-price">
-          <span class="pricing-amount">Request Quote</span>
-        </div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Full transformation strategy</li>
-          <li><i class="fas fa-check"></i> Dedicated consultant</li>
-          <li><i class="fas fa-check"></i> Ongoing advisory (3 months)</li>
-          <li><i class="fas fa-check"></i> Training for staff</li>
-          <li><i class="fas fa-check"></i> Delivered in 1–2 months</li>
-        </ul>
-        <a href="{{ route('request.quote') }}" class="btn-package">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- WHY CHOOSE US + WHAT'S INCLUDED -->
+@php
+  $benefits = [
+    ['icon' => 'fa-compass', 'title' => 'Technology Roadmaps', 'desc' => 'Clear, budgeted plans that align every IT investment with your actual business goals.'],
+    ['icon' => 'fa-coins', 'title' => 'Cost Optimisation', 'desc' => 'We audit licences, infrastructure, and vendors to cut waste without cutting capability.'],
+    ['icon' => 'fa-users', 'title' => 'Vendor-Neutral Advice', 'desc' => 'Independent recommendations — we advise what is best for you, not what pays us the most margin.'],
+    ['icon' => 'fa-chalkboard-user', 'title' => 'Capability Building', 'desc' => 'Training and knowledge transfer so your team can run new systems with confidence.'],
+  ];
+  $included = [
+    'Initial consultation & needs assessment',
+    'IT infrastructure audit',
+    'Technology strategy & roadmap',
+    'Budget planning & cost analysis',
+    'Vendor evaluation & selection',
+    'Project management support',
+    'Policy & documentation development',
+    'Team training sessions',
+  ];
+@endphp
+@include('partials.section-service-details', [
+  'whyTitle'  => 'Why Businesses Choose Our <span>ICT Consultancy</span>',
+  'whySub'    => 'Technology decisions are business decisions. We help you choose, plan, and implement with confidence.',
+  'benefits'  => $benefits,
+  'incTitle'  => 'Included in <span>Every Consultancy Engagement</span>',
+  'incSub'     => 'Engagements range from one-off assessments to ongoing advisory — and always include:',
+  'included'  => $included,
+])
 
 <!-- PROCESS -->
 <section class="process">
