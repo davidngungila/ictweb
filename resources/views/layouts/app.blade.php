@@ -1680,7 +1680,7 @@
       </a>
       <div class="mega-menu">
         <div class="mega-links">
-          <a href="{{ route('solutions') }}" class="mega-link">
+          <a href="{{ route('services.web-development') }}" class="mega-link">
             <i class="fas fa-earth-africa"></i>
             <span><strong>Safari & Tour Operator</strong><small>Booking engines & M-Pesa payments</small></span>
           </a>

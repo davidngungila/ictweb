@@ -313,6 +313,31 @@
   @media (prefers-reduced-motion: reduce) {
     .cx-card, .cx-art-card, .cx-direct-card, .cx-detail, .cx-faq-item, .reveal { transition: none !important; transform: none !important; animation: none !important; }
   }
+
+  .cx-leadership { background: #fff; padding: 96px 0; }
+  .cx-leadership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .cx-leadership-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px; transition: all .3s ease; position: relative; }
+  .cx-leadership-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad-primary); transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
+  .cx-leadership-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(12,69,128,0.2); }
+  .cx-leadership-card:hover::before { transform: scaleX(1); }
+  .cx-leadership-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .cx-leadership-avatar { width: 56px; height: 56px; border-radius: 14px; background: var(--grad-primary); color: #6FB1E8; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; flex: none; box-shadow: 0 8px 20px rgba(12,69,128,0.3); }
+  .cx-leadership-info h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .cx-leadership-role { font-size: .82rem; color: var(--ink-muted); font-weight: 600; }
+  .cx-role-sep { color: var(--ink-faint); margin: 0 6px; }
+  .cx-leadership-contact { display: flex; flex-direction: column; gap: 10px; }
+  .cx-leadership-contact a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 10px; font-size: .82rem; font-weight: 800; text-decoration: none; transition: all .22s ease; }
+  .cx-leadership-phone { background: var(--off-white); color: var(--primary); border: 1px solid var(--line); }
+  .cx-leadership-phone:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(12,69,128,0.3); }
+  .cx-leadership-wa { background: #25D366; color: #fff; }
+  .cx-leadership-wa:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.4); }
+
+  @media (max-width: 1100px) {
+    .cx-leadership-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .cx-leadership-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
 <!-- HERO -->
@@ -562,6 +587,50 @@
           <div class="cx-direct-actions">
             <a href="tel:{{ $line['phone'] }}" class="cx-call"><i class="fas fa-phone"></i> {{ $line['phone'] }}</a>
             <a href="{{ $line['wa'] }}" class="cx-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP TEAM -->
+<section class="cx-leadership" id="leadership">
+  <div class="container">
+    <div class="section-header" style="text-align:center;margin-bottom:0;">
+      <div class="section-label" style="display:inline-flex;"><i class="fas fa-users"></i> Our Leadership</div>
+      <h2 class="section-title">Meet Our <span style="color:var(--primary);">Leadership Team</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Direct contact with our executive team for strategic inquiries.</p>
+    </div>
+    <div class="cx-leadership-grid">
+      @php
+        $leadership = [
+            ['name' => 'David Ngungila', 'role' => 'CEO', 'swahili' => 'Mwenyekiti', 'phone' => '0622 239 304', 'phone_intl' => '+255 622 239 304'],
+            ['name' => 'Jeremia Thomas', 'role' => 'COO', 'swahili' => 'Katibu', 'phone' => '0685 847 002', 'phone_intl' => '+255 685 847 002'],
+            ['name' => 'Samson Muro', 'role' => 'CFO', 'swahili' => 'Mweka Hazina', 'phone' => '0615 301 112', 'phone_intl' => '+255 615 301 112'],
+            ['name' => 'Lucas Sondoma', 'role' => 'CTO', 'swahili' => 'Mwanachama', 'phone' => '0753 317 324', 'phone_intl' => '+255 753 317 324'],
+            ['name' => 'Kelvin Shaushi', 'role' => 'CMO', 'swahili' => 'Mwanachama', 'phone' => '0676 712 846', 'phone_intl' => '+255 676 712 846'],
+            ['name' => 'Remijo Msigwa', 'role' => 'CCO', 'swahili' => 'Mwanachama', 'phone' => '0613 516 832', 'phone_intl' => '+255 613 516 832'],
+        ];
+      @endphp
+      @foreach($leadership as $index => $member)
+        <div class="cx-leadership-card reveal" style="transition-delay: {{ $index * 80 }}ms;">
+          <div class="cx-leadership-header">
+            <div class="cx-leadership-avatar">
+              <span>{{ Str::substr($member['name'], 0, 1) }}</span>
+            </div>
+            <div class="cx-leadership-info">
+              <h3>{{ $member['name'] }}</h3>
+              <div class="cx-leadership-role">{{ $member['role'] }} <span class="cx-role-sep">|</span> {{ $member['swahili'] }}</div>
+            </div>
+          </div>
+          <div class="cx-leadership-contact">
+            <a href="tel:{{ $member['phone_intl'] }}" class="cx-leadership-phone">
+              <i class="fas fa-phone"></i> {{ $member['phone'] }}
+            </a>
+            <a href="https://wa.me/{{ str_replace(' ', '', $member['phone_intl']) }}?text=Hello%20{{ str_replace(' ', '%20', $member['name']) }}!" class="cx-leadership-wa" target="_blank" rel="noopener">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
           </div>
         </div>
       @endforeach

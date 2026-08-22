@@ -411,7 +411,7 @@
             'chips' => ['CCTV', 'Surveillance', 'Cloud Storage'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg',
             'icon' => 'fa-video',
-            'route' => route('request.quote'),
+            'route' => route('services.network-installation'),
           ],
         ];
       @endphp
