@@ -680,13 +680,6 @@
       'desc' => 'Transparent public services, accountable document trails and engaged communities — fully digitized.',
       'systems' => [
         [
-          'name' => 'Government & Public Service Management System',
-          'tag' => 'Public Sector',
-          'icon' => 'fa-id-card',
-          'desc' => 'Citizen-facing services with digital applications, payments and status tracking end-to-end.',
-          'modules' => ['Citizen Registration', 'Service Applications', 'Digital Payments', 'Status Tracking', 'Reporting & Dashboards'],
-        ],
-        [
           'name' => 'Document & Workflow Management System',
           'tag' => 'Workflow',
           'icon' => 'fa-diagram-project',
