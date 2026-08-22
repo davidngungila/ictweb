@@ -68,6 +68,14 @@
           'badge' => 'Priority support',
       ],
       [
+          'icon' => 'fas fa-calculator',
+          'title' => 'Accounting & Financial Services',
+          'desc' => 'Invoicing, billing, financial reporting and account inquiries.',
+          'phone' => '+255 615 301 112',
+          'wa' => 'https://wa.me/255615301112?text=Hello%20Jezdan%20Group!%20I%20have%20an%20accounting%20inquiry.',
+          'badge' => 'Business hours',
+      ],
+      [
           'icon' => 'fas fa-handshake',
           'title' => 'Partnerships & Tenders',
           'desc' => 'Business development, partnerships, tenders and enterprise deals.',
