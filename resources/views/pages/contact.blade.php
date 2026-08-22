@@ -314,8 +314,6 @@
     .cx-card, .cx-art-card, .cx-direct-card, .cx-detail, .cx-faq-item, .reveal { transition: none !important; transform: none !important; animation: none !important; }
   }
 
-  .cx-leadership { background: #fff; padding: 96px 0; }
-  .cx-leadership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
   .cx-leadership-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px; transition: all .3s ease; position: relative; }
   .cx-leadership-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad-primary); transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
   .cx-leadership-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(12,69,128,0.2); }
@@ -331,13 +329,6 @@
   .cx-leadership-phone:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(12,69,128,0.3); }
   .cx-leadership-wa { background: #25D366; color: #fff; }
   .cx-leadership-wa:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.4); }
-
-  @media (max-width: 1100px) {
-    .cx-leadership-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .cx-leadership-grid { grid-template-columns: 1fr; }
-  }
 </style>
 
 <!-- HERO -->
@@ -569,13 +560,13 @@
   </div>
 </section>
 
-<!-- DIRECT LINES -->
+<!-- DIRECT LINES & LEADERSHIP -->
 <section class="cx-direct" id="departments">
   <div class="container">
     <div class="section-header" style="text-align:center;margin-bottom:0;">
       <div class="section-label" style="display:inline-flex;"><i class="fas fa-route"></i> Direct Lines</div>
       <h2 class="section-title">Go Straight to the <span style="color:#6FB1E8;">Right Team</span></h2>
-      <p class="section-sub" style="margin:0 auto;">Skip the queue – contact the department that handles your specific need.</p>
+      <p class="section-sub" style="margin:0 auto;">Skip the queue – contact the department that handles your specific need.<br>Or reach our executive team directly for strategic inquiries.</p>
     </div>
     <div class="cx-direct-grid">
       @foreach($directLines as $line)
@@ -590,19 +581,7 @@
           </div>
         </div>
       @endforeach
-    </div>
-  </div>
-</section>
 
-<!-- LEADERSHIP TEAM -->
-<section class="cx-leadership" id="leadership">
-  <div class="container">
-    <div class="section-header" style="text-align:center;margin-bottom:0;">
-      <div class="section-label" style="display:inline-flex;"><i class="fas fa-users"></i> Our Leadership</div>
-      <h2 class="section-title">Meet Our <span style="color:var(--primary);">Leadership Team</span></h2>
-      <p class="section-sub" style="margin:0 auto;">Direct contact with our executive team for strategic inquiries.</p>
-    </div>
-    <div class="cx-leadership-grid">
       @php
         $leadership = [
             ['name' => 'David Ngungila', 'role' => 'CEO', 'swahili' => 'Mwenyekiti', 'phone' => '0622 239 304', 'phone_intl' => '+255 622 239 304'],
@@ -614,7 +593,7 @@
         ];
       @endphp
       @foreach($leadership as $index => $member)
-        <div class="cx-leadership-card reveal" style="transition-delay: {{ $index * 80 }}ms;">
+        <div class="cx-direct-card cx-leadership-card reveal" style="transition-delay: {{ (count($directLines) + $index) * 80 }}ms;">
           <div class="cx-leadership-header">
             <div class="cx-leadership-avatar">
               <span>{{ Str::substr($member['name'], 0, 1) }}</span>
