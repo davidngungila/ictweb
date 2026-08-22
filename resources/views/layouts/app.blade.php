@@ -1706,7 +1706,7 @@
           </a>
           <a href="{{ route('solutions') }}#government-institutional" class="mega-link">
             <i class="fas fa-landmark"></i>
-            <span><strong>Government &amp; Institutions</strong><small>Public service, workflow &amp; membership systems</small></span>
+            <span><strong>Institutional Solutions</strong><small>Workflow, document &amp; membership systems</small></span>
           </a>
           <a href="{{ route('solutions') }}#custom-software" class="mega-link">
             <i class="fas fa-code"></i>

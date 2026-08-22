@@ -471,7 +471,7 @@
         ['id' => 'healthcare', 'icon' => 'fa-heart-pulse', 'label' => 'Healthcare'],
         ['id' => 'commerce-logistics', 'icon' => 'fa-truck-fast', 'label' => 'Commerce &amp; Logistics'],
         ['id' => 'hospitality-property', 'icon' => 'fa-concierge-bell', 'label' => 'Hospitality'],
-        ['id' => 'government-institutional', 'icon' => 'fa-landmark', 'label' => 'Government &amp; Institutions'],
+        ['id' => 'government-institutional', 'icon' => 'fa-landmark', 'label' => 'Institutional'],
         ['id' => 'custom-software', 'icon' => 'fa-code', 'label' => 'Custom Software'],
       ];
     @endphp
@@ -676,8 +676,8 @@
       'id' => 'government-institutional',
       'num' => '07',
       'icon' => 'fa-landmark',
-      'title' => 'Government &amp; <span>Institutional Solutions</span>',
-      'desc' => 'Transparent public services, accountable document trails and engaged communities — fully digitized.',
+      'title' => '<span>Institutional</span> Solutions',
+      'desc' => 'Transparent services, accountable document trails and engaged communities — fully digitized.',
       'systems' => [
         [
           'name' => 'Document & Workflow Management System',
