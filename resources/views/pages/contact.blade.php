@@ -244,7 +244,7 @@
   .cx-direct .section-label { background: rgba(111,177,232,0.14); border-color: rgba(111,177,232,0.3); color: #6FB1E8; }
   .cx-direct .section-title { color: #fff; }
   .cx-direct .section-sub { color: rgba(255,255,255,0.6); }
-  .cx-direct-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .cx-direct-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
   .cx-direct-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 20px; padding: 30px; backdrop-filter: blur(8px); transition: all .3s ease; }
   .cx-direct-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-6px); border-color: rgba(111,177,232,0.4); }
   .cx-direct-ico { width: 52px; height: 52px; border-radius: 14px; background: var(--grad-primary); color: #6FB1E8; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 18px; box-shadow: 0 12px 30px rgba(12,69,128,0.4); }
@@ -304,7 +304,7 @@
     .cx-hero-actions, .cx-hero-stats { justify-content: center; }
     .cx-cards-grid { grid-template-columns: repeat(2, 1fr); }
     .cx-grid { grid-template-columns: 1fr; }
-    .cx-direct-grid { grid-template-columns: 1fr; }
+    .cx-direct-grid { grid-template-columns: repeat(2, 1fr); }
     .cx-faq-grid { grid-template-columns: 1fr; }
     .cx-faq-side { position: static; }
     .cx-map-grid { grid-template-columns: 1fr; }
