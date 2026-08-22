@@ -1680,29 +1680,41 @@
       </a>
       <div class="mega-menu">
         <div class="mega-links">
-          <a href="{{ route('services.web-development') }}" class="mega-link">
-            <i class="fas fa-earth-africa"></i>
-            <span><strong>Safari & Tour Operator</strong><small>Booking engines & M-Pesa payments</small></span>
+          <a href="{{ route('solutions') }}#web-development" class="mega-link">
+            <i class="fas fa-code"></i>
+            <span><strong>Web Development</strong><small>Websites, e-commerce & CMS</small></span>
           </a>
-          <a href="{{ route('services.web-development') }}" class="mega-link">
-            <i class="fas fa-cart-shopping"></i>
-            <span><strong>E-Commerce & Online Stores</strong><small>Mobile money checkout & orders</small></span>
+          <a href="{{ route('solutions') }}#mobile-app-development" class="mega-link">
+            <i class="fas fa-mobile-screen-button"></i>
+            <span><strong>Mobile App Development</strong><small>Android, iOS & Flutter apps</small></span>
           </a>
-          <a href="{{ route('services.system-development') }}" class="mega-link">
-            <i class="fas fa-diagram-project"></i>
-            <span><strong>Business Automation</strong><small>CRM, inventory & HR systems</small></span>
+          <a href="{{ route('solutions') }}#system-development" class="mega-link">
+            <i class="fas fa-cubes"></i>
+            <span><strong>System Development</strong><small>ERP, CRM & business portals</small></span>
           </a>
-          <a href="{{ route('services.network-installation') }}" class="mega-link">
+          <a href="{{ route('solutions') }}#network-installation" class="mega-link">
+            <i class="fas fa-network-wired"></i>
+            <span><strong>Network Installation</strong><small>Wi-Fi, VLANs & structured cabling</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#cybersecurity" class="mega-link">
+            <i class="fas fa-shield-halved"></i>
+            <span><strong>Cybersecurity</strong><small>Audits, firewalls & monitoring</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#it-support" class="mega-link">
+            <i class="fas fa-headset"></i>
+            <span><strong>IT Support</strong><small>Remote, on-site & SLAs</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#ict-consultancy" class="mega-link">
+            <i class="fas fa-lightbulb"></i>
+            <span><strong>ICT Consultancy</strong><small>Strategy, roadmaps & CTO-on-demand</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#cloud-services" class="mega-link">
+            <i class="fas fa-cloud"></i>
+            <span><strong>Cloud Services</strong><small>Hosting, email & backup</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#cctv-security-systems" class="mega-link">
             <i class="fas fa-video"></i>
-            <span><strong>Network & CCTV Security</strong><small>Office networks & surveillance</small></span>
-          </a>
-          <a href="{{ route('services.mobile-app-development') }}" class="mega-link">
-            <i class="fas fa-truck-fast"></i>
-            <span><strong>Delivery & Booking Apps</strong><small>Apps with real-time tracking</small></span>
-          </a>
-          <a href="{{ route('services.cloud-services') }}" class="mega-link">
-            <i class="fas fa-cloud-arrow-up"></i>
-            <span><strong>Cloud & Data Protection</strong><small>Hosting, email & backups</small></span>
+            <span><strong>CCTV & Security Systems</strong><small>Surveillance & cloud storage</small></span>
           </a>
         </div>
         <div class="mega-feature">

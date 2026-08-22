@@ -343,6 +343,7 @@
         $solutions = [
           [
             'title' => 'Web Development',
+            'id' => 'web-development',
             'desc' => 'Custom websites and e-commerce platforms with CMS, product management, and integrated mobile money payments.',
             'chips' => ['Websites', 'E-Commerce', 'CMS'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/programming-background-with-person-working-with-codes-computer_f8umdv.jpg',
@@ -351,6 +352,7 @@
           ],
           [
             'title' => 'Mobile App Development',
+            'id' => 'mobile-app-development',
             'desc' => 'Cross-platform Android & iOS apps built with Flutter and React Native — from booking apps to delivery platforms.',
             'chips' => ['Android', 'iOS', 'Flutter'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600084/i-m-hungry-hands-man-looking-food-delivery-app-his-smartphone-ordering-dinner-online_igrjev.jpg',
@@ -359,6 +361,7 @@
           ],
           [
             'title' => 'System Development',
+            'id' => 'system-development',
             'desc' => 'Custom software, ERP, CRM, and business portals that automate operations and connect your teams.',
             'chips' => ['ERP', 'CRM', 'Portals'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg',
@@ -367,6 +370,7 @@
           ],
           [
             'title' => 'Network Installation',
+            'id' => 'network-installation',
             'desc' => 'Enterprise-grade Wi-Fi for offices, hotels, and camps — VLANs, guest networks, and security configuration.',
             'chips' => ['Wi-Fi', 'VLANs', 'Structured Cabling'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg',
@@ -375,6 +379,7 @@
           ],
           [
             'title' => 'Cybersecurity',
+            'id' => 'cybersecurity',
             'desc' => 'Vulnerability assessments, 24/7 monitoring, firewalls, and compliance support to keep your data safe.',
             'chips' => ['Audits', 'Firewalls', 'Monitoring'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/criminal-hacking-system-unsuccessfully_jjxzdq.jpg',
@@ -383,6 +388,7 @@
           ],
           [
             'title' => 'IT Support',
+            'id' => 'it-support',
             'desc' => 'Remote and on-site retainer plans with guaranteed SLAs, dedicated managers, and fast response times.',
             'chips' => ['Remote', 'On-Site', 'SLAs'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600078/irritated-african-american-man-struggling-reach-internet-provider_rriiiz.jpg',
@@ -391,6 +397,7 @@
           ],
           [
             'title' => 'ICT Consultancy',
+            'id' => 'ict-consultancy',
             'desc' => 'Technology audits, digital roadmaps, vendor management, and CTO-on-demand advisory services.',
             'chips' => ['Strategy', 'Roadmaps', 'CTO-on-Demand'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/engineer-coworkers-server-farm-checking-recovery-plan_blibxz.jpg',
@@ -399,6 +406,7 @@
           ],
           [
             'title' => 'Cloud Services',
+            'id' => 'cloud-services',
             'desc' => 'Hosting, business email, cloud storage, backups, and disaster recovery for reliable operations.',
             'chips' => ['Hosting', 'Email', 'Backup'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg',
@@ -407,6 +415,7 @@
           ],
           [
             'title' => 'CCTV & Security Systems',
+            'id' => 'cctv-security-systems',
             'desc' => 'Complete surveillance integrated with your network — remote monitoring and cloud storage included.',
             'chips' => ['CCTV', 'Surveillance', 'Cloud Storage'],
             'img' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600083/network-switch-with-cables_btxlxw.jpg',
@@ -418,7 +427,7 @@
 
       @foreach($solutions as $solution)
       <div class="reveal sol-reveal" style="--d:{{ ($loop->index % 3) * 90 }}ms;">
-        <article class="sol-card">
+        <article class="sol-card" id="{{ $solution['id'] }}">
           <div class="sol-card-media">
             <img src="{{ $solution['img'] }}" alt="{{ $solution['title'] }}" />
             <span class="sol-card-num">0{{ $loop->index + 1 }}</span>
