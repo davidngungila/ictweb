@@ -1680,48 +1680,44 @@
       </a>
       <div class="mega-menu">
         <div class="mega-links">
-          <a href="{{ route('solutions') }}#web-development" class="mega-link">
+          <a href="{{ route('solutions') }}#business-management" class="mega-link">
+            <i class="fas fa-briefcase"></i>
+            <span><strong>Business Management</strong><small>HRMIS, Accounting, CRM, Inventory &amp; POS</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#education" class="mega-link">
+            <i class="fas fa-graduation-cap"></i>
+            <span><strong>Education</strong><small>School, University &amp; E-Learning systems</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#financial" class="mega-link">
+            <i class="fas fa-coins"></i>
+            <span><strong>Financial Solutions</strong><small>Digital payments, microfinance &amp; SACCOs</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#healthcare" class="mega-link">
+            <i class="fas fa-heart-pulse"></i>
+            <span><strong>Healthcare</strong><small>Hospital (HMIS) &amp; clinic management</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#commerce-logistics" class="mega-link">
+            <i class="fas fa-truck-fast"></i>
+            <span><strong>Commerce &amp; Logistics</strong><small>E-commerce, dispatch &amp; fleet tracking</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#hospitality-property" class="mega-link">
+            <i class="fas fa-concierge-bell"></i>
+            <span><strong>Hospitality &amp; Property</strong><small>Hotels, real estate &amp; tour operators</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#government-institutional" class="mega-link">
+            <i class="fas fa-landmark"></i>
+            <span><strong>Government &amp; Institutions</strong><small>Public service, workflow &amp; membership systems</small></span>
+          </a>
+          <a href="{{ route('solutions') }}#custom-software" class="mega-link">
             <i class="fas fa-code"></i>
-            <span><strong>Web Development</strong><small>Websites, e-commerce & CMS</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#mobile-app-development" class="mega-link">
-            <i class="fas fa-mobile-screen-button"></i>
-            <span><strong>Mobile App Development</strong><small>Android, iOS & Flutter apps</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#system-development" class="mega-link">
-            <i class="fas fa-cubes"></i>
-            <span><strong>System Development</strong><small>ERP, CRM & business portals</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#network-installation" class="mega-link">
-            <i class="fas fa-network-wired"></i>
-            <span><strong>Network Installation</strong><small>Wi-Fi, VLANs & structured cabling</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#cybersecurity" class="mega-link">
-            <i class="fas fa-shield-halved"></i>
-            <span><strong>Cybersecurity</strong><small>Audits, firewalls & monitoring</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#it-support" class="mega-link">
-            <i class="fas fa-headset"></i>
-            <span><strong>IT Support</strong><small>Remote, on-site & SLAs</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#ict-consultancy" class="mega-link">
-            <i class="fas fa-lightbulb"></i>
-            <span><strong>ICT Consultancy</strong><small>Strategy, roadmaps & CTO-on-demand</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#cloud-services" class="mega-link">
-            <i class="fas fa-cloud"></i>
-            <span><strong>Cloud Services</strong><small>Hosting, email & backup</small></span>
-          </a>
-          <a href="{{ route('solutions') }}#cctv-security-systems" class="mega-link">
-            <i class="fas fa-video"></i>
-            <span><strong>CCTV & Security Systems</strong><small>Surveillance & cloud storage</small></span>
+            <span><strong>Custom Software</strong><small>Web, mobile, APIs &amp; enterprise builds</small></span>
           </a>
         </div>
         <div class="mega-feature">
           <img src="https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600085/teamworking-engineers-talking-server-room-doing-brainstorming_vm01lf.jpg" alt="Jezdan Technology Solutions">
           <div class="mega-feature-body">
-            <h4>Solutions Built for Tanzania</h4>
-            <p>Tailored digital solutions with local payments, Swahili support and TCRA compliance.</p>
+            <h4>20+ Systems Ready to Deploy</h4>
+            <p>Schools, SACCOs, hospitals, hotels and government — proven systems with mobile money, SMS alerts and Swahili support.</p>
             <a href="{{ route('request.quote') }}" class="mega-feature-link">Request a Solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
