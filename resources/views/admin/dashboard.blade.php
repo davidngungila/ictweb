@@ -27,28 +27,28 @@ function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;'
 const NAV=[
   {single:true,label:'Dashboard',icon:'dashboard',page:'dashboard'},
   {group:'CRM',items:[
-    {label:'Clients',icon:'client',children:[{label:'All Clients',page:'clients'},{label:'Add Client',action:"openResourceModal('client')"},{label:'Active',page:'clients',params:{status:'active'}},{label:'Inactive',page:'clients',params:{status:'inactive'}},{label:'Pending',page:'clients',params:{status:'pending'}}]},
-    {label:'Leads & Demos',icon:'lead',children:[{label:'All Leads',page:'leads'},{label:'New Lead',action:"openResourceModal('lead')"},{label:'Pending',page:'leads',params:{status:'pending'}},{label:'Scheduled',page:'leads',params:{status:'scheduled'}}]},
-    {label:'Contacts',icon:'contacts',children:[{label:'All Messages',page:'contacts'},{label:'New',action:"openResourceModal('contact')"},{label:'New',page:'contacts',params:{status:'new'}},{label:'Read',page:'contacts',params:{status:'read'}}]},
+    {label:'Clients',icon:'client',children:[{label:'All Clients',page:'clients'},{label:'Add Client',action:"goCreate('client')"},{label:'Active',page:'clients',params:{status:'active'}},{label:'Inactive',page:'clients',params:{status:'inactive'}},{label:'Pending',page:'clients',params:{status:'pending'}}]},
+    {label:'Leads & Demos',icon:'lead',children:[{label:'All Leads',page:'leads'},{label:'New Lead',action:"goCreate('lead')"},{label:'Pending',page:'leads',params:{status:'pending'}},{label:'Scheduled',page:'leads',params:{status:'scheduled'}}]},
+    {label:'Contacts',icon:'contacts',children:[{label:'All Messages',page:'contacts'},{label:'New',action:"goCreate('contact')"},{label:'New',page:'contacts',params:{status:'new'}},{label:'Read',page:'contacts',params:{status:'read'}}]},
   ]},
   {group:'DELIVERY',items:[
-    {label:'Projects',icon:'project',children:[{label:'All Projects',page:'projects'},{label:'New Project',action:"openResourceModal('project')"},{label:'In Progress',page:'projects',params:{status:'in_progress'}},{label:'Completed',page:'projects',params:{status:'completed'}},{label:'Planning',page:'projects',params:{status:'pending'}}]},
-    {label:'Services',icon:'service',children:[{label:'Service Catalog',page:'services'},{label:'Add Service',action:"openResourceModal('service')"},{label:'Active',page:'services',params:{status:'active'}}]},
-    {label:'Packages',icon:'package',children:[{label:'All Packages',page:'packages'},{label:'Add Package',action:"openResourceModal('package')"},{label:'Active',page:'packages',params:{status:'active'}}]},
-    {label:'Pricing Plans',icon:'pricing',children:[{label:'All Plans',page:'pricing'},{label:'Add Plan',action:"openResourceModal('pricing')"}]},
-    {label:'Offers',icon:'offer',children:[{label:'All Offers',page:'offers'},{label:'Add Offer',action:"openResourceModal('offer')"},{label:'Active',page:'offers',params:{is_active:1}}]},
+    {label:'Projects',icon:'project',children:[{label:'All Projects',page:'projects'},{label:'New Project',action:"goCreate('project')"},{label:'In Progress',page:'projects',params:{status:'in_progress'}},{label:'Completed',page:'projects',params:{status:'completed'}},{label:'Planning',page:'projects',params:{status:'pending'}}]},
+    {label:'Services',icon:'service',children:[{label:'Service Catalog',page:'services'},{label:'Add Service',action:"goCreate('service')"},{label:'Active',page:'services',params:{status:'active'}}]},
+    {label:'Packages',icon:'package',children:[{label:'All Packages',page:'packages'},{label:'Add Package',action:"goCreate('package')"},{label:'Active',page:'packages',params:{status:'active'}}]},
+    {label:'Pricing Plans',icon:'pricing',children:[{label:'All Plans',page:'pricing'},{label:'Add Plan',action:"goCreate('pricing')"}]},
+    {label:'Offers',icon:'offer',children:[{label:'All Offers',page:'offers'},{label:'Add Offer',action:"goCreate('offer')"},{label:'Active',page:'offers',params:{is_active:1}}]},
     {label:'Bookings',icon:'booking',children:[{label:'All Bookings',page:'bookings'},{label:'Pending',page:'bookings',params:{status:'pending'}},{label:'Completed',page:'bookings',params:{status:'completed'}}]},
   ]},
   {group:'FINANCE',items:[
-    {label:'Invoices',icon:'invoice',children:[{label:'All Invoices',page:'invoices'},{label:'New Invoice',action:"openResourceModal('invoice')"},{label:'Paid',page:'invoices',params:{status:'paid'}},{label:'Pending',page:'invoices',params:{status:'pending'}},{label:'Overdue',page:'invoices',params:{status:'overdue'}},{label:'Draft',page:'invoices',params:{status:'draft'}}]},
-    {label:'Expenses',icon:'expense',children:[{label:'All Expenses',page:'expenses'},{label:'Add Expense',action:"openResourceModal('expense')"},{label:'Pending',page:'expenses',params:{status:'pending'}}]},
+    {label:'Invoices',icon:'invoice',children:[{label:'All Invoices',page:'invoices'},{label:'New Invoice',action:"goCreate('invoice')"},{label:'Paid',page:'invoices',params:{status:'paid'}},{label:'Pending',page:'invoices',params:{status:'pending'}},{label:'Overdue',page:'invoices',params:{status:'overdue'}},{label:'Draft',page:'invoices',params:{status:'draft'}}]},
+    {label:'Expenses',icon:'expense',children:[{label:'All Expenses',page:'expenses'},{label:'Add Expense',action:"goCreate('expense')"},{label:'Pending',page:'expenses',params:{status:'pending'}}]},
     {label:'Reports',icon:'reports',children:[{label:'Financial Reports',page:'reports'},{label:'Project Reports',page:'reports',params:{view:'projects'}},{label:'Client Reports',page:'reports',params:{view:'clients'}}]},
   ]},
   {group:'COMMUNICATION',items:[
-    {label:'Messages',icon:'comms',children:[{label:'All Messages',page:'messages'},{label:'Send Message',action:"openResourceModal('message')"},{label:'New',page:'messages',params:{status:'new'}},{label:'Read',page:'messages',params:{status:'read'}},{label:'In Progress',page:'messages',params:{status:'in-progress'}},{label:'Resolved',page:'messages',params:{status:'resolved'}}]},
+    {label:'Messages',icon:'comms',children:[{label:'All Messages',page:'messages'},{label:'Send Message',action:"goCreate('message')"},{label:'New',page:'messages',params:{status:'new'}},{label:'Read',page:'messages',params:{status:'read'}},{label:'In Progress',page:'messages',params:{status:'in-progress'}},{label:'Resolved',page:'messages',params:{status:'resolved'}}]},
   ]},
   {group:'OPERATIONS',items:[
-    {label:'Team & Users',icon:'users',children:[{label:'Team Members',page:'team'},{label:'Add User',action:"openResourceModal('user')"}]},
+    {label:'Team & Users',icon:'users',children:[{label:'Team Members',page:'team'},{label:'Add User',action:"goCreate('user')"}]},
     {label:'File Manager',icon:'docs',children:[{label:'All Files',page:'files'}]},
   ]},
   {group:'SYSTEM',items:[
@@ -66,7 +66,7 @@ function resourcePageShell(slug){
     <div><h1 class="page-h1">${meta.label}</h1><p class="page-sub">Manage ${meta.label.toLowerCase()} records</p></div>
     <div style="display:flex;gap:10px;align-items:center">
       <div class="search-box" style="width:240px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="rtSearch" placeholder="Search..." oninput="tableSearch('${slug}',this.value)"></div>
-      <button class="btn btn-accent" onclick="openResourceModal('${slug}')">+ Add ${label}</button>
+      <button class="btn btn-accent" onclick="goCreate('${slug}')">+ Add ${label}</button>
     </div>
   </div>
   <div class="table-host" id="thost"><div class="empty-state"><p>Loading...</p></div></div>`;
@@ -108,7 +108,7 @@ function renderResourceTable(slug){
       {label:'Edit',handler:(id)=>openResourceModal(slug,id)},
       {label:'Delete',danger:true,handler:(id)=>confirmDeleteResource(slug,id)}
     ],
-    emptyAction:"openResourceModal('"+slug+"')", emptyLabel:'Add '+meta.label.replace(/ &.*/,'')
+    emptyAction:"goCreate('"+slug+"')", emptyLabel:'Add '+meta.label.replace(/ &.*/,'')
   };
   const host=document.getElementById('thost'); if(host) host.innerHTML=dataTable(cfg);
 }
@@ -149,6 +149,11 @@ function buildResourceForm(slug,data){
   });
   html+='</form>';
   return html;
+}
+
+function goCreate(slug){
+  const web = (PAGE_TO_SLUG && PAGE_TO_SLUG[slug]) ? PAGE_TO_SLUG[slug] : slug;
+  window.location.href = '/admin/'+web+'/create';
 }
 
 async function openResourceModal(slug,id){

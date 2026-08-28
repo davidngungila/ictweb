@@ -236,9 +236,9 @@ function renderNotifPanel(){
 }
 function renderQuickPanel(){
   const acts=[
-    ['New Client',"openResourceModal('client')"],['New Project',"openResourceModal('project')"],['Create Invoice',"openResourceModal('invoice')"],
-    ['Record Expense',"openResourceModal('expense')"],['New Demo Request',"openResourceModal('lead')"],['Send Message',"openResourceModal('message')"],
-    ['Add Service',"openResourceModal('service')"],['New Package',"openResourceModal('package')"]
+    ['New Client',"goCreate('client')"],['New Project',"goCreate('project')"],['Create Invoice',"goCreate('invoice')"],
+    ['Record Expense',"goCreate('expense')"],['New Demo Request',"goCreate('lead')"],['Send Message',"goCreate('message')"],
+    ['Add Service',"goCreate('service')"],['New Package',"goCreate('package')"]
   ];
   document.getElementById('quickPanelList').innerHTML=acts.map(a=>`<div class="menu-item" onclick="${a[1].includes('(')?a[1]:a[1]+'()'};closeAllPanels();">${a[0]}</div>`).join('');
 }
