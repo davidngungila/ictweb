@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #060a14;
+  --color-ink-900: #0a0f1d;
+  --color-ink-850: #0e1525;
+  --color-ink-800: #131c30;
+  --color-ink-750: #18233b;
+  --color-ink-700: #1f2b45;
+  --color-ink-600: #2c3a57;
+  --color-brand-300: #7aa2ff;
+  --color-brand-400: #5583ff;
+  --color-brand-500: #3b66f5;
+  --color-brand-600: #2a4fd6;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-emerald-400: #34d399;
+  --color-amber-400: #fbbf24;
+  --color-rose-400: #fb7185;
+  --color-violet-400: #a78bfa;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink-950);
+  color: #e6edf7;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+}
+
+.grid-glow {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(59, 102, 245, 0.18), transparent 42%),
+    radial-gradient(circle at 90% 5%, rgba(34, 211, 238, 0.14), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(167, 139, 250, 0.10), transparent 45%);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2c3a57 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2c3a57;
+  border-radius: 999px;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-float {
+  animation: floatIn 0.45s ease both;
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 102, 245, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 102, 245, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 102, 245, 0);
+  }
+}
+.pulse-ring {
+  animation: pulseRing 2.2s infinite;
+}

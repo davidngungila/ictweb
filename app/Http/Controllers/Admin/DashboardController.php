@@ -3,130 +3,122 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\ContactSubmission;
-use App\Models\DemoRequest;
-use App\Models\PackageOrder;
 use App\Models\Client;
+use App\Models\DemoRequest;
 use App\Models\Project;
-use App\Models\Service;
-use App\Models\Message;
 use App\Models\Invoice;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use App\Models\Expense;
+use App\Models\Message;
+use App\Models\User;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        // Get statistics from real database data
-        $stats = [
-            'total_bookings' => PackageOrder::count(),
-            'bookings_this_month' => PackageOrder::whereMonth('created_at', Carbon::now()->month)->count(),
-            
-            'total_clients' => Client::count(),
-            'clients_this_month' => Client::whereMonth('created_at', Carbon::now()->month)->count(),
-            
-            'total_demos' => DemoRequest::count(),
-            'demos_this_month' => DemoRequest::whereMonth('created_at', Carbon::now()->month)->count(),
-            
-            'total_messages' => Message::count(),
-            'messages_this_month' => Message::whereMonth('created_at', Carbon::now()->month)->count(),
-            
-            'total_projects' => Project::count(),
-            'projects_active' => Project::where('status', 'in_progress')->count(),
-            
-            'total_services' => Service::count(),
-            
-            'total_revenue' => PackageOrder::where('payment_status', 'paid')->sum('advance_payment') + Invoice::where('status', 'paid')->sum('total'),
-            'revenue_this_month' => PackageOrder::where('payment_status', 'paid')->whereMonth('created_at', Carbon::now()->month)->sum('advance_payment') + Invoice::where('status', 'paid')->whereMonth('created_at', Carbon::now()->month)->sum('total'),
-            
-            'pending_bookings' => PackageOrder::where('status', 'pending')->count(),
-            'new_messages' => Message::where('status', 'unread')->count(),
+        $now = Carbon::now();
+        $months = collect(range(11, 0))->map(function ($i) use ($now) {
+            $d = $now->copy()->subMonths($i);
+            return [
+                'key' => $d->format('Y-m'),
+                'label' => $d->format('M'),
+            ];
+        });
+        $monthKeys = $months->pluck('key')->all();
+
+        $clients = Client::select('id', 'name', 'status', 'created_at')->get();
+        $projects = Project::select('id', 'title', 'status', 'price', 'progress_percentage', 'created_at')->get();
+        $invoices = Invoice::select('id', 'invoice_number', 'client_name', 'amount', 'total', 'status', 'created_at')->get();
+        $leads = DemoRequest::select('id', 'company_name', 'status', 'estimated_value', 'created_at')->get();
+        $expenses = Expense::select('id', 'amount', 'status', 'expense_date')->get();
+
+        // ---- KPIs ----
+        $revenuePaid = $invoices->where('status', 'paid')->sum('total');
+        $outstanding = $invoices->where('status', '!=', 'paid')->sum('total');
+        $kpis = [
+            'clientsTotal' => $clients->count(),
+            'clientsActive' => $clients->where('status', 'active')->count(),
+            'projectsTotal' => $projects->count(),
+            'projectsActive' => $projects->where('status', 'in_progress')->count(),
+            'avgProgress' => $projects->count() ? round($projects->avg('progress_percentage')) : 0,
+            'invoicesTotal' => $invoices->count(),
+            'revenuePaid' => (float) $revenuePaid,
+            'outstanding' => (float) $outstanding,
+            'leadsTotal' => $leads->count(),
+            'pipelineValue' => (float) $leads->sum('estimated_value'),
+            'conversion' => $leads->count() ? round($clients->count() / $leads->count() * 100) : 0,
+            'messagesOpen' => Message::whereIn('status', ['new', 'in-progress'])->count(),
+            'expensesTotal' => (float) $expenses->sum('amount'),
+            'teamTotal' => User::count(),
         ];
 
-        // Get recent bookings (PackageOrders)
-        $recentBookings = PackageOrder::orderBy('created_at', 'desc')
-            ->take(5)
-            ->get();
-
-        // Get recent messages
-        $recentMessages = Message::orderBy('created_at', 'desc')
-            ->take(5)
-            ->get();
-
-        // Get recent clients
-        $recentClients = Client::orderBy('created_at', 'desc')
-            ->take(5)
-            ->get();
-
-        // Get monthly revenue data (last 6 months)
-        $monthlyRevenue = $this->getMonthlyRevenueData();
-
-        // Get bookings by service type
-        $bookingsByService = $this->getBookingsByService();
-
-        return view('admin.dashboard', compact(
-            'stats',
-            'recentBookings',
-            'recentMessages',
-            'recentClients',
-            'monthlyRevenue',
-            'bookingsByService'
-        ));
-    }
-
-    private function getMonthlyRevenueData()
-    {
-        $months = [];
-        $revenue = [];
-        
-        for ($i = 5; $i >= 0; $i--) {
-            $date = Carbon::now()->subMonths($i);
-            $months[] = $date->format('M Y');
-            
-            $orderRevenue = PackageOrder::where('payment_status', 'paid')
-                ->whereMonth('created_at', $date->month)
-                ->whereYear('created_at', $date->year)
-                ->sum('advance_payment');
-                
-            $invoiceRevenue = Invoice::where('status', 'paid')
-                ->whereMonth('created_at', $date->month)
-                ->whereYear('created_at', $date->year)
-                ->sum('total');
-                
-            $revenue[] = (float)($orderRevenue + $invoiceRevenue);
+        // ---- Revenue by month (paid invoices) ----
+        $revenueMap = array_fill_keys($monthKeys, 0);
+        foreach ($invoices->where('status', 'paid') as $inv) {
+            $k = $inv->created_at ? $inv->created_at->format('Y-m') : null;
+            if ($k && isset($revenueMap[$k])) {
+                $revenueMap[$k] += (float) ($inv->total ?: $inv->amount);
+            }
         }
-        
+
+        // ---- New clients trend by month ----
+        $clientsMap = array_fill_keys($monthKeys, 0);
+        foreach ($clients as $c) {
+            $k = $c->created_at ? $c->created_at->format('Y-m') : null;
+            if ($k && isset($clientsMap[$k])) {
+                $clientsMap[$k]++;
+            }
+        }
+
+        // ---- Status distributions ----
+        $invoicesByStatus = $this->dist($invoices, 'status');
+        $projectsByStatus = $this->dist($projects, 'status');
+        $leadsByStatus = $this->dist($leads, 'status');
+        $clientsByStatus = $this->dist($clients, 'status');
+
+        // ---- Top clients by paid revenue ----
+        $byClient = [];
+        foreach ($invoices->where('status', 'paid') as $inv) {
+            $name = $inv->client_name ?: 'Unknown';
+            $byClient[$name] = ($byClient[$name] ?? 0) + (float) ($inv->total ?: $inv->amount);
+        }
+        arsort($byClient);
+        $top = array_slice($byClient, 0, 5, true);
+        $topClients = [
+            'labels' => array_keys($top),
+            'data' => array_values($top),
+        ];
+
+        // ---- Recent activity ----
+        $recent = [
+            'clients' => Client::orderBy('created_at', 'desc')->limit(6)->get(),
+            'invoices' => Invoice::orderBy('created_at', 'desc')->limit(6)->get(),
+            'leads' => DemoRequest::orderBy('created_at', 'desc')->limit(6)->get(),
+            'messages' => Message::orderBy('created_at', 'desc')->limit(6)->get(),
+        ];
+
+        $chart = [
+            'months' => $months->pluck('label')->all(),
+            'revenue' => array_values($revenueMap),
+            'clientsTrend' => array_values($clientsMap),
+            'invoicesByStatus' => $invoicesByStatus,
+            'projectsByStatus' => $projectsByStatus,
+            'leadsByStatus' => $leadsByStatus,
+            'clientsByStatus' => $clientsByStatus,
+            'topClients' => $topClients,
+            'kpis' => $kpis,
+        ];
+
+        return view('admin.console', compact('chart', 'kpis', 'recent'));
+    }
+
+    private function dist($collection, $field)
+    {
+        $counts = $collection->groupBy($field)->map->count()->all();
+        $labels = array_keys($counts);
         return [
-            'months' => $months,
-            'revenue' => $revenue,
+            'labels' => $labels,
+            'data' => array_values($counts),
         ];
-    }
-
-    private function getBookingsByService()
-    {
-        return PackageOrder::select('service_id', DB::raw('count(*) as count'))
-            ->groupBy('service_id')
-            ->get()
-            ->mapWithKeys(function ($item) {
-                $serviceName = Service::find($item->service_id)->name ?? 'Unknown';
-                return [$serviceName => $item->count];
-            })->toArray();
-    }
-
-    public function financeOverview()
-    {
-        $stats = [
-            'total_revenue' => PackageOrder::where('payment_status', 'paid')->sum('advance_payment') + Invoice::where('status', 'paid')->sum('total'),
-            'total_pending' => PackageOrder::where('payment_status', 'pending')->sum('advance_payment') + Invoice::where('status', 'pending')->sum('total'),
-            'total_invoices' => Invoice::count(),
-            'paid_invoices' => Invoice::where('status', 'paid')->count(),
-        ];
-
-        $recentInvoices = Invoice::orderBy('created_at', 'desc')->take(10)->get();
-        $monthlyRevenue = $this->getMonthlyRevenueData();
-
-        return view('admin.finances.overview', compact('stats', 'recentInvoices', 'monthlyRevenue'));
     }
 }

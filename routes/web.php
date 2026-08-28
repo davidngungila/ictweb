@@ -33,11 +33,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['admin.auth'])->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/', function () {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.console');
         });
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
         })->name('dashboard');
+        Route::get('/console', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('console');
 
         // Generic CRUD API consumed by the SPA
         Route::get('/api/summary', [ResourceApiController::class, 'summary'])->name('api.summary');

@@ -5,18 +5,25 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+                'resources/css/console.css',
+                'resources/js/console.js',
+            ],
             refresh: true,
         }),
         tailwindcss(),
     ],
     build: {
-        minify: 'terser',
+        minify: 'esbuild',
         cssMinify: true,
         rollupOptions: {
             output: {
-                manualChunks: {
-                    vendor: ['vue', 'axios'],
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
                 },
             },
         },
