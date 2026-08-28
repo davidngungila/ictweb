@@ -64,6 +64,32 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::apiResource('/api/' . $slug, $ctrl)->only(['index', 'store', 'update', 'destroy']);
         }
 
+        // Traditional server-rendered CRUD pages (one Blade per module, linked to its controller)
+        $webModules = [
+            'client'  => \App\Http\Controllers\Admin\Modules\ClientModuleController::class,
+            'lead'    => \App\Http\Controllers\Admin\Modules\LeadModuleController::class,
+            'contact' => \App\Http\Controllers\Admin\Modules\ContactModuleController::class,
+            'project' => \App\Http\Controllers\Admin\Modules\ProjectModuleController::class,
+            'service' => \App\Http\Controllers\Admin\Modules\ServiceModuleController::class,
+            'package' => \App\Http\Controllers\Admin\Modules\PackageModuleController::class,
+            'pricing' => \App\Http\Controllers\Admin\Modules\PricingPlanModuleController::class,
+            'offer'   => \App\Http\Controllers\Admin\Modules\OfferModuleController::class,
+            'booking' => \App\Http\Controllers\Admin\Modules\BookingModuleController::class,
+            'invoice' => \App\Http\Controllers\Admin\Modules\InvoiceModuleController::class,
+            'expense' => \App\Http\Controllers\Admin\Modules\ExpenseModuleController::class,
+            'message' => \App\Http\Controllers\Admin\Modules\MessageModuleController::class,
+            'user'    => \App\Http\Controllers\Admin\Modules\UserModuleController::class,
+            'file'    => \App\Http\Controllers\Admin\Modules\FileManagerModuleController::class,
+        ];
+        foreach ($webModules as $slug => $ctrl) {
+            Route::get("/$slug", [$ctrl, 'index'])->name("admin.$slug.index");
+            Route::get("/$slug/create", [$ctrl, 'create'])->name("admin.$slug.create");
+            Route::post("/$slug", [$ctrl, 'store'])->name("admin.$slug.store");
+            Route::get("/$slug/{id}/edit", [$ctrl, 'edit'])->name("admin.$slug.edit");
+            Route::put("/$slug/{id}", [$ctrl, 'update'])->name("admin.$slug.update");
+            Route::delete("/$slug/{id}", [$ctrl, 'destroy'])->name("admin.$slug.destroy");
+        }
+
         // Catch-all: the dashboard SPA reads the URL and renders the matching module.
         Route::get('/{any}', function () {
             return view('admin.dashboard');
