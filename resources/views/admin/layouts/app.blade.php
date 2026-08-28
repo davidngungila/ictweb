@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JezdanTech ERP — Admin Console</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
@@ -518,6 +519,25 @@ table.data-table{width:100%;border-collapse:collapse;min-width:760px;}
 .auth-demo{margin-top:18px;padding:12px 14px;background:var(--blue-light);border-radius:11px;font-size:12.5px;color:var(--text-secondary)}
 .auth-demo b{color:var(--text-primary)}
 .auth-err{display:none;background:var(--danger-bg);color:var(--danger);padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:14px}
+
+/* ---------- Dashboard / resource pages ---------- */
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;gap:16px;flex-wrap:wrap}
+.page-h1{font-size:24px;font-weight:800;color:var(--text-primary);margin:0}
+.page-sub{color:var(--text-secondary);font-size:13.5px;margin:2px 0 0}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:20px}
+.dash-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.dash-cols .card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:18px}
+.chart-box{height:240px;position:relative}
+.mini-list{display:flex;flex-direction:column;gap:2px}
+.mini-row{display:flex;justify-content:space-between;padding:9px 4px;border-bottom:1px solid var(--border);font-size:13px}
+.mini-row:last-child{border-bottom:none}
+.mr-name{font-weight:600;color:var(--text-primary)}
+.mr-sub{color:var(--text-secondary)}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tabs{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+@media(max-width:980px){.dash-cols{grid-template-columns:1fr}}
+@media(max-width:680px){.form-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -656,7 +676,7 @@ function buildSidebar(){
       <div class="nav-children ${isOpen?'open':''}" id="nc-${gid}">
         ${item.children.map(c=>{
           const active = c.page===STATE.page && (!c.params || JSON.stringify(c.params)===JSON.stringify(STATE.params||{}));
-          if(c.action){return `<a href="#" class="nav-child" onclick="${c.action}();closeAllPanels();return false;">${c.label}</a>`;}
+          if(c.action){const call=c.action.includes('(')?c.action:(c.action+'()');return `<a href="#" class="nav-child" onclick="${call};closeAllPanels();return false;">${c.label}</a>`;}
           return `<a href="#" class="nav-child ${active?'active':''}" onclick='navigateWithParams("${c.page}", ${JSON.stringify(c.params||{})});return false;'>${c.label}</a>`;
         }).join('')}
       </div>`;
@@ -746,11 +766,11 @@ function renderNotifPanel(){
 }
 function renderQuickPanel(){
   const acts=[
-    ['New Client','openClientModal'],['New Project','openProjectModal'],['Create Invoice','openInvoiceModal'],
-    ['Record Expense','openExpenseModal'],['New Demo Request','openDemoModal'],['Send Message','openMessageModal'],
-    ['Add Service','openServiceModal'],['New Package','openPackageModal']
+    ['New Client',"openResourceModal('client')"],['New Project',"openResourceModal('project')"],['Create Invoice',"openResourceModal('invoice')"],
+    ['Record Expense',"openResourceModal('expense')"],['New Demo Request',"openResourceModal('lead')"],['Send Message',"openResourceModal('message')"],
+    ['Add Service',"openResourceModal('service')"],['New Package',"openResourceModal('package')"]
   ];
-  document.getElementById('quickPanelList').innerHTML=acts.map(a=>`<div class="menu-item" onclick="${a[1]}();closeAllPanels();">${a[0]}</div>`).join('');
+  document.getElementById('quickPanelList').innerHTML=acts.map(a=>`<div class="menu-item" onclick="${a[1].includes('(')?a[1]:a[1]+'()'};closeAllPanels();">${a[0]}</div>`).join('');
 }
 function handleGlobalSearch(q){
   const box=document.getElementById('searchResults');

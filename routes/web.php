@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController as PublicContactController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ResourceApiController;
 use App\Http\Controllers\PackageOrderController;
 use App\Http\Controllers\QuoteRequestController;
 use Illuminate\Http\Request;
@@ -37,6 +38,32 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
         })->name('dashboard');
+
+        // Generic CRUD API consumed by the SPA
+        Route::get('/api/summary', [ResourceApiController::class, 'summary'])->name('api.summary');
+        Route::get('/api/meta', [ResourceApiController::class, 'meta'])->name('api.meta');
+        Route::get('/api/options/{resource}', [ResourceApiController::class, 'options'])->name('api.options');
+
+        $apiResources = [
+            'client'  => \App\Http\Controllers\Admin\Resources\ClientResourceController::class,
+            'lead'    => \App\Http\Controllers\Admin\Resources\LeadResourceController::class,
+            'contact' => \App\Http\Controllers\Admin\Resources\ContactResourceController::class,
+            'project' => \App\Http\Controllers\Admin\Resources\ProjectResourceController::class,
+            'service' => \App\Http\Controllers\Admin\Resources\ServiceResourceController::class,
+            'package' => \App\Http\Controllers\Admin\Resources\PackageResourceController::class,
+            'pricing' => \App\Http\Controllers\Admin\Resources\PricingPlanResourceController::class,
+            'offer'   => \App\Http\Controllers\Admin\Resources\OfferResourceController::class,
+            'booking' => \App\Http\Controllers\Admin\Resources\BookingResourceController::class,
+            'invoice' => \App\Http\Controllers\Admin\Resources\InvoiceResourceController::class,
+            'expense' => \App\Http\Controllers\Admin\Resources\ExpenseResourceController::class,
+            'message' => \App\Http\Controllers\Admin\Resources\MessageResourceController::class,
+            'user'    => \App\Http\Controllers\Admin\Resources\UserResourceController::class,
+            'file'    => \App\Http\Controllers\Admin\Resources\FileManagerResourceController::class,
+        ];
+        foreach ($apiResources as $slug => $ctrl) {
+            Route::apiResource('/api/' . $slug, $ctrl)->only(['index', 'store', 'update', 'destroy']);
+        }
+
         // Catch-all: the dashboard SPA reads the URL and renders the matching module.
         Route::get('/{any}', function () {
             return view('admin.dashboard');
