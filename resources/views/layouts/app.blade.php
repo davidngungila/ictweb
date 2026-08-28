@@ -1799,7 +1799,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© {{ date('Y') }} Jezdan Group. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      <p>© {{ date('Y') }} Jezdan Group. All rights reserved. | <a href="{{ route('privacy') }}">Privacy Policy</a> | <a href="{{ route('terms') }}">Terms of Service</a></p>
       <p style="color:rgba(255,255,255,0.3);">Built with care in Moshi, Kilimanjaro, Tanzania</p>
     </div>
   </div>
