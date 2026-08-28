@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('app_scripts')
-<script>
 /* ============================================================
    JEZDANTECH ERP — DATA, NAV & PAGES
    ============================================================ */
@@ -703,5 +702,4 @@ document.addEventListener('DOMContentLoaded',function(){
   const ptitle=document.getElementById('pageTitleText'); if(ptitle) ptitle.textContent=def?def.title:'JezdanTech ERP';
   renderPage();
 });
-</script>
 @endsection
