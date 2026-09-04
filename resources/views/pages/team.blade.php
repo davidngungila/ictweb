@@ -17,14 +17,6 @@
 @php
   $leadership = [
       [
-          'name' => 'David Ngungila',
-          'position' => 'Chief Executive Officer (CEO)',
-          'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600081/portrait-male-engineer-working-field-engineers-day-celebration_afzsch.jpg',
-          'bio' => 'Leads the company and oversees all its operations, driving strategy execution and Board decisions.',
-          'linkedin' => '#',
-          'email' => 'mailto:info@jezdantech.com',
-      ],
-      [
           'name' => 'Jeremia Thomas',
           'position' => 'Chief Operating Officer (COO)',
           'image' => 'https://res.cloudinary.com/dtxdrmjlk/image/upload/v1774600080/data-center-programmers-doing-brainstorming-setting-up-machine-learning-systems_ggwvwd.jpg',
